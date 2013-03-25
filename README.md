@@ -2,6 +2,8 @@
 这是《Go Web 编程》一书的一份拷贝。因为我想在学习此书的同时，加上自己的注释。所以请想找原版的朋友到作者的[Github](<https://github.com/astaxie/build-web-application-with-golang>).
    
    
+## Origin README   
+   
 # 《Go Web 编程》
 因为自己对Web开发比较感兴趣，所以最近抽空在写一本开源的书籍《Go Web编程》《Build Web Application with Golang》。写这本书不表示我能力很强，而是我愿意分享，和大家一起分享Go写Web应用的一些东西。
 
