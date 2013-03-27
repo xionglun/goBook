@@ -61,4 +61,12 @@
 [开始阅读](<https://github.com/xionglun/goWebBook/blob/master/preface.md>)
 
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/44c98c9d398b8319b6e87edcd3e34144 "githalytics.com")](http://githalytics.com/astaxie/build-web-application-with-golang)
+
+
+
+
+
+
+
+
+
