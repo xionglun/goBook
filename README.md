@@ -5,40 +5,17 @@
 ## Origin README   
    
 # 《Go Web 编程》
-因为自己对Web开发比较感兴趣，所以最近抽空在写一本开源的书籍《Go Web编程》《Build Web Application with Golang》。写这本书不表示我能力很强，而是我愿意分享，和大家一起分享Go写Web应用的一些东西。
 
-- 对于从PHP/Python/Ruby转过来的同学了解Go怎么写Web应用开发的
+# 通过捐款支持本书
+如果你喜欢这本《Go Web编程》的话， 可以通过捐款的方式， 支持作者继续更新本书或者做出其他更多好玩好用的开源应用： 比如为本书修补漏洞、添加更多有趣的章节， 或者发行有更多更棒内容的下一版，或者改善beego等等。
 
-- 对于从C/C++转过来的同学了解Web到底是怎么运行起来的
+捐款地址： [https://me.alipay.com/astaxie](https://me.alipay.com/astaxie)
 
-我一直认为知识是用来分享的，让更多的人分享自己拥有的一切知识这个才是人生最大的快乐。
-
-这本书目前我放在Github上，我现在基本每天晚上抽空会写一些，时间有限、能力有限，所以希望更多的朋友参与到这个开源项目中来。
-
-
-## 撰写方法
-### 文件命名
-每个章节建立一个md文件，如第11章的第3节，则建立**11.3.md**。
-### 代码文件
-代码文件置于src目录之下。每小节代码按目录存放。如第11章的第3节的代码保存于**src/11.3/**目录下。在正文中按需要添加代码。
-
-## 格式规范
-### 正文
-请参看已有章节的规范，要注意的是，每个章节在底部都需要有一个links节，包含“目录”，“上一节”和“下一节”的链接。
-### 代码
-代码要**`go fmt`**后提交。注释文件注明其所属章节。
-
-## 如何编译
-`build.go`依赖markdown的一个解析包，所以第一步先
-
-	go get github.com/russross/blackfriday
-
-这样读者就可以把相应的Markdown文件编译成html文件，执行`go build build.go`，执行生成的文件，就会在底目录下生成相应的html文件
 
 ## 交流
 欢迎大家加入QQ群：259316004 《Go Web编程》专用交流群
 
-论坛交流：http://bbs.gocn.im
+论坛交流：[http://bbs.mygolang.com](http://bbs.mygolang.com)
 
 ## 致谢
 首先要感谢Golang-China的QQ群102319854，里面的每一个人都很热心，同时要特别感谢几个人
@@ -59,14 +36,4 @@
 
 ## 开始阅读
 [开始阅读](<https://github.com/xionglun/goWebBook/blob/master/preface.md>)
-
-
-
-
-
-
-
-
-
-
 
