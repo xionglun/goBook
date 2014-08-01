@@ -50,6 +50,9 @@ func (self *Visitor) md2html(arg map[string]string) error {
 		// 删除页面链接
 		input = RemoveFooterLink(input)
 
+		// remove image suffix
+ 		input = RemoveImageLinkSuffix(input)
+
 		var out *os.File
 		filename := strings.Replace(f.Name(), ".md", ".html", -1)
 		fmt.Println(to + "/" + filename)
@@ -83,6 +86,11 @@ func FixHeader(input string) string {
 func RemoveFooterLink(input string) string {
 	re_footer := regexp.MustCompile(`(?m)^#{2,} links.*?\n(.+\n)*`)
 	return re_footer.ReplaceAllString(input, "")
+}
+
+func RemoveImageLinkSuffix(input string) string {
+	re_footer := regexp.MustCompile(`png\?raw=true`)
+	return re_footer.ReplaceAllString(input, "png")
 }
 
 func main() {
