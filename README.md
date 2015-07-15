@@ -1,10 +1,8 @@
-# 声明 !!!   
+# Go Web Book  
 这个仓库是《Go Web 编程》一书的一份拷贝，删掉了某些部份。因为我想在学习此书的同时，加上自己的注释。   
-请想找原版的朋友到原作者的[Github](<https://github.com/astaxie/build-web-application-with-golang>).
-
 
 ## 开始阅读
-[开始阅读](./docs/preface.md)
+[开始阅读](./preface.md)
 
 
 # 《Go Web 编程》
