@@ -1,0 +1,2009 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>表单支持 | Golang Web</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.1.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+    
+        <link rel="stylesheet" href="../style.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../docs/14.4.html" />
+    
+    
+    <link rel="prev" href="../docs/14.2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="14.3" data-basepath=".." data-revision="Wed Jul 15 2015 17:29:47 GMT+0800 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="输入并搜索" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        介绍
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/01.0.html">
+            
+                
+                    <a href="../docs/01.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Go环境配置
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="docs/01.1.html">
+            
+                
+                    <a href="../docs/01.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Go安装
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="docs/01.2.html">
+            
+                
+                    <a href="../docs/01.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        GOPATH 与工作空间
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="docs/01.3.html">
+            
+                
+                    <a href="../docs/01.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Go 命令
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="docs/01.4.html">
+            
+                
+                    <a href="../docs/01.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        Go开发工具
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="docs/01.5.html">
+            
+                
+                    <a href="../docs/01.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/02.0.html">
+            
+                
+                    <a href="../docs/02.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Go语言基础
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="docs/02.1.html">
+            
+                
+                    <a href="../docs/02.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        你好，Go
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="docs/02.2.html">
+            
+                
+                    <a href="../docs/02.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Go基础
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="docs/02.3.html">
+            
+                
+                    <a href="../docs/02.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        流程和函数
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="docs/02.4.html">
+            
+                
+                    <a href="../docs/02.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        struct
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="docs/02.5.html">
+            
+                
+                    <a href="../docs/02.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        面向对象
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="docs/02.6.html">
+            
+                
+                    <a href="../docs/02.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        interface
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="docs/02.7.html">
+            
+                
+                    <a href="../docs/02.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        并发
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="docs/02.8.html">
+            
+                
+                    <a href="../docs/02.8.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/03.0.html">
+            
+                
+                    <a href="../docs/03.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Web基础
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="docs/03.1.html">
+            
+                
+                    <a href="../docs/03.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        web工作方式
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="docs/03.2.html">
+            
+                
+                    <a href="../docs/03.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Go搭建一个简单的web服务
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="docs/03.3.html">
+            
+                
+                    <a href="../docs/03.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Go如何使得web工作
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="docs/03.4.html">
+            
+                
+                    <a href="../docs/03.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        Go的http包详解
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="docs/03.5.html">
+            
+                
+                    <a href="../docs/03.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="docs/04.0.html">
+            
+                
+                    <a href="../docs/04.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        表单
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="docs/04.1.html">
+            
+                
+                    <a href="../docs/04.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        处理表单的输入
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="docs/04.2.html">
+            
+                
+                    <a href="../docs/04.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        验证表单的输入
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="docs/04.3.html">
+            
+                
+                    <a href="../docs/04.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        预防跨站脚本
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="docs/04.4.html">
+            
+                
+                    <a href="../docs/04.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        防止多次递交表单
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="docs/04.5.html">
+            
+                
+                    <a href="../docs/04.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        处理文件上传
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="docs/04.6.html">
+            
+                
+                    <a href="../docs/04.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="docs/05.0.html">
+            
+                
+                    <a href="../docs/05.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        访问数据库
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="docs/05.1.html">
+            
+                
+                    <a href="../docs/05.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        database/sql接口
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="docs/05.2.html">
+            
+                
+                    <a href="../docs/05.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        使用MySQL数据库
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="docs/05.3.html">
+            
+                
+                    <a href="../docs/05.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        使用SQLite数据库
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="docs/05.4.html">
+            
+                
+                    <a href="../docs/05.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        使用PostgreSQL数据库
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="docs/05.5.html">
+            
+                
+                    <a href="../docs/05.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        使用beedb库进行ORM开发
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="docs/05.6.html">
+            
+                
+                    <a href="../docs/05.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        NoSQL数据库操作
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="docs/05.7.html">
+            
+                
+                    <a href="../docs/05.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.7.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="docs/06.0.html">
+            
+                
+                    <a href="../docs/06.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        session和数据存储
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="docs/06.1.html">
+            
+                
+                    <a href="../docs/06.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        session和cookie
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="docs/06.2.html">
+            
+                
+                    <a href="../docs/06.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        Go如何使用session
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="docs/06.3.html">
+            
+                
+                    <a href="../docs/06.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        session存储
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="docs/06.4.html">
+            
+                
+                    <a href="../docs/06.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        预防session劫持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="docs/06.5.html">
+            
+                
+                    <a href="../docs/06.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="docs/07.0.html">
+            
+                
+                    <a href="../docs/07.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        文本文件处理
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="docs/07.1.html">
+            
+                
+                    <a href="../docs/07.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        XML处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="docs/07.2.html">
+            
+                
+                    <a href="../docs/07.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        JSON处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="docs/07.3.html">
+            
+                
+                    <a href="../docs/07.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        正则处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="docs/07.4.html">
+            
+                
+                    <a href="../docs/07.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        模板处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="docs/07.5.html">
+            
+                
+                    <a href="../docs/07.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        文件操作
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="docs/07.6.html">
+            
+                
+                    <a href="../docs/07.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        字符串处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="docs/07.7.html">
+            
+                
+                    <a href="../docs/07.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.7.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="docs/08.0.html">
+            
+                
+                    <a href="../docs/08.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Web服务
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="docs/08.1.html">
+            
+                
+                    <a href="../docs/08.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        Socket编程
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="docs/08.2.html">
+            
+                
+                    <a href="../docs/08.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        WebSocket
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="docs/08.3.html">
+            
+                
+                    <a href="../docs/08.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        REST
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="docs/08.4.html">
+            
+                
+                    <a href="../docs/08.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        RPC
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="docs/08.5.html">
+            
+                
+                    <a href="../docs/08.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="docs/09.0.html">
+            
+                
+                    <a href="../docs/09.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        安全与加密
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="docs/09.1.html">
+            
+                
+                    <a href="../docs/09.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        预防CSRF攻击
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="docs/09.2.html">
+            
+                
+                    <a href="../docs/09.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        确保输入过滤
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="docs/09.3.html">
+            
+                
+                    <a href="../docs/09.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        避免XSS攻击
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="docs/09.4.html">
+            
+                
+                    <a href="../docs/09.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        避免SQL注入
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="docs/09.5.html">
+            
+                
+                    <a href="../docs/09.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        存储密码
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="docs/09.6.html">
+            
+                
+                    <a href="../docs/09.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        加密和解密数据
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="docs/09.7.html">
+            
+                
+                    <a href="../docs/09.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="docs/10.0.html">
+            
+                
+                    <a href="../docs/10.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        国际化和本地化
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="docs/10.1.html">
+            
+                
+                    <a href="../docs/10.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        设置默认地区
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="docs/10.2.html">
+            
+                
+                    <a href="../docs/10.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        本地化资源
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="docs/10.3.html">
+            
+                
+                    <a href="../docs/10.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        国际化站点
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="docs/10.4.html">
+            
+                
+                    <a href="../docs/10.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="docs/11.0.html">
+            
+                
+                    <a href="../docs/11.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        错误处理，调试和测试
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="docs/11.1.html">
+            
+                
+                    <a href="../docs/11.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        错误处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="docs/11.2.html">
+            
+                
+                    <a href="../docs/11.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        使用GDB调试
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="docs/11.3.html">
+            
+                
+                    <a href="../docs/11.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        Go怎么写测试用例
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="docs/11.4.html">
+            
+                
+                    <a href="../docs/11.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="docs/12.0.html">
+            
+                
+                    <a href="../docs/12.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        部署与维护
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="docs/12.1.html">
+            
+                
+                    <a href="../docs/12.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        应用日志
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="docs/12.2.html">
+            
+                
+                    <a href="../docs/12.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        网站错误处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="docs/12.3.html">
+            
+                
+                    <a href="../docs/12.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        应用部署
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="docs/12.4.html">
+            
+                
+                    <a href="../docs/12.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        备份和恢复
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="docs/12.5.html">
+            
+                
+                    <a href="../docs/12.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="docs/13.0.html">
+            
+                
+                    <a href="../docs/13.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        如何设计一个Web框架
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="docs/13.1.html">
+            
+                
+                    <a href="../docs/13.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        项目规划
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="docs/13.2.html">
+            
+                
+                    <a href="../docs/13.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        自定义路由器设计
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="docs/13.3.html">
+            
+                
+                    <a href="../docs/13.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        controller设计
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="docs/13.4.html">
+            
+                
+                    <a href="../docs/13.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.4.</b>
+                        
+                        日志和配置设计
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="docs/13.5.html">
+            
+                
+                    <a href="../docs/13.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.5.</b>
+                        
+                        实现博客的增删改
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.6" data-path="docs/13.6.html">
+            
+                
+                    <a href="../docs/13.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.6.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="docs/14.0.html">
+            
+                
+                    <a href="../docs/14.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        扩展Web框架
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="docs/14.1.html">
+            
+                
+                    <a href="../docs/14.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        静态文件支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="docs/14.2.html">
+            
+                
+                    <a href="../docs/14.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        Session支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="14.3" data-path="docs/14.3.html">
+            
+                
+                    <a href="../docs/14.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        表单支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="docs/14.4.html">
+            
+                
+                    <a href="../docs/14.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        用户认证
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="docs/14.5.html">
+            
+                
+                    <a href="../docs/14.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        多语言支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="docs/14.6.html">
+            
+                
+                    <a href="../docs/14.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.6.</b>
+                        
+                        pprof支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="docs/14.7.html">
+            
+                
+                    <a href="../docs/14.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.7.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="ref.html">
+            
+                
+                    <a href="../ref.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        附录A 参考资料
+                    </a>
+                
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                本书使用 GitBook 发布
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="目录"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="搜索"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="字体设置"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">衬线体</button>
+        <button type="button" data-font="1" class="button">无衬线体</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">白色</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">棕褐色</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">夜间</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="分享"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    分享到 Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    分享到 Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    分享到 Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    分享到 Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    分享到 Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Golang Web</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="14-3-%E8%A1%A8%E5%8D%95%E5%8F%8A%E9%AA%8C%E8%AF%81%E6%94%AF%E6%8C%81">14.3 &#x8868;&#x5355;&#x53CA;&#x9A8C;&#x8BC1;&#x652F;&#x6301;</h1>
+<p>&#x5728;Web&#x5F00;&#x53D1;&#x4E2D;&#x5BF9;&#x4E8E;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#x53EF;&#x80FD;&#x5F88;&#x773C;&#x719F;&#xFF1A;</p>
+<ul>
+<li>&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7F51;&#x9875;&#x663E;&#x793A;&#x51FA;&#x8868;&#x5355;&#x3002;</li>
+<li>&#x7528;&#x6237;&#x586B;&#x5199;&#x5E76;&#x63D0;&#x4EA4;&#x4E86;&#x8868;&#x5355;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x7528;&#x6237;&#x63D0;&#x4EA4;&#x4E86;&#x4E00;&#x4E9B;&#x65E0;&#x6548;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6216;&#x8005;&#x53EF;&#x80FD;&#x6F0F;&#x6389;&#x4E86;&#x4E00;&#x4E2A;&#x5FC5;&#x586B;&#x9879;&#xFF0C;&#x8868;&#x5355;&#x5C06;&#x4F1A;&#x8FDE;&#x540C;&#x7528;&#x6237;&#x7684;&#x6570;&#x636E;&#x548C;&#x9519;&#x8BEF;&#x95EE;&#x9898;&#x7684;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;&#x8FD4;&#x56DE;&#x3002;</li>
+<li>&#x7528;&#x6237;&#x518D;&#x6B21;&#x586B;&#x5199;&#xFF0C;&#x7EE7;&#x7EED;&#x4E0A;&#x4E00;&#x6B65;&#x8FC7;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;&#x63D0;&#x4EA4;&#x4E86;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7684;&#x8868;&#x5355;&#x3002;</li>
+</ul>
+<p>&#x5728;&#x63A5;&#x6536;&#x7AEF;&#xFF0C;&#x811A;&#x672C;&#x5FC5;&#x987B;&#xFF1A;</p>
+<ul>
+<li>&#x68C0;&#x67E5;&#x7528;&#x6237;&#x9012;&#x4EA4;&#x7684;&#x8868;&#x5355;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x9A8C;&#x8BC1;&#x6570;&#x636E;&#x662F;&#x5426;&#x4E3A;&#x6B63;&#x786E;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5408;&#x9002;&#x7684;&#x6807;&#x51C6;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x540D;&#x88AB;&#x63D0;&#x4EA4;&#xFF0C;&#x5B83;&#x5FC5;&#x987B;&#x88AB;&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x53EA;&#x5305;&#x542B;&#x4E86;&#x5141;&#x8BB8;&#x7684;&#x5B57;&#x7B26;&#x3002;
+&#x5B83;&#x5FC5;&#x987B;&#x6709;&#x4E00;&#x4E2A;&#x6700;&#x5C0F;&#x957F;&#x5EA6;&#xFF0C;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;&#x6700;&#x5927;&#x957F;&#x5EA6;&#x3002;&#x7528;&#x6237;&#x540D;&#x4E0D;&#x80FD;&#x4E0E;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x4ED6;&#x4EBA;&#x7528;&#x6237;&#x540D;&#x91CD;&#x590D;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x4E00;&#x4E2A;&#x4FDD;&#x7559;&#x5B57;&#x7B49;&#x3002;</li>
+<li>&#x8FC7;&#x6EE4;&#x6570;&#x636E;&#x5E76;&#x6E05;&#x7406;&#x4E0D;&#x5B89;&#x5168;&#x5B57;&#x7B26;&#xFF0C;&#x4FDD;&#x8BC1;&#x903B;&#x8F91;&#x5904;&#x7406;&#x4E2D;&#x63A5;&#x6536;&#x7684;&#x6570;&#x636E;&#x662F;&#x5B89;&#x5168;&#x7684;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x9700;&#x8981;&#xFF0C;&#x9884;&#x683C;&#x5F0F;&#x5316;&#x6570;&#x636E;&#xFF08;&#x6570;&#x636E;&#x9700;&#x8981;&#x6E05;&#x9664;&#x7A7A;&#x767D;&#x6216;&#x8005;&#x7ECF;&#x8FC7;HTML&#x7F16;&#x7801;&#x7B49;&#x7B49;&#x3002;&#xFF09;</li>
+<li>&#x51C6;&#x5907;&#x597D;&#x6570;&#x636E;&#xFF0C;&#x63D2;&#x5165;&#x6570;&#x636E;&#x5E93;&#x3002;</li>
+</ul>
+<p>&#x5C3D;&#x7BA1;&#x4E0A;&#x9762;&#x7684;&#x8FC7;&#x7A0B;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x590D;&#x6742;&#xFF0C;&#x4F46;&#x662F;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x9700;&#x8981;&#x7F16;&#x5199;&#x5F88;&#x591A;&#x4EE3;&#x7801;&#xFF0C;&#x800C;&#x4E14;&#x4E3A;&#x4E86;&#x663E;&#x793A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x5728;&#x7F51;&#x9875;&#x4E2D;&#x7ECF;&#x5E38;&#x8981;&#x4F7F;&#x7528;&#x591A;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x63A7;&#x5236;&#x7ED3;&#x6784;&#x3002;
+&#x521B;&#x5EFA;&#x8868;&#x5355;&#x9A8C;&#x8BC1;&#x867D;&#x7B80;&#x5355;&#xFF0C;&#x5B9E;&#x65BD;&#x8D77;&#x6765;&#x5B9E;&#x5728;&#x67AF;&#x71E5;&#x65E0;&#x5473;&#x3002;</p>
+<h2 id="%E8%A1%A8%E5%8D%95%E5%92%8C%E9%AA%8C%E8%AF%81">&#x8868;&#x5355;&#x548C;&#x9A8C;&#x8BC1;</h2>
+<p>&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x8005;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x822C;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x90FD;&#x662F;&#x76F8;&#x5F53;&#x590D;&#x6742;&#xFF0C;&#x800C;&#x4E14;&#x5927;&#x591A;&#x662F;&#x5728;&#x91CD;&#x590D;&#x4E00;&#x6837;&#x7684;&#x5DE5;&#x4F5C;&#x3002;
+&#x5047;&#x8BBE;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#x9879;&#x76EE;&#x4E2D;&#x5FFD;&#x7136;&#x9700;&#x8981;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x8868;&#x5355;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x4E48;&#x5C40;&#x90E8;&#x4EE3;&#x7801;&#x7684;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x90FD;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x3002;
+&#x6211;&#x4EEC;&#x77E5;&#x9053;Go&#x91CC;&#x9762;struct&#x662F;&#x5E38;&#x7528;&#x7684;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x56E0;&#x6B64;beego&#x7684;form&#x91C7;&#x7528;&#x4E86;struct&#x6765;&#x5904;&#x7406;&#x8868;&#x5355;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5F00;&#x53D1;Web&#x5E94;&#x7528;&#x65F6;&#x76F8;&#x5BF9;&#x5E94;&#x7684;struct&#xFF0C;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;form&#x5143;&#x7D20;&#xFF0C;&#x901A;&#x8FC7;struct&#x7684;tag&#x6765;&#x5B9A;&#x4E49;&#x76F8;&#x5E94;&#x7684;&#x5143;&#x7D20;&#x4FE1;&#x606F;&#x548C;&#x9A8C;&#x8BC1;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span>{
+    Username     <span class="hljs-typename">string</span>     <span class="hljs-string">`form:text,valid:required`</span>
+    Nickname     <span class="hljs-typename">string</span>     <span class="hljs-string">`form:text,valid:required`</span>
+    Age            <span class="hljs-typename">int</span>     <span class="hljs-string">`form:text,valid:required|numeric`</span>
+    Email         <span class="hljs-typename">string</span>     <span class="hljs-string">`form:text,valid:required|valid_email`</span>
+    Introduce     <span class="hljs-typename">string</span>     <span class="hljs-string">`form:textarea`</span>
+}
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x597D;struct&#x4E4B;&#x540E;&#x63A5;&#x4E0B;&#x6765;&#x5728;controller&#x4E2D;&#x8FD9;&#x6837;&#x64CD;&#x4F5C;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (this *AddController) Get() {
+    this.Data[<span class="hljs-string">&quot;form&quot;</span>] = beego.Form(&amp;User{})
+    this.Layout = <span class="hljs-string">&quot;admin/layout.html&quot;</span>
+    this.TplNames = <span class="hljs-string">&quot;admin/add.tpl&quot;</span>
+}
+</code></pre>
+<p>&#x5728;&#x6A21;&#x677F;&#x4E2D;&#x8FD9;&#x6837;&#x663E;&#x793A;&#x8868;&#x5355;</p>
+<pre><code class="lang-html">    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>New Blog Post<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">action</span>=<span class="hljs-value">&quot;&quot;</span> <span class="hljs-attribute">method</span>=<span class="hljs-value">&quot;post&quot;</span>&gt;</span>
+    {{.form.render()}}
+    <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x597D;&#x4E86;&#x6574;&#x4E2A;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x4ECE;struct&#x5230;&#x663E;&#x793A;&#x8868;&#x5355;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x7528;&#x6237;&#x586B;&#x5199;&#x4FE1;&#x606F;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x63A5;&#x6536;&#x6570;&#x636E;&#x7136;&#x540E;&#x9A8C;&#x8BC1;&#xFF0C;&#x6700;&#x540E;&#x63D2;&#x5165;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<pre><code class="lang-go">    <span class="hljs-keyword">func</span> (this *AddController) Post() {
+        <span class="hljs-keyword">var</span> user User
+        form := this.GetInput(&amp;user)
+        <span class="hljs-keyword">if</span> !form.Validates() {
+            <span class="hljs-keyword">return</span>
+        }
+        models.UserInsert(&amp;user)
+        this.Ctx.Redirect(<span class="hljs-number">302</span>, <span class="hljs-string">&quot;/admin/index&quot;</span>)
+    }
+</code></pre>
+<h2 id="%E8%A1%A8%E5%8D%95%E7%B1%BB%E5%9E%8B">&#x8868;&#x5355;&#x7C7B;&#x578B;</h2>
+<p>&#x4EE5;&#x4E0B;&#x5217;&#x8868;&#x5217;&#x51FA;&#x6765;&#x4E86;&#x5BF9;&#x5E94;&#x7684;form&#x5143;&#x7D20;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">table</span> <span class="hljs-attribute">cellpadding</span>=<span class="hljs-value">&quot;0&quot;</span> <span class="hljs-attribute">cellspacing</span>=<span class="hljs-value">&quot;1&quot;</span> <span class="hljs-attribute">border</span>=<span class="hljs-value">&quot;0&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width:100%&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;tableborder&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">tbody</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>&#x540D;&#x79F0;<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>&#x53C2;&#x6570;<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>&#x529F;&#x80FD;&#x63CF;&#x8FF0;<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>text<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>textbox&#x8F93;&#x5165;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>button<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x6309;&#x94AE;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x591A;&#x9009;&#x62E9;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>dropdown<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x4E0B;&#x62C9;&#x9009;&#x62E9;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>file<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x6587;&#x4EF6;&#x4E0A;&#x4F20;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>hidden<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x9690;&#x85CF;&#x5143;&#x7D20;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>password<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5BC6;&#x7801;&#x8F93;&#x5165;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>radio<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5355;&#x9009;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>textarea<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x6587;&#x672C;&#x8F93;&#x5165;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">tbody</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">table</span>&gt;</span>
+</code></pre>
+<h2 id="%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81">&#x8868;&#x5355;&#x9A8C;&#x8BC1;</h2>
+<p>&#x4EE5;&#x4E0B;&#x5217;&#x8868;&#x5C06;&#x5217;&#x51FA;&#x53EF;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x539F;&#x751F;&#x89C4;&#x5219;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">table</span> <span class="hljs-attribute">cellpadding</span>=<span class="hljs-value">&quot;0&quot;</span> <span class="hljs-attribute">cellspacing</span>=<span class="hljs-value">&quot;1&quot;</span> <span class="hljs-attribute">border</span>=<span class="hljs-value">&quot;0&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">&quot;width:100%&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;tableborder&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">tbody</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>&#x89C4;&#x5219;<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>&#x53C2;&#x6570;<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>&#x63CF;&#x8FF0;<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>&#x4E3E;&#x4F8B;<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>required<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x5143;&#x7D20;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>matches<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x7684;&#x503C;&#x4E0E;&#x53C2;&#x6570;&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x8868;&#x5355;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>matches[form_item]<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>is_unique<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x7684;&#x503C;&#x4E0E;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x8868;&#x680F;&#x4F4D;&#x6709;&#x91CD;&#x590D;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;False
+        &#xFF08;&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;&#x6BD4;&#x5982;is_unique[User.Email]&#xFF0C;&#x90A3;&#x4E48;&#x9A8C;&#x8BC1;&#x7C7B;&#x4F1A;&#x53BB;&#x67E5;&#x627E;User&#x8868;&#x4E2D;Email&#x680F;&#x4F4D;&#x6709;&#x6CA1;&#x6709;&#x4E0E;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E00;&#x6837;&#x7684;&#x503C;&#xFF0C;&#x5982;&#x5B58;&#x91CD;&#x590D;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;false&#xFF0C;&#x8FD9;&#x6837;&#x5F00;&#x53D1;&#x8005;&#x5C31;&#x4E0D;&#x5FC5;&#x53E6;&#x5199;Callback&#x9A8C;&#x8BC1;&#x4EE3;&#x7801;&#x3002;&#xFF09;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>is_unique[table.field]<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>min_length<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x7684;&#x5B57;&#x7B26;&#x957F;&#x5EA6;&#x5C11;&#x4E8E;&#x53C2;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>min_length[6]<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>max_length<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x7684;&#x5B57;&#x7B26;&#x957F;&#x5EA6;&#x5927;&#x4E8E;&#x53C2;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>max_length[12]<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>exact_length<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x7684;&#x5B57;&#x7B26;&#x957F;&#x5EA6;&#x4E0E;&#x53C2;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x5B57;&#x4E0D;&#x7B26;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>exact_length[8]<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>greater_than<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x662F;&#x975E;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#xFF0C;&#x6216;&#x5C0F;&#x4E8E;&#x53C2;&#x6570;&#x5B9A;&#x4E49;&#x7684;&#x503C;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>greater_than[8]<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>less_than<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x662F;&#x975E;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#xFF0C;&#x6216;&#x5927;&#x4E8E;&#x53C2;&#x6570;&#x5B9A;&#x4E49;&#x7684;&#x503C;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>less_than[8]<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>alpha<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x4E2D;&#x5305;&#x542B;&#x9664;&#x5B57;&#x6BCD;&#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x5B57;&#x7B26;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>alpha_numeric<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x4E2D;&#x5305;&#x542B;&#x9664;&#x5B57;&#x6BCD;&#x548C;&#x6570;&#x5B57;&#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x5B57;&#x7B26;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>alpha_dash<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x4E2D;&#x5305;&#x542B;&#x9664;&#x5B57;&#x6BCD;/&#x6570;&#x5B57;/&#x4E0B;&#x5212;&#x7EBF;/&#x7834;&#x6298;&#x53F7;&#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x5B57;&#x7B26;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>numeric<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x4E2D;&#x5305;&#x542B;&#x9664;&#x6570;&#x5B57;&#x4EE5;&#x5916;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x5219;&#x8FD4;&#x56DE; FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E2D;&#x5305;&#x542B;&#x9664;&#x6574;&#x6570;&#x4EE5;&#x5916;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>decimal<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E2D;&#x8F93;&#x5165;&#xFF08;&#x975E;&#x5C0F;&#x6570;&#xFF09;&#x4E0D;&#x5B8C;&#x6574;&#x7684;&#x503C;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>is_natural<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x975E;&#x81EA;&#x7136;&#x6570;&#x7684;&#x5176;&#x4ED6;&#x6570;&#x503C; &#xFF08;&#x5176;&#x4ED6;&#x6570;&#x503C;&#x4E0D;&#x5305;&#x62EC;&#x96F6;&#xFF09;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE&#x3002;&#x81EA;&#x7136;&#x6570;&#x5F62;&#x5982;&#xFF1A;0,1,2,3....&#x7B49;&#x7B49;&#x3002;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>is_natural_no_zero<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x5305;&#x542B;&#x4E86;&#x975E;&#x81EA;&#x7136;&#x6570;&#x7684;&#x5176;&#x4ED6;&#x6570;&#x503C; &#xFF08;&#x5176;&#x4ED6;&#x6570;&#x503C;&#x5305;&#x62EC;&#x96F6;&#xFF09;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE&#x3002;&#x975E;&#x96F6;&#x7684;&#x81EA;&#x7136;&#x6570;&#xFF1A;1,2,3.....&#x7B49;&#x7B49;&#x3002;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>valid_email<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x5305;&#x542B;&#x4E0D;&#x5408;&#x6CD5;&#x7684;email&#x5730;&#x5740;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>valid_emails<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x503C;&#x4E2D;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x503C;&#x5305;&#x542B;&#x4E0D;&#x5408;&#x6CD5;&#x7684;email&#x5730;&#x5740;&#xFF08;&#x5730;&#x5740;&#x4E4B;&#x95F4;&#x7528;&#x82F1;&#x6587;&#x9017;&#x53F7;&#x5206;&#x5272;&#xFF09;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE&#x3002;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>valid_ip<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x7684;&#x503C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5408;&#x6CD5;&#x7684;IP&#x5730;&#x5740;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE&#x3002;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>valid_base64<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x7684;&#x503C;&#x5305;&#x542B;&#x9664;&#x4E86;base64 &#x7F16;&#x7801;&#x5B57;&#x7B26;&#x4E4B;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x5B57;&#x7B26;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;FALSE&#x3002;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;td&quot;</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">tbody</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">table</span>&gt;</span>
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../docs/14.2.html" class="navigation navigation-prev " aria-label="Previous page: Session支持"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../docs/14.4.html" class="navigation navigation-next " aria-label="Next page: 用户认证"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

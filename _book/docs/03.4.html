@@ -1,0 +1,1875 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Go的http包详解 | Golang Web</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.1.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+    
+        <link rel="stylesheet" href="../style.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../docs/03.5.html" />
+    
+    
+    <link rel="prev" href="../docs/03.3.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="3.4" data-basepath=".." data-revision="Wed Jul 15 2015 17:29:47 GMT+0800 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="输入并搜索" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        介绍
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/01.0.html">
+            
+                
+                    <a href="../docs/01.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Go环境配置
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="docs/01.1.html">
+            
+                
+                    <a href="../docs/01.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Go安装
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="docs/01.2.html">
+            
+                
+                    <a href="../docs/01.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        GOPATH 与工作空间
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="docs/01.3.html">
+            
+                
+                    <a href="../docs/01.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Go 命令
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="docs/01.4.html">
+            
+                
+                    <a href="../docs/01.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        Go开发工具
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="docs/01.5.html">
+            
+                
+                    <a href="../docs/01.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/02.0.html">
+            
+                
+                    <a href="../docs/02.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Go语言基础
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="docs/02.1.html">
+            
+                
+                    <a href="../docs/02.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        你好，Go
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="docs/02.2.html">
+            
+                
+                    <a href="../docs/02.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Go基础
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="docs/02.3.html">
+            
+                
+                    <a href="../docs/02.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        流程和函数
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="docs/02.4.html">
+            
+                
+                    <a href="../docs/02.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        struct
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="docs/02.5.html">
+            
+                
+                    <a href="../docs/02.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        面向对象
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="docs/02.6.html">
+            
+                
+                    <a href="../docs/02.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        interface
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="docs/02.7.html">
+            
+                
+                    <a href="../docs/02.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        并发
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="docs/02.8.html">
+            
+                
+                    <a href="../docs/02.8.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/03.0.html">
+            
+                
+                    <a href="../docs/03.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Web基础
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="docs/03.1.html">
+            
+                
+                    <a href="../docs/03.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        web工作方式
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="docs/03.2.html">
+            
+                
+                    <a href="../docs/03.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Go搭建一个简单的web服务
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="docs/03.3.html">
+            
+                
+                    <a href="../docs/03.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Go如何使得web工作
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.4" data-path="docs/03.4.html">
+            
+                
+                    <a href="../docs/03.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        Go的http包详解
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="docs/03.5.html">
+            
+                
+                    <a href="../docs/03.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="docs/04.0.html">
+            
+                
+                    <a href="../docs/04.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        表单
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="docs/04.1.html">
+            
+                
+                    <a href="../docs/04.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        处理表单的输入
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="docs/04.2.html">
+            
+                
+                    <a href="../docs/04.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        验证表单的输入
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="docs/04.3.html">
+            
+                
+                    <a href="../docs/04.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        预防跨站脚本
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="docs/04.4.html">
+            
+                
+                    <a href="../docs/04.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        防止多次递交表单
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="docs/04.5.html">
+            
+                
+                    <a href="../docs/04.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        处理文件上传
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="docs/04.6.html">
+            
+                
+                    <a href="../docs/04.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="docs/05.0.html">
+            
+                
+                    <a href="../docs/05.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        访问数据库
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="docs/05.1.html">
+            
+                
+                    <a href="../docs/05.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        database/sql接口
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="docs/05.2.html">
+            
+                
+                    <a href="../docs/05.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        使用MySQL数据库
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="docs/05.3.html">
+            
+                
+                    <a href="../docs/05.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        使用SQLite数据库
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="docs/05.4.html">
+            
+                
+                    <a href="../docs/05.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        使用PostgreSQL数据库
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="docs/05.5.html">
+            
+                
+                    <a href="../docs/05.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        使用beedb库进行ORM开发
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="docs/05.6.html">
+            
+                
+                    <a href="../docs/05.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        NoSQL数据库操作
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="docs/05.7.html">
+            
+                
+                    <a href="../docs/05.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.7.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="docs/06.0.html">
+            
+                
+                    <a href="../docs/06.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        session和数据存储
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="docs/06.1.html">
+            
+                
+                    <a href="../docs/06.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        session和cookie
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="docs/06.2.html">
+            
+                
+                    <a href="../docs/06.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        Go如何使用session
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="docs/06.3.html">
+            
+                
+                    <a href="../docs/06.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        session存储
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="docs/06.4.html">
+            
+                
+                    <a href="../docs/06.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        预防session劫持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="docs/06.5.html">
+            
+                
+                    <a href="../docs/06.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="docs/07.0.html">
+            
+                
+                    <a href="../docs/07.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        文本文件处理
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="docs/07.1.html">
+            
+                
+                    <a href="../docs/07.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        XML处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="docs/07.2.html">
+            
+                
+                    <a href="../docs/07.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        JSON处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="docs/07.3.html">
+            
+                
+                    <a href="../docs/07.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        正则处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="docs/07.4.html">
+            
+                
+                    <a href="../docs/07.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        模板处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="docs/07.5.html">
+            
+                
+                    <a href="../docs/07.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        文件操作
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="docs/07.6.html">
+            
+                
+                    <a href="../docs/07.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        字符串处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="docs/07.7.html">
+            
+                
+                    <a href="../docs/07.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.7.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="docs/08.0.html">
+            
+                
+                    <a href="../docs/08.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Web服务
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="docs/08.1.html">
+            
+                
+                    <a href="../docs/08.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        Socket编程
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="docs/08.2.html">
+            
+                
+                    <a href="../docs/08.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        WebSocket
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="docs/08.3.html">
+            
+                
+                    <a href="../docs/08.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        REST
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="docs/08.4.html">
+            
+                
+                    <a href="../docs/08.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        RPC
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="docs/08.5.html">
+            
+                
+                    <a href="../docs/08.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="docs/09.0.html">
+            
+                
+                    <a href="../docs/09.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        安全与加密
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="docs/09.1.html">
+            
+                
+                    <a href="../docs/09.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        预防CSRF攻击
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="docs/09.2.html">
+            
+                
+                    <a href="../docs/09.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        确保输入过滤
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="docs/09.3.html">
+            
+                
+                    <a href="../docs/09.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        避免XSS攻击
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="docs/09.4.html">
+            
+                
+                    <a href="../docs/09.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        避免SQL注入
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="docs/09.5.html">
+            
+                
+                    <a href="../docs/09.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        存储密码
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="docs/09.6.html">
+            
+                
+                    <a href="../docs/09.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        加密和解密数据
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="docs/09.7.html">
+            
+                
+                    <a href="../docs/09.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="docs/10.0.html">
+            
+                
+                    <a href="../docs/10.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        国际化和本地化
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="docs/10.1.html">
+            
+                
+                    <a href="../docs/10.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        设置默认地区
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="docs/10.2.html">
+            
+                
+                    <a href="../docs/10.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        本地化资源
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="docs/10.3.html">
+            
+                
+                    <a href="../docs/10.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        国际化站点
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="docs/10.4.html">
+            
+                
+                    <a href="../docs/10.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="docs/11.0.html">
+            
+                
+                    <a href="../docs/11.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        错误处理，调试和测试
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="docs/11.1.html">
+            
+                
+                    <a href="../docs/11.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        错误处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="docs/11.2.html">
+            
+                
+                    <a href="../docs/11.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        使用GDB调试
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="docs/11.3.html">
+            
+                
+                    <a href="../docs/11.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        Go怎么写测试用例
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="docs/11.4.html">
+            
+                
+                    <a href="../docs/11.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="docs/12.0.html">
+            
+                
+                    <a href="../docs/12.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        部署与维护
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="docs/12.1.html">
+            
+                
+                    <a href="../docs/12.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        应用日志
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="docs/12.2.html">
+            
+                
+                    <a href="../docs/12.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        网站错误处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="docs/12.3.html">
+            
+                
+                    <a href="../docs/12.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        应用部署
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="docs/12.4.html">
+            
+                
+                    <a href="../docs/12.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        备份和恢复
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="docs/12.5.html">
+            
+                
+                    <a href="../docs/12.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="docs/13.0.html">
+            
+                
+                    <a href="../docs/13.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        如何设计一个Web框架
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="docs/13.1.html">
+            
+                
+                    <a href="../docs/13.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        项目规划
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="docs/13.2.html">
+            
+                
+                    <a href="../docs/13.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        自定义路由器设计
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="docs/13.3.html">
+            
+                
+                    <a href="../docs/13.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        controller设计
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="docs/13.4.html">
+            
+                
+                    <a href="../docs/13.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.4.</b>
+                        
+                        日志和配置设计
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="docs/13.5.html">
+            
+                
+                    <a href="../docs/13.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.5.</b>
+                        
+                        实现博客的增删改
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.6" data-path="docs/13.6.html">
+            
+                
+                    <a href="../docs/13.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.6.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="docs/14.0.html">
+            
+                
+                    <a href="../docs/14.0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        扩展Web框架
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="docs/14.1.html">
+            
+                
+                    <a href="../docs/14.1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        静态文件支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="docs/14.2.html">
+            
+                
+                    <a href="../docs/14.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        Session支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="docs/14.3.html">
+            
+                
+                    <a href="../docs/14.3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        表单支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="docs/14.4.html">
+            
+                
+                    <a href="../docs/14.4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        用户认证
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="docs/14.5.html">
+            
+                
+                    <a href="../docs/14.5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        多语言支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="docs/14.6.html">
+            
+                
+                    <a href="../docs/14.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.6.</b>
+                        
+                        pprof支持
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="docs/14.7.html">
+            
+                
+                    <a href="../docs/14.7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.7.</b>
+                        
+                        小结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="ref.html">
+            
+                
+                    <a href="../ref.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        附录A 参考资料
+                    </a>
+                
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                本书使用 GitBook 发布
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="目录"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="搜索"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="字体设置"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">衬线体</button>
+        <button type="button" data-font="1" class="button">无衬线体</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">白色</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">棕褐色</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">夜间</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="分享"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    分享到 Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    分享到 Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    分享到 Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    分享到 Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    分享到 Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Golang Web</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="3-4-go%E7%9A%84http%E5%8C%85%E8%AF%A6%E8%A7%A3">3.4 Go&#x7684;http&#x5305;&#x8BE6;&#x89E3;</h1>
+<p>&#x524D;&#x9762;&#x5C0F;&#x8282;&#x4ECB;&#x7ECD;&#x4E86;Go&#x600E;&#x4E48;&#x6837;&#x5B9E;&#x73B0;&#x4E86;Web&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x8BE6;&#x7EC6;&#x5730;&#x89E3;&#x5256;&#x4E00;&#x4E0B;http&#x5305;&#xFF0C;&#x770B;&#x5B83;&#x5230;&#x5E95;&#x662F;&#x600E;&#x6837;&#x5B9E;&#x73B0;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x7684;&#x3002;</p>
+<p>Go&#x7684;http&#x6709;&#x4E24;&#x4E2A;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#xFF1A;Conn&#x3001;ServeMux</p>
+<h2 id="conn%E7%9A%84goroutine">Conn&#x7684;goroutine</h2>
+<p>&#x4E0E;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x7F16;&#x5199;&#x7684;http&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x540C;, Go&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x9AD8;&#x5E76;&#x53D1;&#x548C;&#x9AD8;&#x6027;&#x80FD;, &#x4F7F;&#x7528;&#x4E86;goroutines&#x6765;&#x5904;&#x7406;Conn&#x7684;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;, &#x8FD9;&#x6837;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x80FD;&#x4FDD;&#x6301;&#x72EC;&#x7ACB;&#xFF0C;&#x76F8;&#x4E92;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#xFF0C;&#x53EF;&#x4EE5;&#x9AD8;&#x6548;&#x7684;&#x54CD;&#x5E94;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x3002;&#x8FD9;&#x662F;Go&#x9AD8;&#x6548;&#x7684;&#x4FDD;&#x8BC1;&#x3002;</p>
+<p>Go&#x5728;&#x7B49;&#x5F85;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x91CC;&#x9762;&#x662F;&#x8FD9;&#x6837;&#x5199;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-go">c, err := srv.newConn(rw)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-keyword">continue</span>
+}
+<span class="hljs-keyword">go</span> c.serve()
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Conn&#xFF0C;&#x8FD9;&#x4E2A;Conn&#x91CC;&#x9762;&#x4FDD;&#x5B58;&#x4E86;&#x8BE5;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x4F20;&#x9012;&#x5230;&#x5BF9;&#x5E94;&#x7684;handler&#xFF0C;&#x8BE5;handler&#x4E2D;&#x4FBF;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230;&#x76F8;&#x5E94;&#x7684;header&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x6837;&#x4FDD;&#x8BC1;&#x4E86;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x72EC;&#x7ACB;&#x6027;&#x3002;</p>
+<h2 id="servemux%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89">ServeMux&#x7684;&#x81EA;&#x5B9A;&#x4E49;</h2>
+<p>&#x6211;&#x4EEC;&#x524D;&#x9762;&#x5C0F;&#x8282;&#x8BB2;&#x8FF0;conn.server&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x5B9E;&#x5185;&#x90E8;&#x662F;&#x8C03;&#x7528;&#x4E86;http&#x5305;&#x9ED8;&#x8BA4;&#x7684;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x5668;&#x628A;&#x672C;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x4FE1;&#x606F;&#x4F20;&#x9012;&#x5230;&#x4E86;&#x540E;&#x7AEF;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#x5462;&#xFF1F;</p>
+<p>&#x5B83;&#x7684;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> ServeMux <span class="hljs-keyword">struct</span> {
+    mu sync.RWMutex   <span class="hljs-comment">//&#x9501;&#xFF0C;&#x7531;&#x4E8E;&#x8BF7;&#x6C42;&#x6D89;&#x53CA;&#x5230;&#x5E76;&#x53D1;&#x5904;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x9501;&#x673A;&#x5236;</span>
+    m  <span class="hljs-keyword">map</span>[<span class="hljs-typename">string</span>]muxEntry  <span class="hljs-comment">// &#x8DEF;&#x7531;&#x89C4;&#x5219;&#xFF0C;&#x4E00;&#x4E2A;string&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;mux&#x5B9E;&#x4F53;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;string&#x5C31;&#x662F;&#x6CE8;&#x518C;&#x7684;&#x8DEF;&#x7531;&#x8868;&#x8FBE;&#x5F0F;</span>
+    hosts <span class="hljs-typename">bool</span> <span class="hljs-comment">// &#x662F;&#x5426;&#x5728;&#x4EFB;&#x610F;&#x7684;&#x89C4;&#x5219;&#x4E2D;&#x5E26;&#x6709;host&#x4FE1;&#x606F;</span>
+}
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;muxEntry</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> muxEntry <span class="hljs-keyword">struct</span> {
+    explicit <span class="hljs-typename">bool</span>   <span class="hljs-comment">// &#x662F;&#x5426;&#x7CBE;&#x786E;&#x5339;&#x914D;</span>
+    h        Handler <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x8DEF;&#x7531;&#x8868;&#x8FBE;&#x5F0F;&#x5BF9;&#x5E94;&#x54EA;&#x4E2A;handler</span>
+    pattern  <span class="hljs-typename">string</span>  <span class="hljs-comment">//&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;</span>
+}
+</code></pre>
+<p>&#x63A5;&#x7740;&#x770B;&#x4E00;&#x4E0B;Handler&#x7684;&#x5B9A;&#x4E49;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> Handler <span class="hljs-keyword">interface</span> {
+    ServeHTTP(ResponseWriter, *Request)  <span class="hljs-comment">// &#x8DEF;&#x7531;&#x5B9E;&#x73B0;&#x5668;</span>
+}
+</code></pre>
+<p>Handler&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x524D;&#x4E00;&#x5C0F;&#x8282;&#x4E2D;&#x7684;<code>sayhelloName</code>&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;ServeHTTP&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x6DFB;&#x52A0;&#x5462;&#xFF1F;&#x539F;&#x6765;&#x5728;http&#x5305;&#x91CC;&#x9762;&#x8FD8;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;<code>HandlerFunc</code>,&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;<code>sayhelloName</code>&#x5C31;&#x662F;&#x8FD9;&#x4E2A;HandlerFunc&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x9ED8;&#x8BA4;&#x5C31;&#x5B9E;&#x73B0;&#x4E86;ServeHTTP&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E86;HandlerFunc(f),&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;f&#x6210;&#x4E3A;HandlerFunc&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x6837;f&#x5C31;&#x62E5;&#x6709;&#x4E86;ServHTTP&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> HandlerFunc <span class="hljs-keyword">func</span>(ResponseWriter, *Request)
+
+<span class="hljs-comment">// ServeHTTP calls f(w, r).</span>
+<span class="hljs-keyword">func</span> (f HandlerFunc) ServeHTTP(w ResponseWriter, r *Request) {
+    f(w, r)
+}
+</code></pre>
+<p>&#x8DEF;&#x7531;&#x5668;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x597D;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x4E4B;&#x540E;&#xFF0C;&#x90A3;&#x4E48;&#x5177;&#x4F53;&#x7684;&#x8BF7;&#x6C42;&#x53C8;&#x662F;&#x600E;&#x4E48;&#x5206;&#x53D1;&#x7684;&#x5462;&#xFF1F;&#x8BF7;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x5B9E;&#x73B0;&#x4E86;<code>ServeHTTP</code>&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (mux *ServeMux) ServeHTTP(w ResponseWriter, r *Request) {
+    <span class="hljs-keyword">if</span> r.RequestURI == <span class="hljs-string">&quot;*&quot;</span> {
+        w.Header().Set(<span class="hljs-string">&quot;Connection&quot;</span>, <span class="hljs-string">&quot;close&quot;</span>)
+        w.WriteHeader(StatusBadRequest)
+        <span class="hljs-keyword">return</span>
+    }
+    h, _ := mux.Handler(r)
+    h.ServeHTTP(w, r)
+}
+</code></pre>
+<p>&#x5982;&#x4E0A;&#x6240;&#x793A;&#x8DEF;&#x7531;&#x5668;&#x63A5;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x4E4B;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x662F;<code>*</code>&#x90A3;&#x4E48;&#x5173;&#x95ED;&#x94FE;&#x63A5;&#xFF0C;&#x4E0D;&#x7136;&#x8C03;&#x7528;<code>mux.Handler(r)</code>&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x8BBE;&#x7F6E;&#x8DEF;&#x7531;&#x7684;&#x5904;&#x7406;Handler&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;<code>h.ServeHTTP(w, r)</code></p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x8DEF;&#x7531;&#x7684;handler&#x7684;ServerHTTP&#x63A5;&#x53E3;&#xFF0C;&#x90A3;&#x4E48;mux.Handler(r)&#x600E;&#x4E48;&#x5904;&#x7406;&#x7684;&#x5462;&#xFF1F;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (mux *ServeMux) Handler(r *Request) (h Handler, pattern <span class="hljs-typename">string</span>) {
+    <span class="hljs-keyword">if</span> r.Method != <span class="hljs-string">&quot;CONNECT&quot;</span> {
+        <span class="hljs-keyword">if</span> p := cleanPath(r.URL.Path); p != r.URL.Path {
+            _, pattern = mux.handler(r.Host, p)
+            <span class="hljs-keyword">return</span> RedirectHandler(p, StatusMovedPermanently), pattern
+        }
+    }
+    <span class="hljs-keyword">return</span> mux.handler(r.Host, r.URL.Path)
+}
+
+<span class="hljs-keyword">func</span> (mux *ServeMux) handler(host, path <span class="hljs-typename">string</span>) (h Handler, pattern <span class="hljs-typename">string</span>) {
+    mux.mu.RLock()
+    <span class="hljs-keyword">defer</span> mux.mu.RUnlock()
+
+    <span class="hljs-comment">// Host-specific pattern takes precedence over generic ones</span>
+    <span class="hljs-keyword">if</span> mux.hosts {
+        h, pattern = mux.match(host + path)
+    }
+    <span class="hljs-keyword">if</span> h == <span class="hljs-constant">nil</span> {
+        h, pattern = mux.match(path)
+    }
+    <span class="hljs-keyword">if</span> h == <span class="hljs-constant">nil</span> {
+        h, pattern = NotFoundHandler(), <span class="hljs-string">&quot;&quot;</span>
+    }
+    <span class="hljs-keyword">return</span>
+}
+</code></pre>
+<p>&#x539F;&#x6765;&#x4ED6;&#x662F;&#x6839;&#x636E;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x7684;URL&#x548C;&#x8DEF;&#x7531;&#x5668;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x7684;map&#x53BB;&#x5339;&#x914D;&#x7684;&#xFF0C;&#x5F53;&#x5339;&#x914D;&#x5230;&#x4E4B;&#x540E;&#x8FD4;&#x56DE;&#x5B58;&#x50A8;&#x7684;handler&#xFF0C;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;handler&#x7684;ServeHTTP&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x51FD;&#x6570;&#x4E86;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4ECB;&#x7ECD;&#xFF0C;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x4E86;&#x6574;&#x4E2A;&#x8DEF;&#x7531;&#x8FC7;&#x7A0B;&#xFF0C;Go&#x5176;&#x5B9E;&#x652F;&#x6301;&#x5916;&#x90E8;&#x5B9E;&#x73B0;&#x7684;&#x8DEF;&#x7531;&#x5668; <code>ListenAndServe</code>&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x7528;&#x4EE5;&#x914D;&#x7F6E;&#x5916;&#x90E8;&#x8DEF;&#x7531;&#x5668;&#x7684;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;Handler&#x63A5;&#x53E3;&#xFF0C;&#x5373;&#x5916;&#x90E8;&#x8DEF;&#x7531;&#x5668;&#x53EA;&#x8981;&#x5B9E;&#x73B0;&#x4E86;Handler&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x7684;ServHTTP&#x91CC;&#x9762;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x6240;&#x793A;&#xFF0C;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x7684;&#x8DEF;&#x7531;&#x5668;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;net/http&quot;</span>
+)
+
+<span class="hljs-keyword">type</span> MyMux <span class="hljs-keyword">struct</span> {
+}
+
+<span class="hljs-keyword">func</span> (p *MyMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+    <span class="hljs-keyword">if</span> r.URL.Path == <span class="hljs-string">&quot;/&quot;</span> {
+        sayhelloName(w, r)
+        <span class="hljs-keyword">return</span>
+    }
+    http.NotFound(w, r)
+    <span class="hljs-keyword">return</span>
+}
+
+<span class="hljs-keyword">func</span> sayhelloName(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, <span class="hljs-string">&quot;Hello myroute!&quot;</span>)
+}
+
+<span class="hljs-keyword">func</span> main() {
+    mux := &amp;MyMux{}
+    http.ListenAndServe(<span class="hljs-string">&quot;:9090&quot;</span>, mux)
+}
+</code></pre>
+<h2 id="go%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B">Go&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;</h2>
+<p>&#x901A;&#x8FC7;&#x5BF9;http&#x5305;&#x7684;&#x5206;&#x6790;&#x4E4B;&#x540E;&#xFF0C;&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x68B3;&#x7406;&#x4E00;&#x4E0B;&#x6574;&#x4E2A;&#x7684;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;</p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x8C03;&#x7528;<code>Http.HandleFunc</code><br>  &#x6309;&#x987A;&#x5E8F;&#x505A;&#x4E86;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</p>
+<ol>
+<li>&#x8C03;&#x7528;&#x4E86;DefaultServeMux&#x7684;HandleFunc</li>
+<li>&#x8C03;&#x7528;&#x4E86;DefaultServeMux&#x7684;Handle</li>
+<li>&#x5F80;DefaultServeMux&#x7684;map[string]muxEntry&#x4E2D;&#x589E;&#x52A0;&#x5BF9;&#x5E94;&#x7684;handler&#x548C;&#x8DEF;&#x7531;&#x89C4;&#x5219;</li>
+</ol>
+</li>
+<li><p>&#x5176;&#x6B21;&#x8C03;&#x7528;<code>http.ListenAndServe(&quot;:9090&quot;, nil)</code><br>  &#x6309;&#x987A;&#x5E8F;&#x505A;&#x4E86;&#x51E0;&#x4EF6;&#x4E8B;&#x60C5;&#xFF1A;</p>
+<ol>
+<li>&#x5B9E;&#x4F8B;&#x5316;Server</li>
+<li>&#x8C03;&#x7528;Server&#x7684;<code>ListenAndServe()</code></li>
+<li>&#x8C03;&#x7528;<code>net.Listen(&quot;tcp&quot;, addr)</code>&#x76D1;&#x542C;&#x7AEF;&#x53E3;</li>
+<li>&#x542F;&#x52A8;&#x4E00;&#x4E2A;for&#x5FAA;&#x73AF;&#xFF0C;&#x5728;&#x5FAA;&#x73AF;&#x4F53;&#x4E2D;Accept&#x8BF7;&#x6C42;</li>
+<li>&#x5BF9;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x5B9E;&#x4F8B;&#x5316;&#x4E00;&#x4E2A;Conn&#xFF0C;&#x5E76;&#x4E14;&#x5F00;&#x542F;&#x4E00;&#x4E2A;goroutine&#x4E3A;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x670D;&#x52A1;go c.serve()</li>
+<li>&#x8BFB;&#x53D6;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x5185;&#x5BB9;<code>w, err := c.readRequest()</code></li>
+<li>&#x5224;&#x65AD;handler&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;handler&#xFF08;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x5C31;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;handler&#xFF09;&#xFF0C;handler&#x5C31;&#x8BBE;&#x7F6E;&#x4E3A;DefaultServeMux</li>
+<li>&#x8C03;&#x7528;handler&#x7684;ServeHttp</li>
+<li>&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x8FDB;&#x5165;&#x5230;<code>DefaultServeMux.ServeHttp</code></li>
+<li>&#x6839;&#x636E;request&#x9009;&#x62E9;handler&#xFF0C;&#x5E76;&#x4E14;&#x8FDB;&#x5165;&#x5230;&#x8FD9;&#x4E2A;handler&#x7684;<code>ServeHTTP
+mux.handler(r).ServeHTTP(w, r)</code></li>
+<li>&#x9009;&#x62E9;handler&#xFF1A;<br>A &#x5224;&#x65AD;&#x662F;&#x5426;&#x6709;&#x8DEF;&#x7531;&#x80FD;&#x6EE1;&#x8DB3;&#x8FD9;&#x4E2A;request&#xFF08;&#x5FAA;&#x73AF;&#x904D;&#x5386;ServerMux&#x7684;muxEntry&#xFF09;<br>B &#x5982;&#x679C;&#x6709;&#x8DEF;&#x7531;&#x6EE1;&#x8DB3;&#xFF0C;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x8DEF;&#x7531;handler&#x7684;ServeHttp<br>C &#x5982;&#x679C;&#x6CA1;&#x6709;&#x8DEF;&#x7531;&#x6EE1;&#x8DB3;&#xFF0C;&#x8C03;&#x7528;NotFoundHandler&#x7684;ServeHttp   </li>
+</ol>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../docs/03.3.html" class="navigation navigation-prev " aria-label="Previous page: Go如何使得web工作"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../docs/03.5.html" class="navigation navigation-next " aria-label="Next page: 小结"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,10 @@
+
+
+.book .book-body .book-header .sharing-link {
+  display: none;
+}
+
+.book .book-body .book-header .dropdown.pull-right {
+  display: none;
+}
+
