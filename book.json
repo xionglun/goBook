@@ -1,7 +1,7 @@
 {
   "title": "Golang Web",
   "description": "一本Go语言Web开发教程书籍!",
-  "language": "cn",
+  "language": "zh",
   "styles": {
     "website": "style.css"
   },
