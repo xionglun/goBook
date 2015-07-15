@@ -1,4 +1,10 @@
 {
+  "title": "Golang Web",
+  "description": "一本Go语言Web开发教程书籍!",
+  "language": "cn",
+  "styles": {
+    "website": "style.css"
+  },
   "variables": {
     "dot": "{{.}}",
     "empty": "{{}}",
