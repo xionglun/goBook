@@ -5,8 +5,10 @@
 
 作为个人学习Golang的一部份，本书会不定期更新...
 
-# 《Go Web 编程》
-章节分类：
+### 阅读本书
+[开始阅读](http://xionglun.github.io/goBook)
+
+### 章节分类
 1. Go环境配置
 2. Go语言基础
 3. Web基础
