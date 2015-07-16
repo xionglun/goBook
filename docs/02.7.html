@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="2.7" data-basepath=".." data-revision="Wed Jul 15 2015 17:29:47 GMT+0800 (CST)">
+    <div class="book" data-level="2.8" data-basepath=".." data-revision="Thu Jul 16 2015 14:54:54 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -195,10 +195,10 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="docs/02.2.html">
+        <li class="chapter " data-level="2.2" data-path="docs/02.2.1.html">
             
                 
-                    <a href="../docs/02.2.html">
+                    <a href="../docs/02.2.1.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.2.</b>
@@ -210,13 +210,28 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="docs/02.3.html">
+        <li class="chapter " data-level="2.3" data-path="docs/02.2.2.html">
+            
+                
+                    <a href="../docs/02.2.2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        数组、切片与Map
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="docs/02.3.html">
             
                 
                     <a href="../docs/02.3.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.3.</b>
+                            <b>2.4.</b>
                         
                         流程和函数
                     </a>
@@ -225,13 +240,13 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="docs/02.4.html">
+        <li class="chapter " data-level="2.5" data-path="docs/02.4.html">
             
                 
                     <a href="../docs/02.4.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.4.</b>
+                            <b>2.5.</b>
                         
                         struct
                     </a>
@@ -240,13 +255,13 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="docs/02.5.html">
+        <li class="chapter " data-level="2.6" data-path="docs/02.5.html">
             
                 
                     <a href="../docs/02.5.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.5.</b>
+                            <b>2.6.</b>
                         
                         面向对象
                     </a>
@@ -255,13 +270,13 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="docs/02.6.html">
+        <li class="chapter " data-level="2.7" data-path="docs/02.6.html">
             
                 
                     <a href="../docs/02.6.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.6.</b>
+                            <b>2.7.</b>
                         
                         interface
                     </a>
@@ -270,13 +285,13 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.7" data-path="docs/02.7.html">
+        <li class="chapter active" data-level="2.8" data-path="docs/02.7.html">
             
                 
                     <a href="../docs/02.7.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.7.</b>
+                            <b>2.8.</b>
                         
                         并发
                     </a>
@@ -285,13 +300,13 @@
             
         </li>
     
-        <li class="chapter " data-level="2.8" data-path="docs/02.8.html">
+        <li class="chapter " data-level="2.9" data-path="docs/02.8.html">
             
                 
                     <a href="../docs/02.8.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.8.</b>
+                            <b>2.9.</b>
                         
                         小结
                     </a>
@@ -1697,7 +1712,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="2-7-%E5%B9%B6%E5%8F%91">2.7 &#x5E76;&#x53D1;</h1>
+                        <h1 id="%E5%B9%B6%E5%8F%91">&#x5E76;&#x53D1;</h1>
 <p>&#x6709;&#x4EBA;&#x628A;Go&#x6BD4;&#x4F5C;21&#x4E16;&#x7EAA;&#x7684;C&#x8BED;&#x8A00;&#xFF0C;&#x7B2C;&#x4E00;&#x662F;&#x56E0;&#x4E3A;Go&#x8BED;&#x8A00;&#x8BBE;&#x8BA1;&#x7B80;&#x5355;&#xFF0C;&#x7B2C;&#x4E8C;&#xFF0C;21&#x4E16;&#x7EAA;&#x6700;&#x91CD;&#x8981;&#x7684;&#x5C31;&#x662F;&#x5E76;&#x884C;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#xFF0C;&#x800C;Go&#x4ECE;&#x8BED;&#x8A00;&#x5C42;&#x9762;&#x5C31;&#x652F;&#x6301;&#x4E86;&#x5E76;&#x884C;&#x3002;</p>
 <h2 id="goroutine">goroutine</h2>
 <p>goroutine&#x662F;Go&#x5E76;&#x884C;&#x8BBE;&#x8BA1;&#x7684;&#x6838;&#x5FC3;&#x3002;goroutine&#x8BF4;&#x5230;&#x5E95;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x6BD4;&#x7EBF;&#x7A0B;&#x66F4;&#x5C0F;&#xFF0C;&#x5341;&#x51E0;&#x4E2A;goroutine&#x53EF;&#x80FD;&#x4F53;&#x73B0;&#x5728;&#x5E95;&#x5C42;&#x5C31;&#x662F;&#x4E94;&#x516D;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;Go&#x8BED;&#x8A00;&#x5185;&#x90E8;&#x5E2E;&#x4F60;&#x5B9E;&#x73B0;&#x4E86;&#x8FD9;&#x4E9B;goroutine&#x4E4B;&#x95F4;&#x7684;&#x5185;&#x5B58;&#x5171;&#x4EAB;&#x3002;&#x6267;&#x884C;goroutine&#x53EA;&#x9700;&#x6781;&#x5C11;&#x7684;&#x6808;&#x5185;&#x5B58;(&#x5927;&#x6982;&#x662F;4~5KB)&#xFF0C;&#x5F53;&#x7136;&#x4F1A;&#x6839;&#x636E;&#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;&#x4F38;&#x7F29;&#x3002;&#x4E5F;&#x6B63;&#x56E0;&#x4E3A;&#x5982;&#x6B64;&#xFF0C;&#x53EF;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#x6210;&#x5343;&#x4E0A;&#x4E07;&#x4E2A;&#x5E76;&#x53D1;&#x4EFB;&#x52A1;&#x3002;goroutine&#x6BD4;thread&#x66F4;&#x6613;&#x7528;&#x3001;&#x66F4;&#x9AD8;&#x6548;&#x3001;&#x66F4;&#x8F7B;&#x4FBF;&#x3002;</p>
@@ -1915,10 +1930,6 @@ value &gt; <span class="hljs-number">0</span>  <span class="hljs-comment">// &#x
 
         
 <script src="../gitbook/app.js"></script>
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
 
 <script>
 require(["gitbook"], function(gitbook) {
