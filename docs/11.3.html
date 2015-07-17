@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="11.3" data-basepath=".." data-revision="Thu Jul 16 2015 16:09:59 GMT+0800 (CST)">
+    <div class="book" data-level="11.3" data-basepath=".." data-revision="Fri Jul 17 2015 17:02:20 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1796,55 +1796,59 @@
 }
 </code></pre>
 <p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x6267;&#x884C;<code>go test -v</code>&#xFF0C;&#x5C31;&#x663E;&#x793A;&#x5982;&#x4E0B;&#x4FE1;&#x606F;&#xFF0C;&#x6D4B;&#x8BD5;&#x901A;&#x8FC7;&#x4E86;&#xFF1A;</p>
-<pre><code>  === RUN Test_Division_1
-  --- PASS: Test_Division_1 (0.00 seconds)
-      gotest_test.go:11: &#x7B2C;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x901A;&#x8FC7;&#x4E86;
-  === RUN Test_Division_2
-  --- PASS: Test_Division_2 (0.00 seconds)
-      gotest_test.go:20: one test passed. &#x9664;&#x6570;&#x4E0D;&#x80FD;&#x4E3A;0
-  PASS
-  ok      gotest    0.013s
-</code></pre><h2 id="%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95">&#x5982;&#x4F55;&#x7F16;&#x5199;&#x538B;&#x529B;&#x6D4B;&#x8BD5;</h2>
-<p>&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x7528;&#x6765;&#x68C0;&#x6D4B;&#x51FD;&#x6570;(&#x65B9;&#x6CD5;&#xFF09;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x548C;&#x7F16;&#x5199;&#x5355;&#x5143;&#x529F;&#x80FD;&#x6D4B;&#x8BD5;&#x7684;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;,&#x6B64;&#x5904;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#xFF0C;&#x4F46;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#xFF1A;   </p>
-</li>
+<pre><code>=== RUN Test_Division_1
+--- PASS: Test_Division_1 (0.00 seconds)
+  gotest_test.go:11: &#x7B2C;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x901A;&#x8FC7;&#x4E86;
+=== RUN Test_Division_2
+--- PASS: Test_Division_2 (0.00 seconds)
+  gotest_test.go:20: one test passed. &#x9664;&#x6570;&#x4E0D;&#x80FD;&#x4E3A;0
+PASS
+ok      gotest    0.013s
+</code></pre></li>
 </ul>
 </li>
-<li>&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x5FC5;&#x987B;&#x9075;&#x5FAA;&#x5982;&#x4E0B;&#x683C;&#x5F0F;&#xFF0C;&#x5176;&#x4E2D;XXX&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x5B57;&#x6BCD;&#x6570;&#x5B57;&#x7684;&#x7EC4;&#x5408;&#xFF0C;&#x4F46;&#x662F;&#x9996;&#x5B57;&#x6BCD;&#x4E0D;&#x80FD;&#x662F;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;<pre><code>      func BenchmarkXXX(b *testing.B) { ... }
-</code></pre></li>
+</ol>
+<h2 id="%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95">&#x5982;&#x4F55;&#x7F16;&#x5199;&#x538B;&#x529B;&#x6D4B;&#x8BD5;</h2>
+<p>&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x7528;&#x6765;&#x68C0;&#x6D4B;&#x51FD;&#x6570;(&#x65B9;&#x6CD5;&#xFF09;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x548C;&#x7F16;&#x5199;&#x5355;&#x5143;&#x529F;&#x80FD;&#x6D4B;&#x8BD5;&#x7684;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;,&#x6B64;&#x5904;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#xFF0C;&#x4F46;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#xFF1A;   </p>
+<ul>
+<li>&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x5FC5;&#x987B;&#x9075;&#x5FAA;&#x5982;&#x4E0B;&#x683C;&#x5F0F;&#xFF0C;&#x5176;&#x4E2D;XXX&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x5B57;&#x6BCD;&#x6570;&#x5B57;&#x7684;&#x7EC4;&#x5408;&#xFF0C;&#x4F46;&#x662F;&#x9996;&#x5B57;&#x6BCD;&#x4E0D;&#x80FD;&#x662F;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;<pre><code class="lang-go">  <span class="hljs-keyword">func</span> BenchmarkXXX(b *testing.B) { ... }
+</code></pre>
+</li>
 <li><code>go test</code>&#x4E0D;&#x4F1A;&#x9ED8;&#x8BA4;&#x6267;&#x884C;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x6267;&#x884C;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x9700;&#x8981;&#x5E26;&#x4E0A;&#x53C2;&#x6570;<code>-test.bench</code>&#xFF0C;&#x8BED;&#x6CD5;:<code>-test.bench=&quot;test_name_regex&quot;</code>,
 &#x4F8B;&#x5982;<code>go test -test.bench=&quot;.*&quot;</code>&#x8868;&#x793A;&#x6D4B;&#x8BD5;&#x5168;&#x90E8;&#x7684;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x3002;</li>
 <li>&#x5728;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x4E2D;,&#x8BF7;&#x8BB0;&#x5F97;&#x5728;&#x5FAA;&#x73AF;&#x4F53;&#x5185;&#x4F7F;&#x7528;<code>testing.B.N</code>,&#x4EE5;&#x4F7F;&#x6D4B;&#x8BD5;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x7684;&#x8FD0;&#x884C;&#x3002;</li>
 <li>&#x6587;&#x4EF6;&#x540D;&#x4E5F;&#x5FC5;&#x987B;&#x4EE5;<code>_test.go</code>&#x7ED3;&#x5C3E;&#x3002;</li>
-</ol>
+</ul>
 <p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x6587;&#x4EF6;webbench_test.go&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
-<pre><code>package gotest
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> gotest
 
-import (
-    &quot;testing&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;testing&quot;</span>
 )
 
-func Benchmark_Division(b *testing.B) {
-    for i := 0; i &lt; b.N; i++ { //use b.N for looping 
-        Division(4, 5)
+<span class="hljs-keyword">func</span> Benchmark_Division(b *testing.B) {
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; b.N; i++ { <span class="hljs-comment">//use b.N for looping </span>
+        Division(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>)
     }
 }
 
-func Benchmark_TimeConsumingFunction(b *testing.B) {
-    b.StopTimer() //&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x505C;&#x6B62;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x7684;&#x65F6;&#x95F4;&#x8BA1;&#x6570;
+<span class="hljs-keyword">func</span> Benchmark_TimeConsumingFunction(b *testing.B) {
+    b.StopTimer() <span class="hljs-comment">//&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x505C;&#x6B62;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x7684;&#x65F6;&#x95F4;&#x8BA1;&#x6570;</span>
 
-    //&#x505A;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5DE5;&#x4F5C;,&#x4F8B;&#x5982;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x6570;&#x636E;,&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x4E4B;&#x7C7B;&#x7684;,
-    //&#x8FD9;&#x6837;&#x8FD9;&#x4E9B;&#x65F6;&#x95F4;&#x4E0D;&#x5F71;&#x54CD;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x672C;&#x8EAB;&#x7684;&#x6027;&#x80FD;
+    <span class="hljs-comment">//&#x505A;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5DE5;&#x4F5C;,&#x4F8B;&#x5982;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x6570;&#x636E;,&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x4E4B;&#x7C7B;&#x7684;,</span>
+    <span class="hljs-comment">//&#x8FD9;&#x6837;&#x8FD9;&#x4E9B;&#x65F6;&#x95F4;&#x4E0D;&#x5F71;&#x54CD;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x672C;&#x8EAB;&#x7684;&#x6027;&#x80FD;</span>
 
-    b.StartTimer() //&#x91CD;&#x65B0;&#x5F00;&#x59CB;&#x65F6;&#x95F4;
-    for i := 0; i &lt; b.N; i++ {
-        Division(4, 5)
+    b.StartTimer() <span class="hljs-comment">//&#x91CD;&#x65B0;&#x5F00;&#x59CB;&#x65F6;&#x95F4;</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; b.N; i++ {
+        Division(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>)
     }
 }
-</code></pre><p>&#x6211;&#x4EEC;&#x6267;&#x884C;&#x547D;&#x4EE4;<code>go test -file webbench_test.go -test.bench=&quot;.*&quot;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x7ED3;&#x679C;&#xFF1A;</p>
-<pre><code>    PASS
-    Benchmark_Division    500000000             7.76 ns/op
-    Benchmark_TimeConsumingFunction    500000000             7.80 ns/op
-    ok      gotest    9.364s
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x6267;&#x884C;&#x547D;&#x4EE4;<code>go test -file webbench_test.go -test.bench=&quot;.*&quot;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>PASS
+Benchmark_Division    500000000             7.76 ns/op
+Benchmark_TimeConsumingFunction    500000000             7.80 ns/op
+ok      gotest    9.364s
 </code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x6267;&#x884C;&#x4EFB;&#x4F55;<code>TestXXX</code>&#x7684;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#xFF0C;&#x663E;&#x793A;&#x7684;&#x7ED3;&#x679C;&#x53EA;&#x6267;&#x884C;&#x4E86;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#xFF0C;
 &#x7B2C;&#x4E00;&#x6761;&#x663E;&#x793A;&#x4E86;<code>Benchmark_Division</code>&#x6267;&#x884C;&#x4E86;500000000&#x6B21;&#xFF0C;&#x6BCF;&#x6B21;&#x7684;&#x6267;&#x884C;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x662F;7.76&#x7EB3;&#x79D2;&#xFF0C;
 &#x7B2C;&#x4E8C;&#x6761;&#x663E;&#x793A;&#x4E86;<code>Benchmark_TimeConsumingFunction</code>&#x6267;&#x884C;&#x4E86;500000000&#xFF0C;&#x6BCF;&#x6B21;&#x7684;&#x5E73;&#x5747;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x662F;7.80&#x7EB3;&#x79D2;&#x3002;
