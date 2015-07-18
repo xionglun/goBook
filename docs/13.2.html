@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="13.2" data-basepath=".." data-revision="Fri Jul 17 2015 17:02:20 GMT+0800 (CST)">
+    <div class="book" data-level="13.2" data-basepath=".." data-revision="Sun Jul 19 2015 02:12:22 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1722,17 +1722,17 @@
 <p>&#x8DEF;&#x7531;&#x5668;&#x5C31;&#x662F;&#x6839;&#x636E;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x7684;&#x4E8B;&#x4EF6;&#x4FE1;&#x606F;&#x8F6C;&#x53D1;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;(&#x63A7;&#x5236;&#x5C42;)&#x3002;</p>
 <h2 id="%E9%BB%98%E8%AE%A4%E7%9A%84%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0">&#x9ED8;&#x8BA4;&#x7684;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;</h2>
 <p>&#x5728;3.4&#x5C0F;&#x8282;&#x6709;&#x8FC7;&#x4ECB;&#x7ECD;Go&#x7684;http&#x5305;&#x7684;&#x8BE6;&#x89E3;&#xFF0C;&#x91CC;&#x9762;&#x4ECB;&#x7ECD;&#x4E86;Go&#x7684;http&#x5305;&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x548C;&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#xFF0C;&#x8FD9;&#x91CC;&#x7EE7;&#x7EED;&#x4EE5;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x6765;&#x8BF4;&#x660E;&#xFF1A;</p>
-<pre><code class="lang-go">    <span class="hljs-keyword">func</span> fooHandler(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, <span class="hljs-string">&quot;Hello, %q&quot;</span>, html.EscapeString(r.URL.Path))
-    }
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> fooHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, <span class="hljs-string">&quot;Hello, %q&quot;</span>, html.EscapeString(r.URL.Path))
+}
 
-    http.Handle(<span class="hljs-string">&quot;/foo&quot;</span>, fooHandler)
+http.Handle(<span class="hljs-string">&quot;/foo&quot;</span>, fooHandler)
 
-    http.HandleFunc(<span class="hljs-string">&quot;/bar&quot;</span>, <span class="hljs-keyword">func</span>(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, <span class="hljs-string">&quot;Hello, %q&quot;</span>, html.EscapeString(r.URL.Path))
-    })
+http.HandleFunc(<span class="hljs-string">&quot;/bar&quot;</span>, <span class="hljs-keyword">func</span>(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, <span class="hljs-string">&quot;Hello, %q&quot;</span>, html.EscapeString(r.URL.Path))
+})
 
-    log.Fatal(http.ListenAndServe(<span class="hljs-string">&quot;:8080&quot;</span>, <span class="hljs-constant">nil</span>))
+log.Fatal(http.ListenAndServe(<span class="hljs-string">&quot;:8080&quot;</span>, <span class="hljs-constant">nil</span>))
 </code></pre>
 <p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x8C03;&#x7528;&#x4E86;http&#x9ED8;&#x8BA4;&#x7684;DefaultServeMux&#x6765;&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#xFF0C;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x4E24;&#x4E2A;&#x53C2;&#x6570;:<br>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5E0C;&#x671B;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x6B64;&#x8D44;&#x6E90;&#x7684;URL&#x8DEF;&#x5F84;(&#x4FDD;&#x5B58;&#x5728;r.URL.Path)&#x3002;<br>&#x7B2C;&#x4E8C;&#x53C2;&#x6570;&#x662F;&#x5373;&#x5C06;&#x8981;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x63D0;&#x4F9B;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x7684;&#x8D44;&#x6E90;&#x3002;<br>&#x8DEF;&#x7531;&#x7684;&#x601D;&#x8DEF;&#x4E3B;&#x8981;&#x96C6;&#x4E2D;&#x5728;&#x4E24;&#x70B9;&#xFF1A;   </p>
 <ul>
@@ -1745,15 +1745,15 @@
 <p>Go&#x76D1;&#x542C;&#x7AEF;&#x53E3;&#xFF0C;&#x7136;&#x540E;&#x63A5;&#x6536;&#x5230;tcp&#x8FDE;&#x63A5;&#x4F1A;&#x6254;&#x7ED9;Handler&#x6765;&#x5904;&#x7406;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x9ED8;&#x8BA4;nil&#x5373;&#x4E3A;<code>http.DefaultServeMux</code>&#xFF0C;
 &#x901A;&#x8FC7;<code>DefaultServeMux.ServeHTTP</code>&#x51FD;&#x6570;&#x6765;&#x8FDB;&#x884C;&#x8C03;&#x5EA6;&#xFF0C;&#x904D;&#x5386;&#x4E4B;&#x524D;&#x5B58;&#x50A8;&#x7684;map&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#xFF0C;&#x548C;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x7684;URL&#x8FDB;&#x884C;&#x5339;&#x914D;&#xFF0C;&#x4EE5;&#x67E5;&#x8BE2;&#x5BF9;&#x5E94;&#x6CE8;&#x518C;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;
 &#x8FD9;&#x6837;&#x5C31;&#x5B9E;&#x73B0;&#x4E86;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#x7684;&#x7B2C;&#x4E8C;&#x70B9;&#x3002;</p>
-<pre><code class="lang-go">    <span class="hljs-keyword">for</span> k, v := <span class="hljs-keyword">range</span> mux.m {
-        <span class="hljs-keyword">if</span> !pathMatch(k, path) {
-            <span class="hljs-keyword">continue</span>
-        }
-        <span class="hljs-keyword">if</span> h == <span class="hljs-constant">nil</span> || <span class="hljs-built_in">len</span>(k) &gt; n {
-            n = <span class="hljs-built_in">len</span>(k)
-            h = v.h
-        }
+<pre><code class="lang-go"><span class="hljs-keyword">for</span> k, v := <span class="hljs-keyword">range</span> mux.m {
+    <span class="hljs-keyword">if</span> !pathMatch(k, path) {
+        <span class="hljs-keyword">continue</span>
     }
+    <span class="hljs-keyword">if</span> h == <span class="hljs-constant">nil</span> || <span class="hljs-built_in">len</span>(k) &gt; n {
+        n = <span class="hljs-built_in">len</span>(k)
+        h = v.h
+    }
+}
 </code></pre>
 <h2 id="beego%E6%A1%86%E6%9E%B6%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0">beego&#x6846;&#x67B6;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;</h2>
 <p>&#x76EE;&#x524D;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;Web&#x5E94;&#x7528;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;&#x90FD;&#x662F;&#x57FA;&#x4E8E;http&#x9ED8;&#x8BA4;&#x7684;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x4F46;&#x662F;Go&#x81EA;&#x5E26;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x6709;&#x51E0;&#x4E2A;&#x9650;&#x5236;&#xFF1A;   </p>
@@ -1767,185 +1767,185 @@
 <p>&#x9488;&#x5BF9;&#x524D;&#x9762;&#x6240;&#x8BF4;&#x7684;&#x9650;&#x5236;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x8981;&#x89E3;&#x51B3;&#x53C2;&#x6570;&#x652F;&#x6301;&#x5C31;&#x9700;&#x8981;&#x7528;&#x5230;&#x6B63;&#x5219;&#xFF0C;&#x7B2C;&#x4E8C;&#x548C;&#x7B2C;&#x4E09;&#x70B9;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E00;&#x79CD;&#x53D8;&#x901A;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x89E3;&#x51B3;&#xFF0C;
 REST&#x7684;&#x65B9;&#x6CD5;&#x5BF9;&#x5E94;&#x5230;struct&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x8DEF;&#x7531;&#x5230;struct&#x800C;&#x4E0D;&#x662F;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x6837;&#x5728;&#x8F6C;&#x53D1;&#x8DEF;&#x7531;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x6839;&#x636E;method&#x6765;&#x6267;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x601D;&#x8DEF;&#xFF0C;&#x6211;&#x4EEC;&#x8BBE;&#x8BA1;&#x4E86;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x7C7B;&#x578B;:<br>controllerInfo(&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;&#x548C;&#x5BF9;&#x5E94;&#x7684;struct&#xFF0C;&#x8FD9;&#x91CC;&#x662F;&#x4E00;&#x4E2A;reflect.Type&#x7C7B;&#x578B;)<br>ControllerRegistor(routers&#x662F;&#x4E00;&#x4E2A;slice&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x6DFB;&#x52A0;&#x7684;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x53CA;beego&#x6846;&#x67B6;&#x7684;&#x5E94;&#x7528;&#x4FE1;&#x606F;)</p>
-<pre><code class="lang-go">    <span class="hljs-keyword">type</span> controllerInfo <span class="hljs-keyword">struct</span> {
-        regex          *regexp.Regexp
-        params         <span class="hljs-keyword">map</span>[<span class="hljs-typename">int</span>]<span class="hljs-typename">string</span>
-        controllerType reflect.Type
-    }
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> controllerInfo <span class="hljs-keyword">struct</span> {
+    regex          *regexp.Regexp
+    params         <span class="hljs-keyword">map</span>[<span class="hljs-typename">int</span>]<span class="hljs-typename">string</span>
+    controllerType reflect.Type
+}
 
-    <span class="hljs-keyword">type</span> ControllerRegistor <span class="hljs-keyword">struct</span> {
-        routers     []*controllerInfo
-        Application *App
-    }
+<span class="hljs-keyword">type</span> ControllerRegistor <span class="hljs-keyword">struct</span> {
+    routers     []*controllerInfo
+    Application *App
+}
 </code></pre>
 <p>ControllerRegistor&#x5BF9;&#x5916;&#x7684;&#x63A5;&#x53E3;&#x51FD;&#x6570;&#x6709;</p>
-<pre><code class="lang-go">    <span class="hljs-keyword">func</span> (p *ControllerRegistor) Add(pattern <span class="hljs-typename">string</span>, c ControllerInterface)
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (p *ControllerRegistor) Add(pattern <span class="hljs-typename">string</span>, c ControllerInterface)
 </code></pre>
 <p>&#x8BE6;&#x7EC6;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
-<pre><code class="lang-go">    <span class="hljs-keyword">func</span> (p *ControllerRegistor) Add(pattern <span class="hljs-typename">string</span>, c ControllerInterface) {
-        parts := strings.Split(pattern, <span class="hljs-string">&quot;/&quot;</span>)
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (p *ControllerRegistor) Add(pattern <span class="hljs-typename">string</span>, c ControllerInterface) {
+    parts := strings.Split(pattern, <span class="hljs-string">&quot;/&quot;</span>)
 
-        j := <span class="hljs-number">0</span>
-        params := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-typename">int</span>]<span class="hljs-typename">string</span>)
-        <span class="hljs-keyword">for</span> i, part := <span class="hljs-keyword">range</span> parts {
-            <span class="hljs-keyword">if</span> strings.HasPrefix(part, <span class="hljs-string">&quot;:&quot;</span>) {
-                expr := <span class="hljs-string">&quot;([^/]+)&quot;</span>
+    j := <span class="hljs-number">0</span>
+    params := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-typename">int</span>]<span class="hljs-typename">string</span>)
+    <span class="hljs-keyword">for</span> i, part := <span class="hljs-keyword">range</span> parts {
+        <span class="hljs-keyword">if</span> strings.HasPrefix(part, <span class="hljs-string">&quot;:&quot;</span>) {
+            expr := <span class="hljs-string">&quot;([^/]+)&quot;</span>
 
-                <span class="hljs-comment">//a user may choose to override the defult expression</span>
-                <span class="hljs-comment">// similar to expressjs: &#x2018;/user/:id([0-9]+)&#x2019;</span>
+            <span class="hljs-comment">//a user may choose to override the defult expression</span>
+            <span class="hljs-comment">// similar to expressjs: &#x2018;/user/:id([0-9]+)&#x2019;</span>
 
-                <span class="hljs-keyword">if</span> index := strings.Index(part, <span class="hljs-string">&quot;(&quot;</span>); index != -<span class="hljs-number">1</span> {
-                    expr = part[index:]
-                    part = part[:index]
-                }
-                params[j] = part
-                parts[i] = expr
-                j++
+            <span class="hljs-keyword">if</span> index := strings.Index(part, <span class="hljs-string">&quot;(&quot;</span>); index != -<span class="hljs-number">1</span> {
+                expr = part[index:]
+                part = part[:index]
             }
+            params[j] = part
+            parts[i] = expr
+            j++
         }
-
-        <span class="hljs-comment">//recreate the url pattern, with parameters replaced</span>
-        <span class="hljs-comment">//by regular expressions. then compile the regex</span>
-
-        pattern = strings.Join(parts, <span class="hljs-string">&quot;/&quot;</span>)
-        regex, regexErr := regexp.Compile(pattern)
-        <span class="hljs-keyword">if</span> regexErr != <span class="hljs-constant">nil</span> {
-
-            <span class="hljs-comment">//TODO add error handling here to avoid panic</span>
-            <span class="hljs-built_in">panic</span>(regexErr)
-            <span class="hljs-keyword">return</span>
-        }
-
-        <span class="hljs-comment">//now create the Route</span>
-        t := reflect.Indirect(reflect.ValueOf(c)).Type()
-        route := &amp;controllerInfo{}
-        route.regex = regex
-        route.params = params
-        route.controllerType = t
-
-        p.routers = <span class="hljs-built_in">append</span>(p.routers, route)
-
     }
+
+    <span class="hljs-comment">//recreate the url pattern, with parameters replaced</span>
+    <span class="hljs-comment">//by regular expressions. then compile the regex</span>
+
+    pattern = strings.Join(parts, <span class="hljs-string">&quot;/&quot;</span>)
+    regex, regexErr := regexp.Compile(pattern)
+    <span class="hljs-keyword">if</span> regexErr != <span class="hljs-constant">nil</span> {
+
+        <span class="hljs-comment">//TODO add error handling here to avoid panic</span>
+        <span class="hljs-built_in">panic</span>(regexErr)
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-comment">//now create the Route</span>
+    t := reflect.Indirect(reflect.ValueOf(c)).Type()
+    route := &amp;controllerInfo{}
+    route.regex = regex
+    route.params = params
+    route.controllerType = t
+
+    p.routers = <span class="hljs-built_in">append</span>(p.routers, route)
+
+}
 </code></pre>
 <h3 id="%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0">&#x9759;&#x6001;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;</h3>
 <p>&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x7684;&#x52A8;&#x6001;&#x8DEF;&#x7531;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;Go&#x7684;http&#x5305;&#x9ED8;&#x8BA4;&#x652F;&#x6301;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x5904;&#x7406;FileServer&#xFF0C;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x90A3;&#x4E48;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x4E5F;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8BBE;&#x5B9A;&#x3002;
 beego&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x5939;&#x8DEF;&#x5F84;&#x4FDD;&#x5B58;&#x5728;&#x5168;&#x5C40;&#x53D8;&#x91CF;StaticDir&#x4E2D;&#xFF0C;StaticDir&#x662F;&#x4E00;&#x4E2A;map&#x7C7B;&#x578B;&#xFF0C;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-go">    <span class="hljs-keyword">func</span> (app *App) SetStaticPath(url <span class="hljs-typename">string</span>, path <span class="hljs-typename">string</span>) *App {
-        StaticDir[url] = path
-        <span class="hljs-keyword">return</span> app
-    }
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (app *App) SetStaticPath(url <span class="hljs-typename">string</span>, path <span class="hljs-typename">string</span>) *App {
+    StaticDir[url] = path
+    <span class="hljs-keyword">return</span> app
+}
 </code></pre>
 <p>&#x5E94;&#x7528;&#x4E2D;&#x8BBE;&#x7F6E;&#x9759;&#x6001;&#x8DEF;&#x5F84;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#xFF1A;</p>
 <pre><code>    beego.SetStaticPath(&quot;/img&quot;,&quot;/static/img&quot;)
 </code></pre><h3 id="%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1">&#x8F6C;&#x53D1;&#x8DEF;&#x7531;</h3>
 <p>&#x8F6C;&#x53D1;&#x8DEF;&#x7531;&#x662F;&#x57FA;&#x4E8E;ControllerRegistor&#x91CC;&#x7684;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#x6765;&#x8FDB;&#x884C;&#x8F6C;&#x53D1;&#x7684;&#xFF0C;&#x8BE6;&#x7EC6;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x6240;&#x793A;&#xFF1A;</p>
-<pre><code class="lang-go">    <span class="hljs-comment">// AutoRoute</span>
-    <span class="hljs-keyword">func</span> (p *ControllerRegistor) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-        <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
-            <span class="hljs-keyword">if</span> err := <span class="hljs-built_in">recover</span>(); err != <span class="hljs-constant">nil</span> {
-                <span class="hljs-keyword">if</span> !RecoverPanic {
-                    <span class="hljs-comment">// go back to panic</span>
-                    <span class="hljs-built_in">panic</span>(err)
-                } <span class="hljs-keyword">else</span> {
-                    Critical(<span class="hljs-string">&quot;Handler crashed with error&quot;</span>, err)
-                    <span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span>; ; i += <span class="hljs-number">1</span> {
-                        _, file, line, ok := runtime.Caller(i)
-                        <span class="hljs-keyword">if</span> !ok {
-                            <span class="hljs-keyword">break</span>
-                        }
-                        Critical(file, line)
+<pre><code class="lang-go"><span class="hljs-comment">// AutoRoute</span>
+<span class="hljs-keyword">func</span> (p *ControllerRegistor) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+    <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
+        <span class="hljs-keyword">if</span> err := <span class="hljs-built_in">recover</span>(); err != <span class="hljs-constant">nil</span> {
+            <span class="hljs-keyword">if</span> !RecoverPanic {
+                <span class="hljs-comment">// go back to panic</span>
+                <span class="hljs-built_in">panic</span>(err)
+            } <span class="hljs-keyword">else</span> {
+                Critical(<span class="hljs-string">&quot;Handler crashed with error&quot;</span>, err)
+                <span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span>; ; i += <span class="hljs-number">1</span> {
+                    _, file, line, ok := runtime.Caller(i)
+                    <span class="hljs-keyword">if</span> !ok {
+                        <span class="hljs-keyword">break</span>
                     }
+                    Critical(file, line)
                 }
-            }
-        }()
-        <span class="hljs-keyword">var</span> started <span class="hljs-typename">bool</span>
-        <span class="hljs-keyword">for</span> prefix, staticDir := <span class="hljs-keyword">range</span> StaticDir {
-            <span class="hljs-keyword">if</span> strings.HasPrefix(r.URL.Path, prefix) {
-                file := staticDir + r.URL.Path[<span class="hljs-built_in">len</span>(prefix):]
-                http.ServeFile(w, r, file)
-                started = <span class="hljs-constant">true</span>
-                <span class="hljs-keyword">return</span>
             }
         }
-        requestPath := r.URL.Path
-
-        <span class="hljs-comment">//find a matching Route</span>
-        <span class="hljs-keyword">for</span> _, route := <span class="hljs-keyword">range</span> p.routers {
-
-            <span class="hljs-comment">//check if Route pattern matches url</span>
-            <span class="hljs-keyword">if</span> !route.regex.MatchString(requestPath) {
-                <span class="hljs-keyword">continue</span>
-            }
-
-            <span class="hljs-comment">//get submatches (params)</span>
-            matches := route.regex.FindStringSubmatch(requestPath)
-
-            <span class="hljs-comment">//double check that the Route matches the URL pattern.</span>
-            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(matches[<span class="hljs-number">0</span>]) != <span class="hljs-built_in">len</span>(requestPath) {
-                <span class="hljs-keyword">continue</span>
-            }
-
-            params := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-typename">string</span>]<span class="hljs-typename">string</span>)
-            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(route.params) &gt; <span class="hljs-number">0</span> {
-                <span class="hljs-comment">//add url parameters to the query param map</span>
-                values := r.URL.Query()
-                <span class="hljs-keyword">for</span> i, match := <span class="hljs-keyword">range</span> matches[<span class="hljs-number">1</span>:] {
-                    values.Add(route.params[i], match)
-                    params[route.params[i]] = match
-                }
-
-                <span class="hljs-comment">//reassemble query params and add to RawQuery</span>
-                r.URL.RawQuery = url.Values(values).Encode() + <span class="hljs-string">&quot;&amp;&quot;</span> + r.URL.RawQuery
-                <span class="hljs-comment">//r.URL.RawQuery = url.Values(values).Encode()</span>
-            }
-            <span class="hljs-comment">//Invoke the request handler</span>
-            vc := reflect.New(route.controllerType)
-            init := vc.MethodByName(<span class="hljs-string">&quot;Init&quot;</span>)
-            in := <span class="hljs-built_in">make</span>([]reflect.Value, <span class="hljs-number">2</span>)
-            ct := &amp;Context{ResponseWriter: w, Request: r, Params: params}
-            in[<span class="hljs-number">0</span>] = reflect.ValueOf(ct)
-            in[<span class="hljs-number">1</span>] = reflect.ValueOf(route.controllerType.Name())
-            init.Call(in)
-            in = <span class="hljs-built_in">make</span>([]reflect.Value, <span class="hljs-number">0</span>)
-            method := vc.MethodByName(<span class="hljs-string">&quot;Prepare&quot;</span>)
-            method.Call(in)
-            <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;GET&quot;</span> {
-                method = vc.MethodByName(<span class="hljs-string">&quot;Get&quot;</span>)
-                method.Call(in)
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;POST&quot;</span> {
-                method = vc.MethodByName(<span class="hljs-string">&quot;Post&quot;</span>)
-                method.Call(in)
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;HEAD&quot;</span> {
-                method = vc.MethodByName(<span class="hljs-string">&quot;Head&quot;</span>)
-                method.Call(in)
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;DELETE&quot;</span> {
-                method = vc.MethodByName(<span class="hljs-string">&quot;Delete&quot;</span>)
-                method.Call(in)
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;PUT&quot;</span> {
-                method = vc.MethodByName(<span class="hljs-string">&quot;Put&quot;</span>)
-                method.Call(in)
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;PATCH&quot;</span> {
-                method = vc.MethodByName(<span class="hljs-string">&quot;Patch&quot;</span>)
-                method.Call(in)
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;OPTIONS&quot;</span> {
-                method = vc.MethodByName(<span class="hljs-string">&quot;Options&quot;</span>)
-                method.Call(in)
-            }
-            <span class="hljs-keyword">if</span> AutoRender {
-                method = vc.MethodByName(<span class="hljs-string">&quot;Render&quot;</span>)
-                method.Call(in)
-            }
-            method = vc.MethodByName(<span class="hljs-string">&quot;Finish&quot;</span>)
-            method.Call(in)
+    }()
+    <span class="hljs-keyword">var</span> started <span class="hljs-typename">bool</span>
+    <span class="hljs-keyword">for</span> prefix, staticDir := <span class="hljs-keyword">range</span> StaticDir {
+        <span class="hljs-keyword">if</span> strings.HasPrefix(r.URL.Path, prefix) {
+            file := staticDir + r.URL.Path[<span class="hljs-built_in">len</span>(prefix):]
+            http.ServeFile(w, r, file)
             started = <span class="hljs-constant">true</span>
-            <span class="hljs-keyword">break</span>
-        }
-
-        <span class="hljs-comment">//if no matches to url, throw a not found exception</span>
-        <span class="hljs-keyword">if</span> started == <span class="hljs-constant">false</span> {
-            http.NotFound(w, r)
+            <span class="hljs-keyword">return</span>
         }
     }
+    requestPath := r.URL.Path
+
+    <span class="hljs-comment">//find a matching Route</span>
+    <span class="hljs-keyword">for</span> _, route := <span class="hljs-keyword">range</span> p.routers {
+
+        <span class="hljs-comment">//check if Route pattern matches url</span>
+        <span class="hljs-keyword">if</span> !route.regex.MatchString(requestPath) {
+            <span class="hljs-keyword">continue</span>
+        }
+
+        <span class="hljs-comment">//get submatches (params)</span>
+        matches := route.regex.FindStringSubmatch(requestPath)
+
+        <span class="hljs-comment">//double check that the Route matches the URL pattern.</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(matches[<span class="hljs-number">0</span>]) != <span class="hljs-built_in">len</span>(requestPath) {
+            <span class="hljs-keyword">continue</span>
+        }
+
+        params := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-typename">string</span>]<span class="hljs-typename">string</span>)
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(route.params) &gt; <span class="hljs-number">0</span> {
+            <span class="hljs-comment">//add url parameters to the query param map</span>
+            values := r.URL.Query()
+            <span class="hljs-keyword">for</span> i, match := <span class="hljs-keyword">range</span> matches[<span class="hljs-number">1</span>:] {
+                values.Add(route.params[i], match)
+                params[route.params[i]] = match
+            }
+
+            <span class="hljs-comment">//reassemble query params and add to RawQuery</span>
+            r.URL.RawQuery = url.Values(values).Encode() + <span class="hljs-string">&quot;&amp;&quot;</span> + r.URL.RawQuery
+            <span class="hljs-comment">//r.URL.RawQuery = url.Values(values).Encode()</span>
+        }
+        <span class="hljs-comment">//Invoke the request handler</span>
+        vc := reflect.New(route.controllerType)
+        init := vc.MethodByName(<span class="hljs-string">&quot;Init&quot;</span>)
+        in := <span class="hljs-built_in">make</span>([]reflect.Value, <span class="hljs-number">2</span>)
+        ct := &amp;Context{ResponseWriter: w, Request: r, Params: params}
+        in[<span class="hljs-number">0</span>] = reflect.ValueOf(ct)
+        in[<span class="hljs-number">1</span>] = reflect.ValueOf(route.controllerType.Name())
+        init.Call(in)
+        in = <span class="hljs-built_in">make</span>([]reflect.Value, <span class="hljs-number">0</span>)
+        method := vc.MethodByName(<span class="hljs-string">&quot;Prepare&quot;</span>)
+        method.Call(in)
+        <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;GET&quot;</span> {
+            method = vc.MethodByName(<span class="hljs-string">&quot;Get&quot;</span>)
+            method.Call(in)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;POST&quot;</span> {
+            method = vc.MethodByName(<span class="hljs-string">&quot;Post&quot;</span>)
+            method.Call(in)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;HEAD&quot;</span> {
+            method = vc.MethodByName(<span class="hljs-string">&quot;Head&quot;</span>)
+            method.Call(in)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;DELETE&quot;</span> {
+            method = vc.MethodByName(<span class="hljs-string">&quot;Delete&quot;</span>)
+            method.Call(in)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;PUT&quot;</span> {
+            method = vc.MethodByName(<span class="hljs-string">&quot;Put&quot;</span>)
+            method.Call(in)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;PATCH&quot;</span> {
+            method = vc.MethodByName(<span class="hljs-string">&quot;Patch&quot;</span>)
+            method.Call(in)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> r.Method == <span class="hljs-string">&quot;OPTIONS&quot;</span> {
+            method = vc.MethodByName(<span class="hljs-string">&quot;Options&quot;</span>)
+            method.Call(in)
+        }
+        <span class="hljs-keyword">if</span> AutoRender {
+            method = vc.MethodByName(<span class="hljs-string">&quot;Render&quot;</span>)
+            method.Call(in)
+        }
+        method = vc.MethodByName(<span class="hljs-string">&quot;Finish&quot;</span>)
+        method.Call(in)
+        started = <span class="hljs-constant">true</span>
+        <span class="hljs-keyword">break</span>
+    }
+
+    <span class="hljs-comment">//if no matches to url, throw a not found exception</span>
+    <span class="hljs-keyword">if</span> started == <span class="hljs-constant">false</span> {
+        http.NotFound(w, r)
+    }
+}
 </code></pre>
 <h3 id="%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8">&#x4F7F;&#x7528;&#x5165;&#x95E8;</h3>
 <p>&#x57FA;&#x4E8E;&#x8FD9;&#x6837;&#x7684;&#x8DEF;&#x7531;&#x8BBE;&#x8BA1;&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x524D;&#x9762;&#x6240;&#x8BF4;&#x7684;&#x4E09;&#x4E2A;&#x9650;&#x5236;&#x70B9;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;<br>&#x57FA;&#x672C;&#x7684;&#x4F7F;&#x7528;&#x6CE8;&#x518C;&#x8DEF;&#x7531;&#xFF1A;</p>
@@ -1974,10 +1974,6 @@ beego&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x5939;&#x8DEF;&#x5F84;&#x4FDD;&#x
 
         
 <script src="../gitbook/app.js"></script>
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
 
 <script>
 require(["gitbook"], function(gitbook) {
