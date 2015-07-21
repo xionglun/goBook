@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="5.4" data-basepath=".." data-revision="Tue Jul 21 2015 14:32:44 GMT+0800 (CST)">
+    <div class="book" data-level="5.4" data-basepath=".." data-revision="Tue Jul 21 2015 15:37:20 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -626,7 +626,7 @@
                         
                             <b>5.5.</b>
                         
-                        使用beedb库进行ORM开发
+                        NoSQL数据库操作
                     </a>
                 
             
@@ -640,21 +640,6 @@
                         <i class="fa fa-check"></i>
                         
                             <b>5.6.</b>
-                        
-                        NoSQL数据库操作
-                    </a>
-                
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.7" data-path="docs/05.7.html">
-            
-                
-                    <a href="../docs/05.7.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.7.</b>
                         
                         小结
                     </a>
@@ -1727,10 +1712,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="5-4-%E4%BD%BF%E7%94%A8postgresql%E6%95%B0%E6%8D%AE%E5%BA%93">5.4 &#x4F7F;&#x7528;PostgreSQL&#x6570;&#x636E;&#x5E93;</h1>
-<p><strong>PostgreSQL</strong>&#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x7531;&#x7684;&#x5BF9;&#x8C61;-&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;&#x5668;(&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;)&#xFF0C;&#x5B83;&#x5728;&#x7075;&#x6D3B;&#x7684;BSD-&#x98CE;&#x683C;&#x8BB8;&#x53EF;&#x8BC1;&#x4E0B;&#x53D1;&#x884C;&#x3002;
-&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x76F8;&#x5BF9;&#x5176;&#x4ED6;&#x5F00;&#x653E;&#x6E90;&#x4EE3;&#x7801;&#x6570;&#x636E;&#x5E93;&#x7CFB;&#x7EDF;(&#x6BD4;&#x5982; MySQL &#x548C; Firebird)&#xFF0C;&#x548C;&#x5BF9;&#x4E13;&#x6709;&#x7CFB;&#x7EDF;&#x6BD4;&#x5982; Oracle&#x3001;Sybase&#x3001;IBM &#x7684; DB2 &#x548C; Microsoft SQL Server&#x7684;&#x4E00;&#x79CD;&#x9009;&#x62E9;&#x3002;</p>
-<p>PostgreSQL&#x548C;MySQL&#x6BD4;&#x8F83;&#xFF0C;&#x5B83;&#x66F4;&#x52A0;&#x5E9E;&#x5927;&#x4E00;&#x70B9;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;&#x7528;&#x6765;&#x66FF;&#x4EE3;Oracle&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x5728;&#x4F01;&#x4E1A;&#x5E94;&#x7528;&#x4E2D;&#x91C7;&#x7528;PostgreSQL&#x662F;&#x4E00;&#x4E2A;&#x660E;&#x667A;&#x7684;&#x9009;&#x62E9;&#x3002;</p>
+                        <h1 id="%E4%BD%BF%E7%94%A8postgresql%E6%95%B0%E6%8D%AE%E5%BA%93">&#x4F7F;&#x7528;PostgreSQL&#x6570;&#x636E;&#x5E93;</h1>
+<p><strong>PostgreSQL</strong> &#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x7531;&#x7684;&#x5BF9;&#x8C61;-&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;&#x5668;(&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;)&#xFF0C;&#x5B83;&#x5728;&#x7075;&#x6D3B;&#x7684;BSD-&#x98CE;&#x683C;&#x8BB8;&#x53EF;&#x8BC1;&#x4E0B;&#x53D1;&#x884C;&#x3002;
+&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x76F8;&#x5BF9;&#x5176;&#x4ED6;&#x5F00;&#x653E;&#x6E90;&#x4EE3;&#x7801;&#x6570;&#x636E;&#x5E93;&#x7CFB;&#x7EDF;(&#x6BD4;&#x5982; MySQL &#x548C; Firebird)&#xFF0C;
+&#x548C;&#x5BF9;&#x4E13;&#x6709;&#x7CFB;&#x7EDF;&#x6BD4;&#x5982; Oracle&#x3001;Sybase&#x3001;IBM &#x7684; DB2 &#x548C; Microsoft SQL Server&#x7684;&#x4E00;&#x79CD;&#x9009;&#x62E9;&#x3002;</p>
+<p>PostgreSQL&#x548C;MySQL&#x6BD4;&#x8F83;&#xFF0C;&#x5B83;&#x66F4;&#x52A0;&#x5E9E;&#x5927;&#x4E00;&#x70B9;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;&#x7528;&#x6765;&#x66FF;&#x4EE3;Oracle&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#x3002;
+&#x6240;&#x4EE5;&#x5728;&#x4F01;&#x4E1A;&#x5E94;&#x7528;&#x4E2D;&#x91C7;&#x7528;PostgreSQL&#x662F;&#x4E00;&#x4E2A;&#x660E;&#x667A;&#x7684;&#x9009;&#x62E9;&#x3002;</p>
 <p>MySQL&#x88AB;Oracle&#x6536;&#x8D2D;&#x4E4B;&#x540E;&#x6B63;&#x5728;&#x9010;&#x6B65;&#x7684;&#x5C01;&#x95ED;(&#x81EA;MySQL 5.5.31&#x4EE5;&#x540E;&#x7684;&#x6240;&#x6709;&#x7248;&#x672C;&#x5C06;&#x4E0D;&#x518D;&#x9075;&#x5FAA;GPL&#x534F;&#x8BAE;), 
 &#x9274;&#x4E8E;&#x6B64;&#xFF0C;&#x5C06;&#x6765;&#x6211;&#x4EEC;&#x4E5F;&#x8BB8;&#x4F1A;&#x9009;&#x62E9;PostgreSQL&#x800C;&#x4E0D;&#x662F;MySQL&#x4F5C;&#x4E3A;&#x9879;&#x76EE;&#x7684;&#x540E;&#x7AEF;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
 <h2 id="%E9%A9%B1%E5%8A%A8">&#x9A71;&#x52A8;</h2>
@@ -1743,23 +1730,23 @@
 <p>&#x5728;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#x6211;&#x91C7;&#x7528;&#x4E86;&#x7B2C;&#x4E00;&#x4E2A;&#x9A71;&#x52A8;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x4EBA;&#x6700;&#x591A;&#xFF0C;&#x5728;github&#x4E0A;&#x4E5F;&#x6BD4;&#x8F83;&#x6D3B;&#x8DC3;&#x3002;</p>
 <h2 id="%E5%AE%9E%E4%BE%8B%E4%BB%A3%E7%A0%81">&#x5B9E;&#x4F8B;&#x4EE3;&#x7801;</h2>
 <p>&#x6570;&#x636E;&#x5E93;&#x5EFA;&#x8868;&#x8BED;&#x53E5;&#xFF1A;</p>
-<pre><code class="lang-sql">    <span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> userinfo
-    (
-        uid <span class="hljs-built_in">serial</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
-        username <span class="hljs-built_in">character</span> <span class="hljs-built_in">varying</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
-        departname <span class="hljs-built_in">character</span> <span class="hljs-built_in">varying</span>(<span class="hljs-number">500</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
-        Created <span class="hljs-built_in">date</span>,
-        <span class="hljs-keyword">CONSTRAINT</span> userinfo_pkey <span class="hljs-keyword">PRIMARY</span> <span class="hljs-keyword">KEY</span> (uid)
-    )
-    <span class="hljs-keyword">WITH</span> (OIDS=<span class="hljs-literal">FALSE</span>);</span>
+<pre><code class="lang-sql"><span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> userinfo
+(
+    uid <span class="hljs-built_in">serial</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    username <span class="hljs-built_in">character</span> <span class="hljs-built_in">varying</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    departname <span class="hljs-built_in">character</span> <span class="hljs-built_in">varying</span>(<span class="hljs-number">500</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    Created <span class="hljs-built_in">date</span>,
+    <span class="hljs-keyword">CONSTRAINT</span> userinfo_pkey <span class="hljs-keyword">PRIMARY</span> <span class="hljs-keyword">KEY</span> (uid)
+)
+<span class="hljs-keyword">WITH</span> (OIDS=<span class="hljs-literal">FALSE</span>);</span>
 
-    <span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> userdeatail
-    (
-        uid <span class="hljs-built_in">integer</span>,
-        intro <span class="hljs-built_in">character</span> <span class="hljs-built_in">varying</span>(<span class="hljs-number">100</span>),
-        <span class="hljs-keyword">profile</span> <span class="hljs-built_in">character</span> <span class="hljs-built_in">varying</span>(<span class="hljs-number">100</span>)
-    )
-    <span class="hljs-keyword">WITH</span>(OIDS=<span class="hljs-literal">FALSE</span>);</span>
+<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> userdeatail
+(
+    uid <span class="hljs-built_in">integer</span>,
+    intro <span class="hljs-built_in">character</span> <span class="hljs-built_in">varying</span>(<span class="hljs-number">100</span>),
+    <span class="hljs-keyword">profile</span> <span class="hljs-built_in">character</span> <span class="hljs-built_in">varying</span>(<span class="hljs-number">100</span>)
+)
+<span class="hljs-keyword">WITH</span>(OIDS=<span class="hljs-literal">FALSE</span>);</span>
 </code></pre>
 <p>&#x770B;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;Go&#x5982;&#x4F55;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x5E93;&#x8868;&#x6570;&#x636E;:&#x589E;&#x5220;&#x6539;&#x67E5;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
@@ -1838,7 +1825,8 @@
     }
 }
 </code></pre>
-<p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;PostgreSQL&#x662F;&#x901A;&#x8FC7;<code>$1</code>,<code>$2</code>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x6307;&#x5B9A;&#x8981;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x4E0D;&#x662F;MySQL&#x4E2D;&#x7684;<code>?</code>&#xFF0C;&#x53E6;&#x5916;&#x5728;sql.Open&#x4E2D;&#x7684;dsn&#x4FE1;&#x606F;&#x7684;&#x683C;&#x5F0F;&#x4E5F;&#x4E0E;MySQL&#x7684;&#x9A71;&#x52A8;&#x4E2D;&#x7684;dsn&#x683C;&#x5F0F;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#x8BF7;&#x6CE8;&#x610F;&#x5B83;&#x4EEC;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;PostgreSQL&#x662F;&#x901A;&#x8FC7;<code>$1</code>,<code>$2</code>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x6307;&#x5B9A;&#x8981;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x4E0D;&#x662F;MySQL&#x4E2D;&#x7684;<code>?</code>&#xFF0C;
+&#x53E6;&#x5916;&#x5728;sql.Open&#x4E2D;&#x7684;dsn&#x4FE1;&#x606F;&#x7684;&#x683C;&#x5F0F;&#x4E5F;&#x4E0E;MySQL&#x7684;&#x9A71;&#x52A8;&#x4E2D;&#x7684;dsn&#x683C;&#x5F0F;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#x8BF7;&#x6CE8;&#x610F;&#x5B83;&#x4EEC;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
 <p>&#x8FD8;&#x6709;pg&#x4E0D;&#x652F;&#x6301;LastInsertId&#x51FD;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;PostgreSQL&#x5185;&#x90E8;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C;MySQL&#x7684;&#x81EA;&#x589E;ID&#x8FD4;&#x56DE;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x4EE3;&#x7801;&#x51E0;&#x4E4E;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x3002;</p>
 
                     
@@ -1853,17 +1841,13 @@
         <a href="../docs/05.3.html" class="navigation navigation-prev " aria-label="Previous page: 使用SQLite数据库"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../docs/05.5.html" class="navigation navigation-next " aria-label="Next page: 使用beedb库进行ORM开发"><i class="fa fa-angle-right"></i></a>
+        <a href="../docs/05.5.html" class="navigation navigation-next " aria-label="Next page: NoSQL数据库操作"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
 <script src="../gitbook/app.js"></script>
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
 
 <script>
 require(["gitbook"], function(gitbook) {

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>NoSQL数据库操作 | Golang Web</title>
+        <title>小结 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.1.0">
@@ -27,7 +27,7 @@
         
     
     
-    <link rel="next" href="../docs/05.7.html" />
+    <link rel="next" href="../docs/06.0.html" />
     
     
     <link rel="prev" href="../docs/05.5.html" />
@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="5.6" data-basepath=".." data-revision="Tue Jul 21 2015 14:32:44 GMT+0800 (CST)">
+    <div class="book" data-level="5.6" data-basepath=".." data-revision="Tue Jul 21 2015 15:37:20 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -626,7 +626,7 @@
                         
                             <b>5.5.</b>
                         
-                        使用beedb库进行ORM开发
+                        NoSQL数据库操作
                     </a>
                 
             
@@ -640,21 +640,6 @@
                         <i class="fa fa-check"></i>
                         
                             <b>5.6.</b>
-                        
-                        NoSQL数据库操作
-                    </a>
-                
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.7" data-path="docs/05.7.html">
-            
-                
-                    <a href="../docs/05.7.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.7.</b>
                         
                         小结
                     </a>
@@ -1727,107 +1712,15 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="5-6-nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C">5.6 NOSQL&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;</h1>
-<p>NoSQL(Not Only SQL)&#xFF0C;&#x6307;&#x7684;&#x662F;&#x975E;&#x5173;&#x7CFB;&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;&#x3002;
-&#x968F;&#x7740;Web2.0&#x7684;&#x5174;&#x8D77;&#xFF0C;&#x4F20;&#x7EDF;&#x7684;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x5728;&#x5E94;&#x4ED8;Web2.0&#x7F51;&#x7AD9;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x8D85;&#x5927;&#x89C4;&#x6A21;&#x548C;&#x9AD8;&#x5E76;&#x53D1;&#x7684;SNS&#x7C7B;&#x578B;&#x7684;Web2.0&#x7EAF;&#x52A8;&#x6001;&#x7F51;&#x7AD9;&#x5DF2;&#x7ECF;&#x663E;&#x5F97;&#x529B;&#x4E0D;&#x4ECE;&#x5FC3;&#xFF0C;
-&#x66B4;&#x9732;&#x4E86;&#x5F88;&#x591A;&#x96BE;&#x4EE5;&#x514B;&#x670D;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x800C;&#x975E;&#x5173;&#x7CFB;&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5219;&#x7531;&#x4E8E;&#x5176;&#x672C;&#x8EAB;&#x7684;&#x7279;&#x70B9;&#x5F97;&#x5230;&#x4E86;&#x975E;&#x5E38;&#x8FC5;&#x901F;&#x7684;&#x53D1;&#x5C55;&#x3002;</p>
-<p>&#x800C;Go&#x8BED;&#x8A00;&#x4F5C;&#x4E3A;21&#x4E16;&#x7EAA;&#x7684;C&#x8BED;&#x8A00;&#xFF0C;&#x5BF9;NoSQL&#x7684;&#x652F;&#x6301;&#x4E5F;&#x662F;&#x5F88;&#x597D;&#xFF0C;&#x76EE;&#x524D;&#x6D41;&#x884C;&#x7684;NOSQL&#x4E3B;&#x8981;&#x6709;<strong>Redis</strong>&#x3001;<strong>MongoDB</strong>&#x3001;<strong>Cassandra</strong>&#x548C;<strong>Membase</strong>&#x7B49;&#x3002;
-&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x5E93;&#x90FD;&#x6709;&#x9AD8;&#x6027;&#x80FD;&#x3001;&#x9AD8;&#x5E76;&#x53D1;&#x8BFB;&#x5199;&#x7B49;&#x7279;&#x70B9;&#xFF0C;&#x76EE;&#x524D;&#x5DF2;&#x7ECF;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;&#x4E8E;&#x5404;&#x79CD;&#x5E94;&#x7528;&#x4E2D;&#x3002;&#x6211;&#x63A5;&#x4E0B;&#x6765;&#x4E3B;&#x8981;&#x8BB2;&#x89E3;&#x4E00;&#x4E0B;<strong>Redis</strong>&#x548C;<strong>MongoDB</strong>&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
-<h2 id="redis">Redis</h2>
-<p><strong>Redis</strong>&#x662F;&#x4E00;&#x4E2A;key-value&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x3002;&#x548C;<strong>Memcached</strong>&#x7C7B;&#x4F3C;&#x3002;
-&#x5B83;&#x652F;&#x6301;&#x5B58;&#x50A8;&#x7684;value&#x7C7B;&#x578B;&#x76F8;&#x5BF9;&#x66F4;&#x591A;&#xFF0C;&#x5305;&#x62EC;string(&#x5B57;&#x7B26;&#x4E32;)&#x3001;list(&#x94FE;&#x8868;)&#x3001;set(&#x96C6;&#x5408;)&#x548C;zset(&#x6709;&#x5E8F;&#x96C6;&#x5408;)&#x3002;</p>
-<p>&#x76EE;&#x524D;&#x5E94;&#x7528;Redis&#x6700;&#x5E7F;&#x6CDB;&#x7684;&#x5E94;&#x8BE5;&#x662F;&#x65B0;&#x6D6A;&#x5FAE;&#x535A;&#x5E73;&#x53F0;&#xFF0C;&#x5176;&#x6B21;&#x8FD8;&#x6709;Facebook&#x6536;&#x8D2D;&#x7684;&#x56FE;&#x7247;&#x793E;&#x4EA4;&#x7F51;&#x7AD9;Instagram&#x3002;
-&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x6709;&#x540D;&#x7684;<a href="http://redis.io/topics/whos-using-redis" target="_blank">&#x4E92;&#x8054;&#x7F51;&#x4F01;&#x4E1A;</a></p>
-<p>Go&#x76EE;&#x524D;&#x652F;&#x6301;redis&#x7684;&#x9A71;&#x52A8;&#x6709;&#x5982;&#x4E0B;</p>
-<ul>
-<li><a href="https://github.com/alphazero/Go-Redis" target="_blank">https://github.com/alphazero/Go-Redis</a></li>
-<li><a href="http://code.google.com/p/tideland-rdc/" target="_blank">http://code.google.com/p/tideland-rdc/</a></li>
-<li><a href="https://github.com/simonz05/godis" target="_blank">https://github.com/simonz05/godis</a></li>
-<li><a href="https://github.com/hoisie/redis.go" target="_blank">https://github.com/hoisie/redis.go</a></li>
-</ul>
-<p>&#x76EE;&#x524D;&#x6211;fork&#x4E86;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x9A71;&#x52A8;&#xFF0C;&#x66F4;&#x65B0;&#x4E86;&#x4E00;&#x4E9B;bug&#xFF0C;&#x76EE;&#x524D;&#x5E94;&#x7528;&#x5728;&#x6211;&#x81EA;&#x5DF1;&#x7684;&#x77ED;&#x57DF;&#x540D;&#x670D;&#x52A1;&#x9879;&#x76EE;&#x4E2D;(&#x6BCF;&#x5929;200W&#x5DE6;&#x53F3;&#x7684;PV&#x503C;)   </p>
+                        <h1 id="%E5%B0%8F%E7%BB%93">&#x5C0F;&#x7ED3;</h1>
+<p>&#x8FD9;&#x4E00;&#x7AE0;&#x6211;&#x4EEC;&#x8BB2;&#x89E3;&#x4E86;Go&#x5982;&#x4F55;&#x8BBE;&#x8BA1;database/sql&#x63A5;&#x53E3;&#xFF0C;&#x7136;&#x540E;&#x4ECB;&#x7ECD;&#x4E86;&#x5404;&#x79CD;&#x7B2C;&#x4E09;&#x65B9;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;&#x7684;&#x4F7F;&#x7528;&#x3002;
+&#x63A5;&#x7740;&#x4ECB;&#x7ECD;&#x4E86;beedb&#xFF0C;&#x4E00;&#x79CD;&#x57FA;&#x4E8E;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x7684;ORM&#x5E93;&#xFF0C;&#x5982;&#x4F55;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x64CD;&#x4F5C;&#x3002;
+&#x6700;&#x540E;&#x4ECB;&#x7ECD;&#x4E86;NOSQL&#x7684;&#x4E00;&#x4E9B;&#x77E5;&#x8BC6;&#xFF0C;&#x76EE;&#x524D;Go&#x5BF9;&#x4E8E;NoSQL&#x652F;&#x6301;&#x8FD8;&#x662F;&#x4E0D;&#x9519;&#xFF0C;&#x56E0;&#x4E3A;Go&#x4F5C;&#x4E3A;21&#x4E16;&#x7EAA;&#x7684;C&#x8BED;&#x8A00;&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;&#x4E8E;21&#x4E16;&#x7EAA;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E5F;&#x662F;&#x652F;&#x6301;&#x7684;&#x76F8;&#x5F53;&#x597D;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x8FD9;&#x4E00;&#x7AE0;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x6211;&#x4EEC;&#x5B66;&#x4F1A;&#x4E86;&#x5982;&#x4F55;&#x64CD;&#x4F5C;&#x5404;&#x79CD;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x89E3;&#x51B3;&#x4E86;&#x6211;&#x4EEC;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x662F;Web&#x91CC;&#x9762;&#x6700;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;
+&#x6240;&#x4EE5;&#x5E0C;&#x671B;&#x5927;&#x5BB6;&#x80FD;&#x591F;&#x6DF1;&#x5165;&#x7684;&#x53BB;&#x4E86;&#x89E3;database/sql&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x3002;</p>
 <blockquote>
-<p><a href="https://github.com/astaxie/goredis" target="_blank">https://github.com/astaxie/goredis</a></p>
+<p><a href="http://go-database-sql.org/" target="_blank">Go database/sql tutorial</a> &#x91CC;&#x63D0;&#x4F9B;&#x4E86;&#x60EF;&#x7528;&#x7684;&#x8303;&#x4F8B;&#x53CA;&#x8BE6;&#x7EC6;&#x7684;&#x8BF4;&#x660E;&#x3002;</p>
 </blockquote>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4EE5;&#x6211;&#x81EA;&#x5DF1;fork&#x7684;&#x8FD9;&#x4E2A;redis&#x9A71;&#x52A8;&#x4E3A;&#x4F8B;&#x6765;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x64CD;&#x4F5C;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
-
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;github.com/astaxie/goredis&quot;</span>
-    <span class="hljs-string">&quot;fmt&quot;</span>
-)
-
-<span class="hljs-keyword">func</span> main() {
-    <span class="hljs-keyword">var</span> client goredis.Client
-    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x7AEF;&#x53E3;&#x4E3A;redis&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;</span>
-    client.Addr = <span class="hljs-string">&quot;127.0.0.1:6379&quot;</span>
-
-    <span class="hljs-comment">//&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;</span>
-    client.Set(<span class="hljs-string">&quot;a&quot;</span>, []<span class="hljs-typename">byte</span>(<span class="hljs-string">&quot;hello&quot;</span>))
-    val, _ := client.Get(<span class="hljs-string">&quot;a&quot;</span>)
-    fmt.Println(<span class="hljs-typename">string</span>(val))
-    client.Del(<span class="hljs-string">&quot;a&quot;</span>)
-
-    <span class="hljs-comment">//list&#x64CD;&#x4F5C;</span>
-    vals := []<span class="hljs-typename">string</span>{<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;e&quot;</span>}
-    <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> vals {
-        client.Rpush(<span class="hljs-string">&quot;l&quot;</span>, []<span class="hljs-typename">byte</span>(v))
-    }
-    dbvals,_ := client.Lrange(<span class="hljs-string">&quot;l&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>)
-    <span class="hljs-keyword">for</span> i, v := <span class="hljs-keyword">range</span> dbvals {
-        <span class="hljs-built_in">println</span>(i,<span class="hljs-string">&quot;:&quot;</span>,<span class="hljs-typename">string</span>(v))
-    }
-    client.Del(<span class="hljs-string">&quot;l&quot;</span>)
-}
-</code></pre>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x64CD;&#x4F5C;redis&#x975E;&#x5E38;&#x7684;&#x65B9;&#x4FBF;&#xFF0C;&#x800C;&#x4E14;&#x6211;&#x5B9E;&#x9645;&#x9879;&#x76EE;&#x4E2D;&#x5E94;&#x7528;&#x4E0B;&#x6765;&#x6027;&#x80FD;&#x4E5F;&#x5F88;&#x9AD8;&#x3002;client&#x7684;&#x547D;&#x4EE4;&#x548C;redis&#x7684;&#x547D;&#x4EE4;&#x57FA;&#x672C;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x3002;&#x6240;&#x4EE5;&#x548C;&#x539F;&#x751F;&#x6001;&#x64CD;&#x4F5C;redis&#x975E;&#x5E38;&#x7C7B;&#x4F3C;&#x3002;</p>
-<h2 id="mongodb">MongoDB</h2>
-<p><strong>MongoDB</strong>&#x662F;&#x4E00;&#x4E2A;&#x9AD8;&#x6027;&#x80FD;, &#x5F00;&#x6E90;, &#x65E0;&#x6A21;&#x5F0F;&#x7684;&#x6587;&#x6863;&#x578B;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x4ECB;&#x4E8E;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x548C;&#x975E;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x4E4B;&#x95F4;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x662F;&#x975E;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x5F53;&#x4E2D;&#x529F;&#x80FD;&#x6700;&#x4E30;&#x5BCC;&#xFF0C;&#x6700;&#x50CF;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x7684;&#x3002;
-&#x4ED6;&#x652F;&#x6301;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x975E;&#x5E38;&#x677E;&#x6563;&#xFF0C;&#x91C7;&#x7528;&#x7684;&#x662F;&#x7C7B;&#x4F3C;json&#x7684;bjson&#x683C;&#x5F0F;&#x6765;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;
-<strong>MongoDB</strong>&#x6700;&#x5927;&#x7684;&#x7279;&#x70B9;&#x662F;&#x4ED6;&#x652F;&#x6301;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#x975E;&#x5E38;&#x5F3A;&#x5927;&#xFF0C;&#x5176;&#x8BED;&#x6CD5;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;&#x4E8E;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#xFF0C;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x5355;&#x8868;&#x67E5;&#x8BE2;&#x7684;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x652F;&#x6301;&#x5BF9;&#x6570;&#x636E;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x3002;</p>
-<p>&#x4E0B;&#x56FE;&#x5C55;&#x793A;&#x4E86;mysql&#x548C;mongoDB&#x4E4B;&#x95F4;&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#x975E;&#x5E38;&#x7684;&#x65B9;&#x4FBF;&#xFF0C;&#x4F46;&#x662F;mongoDB&#x7684;&#x6027;&#x80FD;&#x975E;&#x5E38;&#x597D;&#x3002;</p>
-<p><img src="images/5.6.mongodb.png?raw=true" alt=""></p>
-<p>&#x56FE;5.1 MongoDB&#x548C;Mysql&#x7684;&#x64CD;&#x4F5C;&#x5BF9;&#x6BD4;&#x56FE;</p>
-<p>&#x76EE;&#x524D;Go&#x652F;&#x6301;mongoDB&#x6700;&#x597D;&#x7684;&#x9A71;&#x52A8;&#x5C31;&#x662F;<a href="http://labix.org/mgo" target="_blank">mgo</a>&#xFF0C;&#x8FD9;&#x4E2A;&#x9A71;&#x52A8;&#x76EE;&#x524D;&#x6700;&#x6709;&#x53EF;&#x80FD;&#x6210;&#x4E3A;&#x5B98;&#x65B9;&#x7684;pkg&#x3002;<br>&#x4E0B;&#x9762;&#x6211;&#x5C06;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x901A;&#x8FC7;Go&#x6765;&#x64CD;&#x4F5C;mongoDB&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
-
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;fmt&quot;</span>
-    <span class="hljs-string">&quot;labix.org/v2/mgo&quot;</span>
-    <span class="hljs-string">&quot;labix.org/v2/mgo/bson&quot;</span>
-)
-
-<span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> {
-    Name <span class="hljs-typename">string</span>
-    Phone <span class="hljs-typename">string</span>
-}
-
-<span class="hljs-keyword">func</span> main() {
-    session, err := mgo.Dial(<span class="hljs-string">&quot;server1.example.com,server2.example.com&quot;</span>)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
-    }
-    <span class="hljs-keyword">defer</span> session.Close()
-
-    session.SetMode(mgo.Monotonic, <span class="hljs-constant">true</span>)
-
-    c := session.DB(<span class="hljs-string">&quot;test&quot;</span>).C(<span class="hljs-string">&quot;people&quot;</span>)
-    err = c.Insert(&amp;Person{<span class="hljs-string">&quot;Ale&quot;</span>, <span class="hljs-string">&quot;+55 53 8116 9639&quot;</span>},
-        &amp;Person{<span class="hljs-string">&quot;Cla&quot;</span>, <span class="hljs-string">&quot;+55 53 8402 8510&quot;</span>})
-    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
-    }
-
-    result := Person{}
-    err = c.Find(bson.M{<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Ale&quot;</span>}).One(&amp;result)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
-    }
-
-    fmt.Println(<span class="hljs-string">&quot;Phone:&quot;</span>, result.Phone)
-}
-</code></pre>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;mgo&#x7684;&#x64CD;&#x4F5C;&#x65B9;&#x5F0F;&#x548C;beedb&#x7684;&#x64CD;&#x4F5C;&#x65B9;&#x5F0F;&#x51E0;&#x4E4E;&#x7C7B;&#x4F3C;&#xFF0C;&#x90FD;&#x662F;&#x57FA;&#x4E8E;struct&#x7684;&#x64CD;&#x4F5C;&#x65B9;&#x5F0F;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;Go Style&#x3002;</p>
 
                     
                     </section>
@@ -1838,20 +1731,16 @@
         </div>
 
         
-        <a href="../docs/05.5.html" class="navigation navigation-prev " aria-label="Previous page: 使用beedb库进行ORM开发"><i class="fa fa-angle-left"></i></a>
+        <a href="../docs/05.5.html" class="navigation navigation-prev " aria-label="Previous page: NoSQL数据库操作"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../docs/05.7.html" class="navigation navigation-next " aria-label="Next page: 小结"><i class="fa fa-angle-right"></i></a>
+        <a href="../docs/06.0.html" class="navigation navigation-next " aria-label="Next page: session和数据存储"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
 <script src="../gitbook/app.js"></script>
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
 
 <script>
 require(["gitbook"], function(gitbook) {
