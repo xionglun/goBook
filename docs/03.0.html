@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="3" data-basepath=".." data-revision="Sun Jul 19 2015 02:12:22 GMT+0800 (CST)">
+    <div class="book" data-level="3" data-basepath=".." data-revision="Tue Jul 21 2015 14:32:44 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -359,7 +359,7 @@
                         
                             <b>3.2.</b>
                         
-                        Go搭建一个简单的web服务
+                        编写HTTP服务端
                     </a>
                 
             
@@ -374,7 +374,7 @@
                         
                             <b>3.3.</b>
                         
-                        Go如何使得web工作
+                        HTTP服务端原理
                     </a>
                 
             
@@ -389,7 +389,7 @@
                         
                             <b>3.4.</b>
                         
-                        Go的http包详解
+                        HTTP包详解
                     </a>
                 
             
@@ -403,6 +403,21 @@
                         <i class="fa fa-check"></i>
                         
                             <b>3.5.</b>
+                        
+                        编写HTTP客户端
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="docs/03.6.html">
+            
+                
+                    <a href="../docs/03.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
                         
                         小结
                     </a>
@@ -1712,8 +1727,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="3-web%E5%9F%BA%E7%A1%80">3 Web&#x57FA;&#x7840;</h1>
-<p>&#x5B66;&#x4E60;&#x57FA;&#x4E8E;Web&#x7684;&#x7F16;&#x7A0B;&#x53EF;&#x80FD;&#x6B63;&#x662F;&#x4F60;&#x8BFB;&#x672C;&#x4E66;&#x7684;&#x539F;&#x56E0;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x5982;&#x4F55;&#x901A;&#x8FC7;Go&#x6765;&#x7F16;&#x5199;Web&#x5E94;&#x7528;&#x4E5F;&#x662F;&#x6211;&#x7F16;&#x5199;&#x8FD9;&#x672C;&#x4E66;&#x7684;&#x521D;&#x8877;&#x3002;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x4ECB;&#x7ECD;&#x8FC7;&#xFF0C;Go&#x76EE;&#x524D;&#x5DF2;&#x7ECF;&#x62E5;&#x6709;&#x4E86;&#x6210;&#x719F;&#x7684;HTTP&#x5904;&#x7406;&#x5305;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x7F16;&#x5199;&#x80FD;&#x505A;&#x4EFB;&#x4F55;&#x4E8B;&#x60C5;&#x7684;&#x52A8;&#x6001;Web&#x7A0B;&#x5E8F;&#x6613;&#x5982;&#x53CD;&#x638C;&#x3002;&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x5404;&#x7AE0;&#x4E2D;&#x5C06;&#x8981;&#x4ECB;&#x7ECD;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x90FD;&#x662F;&#x5C5E;&#x4E8E;Web&#x7F16;&#x7A0B;&#x7684;&#x8303;&#x7574;&#x3002;&#x672C;&#x7AE0;&#x5219;&#x96C6;&#x4E2D;&#x8BA8;&#x8BBA;&#x4E00;&#x4E9B;&#x4E0E;Web&#x76F8;&#x5173;&#x7684;&#x6982;&#x5FF5;&#x548C;Go&#x5982;&#x4F55;&#x8FD0;&#x884C;Web&#x7A0B;&#x5E8F;&#x7684;&#x8BDD;&#x9898;&#x3002;</p>
+                        <h1 id="web%E5%9F%BA%E7%A1%80">Web&#x57FA;&#x7840;</h1>
+<p>&#x5B66;&#x4E60;&#x57FA;&#x4E8E;Web&#x7684;&#x7F16;&#x7A0B;&#x53EF;&#x80FD;&#x6B63;&#x662F;&#x4F60;&#x8BFB;&#x672C;&#x4E66;&#x7684;&#x539F;&#x56E0;&#x3002;
+&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x5982;&#x4F55;&#x901A;&#x8FC7;Go&#x6765;&#x7F16;&#x5199;Web&#x5E94;&#x7528;&#x4E5F;&#x662F;&#x6211;&#x7F16;&#x5199;&#x8FD9;&#x672C;&#x4E66;&#x7684;&#x521D;&#x8877;&#x3002;
+&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x4ECB;&#x7ECD;&#x8FC7;&#xFF0C;Go&#x76EE;&#x524D;&#x5DF2;&#x7ECF;&#x62E5;&#x6709;&#x4E86;&#x6210;&#x719F;&#x7684;HTTP&#x5904;&#x7406;&#x5305;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x7F16;&#x5199;&#x80FD;&#x505A;&#x4EFB;&#x4F55;&#x4E8B;&#x60C5;&#x7684;&#x52A8;&#x6001;Web&#x7A0B;&#x5E8F;&#x6613;&#x5982;&#x53CD;&#x638C;&#x3002;
+&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x5404;&#x7AE0;&#x4E2D;&#x5C06;&#x8981;&#x4ECB;&#x7ECD;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x90FD;&#x662F;&#x5C5E;&#x4E8E;Web&#x7F16;&#x7A0B;&#x7684;&#x8303;&#x7574;&#x3002;
+&#x672C;&#x7AE0;&#x5219;&#x96C6;&#x4E2D;&#x8BA8;&#x8BBA;&#x4E00;&#x4E9B;&#x4E0E;Web&#x76F8;&#x5173;&#x7684;&#x6982;&#x5FF5;&#x548C;Go&#x5982;&#x4F55;&#x8FD0;&#x884C;Web&#x7A0B;&#x5E8F;&#x7684;&#x8BDD;&#x9898;&#x3002;</p>
 <h2 id="%E7%9B%AE%E5%BD%95">&#x76EE;&#x5F55;</h2>
 <p><img src="images/navi3.png?raw=true" alt=""></p>
 
@@ -1736,6 +1755,10 @@
 
         
 <script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
 
 <script>
 require(["gitbook"], function(gitbook) {

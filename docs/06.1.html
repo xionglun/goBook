@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="6.1" data-basepath=".." data-revision="Sun Jul 19 2015 02:12:22 GMT+0800 (CST)">
+    <div class="book" data-level="6.1" data-basepath=".." data-revision="Tue Jul 21 2015 14:32:44 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -359,7 +359,7 @@
                         
                             <b>3.2.</b>
                         
-                        Go搭建一个简单的web服务
+                        编写HTTP服务端
                     </a>
                 
             
@@ -374,7 +374,7 @@
                         
                             <b>3.3.</b>
                         
-                        Go如何使得web工作
+                        HTTP服务端原理
                     </a>
                 
             
@@ -389,7 +389,7 @@
                         
                             <b>3.4.</b>
                         
-                        Go的http包详解
+                        HTTP包详解
                     </a>
                 
             
@@ -403,6 +403,21 @@
                         <i class="fa fa-check"></i>
                         
                             <b>3.5.</b>
+                        
+                        编写HTTP客户端
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="docs/03.6.html">
+            
+                
+                    <a href="../docs/03.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
                         
                         小结
                     </a>
@@ -1755,10 +1770,10 @@
 }
 </code></pre>
 <p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x4F55;&#x8BBE;&#x7F6E;cookie</p>
-<pre><code class="lang-go">    expiration := *time.Now()
+<pre><code class="lang-go">    expiration := time.Now()
     expiration = expiration.AddDate(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
-    cookie := http.Cookie{Name: <span class="hljs-string">&quot;username&quot;</span>, Value: <span class="hljs-string">&quot;astaxie&quot;</span>, Expires: expiration}
-    http.SetCookie(w, &amp;cookie)
+    cookie := &amp;http.Cookie{Name: <span class="hljs-string">&quot;username&quot;</span>, Value: <span class="hljs-string">&quot;allen&quot;</span>, Expires: expiration}
+    http.SetCookie(w, cookie)
 </code></pre>
 <p>&#x3000;&#x3000;</p>
 <h3 id="go%E8%AF%BB%E5%8F%96cookie">Go&#x8BFB;&#x53D6;cookie</h3>
@@ -1812,6 +1827,10 @@ session&#x901A;&#x8FC7;cookie&#xFF0C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x4FDD;&#x
 
         
 <script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
 
 <script>
 require(["gitbook"], function(gitbook) {

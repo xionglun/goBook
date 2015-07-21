@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>小结 | Golang Web</title>
+        <title>编写HTTP客户端 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.1.0">
@@ -27,7 +27,7 @@
         
     
     
-    <link rel="next" href="../docs/04.0.html" />
+    <link rel="next" href="../docs/03.6.html" />
     
     
     <link rel="prev" href="../docs/03.4.html" />
@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="3.5" data-basepath=".." data-revision="Sun Jul 19 2015 02:12:22 GMT+0800 (CST)">
+    <div class="book" data-level="3.5" data-basepath=".." data-revision="Tue Jul 21 2015 14:32:44 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -359,7 +359,7 @@
                         
                             <b>3.2.</b>
                         
-                        Go搭建一个简单的web服务
+                        编写HTTP服务端
                     </a>
                 
             
@@ -374,7 +374,7 @@
                         
                             <b>3.3.</b>
                         
-                        Go如何使得web工作
+                        HTTP服务端原理
                     </a>
                 
             
@@ -389,7 +389,7 @@
                         
                             <b>3.4.</b>
                         
-                        Go的http包详解
+                        HTTP包详解
                     </a>
                 
             
@@ -403,6 +403,21 @@
                         <i class="fa fa-check"></i>
                         
                             <b>3.5.</b>
+                        
+                        编写HTTP客户端
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="docs/03.6.html">
+            
+                
+                    <a href="../docs/03.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
                         
                         小结
                     </a>
@@ -1712,9 +1727,62 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="3-5-%E5%B0%8F%E7%BB%93">3.5 &#x5C0F;&#x7ED3;</h1>
-<p>&#x8FD9;&#x4E00;&#x7AE0;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;HTTP&#x534F;&#x8BAE;, DNS&#x89E3;&#x6790;&#x7684;&#x8FC7;&#x7A0B;, &#x5982;&#x4F55;&#x7528;go&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B80;&#x964B;&#x7684;web server&#x3002;&#x5E76;&#x6DF1;&#x5165;&#x5230;net/http&#x5305;&#x7684;&#x6E90;&#x7801;&#x4E2D;&#x4E3A;&#x5927;&#x5BB6;&#x63ED;&#x5F00;&#x5B9E;&#x73B0;&#x6B64;server&#x7684;&#x79D8;&#x5BC6;&#x3002;</p>
-<p>&#x5E0C;&#x671B;&#x901A;&#x8FC7;&#x8FD9;&#x4E00;&#x7AE0;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x4F60;&#x80FD;&#x591F;&#x5BF9;Go&#x5F00;&#x53D1;Web&#x6709;&#x4E86;&#x521D;&#x6B65;&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x770B;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x4E86;&#xFF0C;Go&#x5F00;&#x53D1;Web&#x5E94;&#x7528;&#x662F;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x53C8;&#x662F;&#x76F8;&#x5F53;&#x7684;&#x7075;&#x6D3B;&#x3002;</p>
+                        <h1 id="go-http%E5%AE%A2%E6%88%B7%E7%AB%AF">Go HTTP&#x5BA2;&#x6237;&#x7AEF;</h1>
+<p>Go&#x7684;<code>http</code>&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;HTTP&#x8BF7;&#x6C42;&#x7684;&#x53D1;&#x8D77;&#x65B9;&#xFF0C;&#x6765;&#x8FDB;&#x884C;HTTP&#x901A;&#x4FE1;&#x3002;</p>
+<h3 id="%E9%BB%98%E8%AE%A4%E5%AE%9E%E7%8E%B0">&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;</h3>
+<p>&#x5728;&#x6807;&#x51C6;&#x5305;&#x91CC;&#xFF0C;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x4E86;<code>GET, POST, PostForm</code>&#x8FD9;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// &#x901A;&#x8FC7;GET&#x65B9;&#x5F0F;&#x8BF7;&#x6C42;</span>
+resp, err := http.Get(<span class="hljs-string">&quot;http://example.com/&quot;</span>)
+
+<span class="hljs-comment">// &#x901A;&#x8FC7;POST&#x65B9;&#x5F0F;&#x8BF7;&#x6C42;&#xFF0C;&#x4E0A;&#x4F20;&#x4E00;&#x5F20;&#x56FE;&#x7247;</span>
+resp, err := http.Post(<span class="hljs-string">&quot;http://example.com/upload&quot;</span>, <span class="hljs-string">&quot;image/jpeg&quot;</span>, &amp;buf)
+
+<span class="hljs-comment">// &#x901A;&#x8FC7;POST&#x65B9;&#x5F0F;&#x8BF7;&#x6C42;&#xFF0C;&#x4EE5;&#x8868;&#x5355;application/x-www-form-urlencoded&#x5F62;&#x5F0F;&#x63D0;&#x4EA4;</span>
+resp, err := http.PostForm(<span class="hljs-string">&quot;http://example.com/form&quot;</span>,
+    url.Values{<span class="hljs-string">&quot;key&quot;</span>: {<span class="hljs-string">&quot;Value&quot;</span>}, <span class="hljs-string">&quot;id&quot;</span>: {<span class="hljs-string">&quot;123&quot;</span>}})
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;</strong> &#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x54CD;&#x5E94;&#x5B8C;&#x6210;&#x540E;&#x5FC5;&#x987B;&#x5173;&#x95ED;&#x54CD;&#x5E94;&#x4F53;&#x3002;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-go">resp, err := http.Get(<span class="hljs-string">&quot;http://example.com/&quot;</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-comment">// handle error</span>
+}
+<span class="hljs-keyword">defer</span> resp.Body.Close()
+body, err := ioutil.ReadAll(resp.Body)
+</code></pre>
+<h3 id="%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%9E%E7%8E%B0">&#x81EA;&#x5B9A;&#x4E49;&#x5B9E;&#x73B0;</h3>
+<p>&#x9ED8;&#x8BA4;&#x7684;HTTP&#x5B9E;&#x73B0;&#x9002;&#x5408;&#x4E8E;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x505A;&#x5230;&#x50CF;&#x81EA;&#x5B9A;&#x4E49;&#x8BF7;&#x6C42;&#x5934;&#x3001;&#x5176;&#x5B83;&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#x3001;&#x91CD;&#x5B9A;&#x5411;&#x7B49;&#x7B49;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x81EA;&#x5B9A;&#x4E49;&#x3002;</p>
+<p>&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-go">reqUrl := <span class="hljs-string">&quot;http://localhost:8080&quot;</span>
+jsonStr := []<span class="hljs-typename">byte</span>(<span class="hljs-string">`{&quot;title&quot;:&quot;Buy cheese and bread for breakfast.&quot;}`</span>)
+
+<span class="hljs-comment">// request: POST /url body</span>
+req, err := http.NewRequest(<span class="hljs-string">&quot;POST&quot;</span>, reqUrl, bytes.NewBuffer(jsonStr))
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-keyword">return</span>
+}
+<span class="hljs-comment">// set content type</span>
+req.Header.Set(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>)
+<span class="hljs-comment">// add cookie</span>
+userCookie := &amp;http.Cookie{
+    Name:     <span class="hljs-string">&quot;USERID&quot;</span>,
+    Value:    <span class="hljs-string">&quot;ABC&quot;</span>,
+    Path:     <span class="hljs-string">&quot;/&quot;</span>,
+    HttpOnly: <span class="hljs-constant">true</span>,
+}
+req.AddCookie(userCookie)
+
+client := &amp;http.Client{}
+res, err := client.Do(req)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-keyword">return</span>
+}
+<span class="hljs-keyword">defer</span> res.Body.Close()
+
+<span class="hljs-comment">// read response body</span>
+body, _ := ioutil.ReadAll(resp.Body)
+
+<span class="hljs-comment">// do other things ...</span>
+</code></pre>
 
                     
                     </section>
@@ -1725,16 +1793,20 @@
         </div>
 
         
-        <a href="../docs/03.4.html" class="navigation navigation-prev " aria-label="Previous page: Go的http包详解"><i class="fa fa-angle-left"></i></a>
+        <a href="../docs/03.4.html" class="navigation navigation-prev " aria-label="Previous page: HTTP包详解"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../docs/04.0.html" class="navigation navigation-next " aria-label="Next page: 表单"><i class="fa fa-angle-right"></i></a>
+        <a href="../docs/03.6.html" class="navigation navigation-next " aria-label="Next page: 小结"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
 <script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
 
 <script>
 require(["gitbook"], function(gitbook) {

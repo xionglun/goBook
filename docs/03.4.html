@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Go的http包详解 | Golang Web</title>
+        <title>HTTP包详解 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.1.0">
@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="3.4" data-basepath=".." data-revision="Sun Jul 19 2015 02:12:22 GMT+0800 (CST)">
+    <div class="book" data-level="3.4" data-basepath=".." data-revision="Tue Jul 21 2015 14:32:44 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -359,7 +359,7 @@
                         
                             <b>3.2.</b>
                         
-                        Go搭建一个简单的web服务
+                        编写HTTP服务端
                     </a>
                 
             
@@ -374,7 +374,7 @@
                         
                             <b>3.3.</b>
                         
-                        Go如何使得web工作
+                        HTTP服务端原理
                     </a>
                 
             
@@ -389,7 +389,7 @@
                         
                             <b>3.4.</b>
                         
-                        Go的http包详解
+                        HTTP包详解
                     </a>
                 
             
@@ -403,6 +403,21 @@
                         <i class="fa fa-check"></i>
                         
                             <b>3.5.</b>
+                        
+                        编写HTTP客户端
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="docs/03.6.html">
+            
+                
+                    <a href="../docs/03.6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
                         
                         小结
                     </a>
@@ -1712,11 +1727,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="3-4-go%E7%9A%84http%E5%8C%85%E8%AF%A6%E8%A7%A3">3.4 Go&#x7684;http&#x5305;&#x8BE6;&#x89E3;</h1>
+                        <h1 id="go%E7%9A%84http%E5%8C%85%E8%AF%A6%E8%A7%A3">Go&#x7684;http&#x5305;&#x8BE6;&#x89E3;</h1>
 <p>&#x524D;&#x9762;&#x5C0F;&#x8282;&#x4ECB;&#x7ECD;&#x4E86;Go&#x600E;&#x4E48;&#x6837;&#x5B9E;&#x73B0;&#x4E86;Web&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x8BE6;&#x7EC6;&#x5730;&#x89E3;&#x5256;&#x4E00;&#x4E0B;http&#x5305;&#xFF0C;&#x770B;&#x5B83;&#x5230;&#x5E95;&#x662F;&#x600E;&#x6837;&#x5B9E;&#x73B0;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x7684;&#x3002;</p>
 <p>Go&#x7684;http&#x6709;&#x4E24;&#x4E2A;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#xFF1A;Conn&#x3001;ServeMux</p>
 <h2 id="conn%E7%9A%84goroutine">Conn&#x7684;goroutine</h2>
-<p>&#x4E0E;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x7F16;&#x5199;&#x7684;http&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x540C;, Go&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x9AD8;&#x5E76;&#x53D1;&#x548C;&#x9AD8;&#x6027;&#x80FD;, &#x4F7F;&#x7528;&#x4E86;goroutines&#x6765;&#x5904;&#x7406;Conn&#x7684;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;, &#x8FD9;&#x6837;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x80FD;&#x4FDD;&#x6301;&#x72EC;&#x7ACB;&#xFF0C;&#x76F8;&#x4E92;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#xFF0C;&#x53EF;&#x4EE5;&#x9AD8;&#x6548;&#x7684;&#x54CD;&#x5E94;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x3002;&#x8FD9;&#x662F;Go&#x9AD8;&#x6548;&#x7684;&#x4FDD;&#x8BC1;&#x3002;</p>
+<p>&#x4E0E;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x7F16;&#x5199;&#x7684;http&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x540C;, Go&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x9AD8;&#x5E76;&#x53D1;&#x548C;&#x9AD8;&#x6027;&#x80FD;, &#x4F7F;&#x7528;&#x4E86;goroutines&#x6765;&#x5904;&#x7406;Conn&#x7684;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;&#x3002;
+&#x8FD9;&#x6837;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x80FD;&#x4FDD;&#x6301;&#x72EC;&#x7ACB;&#xFF0C;&#x76F8;&#x4E92;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#xFF0C;&#x53EF;&#x4EE5;&#x9AD8;&#x6548;&#x7684;&#x54CD;&#x5E94;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x3002;&#x8FD9;&#x662F;Go&#x9AD8;&#x6548;&#x7684;&#x4FDD;&#x8BC1;&#x3002;</p>
 <p>Go&#x5728;&#x7B49;&#x5F85;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x91CC;&#x9762;&#x662F;&#x8FD9;&#x6837;&#x5199;&#x7684;&#xFF1A;</p>
 <pre><code class="lang-go">c, err := srv.newConn(rw)
 <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
@@ -1724,9 +1740,11 @@
 }
 <span class="hljs-keyword">go</span> c.serve()
 </code></pre>
-<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Conn&#xFF0C;&#x8FD9;&#x4E2A;Conn&#x91CC;&#x9762;&#x4FDD;&#x5B58;&#x4E86;&#x8BE5;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x4F20;&#x9012;&#x5230;&#x5BF9;&#x5E94;&#x7684;handler&#xFF0C;&#x8BE5;handler&#x4E2D;&#x4FBF;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230;&#x76F8;&#x5E94;&#x7684;header&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x6837;&#x4FDD;&#x8BC1;&#x4E86;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x72EC;&#x7ACB;&#x6027;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Conn&#xFF0C;&#x8FD9;&#x4E2A;Conn&#x91CC;&#x9762;&#x4FDD;&#x5B58;&#x4E86;&#x8BE5;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x4FE1;&#x606F;&#x3002;
+&#x7136;&#x540E;&#x518D;&#x4F20;&#x9012;&#x5230;&#x5BF9;&#x5E94;&#x7684;handler&#xFF0C;&#x8BE5;handler&#x4E2D;&#x4FBF;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230;&#x76F8;&#x5E94;&#x7684;header&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x6837;&#x4FDD;&#x8BC1;&#x4E86;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x72EC;&#x7ACB;&#x6027;&#x3002;</p>
 <h2 id="servemux%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89">ServeMux&#x7684;&#x81EA;&#x5B9A;&#x4E49;</h2>
-<p>&#x6211;&#x4EEC;&#x524D;&#x9762;&#x5C0F;&#x8282;&#x8BB2;&#x8FF0;conn.server&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x5B9E;&#x5185;&#x90E8;&#x662F;&#x8C03;&#x7528;&#x4E86;http&#x5305;&#x9ED8;&#x8BA4;&#x7684;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x5668;&#x628A;&#x672C;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x4FE1;&#x606F;&#x4F20;&#x9012;&#x5230;&#x4E86;&#x540E;&#x7AEF;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#x5462;&#xFF1F;</p>
+<p>&#x6211;&#x4EEC;&#x524D;&#x9762;&#x5C0F;&#x8282;&#x8BB2;&#x8FF0;conn.server&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x5B9E;&#x5185;&#x90E8;&#x662F;&#x8C03;&#x7528;&#x4E86;http&#x5305;&#x9ED8;&#x8BA4;&#x7684;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x5668;&#x628A;&#x672C;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x4FE1;&#x606F;&#x4F20;&#x9012;&#x5230;&#x4E86;&#x540E;&#x7AEF;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;
+&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#x5462;&#xFF1F;</p>
 <p>&#x5B83;&#x7684;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">type</span> ServeMux <span class="hljs-keyword">struct</span> {
     mu sync.RWMutex   <span class="hljs-comment">//&#x9501;&#xFF0C;&#x7531;&#x4E8E;&#x8BF7;&#x6C42;&#x6D89;&#x53CA;&#x5230;&#x5E76;&#x53D1;&#x5904;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x9501;&#x673A;&#x5236;</span>
@@ -1746,7 +1764,10 @@
     ServeHTTP(ResponseWriter, *Request)  <span class="hljs-comment">// &#x8DEF;&#x7531;&#x5B9E;&#x73B0;&#x5668;</span>
 }
 </code></pre>
-<p>Handler&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x524D;&#x4E00;&#x5C0F;&#x8282;&#x4E2D;&#x7684;<code>sayhelloName</code>&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;ServeHTTP&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x6DFB;&#x52A0;&#x5462;&#xFF1F;&#x539F;&#x6765;&#x5728;http&#x5305;&#x91CC;&#x9762;&#x8FD8;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;<code>HandlerFunc</code>,&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;<code>sayhelloName</code>&#x5C31;&#x662F;&#x8FD9;&#x4E2A;HandlerFunc&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x9ED8;&#x8BA4;&#x5C31;&#x5B9E;&#x73B0;&#x4E86;ServeHTTP&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E86;HandlerFunc(f),&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;f&#x6210;&#x4E3A;HandlerFunc&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x6837;f&#x5C31;&#x62E5;&#x6709;&#x4E86;ServHTTP&#x65B9;&#x6CD5;&#x3002;</p>
+<p>Handler&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x524D;&#x4E00;&#x5C0F;&#x8282;&#x4E2D;&#x7684;<code>sayhelloName</code>&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;ServeHTTP&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x6DFB;&#x52A0;&#x5462;&#xFF1F;
+&#x539F;&#x6765;&#x5728;http&#x5305;&#x91CC;&#x9762;&#x8FD8;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;<code>HandlerFunc</code>,&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;<code>sayhelloName</code>&#x5C31;&#x662F;&#x8FD9;&#x4E2A;HandlerFunc&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;
+&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x9ED8;&#x8BA4;&#x5C31;&#x5B9E;&#x73B0;&#x4E86;ServeHTTP&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E86;HandlerFunc(f),&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;f&#x6210;&#x4E3A;HandlerFunc&#x7C7B;&#x578B;&#xFF0C;
+&#x8FD9;&#x6837;f&#x5C31;&#x62E5;&#x6709;&#x4E86;ServHTTP&#x65B9;&#x6CD5;&#x3002;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">type</span> HandlerFunc <span class="hljs-keyword">func</span>(ResponseWriter, *Request)
 
 <span class="hljs-comment">// ServeHTTP calls f(w, r).</span>
@@ -1765,7 +1786,8 @@
     h.ServeHTTP(w, r)
 }
 </code></pre>
-<p>&#x5982;&#x4E0A;&#x6240;&#x793A;&#x8DEF;&#x7531;&#x5668;&#x63A5;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x4E4B;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x662F;<code>*</code>&#x90A3;&#x4E48;&#x5173;&#x95ED;&#x94FE;&#x63A5;&#xFF0C;&#x4E0D;&#x7136;&#x8C03;&#x7528;<code>mux.Handler(r)</code>&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x8BBE;&#x7F6E;&#x8DEF;&#x7531;&#x7684;&#x5904;&#x7406;Handler&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;<code>h.ServeHTTP(w, r)</code></p>
+<p>&#x5982;&#x4E0A;&#x6240;&#x793A;&#x8DEF;&#x7531;&#x5668;&#x63A5;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x4E4B;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x662F;<code>*</code>&#x90A3;&#x4E48;&#x5173;&#x95ED;&#x94FE;&#x63A5;&#xFF0C;&#x4E0D;&#x7136;&#x8C03;&#x7528;<code>mux.Handler(r)</code>&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x8BBE;&#x7F6E;&#x8DEF;&#x7531;&#x7684;&#x5904;&#x7406;Handler&#xFF0C;
+&#x7136;&#x540E;&#x6267;&#x884C;<code>h.ServeHTTP(w, r)</code></p>
 <p>&#x4E5F;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x8DEF;&#x7531;&#x7684;handler&#x7684;ServerHTTP&#x63A5;&#x53E3;&#xFF0C;&#x90A3;&#x4E48;mux.Handler(r)&#x600E;&#x4E48;&#x5904;&#x7406;&#x7684;&#x5462;&#xFF1F;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">func</span> (mux *ServeMux) Handler(r *Request) (h Handler, pattern <span class="hljs-typename">string</span>) {
     <span class="hljs-keyword">if</span> r.Method != <span class="hljs-string">&quot;CONNECT&quot;</span> {
@@ -1794,8 +1816,12 @@
     <span class="hljs-keyword">return</span>
 }
 </code></pre>
-<p>&#x539F;&#x6765;&#x4ED6;&#x662F;&#x6839;&#x636E;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x7684;URL&#x548C;&#x8DEF;&#x7531;&#x5668;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x7684;map&#x53BB;&#x5339;&#x914D;&#x7684;&#xFF0C;&#x5F53;&#x5339;&#x914D;&#x5230;&#x4E4B;&#x540E;&#x8FD4;&#x56DE;&#x5B58;&#x50A8;&#x7684;handler&#xFF0C;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;handler&#x7684;ServeHTTP&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x51FD;&#x6570;&#x4E86;&#x3002;</p>
-<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4ECB;&#x7ECD;&#xFF0C;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x4E86;&#x6574;&#x4E2A;&#x8DEF;&#x7531;&#x8FC7;&#x7A0B;&#xFF0C;Go&#x5176;&#x5B9E;&#x652F;&#x6301;&#x5916;&#x90E8;&#x5B9E;&#x73B0;&#x7684;&#x8DEF;&#x7531;&#x5668; <code>ListenAndServe</code>&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x7528;&#x4EE5;&#x914D;&#x7F6E;&#x5916;&#x90E8;&#x8DEF;&#x7531;&#x5668;&#x7684;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;Handler&#x63A5;&#x53E3;&#xFF0C;&#x5373;&#x5916;&#x90E8;&#x8DEF;&#x7531;&#x5668;&#x53EA;&#x8981;&#x5B9E;&#x73B0;&#x4E86;Handler&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x7684;ServHTTP&#x91CC;&#x9762;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x539F;&#x6765;&#x4ED6;&#x662F;&#x6839;&#x636E;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x7684;URL&#x548C;&#x8DEF;&#x7531;&#x5668;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x7684;map&#x53BB;&#x5339;&#x914D;&#x7684;&#xFF0C;&#x5F53;&#x5339;&#x914D;&#x5230;&#x4E4B;&#x540E;&#x8FD4;&#x56DE;&#x5B58;&#x50A8;&#x7684;handler&#xFF0C;
+&#x8C03;&#x7528;&#x8FD9;&#x4E2A;handler&#x7684;ServeHTTP&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x51FD;&#x6570;&#x4E86;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4ECB;&#x7ECD;&#xFF0C;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x4E86;&#x6574;&#x4E2A;&#x8DEF;&#x7531;&#x8FC7;&#x7A0B;&#x3002;
+Go&#x5176;&#x5B9E;&#x652F;&#x6301;&#x5916;&#x90E8;&#x5B9E;&#x73B0;&#x7684;&#x8DEF;&#x7531;&#x5668; <code>ListenAndServe</code>&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x7528;&#x4EE5;&#x914D;&#x7F6E;&#x5916;&#x90E8;&#x8DEF;&#x7531;&#x5668;&#x7684;&#xFF0C;
+&#x5B83;&#x662F;&#x4E00;&#x4E2A;Handler&#x63A5;&#x53E3;&#xFF0C;&#x5373;&#x5916;&#x90E8;&#x8DEF;&#x7531;&#x5668;&#x53EA;&#x8981;&#x5B9E;&#x73B0;&#x4E86;Handler&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;&#xFF0C;
+&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x7684;ServHTTP&#x91CC;&#x9762;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#x3002;</p>
 <p>&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x6240;&#x793A;&#xFF0C;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x7684;&#x8DEF;&#x7531;&#x5668;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
 
@@ -1862,16 +1888,20 @@ mux.handler(r).ServeHTTP(w, r)</code></li>
         </div>
 
         
-        <a href="../docs/03.3.html" class="navigation navigation-prev " aria-label="Previous page: Go如何使得web工作"><i class="fa fa-angle-left"></i></a>
+        <a href="../docs/03.3.html" class="navigation navigation-prev " aria-label="Previous page: HTTP服务端原理"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../docs/03.5.html" class="navigation navigation-next " aria-label="Next page: 小结"><i class="fa fa-angle-right"></i></a>
+        <a href="../docs/03.5.html" class="navigation navigation-next " aria-label="Next page: 编写HTTP客户端"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
 <script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
 
 <script>
 require(["gitbook"], function(gitbook) {
