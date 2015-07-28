@@ -1,11 +1,9 @@
 #文件操作
-在任何计算机设备中，文件是都是必须的对象，而在Web编程中,文件的操作一直是Web程序员经常遇到的问题,
-文件操作在Web应用中是必须的,非常有用的,我们经常遇到生成文件目录,文件(夹)编辑等操作,
-现在我把Go中的这些操作做一详细总结并实例示范如何使用。
+在写程序的时候，我们经常会遇到生成文件与目录，对文件(夹)编辑等操作，下面这些操作做一详细总结并实例示范如何使用。
 
 
 ## 目录操作
-文件操作的大多数函数都是在`os`包里面，下面列举了几个目录操作的：
+文件目录操作的大多数函数都是在`os`包里面，下面列举了几个目录操作的：
 
 - `func Mkdir(name string, perm FileMode) error`   
 	创建名称为name的目录，权限设置是perm，例如0777   
@@ -54,18 +52,20 @@ func main() {
 ```
 
 ## 文件操作
+一般文件操作包括：新建、打开、读写及删除。文件操作很多情况下需要注意权限，默认使用unix文件权限模型。
+
 ### 新建与打开文件
 新建文件可以通过如下两个方法:   
-- `func Create(name string) (file *File, err Error)`   
-	根据提供的文件名创建新的文件，返回一个文件对象，默认权限是0666的文件，返回的文件对象是可读写的。   
+- `func Create(name string) (file *File, err error)`   
+	根据文件名创建新的文件或者清空已存在文件，返回一个文件对象，默认权限是0666的文件，返回的文件对象是可读写的。   
 - `func NewFile(fd uintptr, name string) *File`   
 	根据文件描述符创建相应的文件，返回一个文件对象   
 
 通过如下两个方法来打开文件：   
-- `func Open(name string) (file *File, err Error)`    
+- `func Open(name string) (file *File, err error)`    
 	该方法以只读方式打开一个文件，内部实现其实调用了OpenFile。    
-- `func OpenFile(name string, flag int, perm uint32) (file *File, err Error)`   	
-	打开某一个文件，flag是打开的方式，只读、读写等，perm是权限		
+- `func OpenFile(name string, flag int, perm uint32) (file *File, err error)`   	
+	打开某一个文件，`flag`是打开的方式，只读、读写等，`perm`是权限。		
 	```
 	// flag 可取值:
 	O_RDONLY   // open the file read-only 以只读方式打开
@@ -80,11 +80,11 @@ func main() {
 
 ### 写文件
 写文件函数：   
-- `func (file *File) Write(b []byte) (n int, err Error)`   
+- `func (file *File) Write(b []byte) (n int, err error)`   
 	写入byte数组类型的信息到文件   
-- `func (file *File) WriteAt(b []byte, off int64) (n int, err Error)`   
+- `func (file *File) WriteAt(b []byte, off int64) (n int, err error)`   
 	在指定偏移位置off处开始写入byte数组类型的信息   
-- `func (file *File) WriteString(s string) (ret int, err Error)`   
+- `func (file *File) WriteString(s string) (ret int, err error)`   
 	写入字符串s到文件   
 	
 写文件的示例代码
@@ -114,9 +114,9 @@ func main() {
 
 ### 读文件
 读文件函数：   
-- `func (file *File) Read(b []byte) (n int, err Error)`   
+- `func (file *File) Read(b []byte) (n int, err error)`   
 	读取数据到b中   
-- `func (file *File) ReadAt(b []byte, off int64) (n int, err Error)`   
+- `func (file *File) ReadAt(b []byte, off int64) (n int, err error)`   
 	从off开始读取数据到b中   
 
 读文件的示例代码:
@@ -149,11 +149,32 @@ func main() {
 
 ### 删除文件
 Go语言里面删除文件和删除文件夹是同一个函数   
-- `func Remove(name string) Error`   
-	调用该函数就可以删除文件名为name的文件
+- `func Remove(name string) error`   
+	调用该函数就可以删除文件名为name的文件或者空目录
+- `func RemoveAll(path string) error`
+	当文件夹包含子文件或者子文件夹时，需要使用此函数来进行删除
 
+### 检测文件或者目录是否存在
+Golang默认没有一个检测路径是否存在的函数，但是可以用其它方法代替。示例：
+```go
+func exists(path string) (bool, error) {
+	
+    _, err := os.Stat(path)
+		
+    if err == nil {
+			return true, nil 
+		}
+		
+		// 检测是否为路径不存在的错误
+    if os.IsNotExist(err) {
+			 return false, nil
+		}
+		
+    return true, err
+}
+```
 
-## 示例
+### 小例子
 读取一个目录，并递归列出所有文件
 ```go
 package main
@@ -178,12 +199,16 @@ func printDir(dir []os.FileInfo, root string, deep int) {
   if deep > 3 {
     return
   }
+	
   for _, v := range dir {
+		
     name := v.Name()
-	// 忽略.和..
+		
+		// 忽略.和..
     if strings.HasPrefix(name, ".") {
       continue
     }
+		
     isDir := v.IsDir()
     if !isDir {
       printFile(v, root)
