@@ -1,18 +1,18 @@
 #文件操作
-在写程序的时候，我们经常会遇到生成文件与目录，对文件(夹)编辑等操作，下面这些操作做一详细总结并实例示范如何使用。
+在写程序的时候，我们经常会遇到创建文件与目录，对文件(夹)编辑等操作，下面就这些操作做一个大致介绍并通过示例示范如何使用。
 
 
 ## 目录操作
 文件目录操作的大多数函数都是在`os`包里面，下面列举了几个目录操作的：
 
 - `func Mkdir(name string, perm FileMode) error`   
-	创建名称为name的目录，权限设置是perm，例如0777   
+	创建目录，权限设置是perm，例如0777   
 - `func MkdirAll(path string, perm FileMode) error`   
-	根据path创建多级子目录，例如astaxie/test1/test2。   
+	创建目录，如果路径中有不存在的中间目录，则新建不存在的中间目录，从而尽量保证目录创建成功    
 - `func Remove(name string) error`   
-	删除名称为name的目录，当目录下有文件或者其他目录是会出错   
+	删除文件或空目录   
 - `func RemoveAll(path string) error`   
-	根据path删除多级子目录，如果path是单个名称，那么该目录不删除。   
+	删除目录及目录下所有的子文件与目录   
 - `func Readdir(n int) (fi []FileInfo, err error)`   
     读取一个目录中文件列表   
 	- 如果n > 0，则至多读取并返回n个文件信息   
@@ -52,9 +52,10 @@ func main() {
 ```
 
 ## 文件操作
-一般文件操作包括：新建、打开、读写及删除。文件操作很多情况下需要注意权限，默认使用unix文件权限模型。
+一般文件操作包括：新建、打开、读写及删除。   
+文件操作很多情况下需要注意权限，默认使用unix文件权限模型。
 
-### 新建与打开文件
+#### 新建与打开文件
 新建文件可以通过如下两个方法:   
 - `func Create(name string) (file *File, err error)`   
 	根据文件名创建新的文件或者清空已存在文件，返回一个文件对象，默认权限是0666的文件，返回的文件对象是可读写的。   
@@ -78,7 +79,7 @@ func main() {
 	O_TRUNC    // if possible, truncate file when opened 在条件允许的情况下，打开文件时候清空文件内容
 	```
 
-### 写文件
+#### 写文件
 写文件函数：   
 - `func (file *File) Write(b []byte) (n int, err error)`   
 	写入byte数组类型的信息到文件   
@@ -112,7 +113,7 @@ func main() {
 }
 ```
 
-### 读文件
+#### 读文件
 读文件函数：   
 - `func (file *File) Read(b []byte) (n int, err error)`   
 	读取数据到b中   
@@ -147,14 +148,10 @@ func main() {
 }
 ```
 
-### 删除文件
-Go语言里面删除文件和删除文件夹是同一个函数   
-- `func Remove(name string) error`   
-	调用该函数就可以删除文件名为name的文件或者空目录
-- `func RemoveAll(path string) error`
-	当文件夹包含子文件或者子文件夹时，需要使用此函数来进行删除
+#### 删除文件
+Go语言里面删除文件和删除文件夹是同一个函数，参见上面删除目录操作   
 
-### 检测文件或者目录是否存在
+#### 检测文件或者目录是否存在
 Golang默认没有一个检测路径是否存在的函数，但是可以用其它方法代替。示例：
 ```go
 func exists(path string) (bool, error) {
