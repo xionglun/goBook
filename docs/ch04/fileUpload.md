@@ -44,6 +44,8 @@ func upload(res http.ResponseWriter, req *http.Request) {
 		
 	} else {
 		
+		// 方法一：
+		// 此文件上传处理是将表单数据缓存到本地之后再处理
 		req.ParseMultipartForm(32 << 20)
 		file, handler, err := req.FormFile("uploadfile")
 		if err != nil {
@@ -60,6 +62,41 @@ func upload(res http.ResponseWriter, req *http.Request) {
 		defer f.Close()
 		io.Copy(f, file)
 		
+		/*
+		// 方法二：
+		// 下面方法是一种更优的解决方案，不会去写临时文件
+		reader, err := req.MultipartReader()
+		if err != nil {
+			http.Error(res, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		
+		for {
+			part, err := reader.NextPart()
+			if err == io.EOF {
+				break
+			}
+
+			//if part.FileName() is empty, skip this iteration.
+			if part.FileName() == "" {
+				continue
+			}
+			dst, err := os.Create("/home/" + part.FileName())
+			defer dst.Close()
+
+			if err != nil {
+				http.Error(res, err.Error(), http.StatusInternalServerError)
+				return
+			}
+			
+			if _, err := io.Copy(dst, part); err != nil {
+				http.Error(res, err.Error(), http.StatusInternalServerError)
+				return
+			}
+		}
+		*/
+		
+		fmt.Fprintf(res, "success")
 	}
 }
 ```
