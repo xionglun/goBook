@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="4.5" data-basepath="../.." data-revision="Tue Jul 28 2015 16:26:01 GMT+0800 (CST)">
+    <div class="book" data-level="4.5" data-basepath="../.." data-revision="Wed Jul 29 2015 14:36:00 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1556,6 +1556,8 @@
 
     } <span class="hljs-keyword">else</span> {
 
+        <span class="hljs-comment">// &#x65B9;&#x6CD5;&#x4E00;&#xFF1A;</span>
+        <span class="hljs-comment">// &#x6B64;&#x6587;&#x4EF6;&#x4E0A;&#x4F20;&#x5904;&#x7406;&#x662F;&#x5C06;&#x8868;&#x5355;&#x6570;&#x636E;&#x7F13;&#x5B58;&#x5230;&#x672C;&#x5730;&#x4E4B;&#x540E;&#x518D;&#x5904;&#x7406;</span>
         req.ParseMultipartForm(<span class="hljs-number">32</span> &lt;&lt; <span class="hljs-number">20</span>)
         file, handler, err := req.FormFile(<span class="hljs-string">&quot;uploadfile&quot;</span>)
         <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
@@ -1572,6 +1574,41 @@
         <span class="hljs-keyword">defer</span> f.Close()
         io.Copy(f, file)
 
+        <span class="hljs-comment">/*
+        // &#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;
+        // &#x4E0B;&#x9762;&#x65B9;&#x6CD5;&#x662F;&#x4E00;&#x79CD;&#x66F4;&#x4F18;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x4E0D;&#x4F1A;&#x53BB;&#x5199;&#x4E34;&#x65F6;&#x6587;&#x4EF6;
+        reader, err := req.MultipartReader()
+        if err != nil {
+            http.Error(res, err.Error(), http.StatusInternalServerError)
+            return
+        }
+
+        for {
+            part, err := reader.NextPart()
+            if err == io.EOF {
+                break
+            }
+
+            //if part.FileName() is empty, skip this iteration.
+            if part.FileName() == &quot;&quot; {
+                continue
+            }
+            dst, err := os.Create(&quot;/home/&quot; + part.FileName())
+            defer dst.Close()
+
+            if err != nil {
+                http.Error(res, err.Error(), http.StatusInternalServerError)
+                return
+            }
+
+            if _, err := io.Copy(dst, part); err != nil {
+                http.Error(res, err.Error(), http.StatusInternalServerError)
+                return
+            }
+        }
+        */</span>
+
+        fmt.Fprintf(res, <span class="hljs-string">&quot;success&quot;</span>)
     }
 }
 </code></pre>
@@ -1689,10 +1726,6 @@
 
         
 <script src="../../gitbook/app.js"></script>
-
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
 
 <script>
 require(["gitbook"], function(gitbook) {

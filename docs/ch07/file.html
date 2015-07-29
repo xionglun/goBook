@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="7.5" data-basepath="../.." data-revision="Tue Jul 28 2015 16:26:01 GMT+0800 (CST)">
+    <div class="book" data-level="7.5" data-basepath="../.." data-revision="Wed Jul 29 2015 14:36:00 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1609,6 +1609,7 @@
         <span class="hljs-keyword">return</span>
     }
     <span class="hljs-keyword">defer</span> fout.Close()
+
     <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ {
         fout.WriteString(<span class="hljs-string">&quot;Just a test!\r\n&quot;</span>)
         fout.Write([]<span class="hljs-typename">byte</span>(<span class="hljs-string">&quot;Just a test!\r\n&quot;</span>))
@@ -1637,6 +1638,7 @@
         <span class="hljs-keyword">return</span>
     }
     <span class="hljs-keyword">defer</span> fl.Close()
+
     buf := <span class="hljs-built_in">make</span>([]<span class="hljs-typename">byte</span>, <span class="hljs-number">1024</span>)
     <span class="hljs-keyword">for</span> {
         n, _ := fl.Read(buf)
@@ -1650,19 +1652,19 @@
 <h4 id="%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6">&#x5220;&#x9664;&#x6587;&#x4EF6;</h4>
 <p>Go&#x8BED;&#x8A00;&#x91CC;&#x9762;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x548C;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5939;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x53C2;&#x89C1;&#x4E0A;&#x9762;&#x5220;&#x9664;&#x76EE;&#x5F55;&#x64CD;&#x4F5C;   </p>
 <h4 id="%E6%A3%80%E6%B5%8B%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8">&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x6216;&#x8005;&#x76EE;&#x5F55;&#x662F;&#x5426;&#x5B58;&#x5728;</h4>
-<p>Golang&#x9ED8;&#x8BA4;&#x6CA1;&#x6709;&#x4E00;&#x4E2A;&#x68C0;&#x6D4B;&#x8DEF;&#x5F84;&#x662F;&#x5426;&#x5B58;&#x5728;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x7528;&#x5176;&#x5B83;&#x65B9;&#x6CD5;&#x4EE3;&#x66FF;&#x3002;&#x793A;&#x4F8B;&#xFF1A;</p>
+<p>Golang&#x9ED8;&#x8BA4;&#x6CA1;&#x6709;&#x4E00;&#x4E2A;&#x68C0;&#x6D4B;&#x8DEF;&#x5F84;&#x662F;&#x5426;&#x5B58;&#x5728;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x7528;&#x5176;&#x5B83;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x68C0;&#x6D4B;&#x3002;&#x793A;&#x4F8B;&#xFF1A;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">func</span> exists(path <span class="hljs-typename">string</span>) (<span class="hljs-typename">bool</span>, error) {
 
     _, err := os.Stat(path)
 
     <span class="hljs-keyword">if</span> err == <span class="hljs-constant">nil</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-constant">true</span>, <span class="hljs-constant">nil</span> 
-        }
+        <span class="hljs-keyword">return</span> <span class="hljs-constant">true</span>, <span class="hljs-constant">nil</span>
+    }
 
-        <span class="hljs-comment">// &#x68C0;&#x6D4B;&#x662F;&#x5426;&#x4E3A;&#x8DEF;&#x5F84;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x9519;&#x8BEF;</span>
+    <span class="hljs-comment">// &#x68C0;&#x6D4B;&#x662F;&#x5426;&#x4E3A;&#x8DEF;&#x5F84;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x9519;&#x8BEF;</span>
     <span class="hljs-keyword">if</span> os.IsNotExist(err) {
-             <span class="hljs-keyword">return</span> <span class="hljs-constant">false</span>, <span class="hljs-constant">nil</span>
-        }
+        <span class="hljs-keyword">return</span> <span class="hljs-constant">false</span>, <span class="hljs-constant">nil</span>
+    }
 
     <span class="hljs-keyword">return</span> <span class="hljs-constant">true</span>, err
 }
@@ -1672,69 +1674,69 @@
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
-  <span class="hljs-string">&quot;fmt&quot;</span>
-  <span class="hljs-string">&quot;log&quot;</span>
-  <span class="hljs-string">&quot;os&quot;</span>
-  <span class="hljs-string">&quot;path&quot;</span>
-  <span class="hljs-string">&quot;strings&quot;</span>
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
+    <span class="hljs-string">&quot;path&quot;</span>
+    <span class="hljs-string">&quot;strings&quot;</span>
 )
 
 <span class="hljs-keyword">func</span> printFile(file os.FileInfo, root <span class="hljs-typename">string</span>) {
-  <span class="hljs-comment">// &#x6587;&#x4EF6;&#x5168;&#x8DEF;&#x5F84;</span>
-  filename := path.Join(root, file.Name())
-  fmt.Println(filename)
+    <span class="hljs-comment">// &#x6587;&#x4EF6;&#x5168;&#x8DEF;&#x5F84;</span>
+    filename := path.Join(root, file.Name())
+    fmt.Println(filename)
 }
 
 <span class="hljs-keyword">func</span> printDir(dir []os.FileInfo, root <span class="hljs-typename">string</span>, deep <span class="hljs-typename">int</span>) {
-  <span class="hljs-comment">// &#x5982;&#x679C;&#x6DF1;&#x5EA6;&#x8D85;&#x8FC7;3&#xFF0C;&#x5219;&#x8FD4;&#x56DE;</span>
-  <span class="hljs-comment">// &#x6B64;&#x5904;&#x4EC5;&#x4E3A;&#x6D4B;&#x8BD5;&#x65F6;&#x9632;&#x6B62;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5370;&#x8F93;&#x51FA;&#x592A;&#x591A;</span>
-  <span class="hljs-keyword">if</span> deep &gt; <span class="hljs-number">3</span> {
-    <span class="hljs-keyword">return</span>
-  }
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x6DF1;&#x5EA6;&#x8D85;&#x8FC7;3&#xFF0C;&#x5219;&#x8FD4;&#x56DE;</span>
+    <span class="hljs-comment">// &#x6B64;&#x5904;&#x4EC5;&#x4E3A;&#x6D4B;&#x8BD5;&#x65F6;&#x9632;&#x6B62;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5370;&#x8F93;&#x51FA;&#x592A;&#x591A;</span>
+    <span class="hljs-keyword">if</span> deep &gt; <span class="hljs-number">3</span> {
+        <span class="hljs-keyword">return</span>
+    }
 
-  <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> dir {
+    <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> dir {
 
-    name := v.Name()
+        name := v.Name()
 
         <span class="hljs-comment">// &#x5FFD;&#x7565;.&#x548C;..</span>
-    <span class="hljs-keyword">if</span> strings.HasPrefix(name, <span class="hljs-string">&quot;.&quot;</span>) {
-      <span class="hljs-keyword">continue</span>
-    }
+        <span class="hljs-keyword">if</span> strings.HasPrefix(name, <span class="hljs-string">&quot;.&quot;</span>) {
+            <span class="hljs-keyword">continue</span>
+        }
 
-    isDir := v.IsDir()
-    <span class="hljs-keyword">if</span> !isDir {
-      printFile(v, root)
-    } <span class="hljs-keyword">else</span> {
-      _path := path.Join(root, name)
-      <span class="hljs-comment">// &#x6253;&#x5370;&#x76EE;&#x5F55;&#x540D;&#x79F0;</span>
-      fmt.Println(_path)
-      _dirpath, err := os.Open(_path)
-      <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        log.Fatal(err)
-      }
-      <span class="hljs-keyword">defer</span> _dirpath.Close()
-      _dir, err := _dirpath.Readdir(<span class="hljs-number">0</span>)
-      <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        log.Fatal(err)
-      }
-      <span class="hljs-comment">// &#x9012;&#x5F52;&#x76EE;&#x5F55;</span>
-      printDir(_dir, _path, deep+<span class="hljs-number">1</span>)
-    }
+        isDir := v.IsDir()
+        <span class="hljs-keyword">if</span> !isDir {
+            printFile(v, root)
+        } <span class="hljs-keyword">else</span> {
+            _path := path.Join(root, name)
+            <span class="hljs-comment">// &#x6253;&#x5370;&#x76EE;&#x5F55;&#x540D;&#x79F0;</span>
+            fmt.Println(_path)
+            _dirpath, err := os.Open(_path)
+            <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+                log.Fatal(err)
+            }
+            <span class="hljs-keyword">defer</span> _dirpath.Close()
+
+            _dir, err := _dirpath.Readdir(<span class="hljs-number">0</span>)
+            <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+                log.Fatal(err)
+            }
+            <span class="hljs-comment">// &#x9012;&#x5F52;&#x76EE;&#x5F55;</span>
+            printDir(_dir, _path, deep+<span class="hljs-number">1</span>)
+        }
   }
 }
 
 <span class="hljs-keyword">func</span> main() {
-  <span class="hljs-comment">// &#x8BFB;&#x53D6;go&#x76EE;&#x5F55;, just for example!</span>
-  rootPath := <span class="hljs-string">&quot;/usr/local/go&quot;</span>
-  rootDir, err := os.Open(rootPath)
-  <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-    log.Fatal(err)
-  }
-  <span class="hljs-keyword">defer</span> rootDir.Close()
+    <span class="hljs-comment">// &#x8BFB;&#x53D6;go&#x76EE;&#x5F55;, just for example!</span>
+    rootPath := <span class="hljs-string">&quot;/usr/local/go&quot;</span>
+    rootDir, err := os.Open(rootPath)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatal(err)
+    }
+    <span class="hljs-keyword">defer</span> rootDir.Close()
 
-  fs, err := rootDir.Readdir(<span class="hljs-number">0</span>)
-  printDir(fs, rootPath, <span class="hljs-number">0</span>)
-
+    fs, err := rootDir.Readdir(<span class="hljs-number">0</span>)
+    printDir(fs, rootPath, <span class="hljs-number">0</span>)
 }
 </code></pre>
 
@@ -1757,10 +1759,6 @@
 
         
 <script src="../../gitbook/app.js"></script>
-
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
 
 <script>
 require(["gitbook"], function(gitbook) {
