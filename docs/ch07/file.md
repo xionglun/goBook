@@ -93,22 +93,23 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	userFile := "test.txt"
-	// 以只写且添加的方式打开文件，文件权限为0666
-	fout, err := os.OpenFile(userFile, os.O_WRONLY|os.O_APPEND, 0666)
-	if err != nil {
-		fmt.Println(userFile, err)
-		return
-	}
-	defer fout.Close()
-	for i := 0; i < 10; i++ {
-		fout.WriteString("Just a test!\r\n")
-		fout.Write([]byte("Just a test!\r\n"))
+    userFile := "test.txt"
+    // 以只写且添加的方式打开文件，文件权限为0666
+    fout, err := os.OpenFile(userFile, os.O_WRONLY|os.O_APPEND, 0666)
+    if err != nil {
+        fmt.Println(userFile, err)
+        return
+    }
+    defer fout.Close()
+
+    for i := 0; i < 10; i++ {
+        fout.WriteString("Just a test!\r\n")
+	    fout.Write([]byte("Just a test!\r\n"))
 	}
 }
 ```
@@ -125,25 +126,26 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	userFile := "test.txt"
-	fl, err := os.Open(userFile)
-	if err != nil {
-		fmt.Println(userFile, err)
-		return
+    userFile := "test.txt"
+    fl, err := os.Open(userFile)
+    if err != nil {
+        fmt.Println(userFile, err)
+	    return
 	}
-	defer fl.Close()
-	buf := make([]byte, 1024)
-	for {
-		n, _ := fl.Read(buf)
-		if 0 == n {
-			break
+    defer fl.Close()
+
+    buf := make([]byte, 1024)
+    for {
+        n, _ := fl.Read(buf)
+	    if 0 == n {
+	        break
 		}
-		os.Stdout.Write(buf[:n])
+	    os.Stdout.Write(buf[:n])
 	}
 }
 ```
@@ -152,21 +154,21 @@ func main() {
 Go语言里面删除文件和删除文件夹是同一个函数，参见上面删除目录操作   
 
 #### 检测文件或者目录是否存在
-Golang默认没有一个检测路径是否存在的函数，但是可以用其它方法代替。示例：
+Golang默认没有一个检测路径是否存在的函数，但是可以用其它方式进行检测。示例：
 ```go
 func exists(path string) (bool, error) {
-	
+
     _, err := os.Stat(path)
-		
+
     if err == nil {
-			return true, nil 
-		}
-		
-		// 检测是否为路径不存在的错误
+        return true, nil
+    }
+
+    // 检测是否为路径不存在的错误
     if os.IsNotExist(err) {
-			 return false, nil
-		}
-		
+        return false, nil
+    }
+
     return true, err
 }
 ```
@@ -177,69 +179,69 @@ func exists(path string) (bool, error) {
 package main
 
 import (
-  "fmt"
-  "log"
-  "os"
-  "path"
-  "strings"
+    "fmt"
+    "log"
+    "os"
+    "path"
+    "strings"
 )
 
 func printFile(file os.FileInfo, root string) {
-  // 文件全路径
-  filename := path.Join(root, file.Name())
-  fmt.Println(filename)
+    // 文件全路径
+    filename := path.Join(root, file.Name())
+    fmt.Println(filename)
 }
 
 func printDir(dir []os.FileInfo, root string, deep int) {
-  // 如果深度超过3，则返回
-  // 此处仅为测试时防止控制台打印输出太多
-  if deep > 3 {
-    return
-  }
-	
-  for _, v := range dir {
-		
-    name := v.Name()
-		
-		// 忽略.和..
-    if strings.HasPrefix(name, ".") {
-      continue
+    // 如果深度超过3，则返回
+    // 此处仅为测试时防止控制台打印输出太多
+    if deep > 3 {
+        return
     }
-		
-    isDir := v.IsDir()
-    if !isDir {
-      printFile(v, root)
-    } else {
-      _path := path.Join(root, name)
-	  // 打印目录名称
-      fmt.Println(_path)
-      _dirpath, err := os.Open(_path)
-      if err != nil {
-        log.Fatal(err)
-      }
-      defer _dirpath.Close()
-      _dir, err := _dirpath.Readdir(0)
-      if err != nil {
-        log.Fatal(err)
-      }
-	  // 递归目录
-      printDir(_dir, _path, deep+1)
-    }
+
+    for _, v := range dir {
+
+        name := v.Name()
+
+        // 忽略.和..
+        if strings.HasPrefix(name, ".") {
+            continue
+        }
+
+        isDir := v.IsDir()
+        if !isDir {
+            printFile(v, root)
+        } else {
+            _path := path.Join(root, name)
+            // 打印目录名称
+            fmt.Println(_path)
+            _dirpath, err := os.Open(_path)
+            if err != nil {
+                log.Fatal(err)
+            }
+            defer _dirpath.Close()
+
+            _dir, err := _dirpath.Readdir(0)
+            if err != nil {
+                log.Fatal(err)
+            }
+            // 递归目录
+            printDir(_dir, _path, deep+1)
+        }
   }
 }
 
 func main() {
-  // 读取go目录, just for example!
-  rootPath := "/usr/local/go"
-  rootDir, err := os.Open(rootPath)
-  if err != nil {
-    log.Fatal(err)
-  }
-  defer rootDir.Close()
+    // 读取go目录, just for example!
+    rootPath := "/usr/local/go"
+    rootDir, err := os.Open(rootPath)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer rootDir.Close()
 
-  fs, err := rootDir.Readdir(0)
-  printDir(fs, rootPath, 0)
-
+    fs, err := rootDir.Readdir(0)
+    printDir(fs, rootPath, 0)
 }
 ```
 
