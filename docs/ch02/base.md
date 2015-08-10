@@ -25,7 +25,7 @@ $ tree -L 2 $GOPATH/src
 这样，我们在导入`beego`包的时候，就需要这样写`import "github.com/astaxie/beego"`。   
 当我们需要导入`world`包的时候，就应该这样写`import "hello/world"`
 
-详细导包规则参见：[import](./02.3.md#import)
+详细导包规则参见：[import](./function.md#import)
 
 ## 注释
 在Go语言中，提供两种格式的注释：`/* */` 与 `//`。这两种格式注释与大多数C系语言相同，分别为块注释和行注释。

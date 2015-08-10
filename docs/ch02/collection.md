@@ -40,7 +40,7 @@ easyArray := [2][4]int{ {1, 2, 3, 4} , {5, 6, 7, 8} }
 
 数组的分配如下所示：
 
-![](images/2.2.array.png?raw=true)
+![](../images/2.2.array.png?raw=true)
 
 图2.2 多维数组的映射关系
 
@@ -92,7 +92,7 @@ b = ar[3:5]
 
 它们的数据结构如下所示
 
-![](images/2.2.slice.png?raw=true)
+![](../images/2.2.slice.png?raw=true)
 
 图2.3 slice和array的对应关系图
 
@@ -137,7 +137,7 @@ Slice_a := Array_a[2:5]
 
 上面代码的真正存储结构如下图所示
 
-![](images/2.2.slice2.png?raw=true)
+![](../images/2.2.slice2.png?raw=true)
 
 图2.4 slice对应数组的信息
 
