@@ -91,22 +91,29 @@ Linux系统用户可通过在**Terminal**中执行命令`arch`(即`uname -m`)来
 ```
 
 ### Linux 安装
+安装步骤：
+```sh
+# 下载go安装包，按照系统版本和Go版本更改链接
+$ wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
+# 解压到/usr/local/go这里
+$ sudo tar -C /usr/local -xzf go1.4.2.linux-amd64.tar.gz
+# 修改PATH环境变量，并设置GOPATH，其中GOPATH可以使用任意自定义位置（工作目录）。
+$ vim ~/.profile  # vim ~/.bashrc
+  > export PATH=$PATH:/usr/local/go/bin
+  > export GOPATH=$HOME/go
+```
 
-访问[下载地址][downlink]，32位系统下载go1.4.linux-386.tar.gz，64位系统下载go1.4.linux-amd64.tar.gz。   
-假定你想要安装Go的目录为 `$GO_INSTALL_DIR`，后面替换为相应的目录路径。   
-解压缩`tar.gz`包到安装目录下：`tar zxvf go1.4.linux-amd64.tar.gz -C $GO_INSTALL_DIR`。   
-设置PATH，`export PATH=$PATH:$GO_INSTALL_DIR/go/bin`   
-然后执行`go`：
+然后进行检测，执行`go`：
 
-![](../images/1.1.linux.png?raw=true)
+![](../images/1.1.mac.png?raw=true)
 
 图1.2 Linux系统下安装成功之后执行go显示的信息
 
 如果出现go的Usage信息，那么说明go已经安装成功了；   
 如果出现该命令不存在，那么可以检查一下自己的PATH环境变中是否包含了go的安装目录。
 
-### Windows 安装
 
+### Windows 安装
 访问[下载地址][downlink]，32位系统下载go1.4.windows-386.msi，64位系统下载go1.4.windows-amd64.msi。   
 双击打开下载的文件，一路按照默认点击下一步，这个时候go已经安装到你的系统中。   
 默认安装之后已经在你的系统环境变量中加入了`c:/go/bin`，这个时候打开cmd，输入`go`：
