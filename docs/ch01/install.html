@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="1.1" data-basepath="../.." data-revision="Mon Aug 10 2015 11:25:14 GMT+0800 (CST)">
+    <div class="book" data-level="1.1" data-basepath="../.." data-revision="Mon Aug 10 2015 23:45:20 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1582,8 +1582,18 @@
  $ brew install go --with-cc-common
 </code></pre>
 <h3 id="linux-%E5%AE%89%E8%A3%85">Linux &#x5B89;&#x88C5;</h3>
-<p>&#x8BBF;&#x95EE;<a href="https://golang.org/dl/" title="Go&#x5B89;&#x88C5;&#x5305;&#x4E0B;&#x8F7D;" target="_blank">&#x4E0B;&#x8F7D;&#x5730;&#x5740;</a>&#xFF0C;32&#x4F4D;&#x7CFB;&#x7EDF;&#x4E0B;&#x8F7D;go1.4.linux-386.tar.gz&#xFF0C;64&#x4F4D;&#x7CFB;&#x7EDF;&#x4E0B;&#x8F7D;go1.4.linux-amd64.tar.gz&#x3002;<br>&#x5047;&#x5B9A;&#x4F60;&#x60F3;&#x8981;&#x5B89;&#x88C5;Go&#x7684;&#x76EE;&#x5F55;&#x4E3A; <code>$GO_INSTALL_DIR</code>&#xFF0C;&#x540E;&#x9762;&#x66FF;&#x6362;&#x4E3A;&#x76F8;&#x5E94;&#x7684;&#x76EE;&#x5F55;&#x8DEF;&#x5F84;&#x3002;<br>&#x89E3;&#x538B;&#x7F29;<code>tar.gz</code>&#x5305;&#x5230;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4E0B;&#xFF1A;<code>tar zxvf go1.4.linux-amd64.tar.gz -C $GO_INSTALL_DIR</code>&#x3002;<br>&#x8BBE;&#x7F6E;PATH&#xFF0C;<code>export PATH=$PATH:$GO_INSTALL_DIR/go/bin</code><br>&#x7136;&#x540E;&#x6267;&#x884C;<code>go</code>&#xFF1A;</p>
-<p><img src="../images/1.1.linux.png?raw=true" alt=""></p>
+<p>&#x5B89;&#x88C5;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<pre><code class="lang-sh"><span class="hljs-comment"># &#x4E0B;&#x8F7D;go&#x5B89;&#x88C5;&#x5305;&#xFF0C;&#x6309;&#x7167;&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x548C;Go&#x7248;&#x672C;&#x66F4;&#x6539;&#x94FE;&#x63A5;</span>
+$ wget https://storage.googleapis.com/golang/go1.<span class="hljs-number">4.2</span>.linux-amd64.tar.gz
+<span class="hljs-comment"># &#x89E3;&#x538B;&#x5230;/usr/local/go&#x8FD9;&#x91CC;</span>
+$ sudo tar -C /usr/<span class="hljs-built_in">local</span> -xzf go1.<span class="hljs-number">4.2</span>.linux-amd64.tar.gz
+<span class="hljs-comment"># &#x4FEE;&#x6539;PATH&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;GOPATH&#xFF0C;&#x5176;&#x4E2D;GOPATH&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EFB;&#x610F;&#x81EA;&#x5B9A;&#x4E49;&#x4F4D;&#x7F6E;&#xFF08;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#xFF09;&#x3002;</span>
+$ vim ~/.profile  <span class="hljs-comment"># vim ~/.bashrc</span>
+  &gt; <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/usr/<span class="hljs-built_in">local</span>/go/bin
+  &gt; <span class="hljs-built_in">export</span> GOPATH=<span class="hljs-variable">$HOME</span>/go
+</code></pre>
+<p>&#x7136;&#x540E;&#x8FDB;&#x884C;&#x68C0;&#x6D4B;&#xFF0C;&#x6267;&#x884C;<code>go</code>&#xFF1A;</p>
+<p><img src="../images/1.1.mac.png?raw=true" alt=""></p>
 <p>&#x56FE;1.2 Linux&#x7CFB;&#x7EDF;&#x4E0B;&#x5B89;&#x88C5;&#x6210;&#x529F;&#x4E4B;&#x540E;&#x6267;&#x884C;go&#x663E;&#x793A;&#x7684;&#x4FE1;&#x606F;</p>
 <p>&#x5982;&#x679C;&#x51FA;&#x73B0;go&#x7684;Usage&#x4FE1;&#x606F;&#xFF0C;&#x90A3;&#x4E48;&#x8BF4;&#x660E;go&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x6210;&#x529F;&#x4E86;&#xFF1B;<br>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x8BE5;&#x547D;&#x4EE4;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x68C0;&#x67E5;&#x4E00;&#x4E0B;&#x81EA;&#x5DF1;&#x7684;PATH&#x73AF;&#x5883;&#x53D8;&#x4E2D;&#x662F;&#x5426;&#x5305;&#x542B;&#x4E86;go&#x7684;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x3002;</p>
 <h3 id="windows-%E5%AE%89%E8%A3%85">Windows &#x5B89;&#x88C5;</h3>
