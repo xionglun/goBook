@@ -1,11 +1,7 @@
 #JSON处理
-JSON（Javascript Object Notation）是一种轻量级的数据交换语言，以文字为基础，具有自我描述性且易于让人阅读。
-尽管JSON是Javascript的一个子集，但JSON是独立于语言的文本格式，并且采用了类似于C语言家族的一些习惯。   
-JSON与XML最大的不同在于XML是一个完整的标记语言，而JSON不是。
-JSON由于比XML更小、更快，更易解析,以及浏览器的内建快速解析支持,使得其更适用于网络数据传输领域。   
-目前我们看到很多的开放平台，基本上都是采用了JSON作为他们的数据交互的接口。
-既然JSON在Web开发中如此重要，那么Go语言对JSON支持的怎么样呢？   
-Go语言的标准库已经非常好的支持了JSON，可以很容易的对JSON数据进行编、解码的工作。
+
+[JSON](http://json.org/json-zh.html)（Javascript Object Notation）是一种轻量级独立于语言的文本格式。
+
 
 前一小节的运维的例子用JSON来表示，结果描述如下：
 ```json
@@ -14,7 +10,7 @@ Go语言的标准库已经非常好的支持了JSON，可以很容易的对JSON�
 
 本小节余下的内容将以此JSON数据为基础，来介绍go语言的json包对JSON数据的编、解码。
 ## 解析JSON
-### 解析到结构体
+### 一、解析到结构体
 假如有了上面的JSON串，那么我们如何来解析这个JSON串呢？Go的JSON包中有如下函数
 ```go
 func Unmarshal(data []byte, v interface{}) error
@@ -58,16 +54,22 @@ func main() {
 当你接收到一个很大的JSON数据结构而你却只想获取其中的部分数据的时候，你只需将你想要的数据对应的字段名大写，
 即可轻松解决这个问题。
 
-### 解析到interface
+### 二、解析到interface
 上面那种解析方式是在我们知晓被解析的JSON数据的结构的前提下采取的方案，
 如果我们不知道被解析的数据的格式，又应该如何来解析呢？   
 我们知道interface{}可以用来存储任意数据类型的对象，这种数据结构正好用于存储解析的未知结构的json数据的结果。
-JSON包中采用map[string]interface{}和[]interface{}结构来存储任意的JSON对象和数组。
+JSON包中采用`map[string]interface{}`和`[]interface{}`结构来存储任意的JSON对象和数组。
+
 Go类型和JSON类型的对应关系如下：   
-- bool 代表 JSON booleans,
-- float64 代表 JSON numbers,
-- string 代表 JSON strings,
-- nil 代表 JSON null.
+
+| Go 类型 | JSON 类型 |
+| ------ | -------- |
+| bool   | boolean  |
+| float64| number  |
+| string | string  |
+| []interface{} | array |
+| map[string]interface{} | object |
+| nil | null |
 
 现在我们假设有如下的JSON数据
 ```go
