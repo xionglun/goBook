@@ -2,7 +2,7 @@
 
 
 ### Linux 安装
-安装步骤：
+(需翻墙)安装步骤：
 ```sh
 # 下载go安装包，按照系统版本和Go版本更改链接
 $ wget https://storage.googleapis.com/golang/go1.5.linux-amd64.tar.gz
@@ -13,6 +13,9 @@ $ vim ~/.profile  # 编辑 ~/.bashrc
   > export PATH=$PATH:/usr/local/go/bin
   > export GOPATH=$HOME/go
 ```
+
+> 如不能翻墙，可以将下载地址替换为：
+> http://d.querror.com/go1.5.linux-amd64.tar.gz
 
 然后进行检测，执行`go`：
 
@@ -58,40 +61,22 @@ Go提供了每个平台打好包的一键安装，这些包默认会安装到如
 
 
 ### Windows 安装
-访问[下载地址][downlink]，32位系统下载go1.4.windows-386.msi，64位系统下载go1.4.windows-amd64.msi。   
+访问[下载地址][downlink]，32位系统下载go1.5.windows-386.msi，64位系统下载go1.5.windows-amd64.msi。   
 双击打开下载的文件，一路按照默认点击下一步，这个时候go已经安装到你的系统中。   
 默认安装之后已经在你的系统环境变量中加入了`c:/go/bin`，这个时候打开cmd，输入`go`：
 
 看到类似上面Linux安装成功的图片说明已经安装成功。
 
 
-## 第三方工具安装
-### GVM
-gvm是第三方开发的Go多版本管理工具，类似ruby里面的rvm工具。使用起来相当的方便，安装gvm使用如下命令：
-```sh
-bash < <(curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer)
-```
+### 无需翻墙链接
+Go 1.5下载地址：   
+* [go1.5.src.tar.gz](http://d.querror.com/go1.5.src.tar.gz)
+* [go1.5.darwin-amd64.tar.gz](http://d.querror.com/go1.5.darwin-amd64.tar.gz)
+* [go1.5.darwin-amd64.pkg](http://d.querror.com/go1.5.darwin-amd64.pkg)
+* [go1.5.linux-amd64.tar.gz](http://d.querror.com/go1.5.linux-amd64.tar.gz)
+* [go1.5.windows-386.msi](http://d.querror.com/go1.5.windows-386.msi)
+* [go1.5.windows-amd64.msi](http://d.querror.com/go1.5.windows-amd64.msi)
+* [go1.5.windows-amd64.zip](http://d.querror.com/go1.5.windows-amd64.zip)
 
-安装完成后我们就可以安装go了：
-```
-gvm install go1.5
-gvm use go1.5
-```
-也可以使用下面的命令，省去每次调用`gvm use`的麻烦：
-```
-gvm use go1.5 --default
-```
-
-执行完上面的命令之后GOPATH、GOROOT等环境变量会自动设置好，这样就可以直接使用了。
-
-### apt-get
-Ubuntu是目前使用最多的Linux桌面系统，使用`apt-get`命令来管理软件包，我们可以通过下面的命令来安装Go，
-为了以后方便，应该把 `git`也安装上：
-```
-sudo apt-get install python-software-properties
-sudo add-apt-repository ppa:gophers/go
-sudo apt-get update
-sudo apt-get install golang-stable git-core
-```
 
 [downlink]: https://golang.org/dl/ "Go安装包下载"
