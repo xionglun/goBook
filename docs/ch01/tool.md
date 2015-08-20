@@ -1,56 +1,25 @@
 # Go开发工具
-
 本节我将介绍几个开发工具，它们都具有自动化提示，自动化fmt功能。因为它们都是跨平台的，所以安装步骤之类的都是通用的。
 
-## Vim
+### Vim
 Vim是从vi发展出来的一个文本编辑器, 代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。
 
-![](../images/1.4.vim.png?raw=true)
-
-图1.9 VIM编辑器自动化提示Go界面
-
- 1. 配置vim高亮显示
+ 1. 安装[Vundle](https://github.com/VundleVim/Vundle.vim) 
   ```
-	cp -r $GOROOT/misc/vim/* ~/.vim/
+  $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   ```
 
- 2. 在~/.vimrc文件中增加语法高亮显示
+ 2. 在~/.vimrc文件中增加golang插件`fatih/vim-go`
   ```
-	filetype plugin indent on
-	syntax on
-  ```
-
- 3. 安装[Gocode](https://github.com/nsf/gocode/)
-  ```
-	go get -u github.com/nsf/gocode
+  Plugin 'fatih/vim-go'
   ```
 
-	gocode默认安装到`$GOBIN`下面。
-
- 4. 配置[Gocode](https://github.com/nsf/gocode/)
+ 3. 安装
   ```
-	~ cd $GOPATH/src/github.com/nsf/gocode/vim
-	~ ./update.bash
-	~ gocode set propose-builtins true
-	propose-builtins true
-	~ gocode set lib-path "/home/border/gocode/pkg/linux_amd64"
-	lib-path "/home/border/gocode/pkg/linux_amd64"
-	~ gocode set
-	propose-builtins true
-	lib-path "/home/border/gocode/pkg/linux_amd64"
+  :PluginInstall
   ```
 
-	> gocode set里面的两个参数的含意说明：
-	>
-	> propose-builtins：是否自动提示Go的内置函数、类型和常量，默认为false，不提示。
-	>
-	> lib-path:默认情况下，gocode只会搜索**$GOPATH/pkg/$GOOS_$GOARCH** 和 
-  > **$GOROOT/pkg/$GOOS_$GOARCH** 目录下的包，当然这个设置就是可以设置我们额外的lib能访问的路径
-
- 5. 恭喜你，安装完成，你现在可以使用`:e main.go`体验一下开发Go的乐趣。
-
-
- ## Sublime Text
+### Sublime Text
  
    这里将介绍Sublime Text 2（以下简称Sublime）+GoSublime+gocode+MarGo的组合，那么为什么选择这个组合呢？
  
@@ -76,54 +45,48 @@ Vim是从vi发展出来的一个文本编辑器, 代码补全、编译及错误�
    根据自己相应的系统下载相应的版本，然后打开Sublime，对于不熟悉Sublime的同学可以先看一下这篇文章[Sublime Text 2 入门及技巧](http://lucifr.com/139225/sublime-text-2-tricks-and-tips/)
  
    1. 打开之后安装 Package Control：Ctrl+` 打开命令行，执行如下代码：
- 
- 		import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
- 
+    ```
+    import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
+    ```
     这个时候重启一下Sublime，可以发现在在菜单栏多了一个如下的栏目，说明Package Control已经安装成功了。
  
    ![](../images/1.4.sublime3.png?raw=true)
+   图1.7 sublime包管理
  
- 	图1.7 sublime包管理
+   2. 安装完之后就可以安装Sublime的插件了。
+      需安装GoSublime、SidebarEnhancements和Go Build，安装插件之后记得重启Sublime生效，
+      Ctrl+Shift+p打开Package Controll 输入`pcip`（即“Package Control: Install Package”的缩写）。   
+      这个时候看左下角显示正在读取包数据，完成之后出现如下界面
+      ![](../images/1.4.sublime4.png?raw=true)
+      图1.8 sublime安装插件界面   
+      这个时候输入GoSublime，按确定就开始安装了。同理应用于SidebarEnhancements和Go Build。
  
+   3. 验证是否安装成功，你可以打开Sublime，打开main.go，看看语法是不是高亮了，
+      输入`import`是不是自动化提示了，`import "fmt"`之后，输入`fmt.`是不是自动化提示有函数了。   
+      如果已经出现这个提示，那说明你已经安装完成了，并且完成了自动提示。   
+      如果没有出现这样的提示，一般就是你的`$PATH`没有配置正确。
+      你可以打开终端，输入gocode，是不是能够正确运行，如果不行就说明`$PATH`没有配置正确。
+      (针对XP)有时候在终端能运行成功,但sublime无提示或者编译解码错误,请安装sublime text3和convert utf8插件试一试
  
-   2. 安装完之后就可以安装Sublime的插件了。需安装GoSublime、SidebarEnhancements和Go Build，安装插件之后记得重启Sublime生效，Ctrl+Shift+p打开Package Controll 输入`pcip`（即“Package Control: Install Package”的缩写）。
- 
-   这个时候看左下角显示正在读取包数据，完成之后出现如下界面
- 
-   ![](../images/1.4.sublime4.png?raw=true)
- 
- 	图1.8 sublime安装插件界面
- 
-   这个时候输入GoSublime，按确定就开始安装了。同理应用于SidebarEnhancements和Go Build。
- 
-   3. 验证是否安装成功，你可以打开Sublime，打开main.go，看看语法是不是高亮了，输入`import`是不是自动化提示了，`import "fmt"`之后，输入`fmt.`是不是自动化提示有函数了。
- 
-   如果已经出现这个提示，那说明你已经安装完成了，并且完成了自动提示。
- 
-   如果没有出现这样的提示，一般就是你的`$PATH`没有配置正确。你可以打开终端，输入gocode，是不是能够正确运行，如果不行就说明`$PATH`没有配置正确。
-   (针对XP)有时候在终端能运行成功,但sublime无提示或者编译解码错误,请安装sublime text3和convert utf8插件试一试
- 
-   4. MacOS下已经设置了$GOROOT, $GOPATH, $GOBIN，还是没有自动提示怎么办。
-   
-   请在sublime中使用command + 9， 然后输入env检查$PATH, GOROOT, $GOPATH, $GOBIN等变量， 如果没有请采用下面的方法。
-   
-   首先建立下面的连接， 然后从Terminal中直接启动sublime
-   
-   ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
- 
-   5. 项目支持,让sublime支持项目本身的pkg库提示,有两种基本的实现
-   
-   一种为设定 gosublime 插件的 `Setting - user` 配置 
-   ```json
- 		{
- 			"env": { "GOPATH": "$HOME/golang:$GS_GOPATH" }
- 		}
-   ```
-   
-   `$GS_GOPATH` 是 gosublime 的伪环境变量, 它自动寻找 `.go`文件所在的 `~/go/src` 来推测 `~/go/` 为项目位置, 从而自动适应 `GOPATH` 。在这里你应当将$HOME/golang换成你自己的go目录路径。（注意：使用这种方式会在sublime内覆盖原有的GOPATH，如果这里设置出错，会产生GOPATH相关的问题）
+   4. MacOS下已经设置了$GOROOT, $GOPATH, $GOBIN，还是没有自动提示怎么办。   
+      请在sublime中使用command + 9， 然后输入env检查$PATH, GOROOT, $GOPATH, $GOBIN等变量，
+      如果没有请采用下面的方法。   
+      首先建立下面的连接， 然后从Terminal中直接启动sublime
+      ```
+      ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
+      ```
+   5. 项目支持,让sublime支持项目本身的pkg库提示,有两种基本的实现   
+      一种为设定 gosublime 插件的 `Setting - user` 配置 
+      ```json
+        {
+          "env": { "GOPATH": "$HOME/golang:$GS_GOPATH" }
+        }
+      ```
+      `$GS_GOPATH` 是 gosublime 的伪环境变量, 它自动寻找 `.go`文件所在的 `~/go/src` 来推测 `~/go/` 为项目位置, 
+      从而自动适应 `GOPATH` 。在这里你应当将$HOME/golang换成你自己的go目录路径。
+      （注意：使用这种方式会在sublime内覆盖原有的GOPATH，如果这里设置出错，会产生GOPATH相关的问题）
  
    另外一种为保存sublime 项目 , 修改 project_name.sublime-project 添加节点
- 
    ```
  		"settings": {
  			"GoSublime": {

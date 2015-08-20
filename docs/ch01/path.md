@@ -1,40 +1,43 @@
 # GOPATH与工作空间
 
-## GOPATH设置
-  go 命令依赖一个重要的环境变量：$GOPATH<sup>1</sup>
+### GOPATH设置
+go 命令依赖一个重要的环境变量：$GOPATH<sup>1</sup>   
+*（注：这个不是Go安装目录。下面以笔者的工作目录为说明，请替换自己机器上的工作目录。）*
 
-  *（注：这个不是Go安装目录。下面以笔者的工作目录为说明，请替换自己机器上的工作目录。）*
-
-  在类似 Unix 环境大概这样设置：
+在 Unix/Linux/MacOSX 环境大概这样设置：
 ```sh
 export GOPATH=/home/apple/mygo
 ```
-为了方便，应该把新建以上文件夹，并且把以上一行加入到 `.bashrc` 或者 `.zshrc` 或者自己的 `sh` 的配置文件中。
+为了方便，应该把以上一行加入到`.bashrc`或者`.zshrc`或者自己的`sh`的配置文件中。
 
 Windows 设置如下，新建一个环境变量名称叫做GOPATH：
 ```
 GOPATH=c:\mygo
 ```
-GOPATH允许多个目录，当有多个目录时，请注意分隔符，多个目录的时候Windows是分号`;`，Linux系统是冒号`:`。   
-当有多个GOPATH时，默认会将go get的内容放在第一个目录下。
+GOPATH允许多个目录，当有多个目录时，请注意分隔符。 Windows是分号`;`、而Linux/Unix/MacOSX系统是冒号`:`。   
+当有多个GOPATH时，默认会将`go get`的内容放在第一个目录下。
 
-以上 $GOPATH 目录约定有三个子目录：
-
+以上**$GOPAT**目录约定有三个子目录：   
 - src 存放源代码（比如：.go .c .h .s等）
 - pkg 编译后生成的文件（比如：.a）
-- bin 编译后生成的可执行文件（为了方便，可以把此目录加入到 $PATH 变量中，
-  如果有多个gopath，那么使用`${GOPATH//://bin:}/bin`添加所有的bin目录）
+- bin 编译后生成的可执行文件（为了方便，可以把此目录加入到`$PATH`变量中）
 
-以后我所有的例子都是以mygo作为我的gopath目录
+以后我所有的例子都是以mygo作为我的GOPATH目录
 
 ## 应用目录结构
-GOPATH下的src目录就是接下来开发程序的主要目录，所有的源码都是放在这个目录下面。
-一般我们的做法就是一个目录一个项目，例如: $GOPATH/src/mymath 表示mymath这个应用包或者可执行应用。
-这个根据package是main还是其他来决定，main的话就是可执行应用，其他的话就是应用包，这个会在后续详细介绍package。
+**GOPATH** 下的**src**目录就是接下来开发程序的主要目录，所有的源码都是放在这个目录下面。
+一般我们的做法就是一个目录一个项目，例如: `$GOPATH/src/mymath` 表示**mymath**这个应用包或者可执行应用。
+
+应用类型是根据入口**package**是**main**还是其他名称来决定：
+
+* main的话就是可执行应用，
+* 其他的话就是应用包
+
+这个会在后续详细介绍package。
 
 以后自己新建应用或者一个代码包都是在src目录下新建一个文件夹，文件夹名称一般是代码包名称，当然也允许多级目录。   
 例如在src下面新建了目录$GOPATH/src/github.com/astaxie/beedb 
-那么这个包路径就是"github.com/astaxie/beedb"，包名称是最后一个目录beedb
+那么这个 *包路径* 就是"github.com/astaxie/beedb"，*包名称* 是最后一个目录beedb
 
 执行如下代码
 ```sh
@@ -115,8 +118,8 @@ Hello, world.  Sqrt(2) = 1.414213562373095
 ## 获取远程包
 go语言有一个获取远程包的工具就是`go get`，
 目前go get支持多数开源社区(例如：github、googlecode、bitbucket、Launchpad)
-```
-go get github.com/astaxie/beedb
+```sh
+$ go get github.com/astaxie/beedb
 ```
 >go get -u 参数可以自动更新包，而且当go get的时候会自动获取该包依赖的其他第三方包
 
@@ -141,7 +144,7 @@ $GOPATH
 
 在代码中如何使用远程包？   
 很简单的就是和使用本地包一样，只要在开头import相应的路径就可以
-```
+```go
 import "github.com/astaxie/beedb"
 ```
 
