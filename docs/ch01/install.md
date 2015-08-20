@@ -15,11 +15,11 @@ $ vim ~/.profile  # 编辑 ~/.bashrc
 ```
 
 > 如不能翻墙，可以将下载地址替换为：
-> http://d.querror.com/go1.5.linux-amd64.tar.gz
+> http://allen.qiniudn.com/go1.5.linux-amd64.tar.gz
 
 然后进行检测，执行`go`：
 
-![](../images/1.1.mac.png?raw=true)
+![](../images/1.1.linux.png?raw=true)
 
 图1.2 Linux系统下安装成功之后执行go显示的信息
 
@@ -46,37 +46,30 @@ $ vim ~/.profile  # 编辑 ~/.bashrc
  $ brew upgrade go
 ```
 
-## Go源码安装
+### Go源码安装
 参见: [Golang源码安装](http://golang.org/doc/install/source)(需翻墙)
 
 
-## Go标准包安装
-Go提供了每个平台打好包的一键安装，这些包默认会安装到如下目录：/usr/local/go (Windows系统：c:\Go)；   
-
-> 当然你可以改变他们的安装位置，但是改变之后你必须在你的环境变量中设置如下信息：
-> ```sh
-> export GOROOT=$HOME/go  
-> export PATH=$PATH:$GOROOT/bin
-> ```
-
-
 ### Windows 安装
-访问[下载地址][downlink]，32位系统下载go1.5.windows-386.msi，64位系统下载go1.5.windows-amd64.msi。   
+按照系统对应下面下载地址下载：   
+ * 32位系统下载 go1.5.windows-386.msi
+ * 64位系统下载 go1.5.windows-amd64.msi
+
 双击打开下载的文件，一路按照默认点击下一步，这个时候go已经安装到你的系统中。   
 默认安装之后已经在你的系统环境变量中加入了`c:/go/bin`，这个时候打开cmd，输入`go`：
 
 看到类似上面Linux安装成功的图片说明已经安装成功。
 
 
-### 无需翻墙链接
+### ☟无需翻墙链接
 Go 1.5下载地址：   
-* [go1.5.src.tar.gz](http://d.querror.com/go1.5.src.tar.gz)
-* [go1.5.darwin-amd64.tar.gz](http://d.querror.com/go1.5.darwin-amd64.tar.gz)
-* [go1.5.darwin-amd64.pkg](http://d.querror.com/go1.5.darwin-amd64.pkg)
-* [go1.5.linux-amd64.tar.gz](http://d.querror.com/go1.5.linux-amd64.tar.gz)
-* [go1.5.windows-386.msi](http://d.querror.com/go1.5.windows-386.msi)
-* [go1.5.windows-amd64.msi](http://d.querror.com/go1.5.windows-amd64.msi)
-* [go1.5.windows-amd64.zip](http://d.querror.com/go1.5.windows-amd64.zip)
+* [go1.5.src.tar.gz](http://allen.qiniudn.com/go1.5.src.tar.gz)
+* [go1.5.darwin-amd64.tar.gz](http://allen.qiniudn.com/go1.5.darwin-amd64.tar.gz)
+* [go1.5.darwin-amd64.pkg](http://allen.qiniudn.com/go1.5.darwin-amd64.pkg)
+* [go1.5.linux-amd64.tar.gz](http://allen.qiniudn.com/go1.5.linux-amd64.tar.gz)
+* [go1.5.windows-386.msi](http://allen.qiniudn.com/go1.5.windows-386.msi)
+* [go1.5.windows-amd64.msi](http://allen.qiniudn.com/go1.5.windows-amd64.msi)
+* [go1.5.windows-amd64.zip](http://allen.qiniudn.com/go1.5.windows-amd64.zip)
 
 
 [downlink]: https://golang.org/dl/ "Go安装包下载"
