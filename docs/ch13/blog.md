@@ -205,7 +205,7 @@ layout.tpl
 	    <li><a href="/new">New Post</a></li>
 	</ul>
 	
-	{{.LayoutContent}}
+	{{ book._layoutContent }}
 	
 	</body>
 	</html>
@@ -215,22 +215,22 @@ index.tpl
 	<h1>Blog posts</h1>
 
 	<ul>
-	{{range .blogs}}
+	{{ book._rangeBlogs }}
 	    <li>
-	        <a href="/view/{{.Id}}">{{.Title}}</a> 
-	        from {{.Created}}
+	        <a href="/view/{{.Id}}">{{ book._title }}</a> 
+	        from {{ book._created }}
 	        <a href="/edit/{{.Id}}">Edit</a>
 	        <a href="/delete/{{.Id}}">Delete</a>
 	    </li>
-	{{end}}
+	{{ book.end }}
 	</ul>
 ```
 view.tpl
 ```html
-	<h1>{{.Post.Title}}</h1>
-	{{.Post.Created}}<br/>
+	<h1>{{ book._postTitle }}</h1>
+	{{ book._postCreated }}<br/>
 	
-	{{.Post.Content}}				
+	{{ book._postContent }}
 ```
 new.tpl
 ```html
@@ -243,13 +243,13 @@ new.tpl
 ```
 edit.tpl
 ```html	
-	<h1>Edit {{.Post.Title}}</h1>
+	<h1>Edit {{ book._postTitle }}</h1>
 
 	<h1>New Blog Post</h1>
 	<form action="" method="post">
-	标题:<input type="text" name="title" value="{{.Post.Title}}"><br>
-	内容：<textarea name="content" colspan="3" rowspan="10">{{.Post.Content}}</textarea>
-	<input type="hidden" name="id" value="{{.Post.Id}}">
+	标题:<input type="text" name="title" value="{{ book._postTitle }}"><br>
+	内容：<textarea name="content" colspan="3" rowspan="10">{{ book._postContent }}</textarea>
+	<input type="hidden" name="id" value="{{ book._postId }}">
 	<input type="submit">
 	</form>
 ```

@@ -46,6 +46,14 @@
     "_output1":"{{with $x := \"output\" | printf \"%q\"}}\n\t{{$x}}\n{{end}}",
     "_output2":"{{with $x := \"output\"}}\n\t{{printf \"%q\" $x}}\n{{end}}",
     "_output3":"{{with $x := \"output\"}}\n\t{{$x | printf \"%q\"}}\n{{end}}",
-    "_ifAnyThing": "{{if `anything`}}"
+    "_ifAnyThing": "{{if `anything`}}",
+    "_layoutContent": "{{.LayoutContent}}",
+    "_rangeBlogs": "{{range .blogs}}",
+    "_title": "{{.Title}}",
+    "_created": "{{.Created}}",
+    "_postTitle": "{{.Post.Title}}",
+    "_postId": "{{.Post.Id}}",
+    "_postCreated": "{{.Post.Created}}",
+    "_postContent": "{{.Post.Content}}"
   }
 }
