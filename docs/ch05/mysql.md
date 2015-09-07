@@ -1,21 +1,24 @@
 # 使用MySQL数据库
-目前互联网上流行的网站构架方式是LAMP，其中的M即MySQL。
-作为数据库，MySQL以免费、开源、使用方便为优势成为了很多Web开发的后端数据库存储引擎。
+目前MySQL以免费、开源、使用方便等优势，成为了很多Web应用的后端关系型数据库。
 
 ## MySQL驱动
-Go中支持MySQL的驱动目前比较多，有如下几种，有些是支持database/sql标准，而有些是采用了自己的实现接口,常用的有如下几种:
+Go中支持MySQL的驱动目前比较多，有些是支持database/sql标准，而有些是采用了自己的实现接口,常用的有如下几种:
 
 - https://github.com/go-sql-driver/mysql  支持database/sql，全部采用go写。
 - https://github.com/ziutek/mymysql   支持database/sql，也支持自定义的接口，全部采用go写。
 
-接下来的例子我主要以第一个驱动为例(我目前项目中也是采用它来驱动)，也推荐大家采用它，主要理由：
+接下来的例子主要以第一个驱动为例，也推荐大家采用它，主要理由：
 
 - 这个驱动比较新，维护的比较好
 - 完全支持database/sql接口
 - 支持keepalive，保持长连接
 
+
+
 ## 示例代码
-接下来的几个小节里面我们都将采用同一个数据库表结构：数据库test，用户表userinfo，关联用户信息表userdetail。
+接下来的几个小节里面我们都将采用同一个数据库表结构：   
+数据库`test`，用户表`userinfo`，关联用户信息表`userdetail`。
+
 ```go
 	CREATE TABLE `userinfo` (
 		`uid` INT(10) NOT NULL AUTO_INCREMENT,
@@ -45,6 +48,7 @@ import (
 )
 
 func main() {
+	// [username[:password]@][protocol[(address)]]/dbname[?param1=value1&...&paramN=valueN]
 	db, err := sql.Open("mysql", "astaxie:astaxie@/test?charset=utf8")
 	checkErr(err)
 

@@ -43,9 +43,9 @@
     "_TemplateFooter": "{{template \"footer\"}}",
     "_childTemplate":"{{define \"子模板名称\"}}",
     "_rangeEmail":"{{range .Emails}}",
-    "_output1":"{{with $x := \"output\" | printf \"%q\"}}{{$x}}{{end}}",
-    "_output2":"{{with $x := \"output\"}}{{printf \"%q\" $x}}{{end}}",
-    "_output3":"{{with $x := \"output\"}}{{$x | printf \"%q\"}}{{end}}",
+    "_output1":"{{with $x := \"output\" | printf \"%q\"}}\n\t{{$x}}\n{{end}}",
+    "_output2":"{{with $x := \"output\"}}\n\t{{printf \"%q\" $x}}\n{{end}}",
+    "_output3":"{{with $x := \"output\"}}\n\t{{$x | printf \"%q\"}}\n{{end}}",
     "_ifAnyThing": "{{if `anything`}}"
   }
 }
