@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="10.2" data-basepath="../.." data-revision="Fri Aug 21 2015 13:15:18 GMT+0800 (CST)">
+    <div class="book" data-level="10.2" data-basepath="../.." data-revision="Mon Sep 07 2015 17:26:51 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1636,11 +1636,11 @@ fmt.Printf(msg(lang, <span class="hljs-string">&quot;how old&quot;</span>), <spa
 </code></pre>
 <p>&#x800C;&#x5BF9;&#x4E8E;&#x91CC;&#x9762;&#x7684;index.tpl&#x91CC;&#x9762;&#x7684;&#x8D44;&#x6E90;&#x8BBE;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-go">    // js&#x6587;&#x4EF6;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;views/{{.VV.Lang}}/js/jquery/jquery-1.8.0.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;views/{{ book._vvlang }}/js/jquery/jquery-1.8.0.min.js&quot;&gt;&lt;/script&gt;
     // css&#x6587;&#x4EF6;
-    &lt;link href=&quot;views/{{.VV.Lang}}/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;views/{{ book._vvlang }}/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
     // &#x56FE;&#x7247;&#x6587;&#x4EF6;
-    &lt;img src=&quot;views/{{.VV.Lang}}/images/btn.png&quot;&gt;
+    &lt;img src=&quot;views/{{ book._vvlang }}/images/btn.png&quot;&gt;
 </code></pre>
 <p>&#x91C7;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x672C;&#x5730;&#x5316;&#x89C6;&#x56FE;&#x4EE5;&#x53CA;&#x8D44;&#x6E90;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x7684;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#x4E86;&#x3002;</p>
 <h2 id="%E6%80%BB%E7%BB%93">&#x603B;&#x7ED3;</h2>
