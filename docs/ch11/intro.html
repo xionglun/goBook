@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>错误处理，调试和测试 | Golang Web</title>
+        <title>错误处理、调试和测试 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.1.0">
@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="11" data-basepath="../.." data-revision="Mon Sep 07 2015 17:26:51 GMT+0800 (CST)">
+    <div class="book" data-level="11" data-basepath="../.." data-revision="Fri Oct 09 2015 10:43:59 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1051,7 +1051,7 @@
                         
                             <b>11.</b>
                         
-                        错误处理，调试和测试
+                        错误处理、调试和测试
                     </a>
                 
             
@@ -1082,7 +1082,7 @@
                         
                             <b>11.2.</b>
                         
-                        使用GDB调试
+                        GDB调试
                     </a>
                 
             
@@ -1097,7 +1097,7 @@
                         
                             <b>11.3.</b>
                         
-                        Go怎么写测试用例
+                        Go 测试
                     </a>
                 
             
@@ -1517,7 +1517,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="11-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%EF%BC%8C%E8%B0%83%E8%AF%95%E5%92%8C%E6%B5%8B%E8%AF%95">11 &#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF0C;&#x8C03;&#x8BD5;&#x548C;&#x6D4B;&#x8BD5;</h1>
+                        <h1 id="%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%EF%BC%8C%E8%B0%83%E8%AF%95%E5%92%8C%E6%B5%8B%E8%AF%95">&#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF0C;&#x8C03;&#x8BD5;&#x548C;&#x6D4B;&#x8BD5;</h1>
 <p>&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x770B;&#x5230;&#x5F88;&#x591A;&#x7A0B;&#x5E8F;&#x5458;&#x5927;&#x90E8;&#x5206;&#x7684;&quot;&#x7F16;&#x7A0B;&quot;&#x65F6;&#x95F4;&#x90FD;&#x82B1;&#x8D39;&#x5728;&#x68C0;&#x67E5;bug&#x548C;&#x4FEE;&#x590D;bug&#x4E0A;&#x3002;
 &#x65E0;&#x8BBA;&#x4F60;&#x662F;&#x5728;&#x7F16;&#x5199;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x8FD8;&#x662F;&#x91CD;&#x6784;&#x7CFB;&#x7EDF;&#xFF0C;&#x51E0;&#x4E4E;&#x90FD;&#x662F;&#x82B1;&#x8D39;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#x5728;&#x8FDB;&#x884C;&#x6545;&#x969C;&#x6392;&#x9664;&#x548C;&#x6D4B;&#x8BD5;&#xFF0C;&#x5916;&#x754C;&#x90FD;&#x89C9;&#x5F97;&#x6211;&#x4EEC;&#x7A0B;&#x5E8F;&#x5458;&#x662F;&#x8BBE;&#x8BA1;&#x5E08;&#xFF0C;
 &#x80FD;&#x591F;&#x628A;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4ECE;&#x65E0;&#x505A;&#x5230;&#x6709;&#xFF0C;&#x662F;&#x4E00;&#x9879;&#x5F88;&#x4F1F;&#x5927;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x800C;&#x4E14;&#x662F;&#x76F8;&#x5F53;&#x6709;&#x8DA3;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F46;&#x4E8B;&#x5B9E;&#x4E0A;&#x6211;&#x4EEC;&#x6BCF;&#x5929;&#x90FD;&#x662F;&#x5F98;&#x5F8A;&#x5728;&#x6392;&#x9519;&#x3001;&#x8C03;&#x8BD5;&#x3001;&#x6D4B;&#x8BD5;&#x4E4B;&#x95F4;&#x3002;
@@ -1528,8 +1528,6 @@
 Go&#x7684;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x89C4;&#x5219;&#x89C4;&#x8303;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x4EE5;&#x540E;&#x5347;&#x7EA7;&#x4FEE;&#x6539;&#x8FD0;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x6700;&#x5C0F;&#x5316;&#x7684;&#x6D4B;&#x8BD5;&#x3002;</p>
 <p>&#x957F;&#x671F;&#x4EE5;&#x6765;&#xFF0C;&#x57F9;&#x517B;&#x826F;&#x597D;&#x7684;&#x8C03;&#x8BD5;&#x3001;&#x6D4B;&#x8BD5;&#x4E60;&#x60EF;&#x4E00;&#x76F4;&#x662F;&#x5F88;&#x591A;&#x7A0B;&#x5E8F;&#x5458;&#x9003;&#x907F;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6240;&#x4EE5;&#x73B0;&#x5728;&#x4F60;&#x4E0D;&#x8981;&#x518D;&#x9003;&#x907F;&#x4E86;&#xFF0C;
 &#x5C31;&#x4ECE;&#x4F60;&#x73B0;&#x5728;&#x7684;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#xFF0C;&#x4ECE;&#x5B66;&#x4E60;Go Web&#x5F00;&#x53D1;&#x5F00;&#x59CB;&#x517B;&#x6210;&#x826F;&#x597D;&#x7684;&#x4E60;&#x60EF;&#x3002;</p>
-<h2 id="%E7%9B%AE%E5%BD%95">&#x76EE;&#x5F55;</h2>
-<p><img src="images/navi11.png?raw=true" alt=""></p>
 
                     
                     </section>
