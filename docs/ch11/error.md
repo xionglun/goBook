@@ -1,19 +1,20 @@
-#错误处理
-Go语言主要的设计准则是：简洁、明白，简洁是指语法和C类似，相当的简单，明白是指任何语句都是很明显的，不含有任何隐含的东西，
-在错误处理方案的设计中也贯彻了这一思想。我们知道在C语言里面是通过返回-1或者NULL之类的信息来表示错误。
-但是对于使用者来说，不查看相应的API说明文档，根本搞不清楚这个返回值究竟代表什么意思，比如:返回0是成功，还是失败,
-而Go定义了一个叫做error的类型，来显式表达错误。在使用时，通过把返回的error变量与nil的比较，来判定操作是否成功。
+# 错误处理
+Go语言主要的设计准则是：简洁、明白。
+简洁是指语法和C类似，相当的简单，明白是指任何语句都是很明显的，不含有任何隐含的东西，在错误处理方案的设计中也贯彻了这一思想。   
+在C语言里面是通过返回-1或者NULL之类的信息来表示错误，但是对于使用者来说，不查看相应的API说明文档，
+根本搞不清楚这个返回值究竟代表什么意思，比如：返回0时是成功还是失败？    
+Go定义了一个叫做error的类型，来显式表达错误。在使用时，通过把返回的error变量与**nil**的比较，来判定操作是否成功。   
 例如`os.Open`函数在打开文件失败时将返回一个不为nil的error变量
 ```go
-	func Open(name string) (file *File, err error)
+func Open(name string) (file *File, err error)
 ```
 
 下面这个例子通过调用`os.Open`打开一个文件，如果出现错误，那么就会调用`log.Fatal`来输出错误信息：
 ```go
-	f, err := os.Open("filename.ext")
-	if err != nil {
-		log.Fatal(err)
-	}
+f, err := os.Open("filename.ext")
+if err != nil {
+	log.Fatal(err)
+}
 ```
 
 类似于`os.Open`函数，标准包中所有可能出错的API都会返回一个error变量，以方便错误处理。
@@ -23,111 +24,111 @@ Go语言主要的设计准则是：简洁、明白，简洁是指语法和C类�
 ## Error类型
 **error** 类型是一个接口类型，这是它的定义：
 ```go
-	type error interface {
-		Error() string
-	}
+type error interface {
+	Error() string
+}
 ```
 
-**error** 是一个内置的接口类型，我们可以在`/builtin/`包下面找到相应的定义。
-而我们在很多内部包里面用到的**error**是errors包下面的实现的私有结构errorString
+**error** 是一个内置的接口类型，可以在`/builtin/`包下面找到相应的定义。   
+但在很多内部包里面用到的`error`是**errors**包下面的实现的私有结构`errorString`:
 ```go
-	// errorString is a trivial implementation of error.
-	type errorString struct {
-		s string
-	}
+// errorString is a trivial implementation of error.
+type errorString struct {
+	s string
+}
 
-	func (e *errorString) Error() string {
-		return e.s
-	}
+func (e *errorString) Error() string {
+	return e.s
+}
 ```
 	
 你可以通过`errors.New`把一个字符串转化为errorString，以得到一个满足接口error的对象，其内部实现如下：
 ```go
-	// New returns an error that formats as the given text.
-	func New(text string) error {
-		return &errorString{text}
-	}
+// New returns an error that formats as the given text.
+func New(text string) error {
+	return &errorString{text}
+}
 ```
 
 下面这个例子演示了如何使用`errors.New`:
 ```go
-	func Sqrt(f float64) (float64, error) {
-		if f < 0 {
-			return 0, errors.New("math: square root of negative number")
-		}
-		// implementation
+func Sqrt(f float64) (float64, error) {
+	if f < 0 {
+		return 0, errors.New("math: square root of negative number")
 	}
+	// implementation
+}
 ```
-	
-在下面的例子中，我们在调用Sqrt的时候传递的一个负数，然后就得到了non-nil的error对象，将此对象与nil比较，结果为true。
-所以fmt.Println(fmt包在处理error时会调用Error方法)被调用，以输出错误，请看下面调用的示例代码：
+
+在下面的例子中，调用Sqrt的时候传递的一个负数，然后就得到了不为nil的error对象，将此对象与nil比较，结果为true。
+所以fmt.Println(fmt包在处理error时会调用Error方法)被调用，以输出错误：
 ```go
-  f, err := Sqrt(-1)
-  if err != nil {
-      fmt.Println(err)
-  }
+f, err := Sqrt(-1)
+if err != nil {
+    fmt.Println(err)
+}
 ```
 
 ## 自定义Error
 通过上面的介绍我们知道error是一个interface，所以在实现自己的包的时候，
 通过定义实现此接口的结构，我们就可以实现自己的错误定义，
-请看来自Json包的示例：
+请看来自json包的示例：
 ```go
-	type SyntaxError struct {
-		msg    string // 错误描述
-		Offset int64  // 错误发生的位置
-	}
+type SyntaxError struct {
+	msg    string // 错误描述
+	Offset int64  // 错误发生的位置
+}
 
-	func (e *SyntaxError) Error() string { return e.msg }
+func (e *SyntaxError) Error() string { return e.msg }
 ```
 
 Offset字段在调用Error的时候不会被打印，但是我们可以通过类型断言获取错误类型，然后可以打印相应的错误信息，
 请看下面的例子:
 ```go
-	if err := dec.Decode(&val); err != nil {
-		if serr, ok := err.(*json.SyntaxError); ok {
-			line, col := findLine(f, serr.Offset)
-			return fmt.Errorf("%s:%d:%d: %v", f.Name(), line, col, err)
-		}
-		return err
+if err := dec.Decode(&val); err != nil {
+	if serr, ok := err.(*json.SyntaxError); ok {
+		line, col := findLine(f, serr.Offset)
+		return fmt.Errorf("%s:%d:%d: %v", f.Name(), line, col, err)
 	}
+	return err
+}
 ```
 
 需要注意的是，函数返回自定义错误时，返回值推荐设置为error类型，而非自定义错误类型，
 特别需要注意的是不应预声明自定义错误类型的变量。例如：
 ```go
-	func Decode() *SyntaxError { // 错误，将可能导致上层调用者err!=nil的判断永远为true。
-        var err *SyntaxError     // 预声明错误变量
-        if 出错条件 {
-            err = &SyntaxError{}
-        }
-        return err               // 错误，err永远等于非nil，导致上层调用者err!=nil的判断始终为true
+func Decode() *SyntaxError { // 错误，将可能导致上层调用者err!=nil的判断永远为true。
+    var err *SyntaxError     // 预声明错误变量
+    if 出错条件 {
+        err = &SyntaxError{}
     }
+    return err               // 错误，err永远等于非nil，导致上层调用者err!=nil的判断始终为true
+}
 ```
-	
+
 原因见 http://golang.org/doc/faq#nil_error
 
 上面例子简单的演示了如何自定义Error类型。但是如果我们还需要更复杂的错误处理呢？此时，我们来参考一下net包采用的方法：
 ```go
-	package net
+package net
 
-	type Error interface {
-	    error
-	    Timeout() bool   // Is the error a timeout?
-	    Temporary() bool // Is the error temporary?
-	}
+type Error interface {
+    error
+    Timeout() bool   // Is the error a timeout?
+    Temporary() bool // Is the error temporary?
+}
 ```
 
 在调用的地方，通过类型断言err是不是net.Error,来细化错误的处理，例如下面的例子，
 如果一个网络发生临时性错误，那么将会sleep 1秒之后重试：
 ```go
-	if nerr, ok := err.(net.Error); ok && nerr.Temporary() {
-		time.Sleep(1e9)
-		continue
-	}
-	if err != nil {
-		log.Fatal(err)
-	}
+if nerr, ok := err.(net.Error); ok && nerr.Temporary() {
+	time.Sleep(1e9)
+	continue
+}
+if err != nil {
+	log.Fatal(err)
+}
 ```
 
 ## 错误处理
@@ -136,22 +137,22 @@ Go在错误处理上采用了与C类似的检查返回值的方式，而不是�
 
 请看下面这个例子代码：
 ```go
-	func init() {
-		http.HandleFunc("/view", viewRecord)
-	}
+func init() {
+	http.HandleFunc("/view", viewRecord)
+}
 
-	func viewRecord(w http.ResponseWriter, r *http.Request) {
-		c := appengine.NewContext(r)
-		key := datastore.NewKey(c, "Record", r.FormValue("id"), 0, nil)
-		record := new(Record)
-		if err := datastore.Get(c, key, record); err != nil {
-			http.Error(w, err.Error(), 500)
-			return
-		}
-		if err := viewTemplate.Execute(w, record); err != nil {
-			http.Error(w, err.Error(), 500)
-		}
+func viewRecord(w http.ResponseWriter, r *http.Request) {
+	c := appengine.NewContext(r)
+	key := datastore.NewKey(c, "Record", r.FormValue("id"), 0, nil)
+	record := new(Record)
+	if err := datastore.Get(c, key, record); err != nil {
+		http.Error(w, err.Error(), 500)
+		return
 	}
+	if err := viewTemplate.Execute(w, record); err != nil {
+		http.Error(w, err.Error(), 500)
+	}
+}
 ```
 
 上面的例子中获取数据和模板展示调用时都有检测错误，
@@ -159,72 +160,72 @@ Go在错误处理上采用了与C类似的检查返回值的方式，而不是�
 但是当越来越多的HandleFunc加入之后，这样的错误处理逻辑代码就会越来越多，
 其实我们可以通过自定义路由器来缩减代码(实现的思路可以参考第三章的HTTP详解)。
 ```go
-	type appHandler func(http.ResponseWriter, *http.Request) error
+type appHandler func(http.ResponseWriter, *http.Request) error
 
-	func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-		if err := fn(w, r); err != nil {
-			http.Error(w, err.Error(), 500)
-		}
+func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if err := fn(w, r); err != nil {
+		http.Error(w, err.Error(), 500)
 	}
+}
 ```
 
 上面我们定义了自定义的路由器，然后我们可以通过如下方式来注册函数：
 ```go
-	func init() {
-		http.Handle("/view", appHandler(viewRecord))
-	}
+func init() {
+	http.Handle("/view", appHandler(viewRecord))
+}
 ```
 
 当请求/view的时候我们的逻辑处理可以变成如下代码，和第一种实现方式相比较已经简单了很多。
 ```go
-	func viewRecord(w http.ResponseWriter, r *http.Request) error {
-		c := appengine.NewContext(r)
-		key := datastore.NewKey(c, "Record", r.FormValue("id"), 0, nil)
-		record := new(Record)
-		if err := datastore.Get(c, key, record); err != nil {
-			return err
-		}
-		return viewTemplate.Execute(w, record)
+func viewRecord(w http.ResponseWriter, r *http.Request) error {
+	c := appengine.NewContext(r)
+	key := datastore.NewKey(c, "Record", r.FormValue("id"), 0, nil)
+	record := new(Record)
+	if err := datastore.Get(c, key, record); err != nil {
+		return err
 	}
+	return viewTemplate.Execute(w, record)
+}
 ```
 
 上面的例子错误处理的时候所有的错误返回给用户的都是500错误码，然后打印出来相应的错误代码，
 其实我们可以把这个错误信息定义的更加友好，调试的时候也方便定位问题，我们可以自定义返回的错误类型：
 ```go
-	type appError struct {
-		Error   error
-		Message string
-		Code    int
-	}
+type appError struct {
+	Error   error
+	Message string
+	Code    int
+}
 ```
 
 这样我们的自定义路由器可以改成如下方式：
 ```go
-	type appHandler func(http.ResponseWriter, *http.Request) *appError
+type appHandler func(http.ResponseWriter, *http.Request) *appError
 
-	func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-		if e := fn(w, r); e != nil { // e is *appError, not os.Error.
-			c := appengine.NewContext(r)
-			c.Errorf("%v", e.Error)
-			http.Error(w, e.Message, e.Code)
-		}
+func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if e := fn(w, r); e != nil { // e is *appError, not os.Error.
+		c := appengine.NewContext(r)
+		c.Errorf("%v", e.Error)
+		http.Error(w, e.Message, e.Code)
 	}
+}
 ```
 
 这样修改完自定义错误之后，我们的逻辑处理可以改成如下方式：
 ```go
-	func viewRecord(w http.ResponseWriter, r *http.Request) *appError {
-		c := appengine.NewContext(r)
-		key := datastore.NewKey(c, "Record", r.FormValue("id"), 0, nil)
-		record := new(Record)
-		if err := datastore.Get(c, key, record); err != nil {
-			return &appError{err, "Record not found", 404}
-		}
-		if err := viewTemplate.Execute(w, record); err != nil {
-			return &appError{err, "Can't display record", 500}
-		}
-		return nil
+func viewRecord(w http.ResponseWriter, r *http.Request) *appError {
+	c := appengine.NewContext(r)
+	key := datastore.NewKey(c, "Record", r.FormValue("id"), 0, nil)
+	record := new(Record)
+	if err := datastore.Get(c, key, record); err != nil {
+		return &appError{err, "Record not found", 404}
 	}
+	if err := viewTemplate.Execute(w, record); err != nil {
+		return &appError{err, "Can't display record", 500}
+	}
+	return nil
+}
 ```
 
 如上所示，在我们访问view的时候可以根据不同的情况获取不同的错误码和错误信息，虽然这个和第一个版本的代码量差不多，
