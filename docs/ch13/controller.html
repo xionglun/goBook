@@ -8,7 +8,7 @@
         <title>controller设计 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.1.0">
+        <meta name="generator" content="GitBook 2.5.0">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -19,6 +19,18 @@
         <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
         
     <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
     
     
         <link rel="stylesheet" href="../../style.css">
@@ -38,32 +50,30 @@
     <body>
         
         
-    <div class="book" data-level="13.3" data-basepath="../.." data-revision="Fri Oct 09 2015 10:43:59 GMT+0800 (CST)">
+    <div class="book" data-level="13.3" data-chapter-title="controller设计" data-filepath="docs/ch13/controller.md" data-basepath="../.." data-revision="Mon Jan 04 2016 13:47:45 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search">
-        <input type="text" placeholder="输入并搜索" class="form-control" />
-    </div>
-    <ul class="summary">
-        
-        
-        
-        
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
 
-        
+            
 
-        
+            
     
         <li class="chapter " data-level="0" data-path="index.html">
             
                 
                     <a href="../../index.html">
+                
                         <i class="fa fa-check"></i>
                         
                         介绍
                     </a>
-                
             
             
         </li>
@@ -72,13 +82,13 @@
             
                 
                     <a href="../../docs/ch01/start.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
                         
                         Go环境配置
                     </a>
-                
             
             
             <ul class="articles">
@@ -88,13 +98,13 @@
             
                 
                     <a href="../../docs/ch01/install.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
                         
                         Go安装
                     </a>
-                
             
             
         </li>
@@ -103,13 +113,13 @@
             
                 
                     <a href="../../docs/ch01/path.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>1.2.</b>
                         
                         GOPATH 与工作空间
                     </a>
-                
             
             
         </li>
@@ -118,13 +128,13 @@
             
                 
                     <a href="../../docs/ch01/command.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>1.3.</b>
                         
                         Go 命令
                     </a>
-                
             
             
         </li>
@@ -133,13 +143,13 @@
             
                 
                     <a href="../../docs/ch01/tool.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>1.4.</b>
                         
                         Go开发工具
                     </a>
-                
             
             
         </li>
@@ -148,13 +158,13 @@
             
                 
                     <a href="../../docs/ch01/cross_compile.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>1.5.</b>
                         
                         Go 交叉编译
                     </a>
-                
             
             
         </li>
@@ -168,13 +178,13 @@
             
                 
                     <a href="../../docs/ch02/start.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.</b>
                         
                         Go语言基础
                     </a>
-                
             
             
             <ul class="articles">
@@ -184,13 +194,13 @@
             
                 
                     <a href="../../docs/ch02/hello.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
                         
                         你好，Go
                     </a>
-                
             
             
         </li>
@@ -199,13 +209,13 @@
             
                 
                     <a href="../../docs/ch02/base.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.2.</b>
                         
                         Go基础
                     </a>
-                
             
             
         </li>
@@ -214,13 +224,13 @@
             
                 
                     <a href="../../docs/ch02/collection.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.3.</b>
                         
                         数组、切片与字典
                     </a>
-                
             
             
         </li>
@@ -229,13 +239,13 @@
             
                 
                     <a href="../../docs/ch02/function.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.4.</b>
                         
                         流程和函数
                     </a>
-                
             
             
         </li>
@@ -244,13 +254,13 @@
             
                 
                     <a href="../../docs/ch02/struct.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.5.</b>
                         
                         struct
                     </a>
-                
             
             
         </li>
@@ -259,13 +269,13 @@
             
                 
                     <a href="../../docs/ch02/object.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.6.</b>
                         
                         面向对象
                     </a>
-                
             
             
         </li>
@@ -274,13 +284,13 @@
             
                 
                     <a href="../../docs/ch02/interface.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.7.</b>
                         
                         interface
                     </a>
-                
             
             
         </li>
@@ -289,13 +299,13 @@
             
                 
                     <a href="../../docs/ch02/concurrency.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>2.8.</b>
                         
                         并发
                     </a>
-                
             
             
         </li>
@@ -309,13 +319,13 @@
             
                 
                     <a href="../../docs/ch03/start.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>3.</b>
                         
                         Web基础
                     </a>
-                
             
             
             <ul class="articles">
@@ -325,13 +335,13 @@
             
                 
                     <a href="../../docs/ch03/intro.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>3.1.</b>
                         
                         web工作方式
                     </a>
-                
             
             
         </li>
@@ -340,13 +350,13 @@
             
                 
                     <a href="../../docs/ch03/server.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>3.2.</b>
                         
                         编写HTTP服务端
                     </a>
-                
             
             
         </li>
@@ -355,13 +365,13 @@
             
                 
                     <a href="../../docs/ch03/server_principle.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>3.3.</b>
                         
                         HTTP服务端原理
                     </a>
-                
             
             
         </li>
@@ -370,13 +380,13 @@
             
                 
                     <a href="../../docs/ch03/http.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>3.4.</b>
                         
                         HTTP包详解
                     </a>
-                
             
             
         </li>
@@ -385,13 +395,13 @@
             
                 
                     <a href="../../docs/ch03/client.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>3.5.</b>
                         
                         编写HTTP客户端
                     </a>
-                
             
             
         </li>
@@ -405,13 +415,13 @@
             
                 
                     <a href="../../docs/ch04/form.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>4.</b>
                         
                         表单
                     </a>
-                
             
             
             <ul class="articles">
@@ -421,13 +431,13 @@
             
                 
                     <a href="../../docs/ch04/handle.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>4.1.</b>
                         
                         处理表单的输入
                     </a>
-                
             
             
         </li>
@@ -436,13 +446,13 @@
             
                 
                     <a href="../../docs/ch04/validation.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>4.2.</b>
                         
                         验证表单的输入
                     </a>
-                
             
             
         </li>
@@ -451,13 +461,13 @@
             
                 
                     <a href="../../docs/ch04/xss.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.</b>
                         
                         预防跨站脚本
                     </a>
-                
             
             
         </li>
@@ -466,13 +476,13 @@
             
                 
                     <a href="../../docs/ch04/defence.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>4.4.</b>
                         
                         防止多次递交表单
                     </a>
-                
             
             
         </li>
@@ -481,13 +491,13 @@
             
                 
                     <a href="../../docs/ch04/fileUpload.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>4.5.</b>
                         
                         处理文件上传
                     </a>
-                
             
             
         </li>
@@ -501,13 +511,13 @@
             
                 
                     <a href="../../docs/ch05/database.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>5.</b>
                         
                         访问数据库
                     </a>
-                
             
             
             <ul class="articles">
@@ -517,13 +527,13 @@
             
                 
                     <a href="../../docs/ch05/interface.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>5.1.</b>
                         
                         database/sql接口
                     </a>
-                
             
             
         </li>
@@ -532,13 +542,13 @@
             
                 
                     <a href="../../docs/ch05/mysql.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>5.2.</b>
                         
                         使用MySQL数据库
                     </a>
-                
             
             
         </li>
@@ -547,13 +557,13 @@
             
                 
                     <a href="../../docs/ch05/sqlite.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>5.3.</b>
                         
                         使用SQLite数据库
                     </a>
-                
             
             
         </li>
@@ -562,13 +572,13 @@
             
                 
                     <a href="../../docs/ch05/postgresql.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>5.4.</b>
                         
                         使用PostgreSQL数据库
                     </a>
-                
             
             
         </li>
@@ -577,13 +587,13 @@
             
                 
                     <a href="../../docs/ch05/nosql.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>5.5.</b>
                         
                         NoSQL数据库操作
                     </a>
-                
             
             
         </li>
@@ -597,13 +607,13 @@
             
                 
                     <a href="../../docs/ch06/session.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>6.</b>
                         
                         session和数据存储
                     </a>
-                
             
             
             <ul class="articles">
@@ -613,13 +623,13 @@
             
                 
                     <a href="../../docs/ch06/sessionAndCookie.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>6.1.</b>
                         
                         关于session和cookie
                     </a>
-                
             
             
         </li>
@@ -628,13 +638,13 @@
             
                 
                     <a href="../../docs/ch06/usage.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>6.2.</b>
                         
                         使用session
                     </a>
-                
             
             
         </li>
@@ -643,13 +653,13 @@
             
                 
                     <a href="../../docs/ch06/storage.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>6.3.</b>
                         
                         存储session
                     </a>
-                
             
             
         </li>
@@ -658,13 +668,13 @@
             
                 
                     <a href="../../docs/ch06/kidnap.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>6.4.</b>
                         
                         预防session劫持
                     </a>
-                
             
             
         </li>
@@ -678,13 +688,13 @@
             
                 
                     <a href="../../docs/ch07/schema.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>7.</b>
                         
                         文本文件处理
                     </a>
-                
             
             
             <ul class="articles">
@@ -694,13 +704,13 @@
             
                 
                     <a href="../../docs/ch07/xml.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>7.1.</b>
                         
                         XML处理
                     </a>
-                
             
             
         </li>
@@ -709,13 +719,13 @@
             
                 
                     <a href="../../docs/ch07/json.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>7.2.</b>
                         
                         JSON处理
                     </a>
-                
             
             
         </li>
@@ -724,13 +734,13 @@
             
                 
                     <a href="../../docs/ch07/regexp.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>7.3.</b>
                         
                         正则处理
                     </a>
-                
             
             
         </li>
@@ -739,13 +749,13 @@
             
                 
                     <a href="../../docs/ch07/template.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>7.4.</b>
                         
                         模板处理
                     </a>
-                
             
             
         </li>
@@ -754,13 +764,13 @@
             
                 
                     <a href="../../docs/ch07/file.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>7.5.</b>
                         
                         文件操作
                     </a>
-                
             
             
         </li>
@@ -769,13 +779,13 @@
             
                 
                     <a href="../../docs/ch07/string.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>7.6.</b>
                         
                         字符串处理
                     </a>
-                
             
             
         </li>
@@ -789,13 +799,13 @@
             
                 
                     <a href="../../docs/ch08/intro.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>8.</b>
                         
                         Web服务
                     </a>
-                
             
             
             <ul class="articles">
@@ -805,13 +815,13 @@
             
                 
                     <a href="../../docs/ch08/socket.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>8.1.</b>
                         
                         Socket编程
                     </a>
-                
             
             
         </li>
@@ -820,13 +830,13 @@
             
                 
                     <a href="../../docs/ch08/websocket.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>8.2.</b>
                         
                         WebSocket
                     </a>
-                
             
             
         </li>
@@ -835,13 +845,13 @@
             
                 
                     <a href="../../docs/ch08/restful.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>8.3.</b>
                         
                         REST
                     </a>
-                
             
             
         </li>
@@ -850,13 +860,13 @@
             
                 
                     <a href="../../docs/ch08/rpc.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>8.4.</b>
                         
                         RPC
                     </a>
-                
             
             
         </li>
@@ -870,13 +880,13 @@
             
                 
                     <a href="../../docs/ch09/intro.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>9.</b>
                         
                         安全与加密
                     </a>
-                
             
             
             <ul class="articles">
@@ -886,13 +896,13 @@
             
                 
                     <a href="../../docs/ch09/csrf.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>9.1.</b>
                         
                         预防CSRF攻击
                     </a>
-                
             
             
         </li>
@@ -901,13 +911,13 @@
             
                 
                     <a href="../../docs/ch09/filter.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>9.2.</b>
                         
                         确保输入过滤
                     </a>
-                
             
             
         </li>
@@ -916,13 +926,13 @@
             
                 
                     <a href="../../docs/ch09/xss.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>9.3.</b>
                         
                         避免XSS攻击
                     </a>
-                
             
             
         </li>
@@ -931,13 +941,13 @@
             
                 
                     <a href="../../docs/ch09/sql.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>9.4.</b>
                         
                         避免SQL注入
                     </a>
-                
             
             
         </li>
@@ -946,13 +956,13 @@
             
                 
                     <a href="../../docs/ch09/password.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>9.5.</b>
                         
                         存储密码
                     </a>
-                
             
             
         </li>
@@ -961,13 +971,13 @@
             
                 
                     <a href="../../docs/ch09/crypto.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>9.6.</b>
                         
                         加密和解密数据
                     </a>
-                
             
             
         </li>
@@ -981,13 +991,13 @@
             
                 
                     <a href="../../docs/ch10/i18n.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>10.</b>
                         
                         国际化和本地化
                     </a>
-                
             
             
             <ul class="articles">
@@ -997,13 +1007,13 @@
             
                 
                     <a href="../../docs/ch10/default.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>10.1.</b>
                         
                         设置默认地区
                     </a>
-                
             
             
         </li>
@@ -1012,13 +1022,13 @@
             
                 
                     <a href="../../docs/ch10/locale.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>10.2.</b>
                         
                         本地化资源
                     </a>
-                
             
             
         </li>
@@ -1027,13 +1037,13 @@
             
                 
                     <a href="../../docs/ch10/internationalization.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>10.3.</b>
                         
                         国际化站点
                     </a>
-                
             
             
         </li>
@@ -1047,13 +1057,13 @@
             
                 
                     <a href="../../docs/ch11/intro.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>11.</b>
                         
                         错误处理、调试和测试
                     </a>
-                
             
             
             <ul class="articles">
@@ -1063,13 +1073,13 @@
             
                 
                     <a href="../../docs/ch11/error.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>11.1.</b>
                         
                         错误处理
                     </a>
-                
             
             
         </li>
@@ -1078,13 +1088,13 @@
             
                 
                     <a href="../../docs/ch11/debug.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>11.2.</b>
                         
                         GDB调试
                     </a>
-                
             
             
         </li>
@@ -1093,13 +1103,13 @@
             
                 
                     <a href="../../docs/ch11/test.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>11.3.</b>
                         
                         Go 测试
                     </a>
-                
             
             
         </li>
@@ -1113,13 +1123,13 @@
             
                 
                     <a href="../../docs/ch12/product.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>12.</b>
                         
                         部署与维护
                     </a>
-                
             
             
             <ul class="articles">
@@ -1129,13 +1139,13 @@
             
                 
                     <a href="../../docs/ch12/log.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>12.1.</b>
                         
                         应用日志
                     </a>
-                
             
             
         </li>
@@ -1144,13 +1154,13 @@
             
                 
                     <a href="../../docs/ch12/error.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>12.2.</b>
                         
                         网站错误处理
                     </a>
-                
             
             
         </li>
@@ -1159,13 +1169,13 @@
             
                 
                     <a href="../../docs/ch12/deploy.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>12.3.</b>
                         
                         应用部署
                     </a>
-                
             
             
         </li>
@@ -1174,13 +1184,13 @@
             
                 
                     <a href="../../docs/ch12/backup.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>12.4.</b>
                         
                         备份和恢复
                     </a>
-                
             
             
         </li>
@@ -1194,13 +1204,13 @@
             
                 
                     <a href="../../docs/ch13/framework.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>13.</b>
                         
                         如何设计一个Web框架
                     </a>
-                
             
             
             <ul class="articles">
@@ -1210,13 +1220,13 @@
             
                 
                     <a href="../../docs/ch13/design.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>13.1.</b>
                         
                         项目规划
                     </a>
-                
             
             
         </li>
@@ -1225,13 +1235,13 @@
             
                 
                     <a href="../../docs/ch13/route.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>13.2.</b>
                         
                         自定义路由器设计
                     </a>
-                
             
             
         </li>
@@ -1240,13 +1250,13 @@
             
                 
                     <a href="../../docs/ch13/controller.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>13.3.</b>
                         
                         controller设计
                     </a>
-                
             
             
         </li>
@@ -1255,13 +1265,13 @@
             
                 
                     <a href="../../docs/ch13/log.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>13.4.</b>
                         
                         日志和配置设计
                     </a>
-                
             
             
         </li>
@@ -1270,13 +1280,13 @@
             
                 
                     <a href="../../docs/ch13/blog.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>13.5.</b>
                         
                         实现博客的增删改
                     </a>
-                
             
             
         </li>
@@ -1290,13 +1300,13 @@
             
                 
                     <a href="../../docs/ch14/extend.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>14.</b>
                         
                         扩展Web框架
                     </a>
-                
             
             
             <ul class="articles">
@@ -1306,13 +1316,13 @@
             
                 
                     <a href="../../docs/ch14/static.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>14.1.</b>
                         
                         静态文件支持
                     </a>
-                
             
             
         </li>
@@ -1321,13 +1331,13 @@
             
                 
                     <a href="../../docs/ch14/session.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>14.2.</b>
                         
                         Session支持
                     </a>
-                
             
             
         </li>
@@ -1336,13 +1346,13 @@
             
                 
                     <a href="../../docs/ch14/form.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>14.3.</b>
                         
                         表单支持
                     </a>
-                
             
             
         </li>
@@ -1351,13 +1361,13 @@
             
                 
                     <a href="../../docs/ch14/auth.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>14.4.</b>
                         
                         用户认证
                     </a>
-                
             
             
         </li>
@@ -1366,13 +1376,13 @@
             
                 
                     <a href="../../docs/ch14/i18n.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>14.5.</b>
                         
                         多语言支持
                     </a>
-                
             
             
         </li>
@@ -1381,13 +1391,13 @@
             
                 
                     <a href="../../docs/ch14/pprof.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>14.6.</b>
                         
                         pprof支持
                     </a>
-                
             
             
         </li>
@@ -1401,108 +1411,36 @@
             
                 
                     <a href="../../ref.html">
+                
                         <i class="fa fa-check"></i>
                         
                             <b>15.</b>
                         
                         附录A 参考资料
                     </a>
-                
             
             
         </li>
     
 
 
-        
-        <li class="divider"></li>
-        <li>
-            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-                本书使用 GitBook 发布
-            </a>
-        </li>
-        
-    </ul>
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
 </div>
 
     <div class="book-body">
         <div class="body-inner">
-            <div class="book-header">
+            <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="目录"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="搜索"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="字体设置"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">衬线体</button>
-        <button type="button" data-font="1" class="button">无衬线体</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">白色</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">棕褐色</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">夜间</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="分享"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    分享到 Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    分享到 Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    分享到 Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    分享到 Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    分享到 Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1511,20 +1449,20 @@
     </h1>
 </div>
 
-            <div class="page-wrapper" tabindex="-1">
+            <div class="page-wrapper" tabindex="-1" role="main">
                 <div class="page-inner">
                 
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="controller%E8%AE%BE%E8%AE%A1">controller&#x8BBE;&#x8BA1;</h1>
+                        <h1 id="controller&#x8BBE;&#x8BA1;">controller&#x8BBE;&#x8BA1;</h1>
 <p>&#x4F20;&#x7EDF;&#x7684;MVC&#x6846;&#x67B6;&#x5927;&#x591A;&#x6570;&#x662F;&#x57FA;&#x4E8E;Action&#x8BBE;&#x8BA1;&#x7684;&#x540E;&#x7F00;&#x5F0F;&#x6620;&#x5C04;&#xFF0C;&#x7136;&#x800C;&#xFF0C;&#x73B0;&#x5728;Web&#x6D41;&#x884C;REST&#x98CE;&#x683C;&#x7684;&#x67B6;&#x6784;&#x3002;
 &#x5C3D;&#x7BA1;&#x4F7F;&#x7528;Filter&#x6216;&#x8005;rewrite&#x80FD;&#x591F;&#x901A;&#x8FC7;URL&#x91CD;&#x5199;&#x5B9E;&#x73B0;REST&#x98CE;&#x683C;&#x7684;URL&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x76F4;&#x63A5;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;REST&#x98CE;&#x683C;&#x7684;MVC&#x6846;&#x67B6;&#x5462;&#xFF1F;
 &#x672C;&#x5C0F;&#x8282;&#x5C31;&#x662F;&#x57FA;&#x4E8E;&#x8FD9;&#x79CD;&#x601D;&#x8DEF;&#x6765;&#x8BB2;&#x8FF0;&#x5982;&#x4F55;&#x4ECE;&#x5934;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;REST&#x98CE;&#x683C;&#x7684;MVC&#x6846;&#x67B6;&#x4E2D;&#x7684;controller&#xFF0C;&#x6700;&#x5927;&#x9650;&#x5EA6;&#x5730;&#x7B80;&#x5316;Web&#x5E94;&#x7528;&#x7684;&#x5F00;&#x53D1;&#xFF0C;&#x751A;&#x81F3;&#x7F16;&#x5199;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x201C;Hello, world&#x201D;&#x3002;</p>
-<h2 id="controller%E4%BD%9C%E7%94%A8">controller&#x4F5C;&#x7528;</h2>
+<h2 id="controller&#x4F5C;&#x7528;">controller&#x4F5C;&#x7528;</h2>
 <p>MVC&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x662F;&#x76EE;&#x524D;Web&#x5E94;&#x7528;&#x5F00;&#x53D1;&#x4E2D;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x67B6;&#x6784;&#x6A21;&#x5F0F;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x79BB; Model(&#x6A21;&#x578B;)&#x3001;View(&#x89C6;&#x56FE;)&#x548C; Controller(&#x63A7;&#x5236;&#x5668;)&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x5BB9;&#x6613;&#x5B9E;&#x73B0;&#x6613;&#x4E8E;&#x6269;&#x5C55;&#x7684;&#x7528;&#x6237;&#x754C;&#x9762;(UI)&#x3002;<br>Model&#x6307;&#x540E;&#x53F0;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#xFF1B;<br>View&#x6307;&#x9700;&#x8981;&#x6E32;&#x67D3;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x6A21;&#x677F;&#x9875;&#x9762;&#xFF0C;&#x6E32;&#x67D3;&#x540E;&#x7684;&#x5185;&#x5BB9;&#x901A;&#x5E38;&#x662F;HTML&#xFF1B;<br>Controller&#x6307;Web&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7F16;&#x5199;&#x7684;&#x5904;&#x7406;&#x4E0D;&#x540C;URL&#x7684;&#x63A7;&#x5236;&#x5668;&#xFF1B;<br>&#x5982;&#x524D;&#x9762;&#x5C0F;&#x8282;&#x8BB2;&#x8FF0;&#x7684;&#x8DEF;&#x7531;&#x5C31;&#x662F;URL&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x5230;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;controller&#x5728;&#x6574;&#x4E2A;&#x7684;MVC&#x6846;&#x67B6;&#x4E2D;&#x8D77;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x56E0;&#x6B64;&#x63A7;&#x5236;&#x5668;&#x662F;&#x6574;&#x4E2A;&#x6846;&#x67B6;&#x4E2D;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;
 Model&#x548C;View&#x5BF9;&#x4E8E;&#x6709;&#x4E9B;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x662F;&#x53EF;&#x4EE5;&#x4E0D;&#x5199;&#x7684;&#xFF0C;&#x4F8B;&#x5982;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x5904;&#x7406;&#x7684;&#x903B;&#x8F91;&#x5904;&#x7406;&#xFF0C;&#x6CA1;&#x6709;&#x9875;&#x9762;&#x8F93;&#x51FA;&#x7684;302&#x8C03;&#x6574;&#x4E4B;&#x7C7B;&#x7684;&#x5C31;&#x4E0D;&#x9700;&#x8981;Model&#x548C;View&#xFF0C;&#x4F46;&#x662F;controller&#x8FD9;&#x4E00;&#x73AF;&#x8282;&#x662F;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#x3002;</p>
-<h2 id="beego%E7%9A%84rest%E8%AE%BE%E8%AE%A1">beego&#x7684;REST&#x8BBE;&#x8BA1;</h2>
+<h2 id="beego&#x7684;rest&#x8BBE;&#x8BA1;">beego&#x7684;REST&#x8BBE;&#x8BA1;</h2>
 <p>&#x524D;&#x9762;&#x5C0F;&#x8282;&#x4ECB;&#x7ECD;&#x4E86;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;&#x4E86;&#x6CE8;&#x518C;struct&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x800C;struct&#x4E2D;&#x5B9E;&#x73B0;&#x4E86;REST&#x65B9;&#x5F0F;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x903B;&#x8F91;&#x5904;&#x7406;controller&#x7684;&#x57FA;&#x7C7B;&#xFF0C;
 &#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8BBE;&#x8BA1;&#x4E86;&#x4E24;&#x4E2A;&#x7C7B;&#x578B;&#xFF0C;&#x4E00;&#x4E2A;struct&#x3001;&#x4E00;&#x4E2A;interface</p>
 <pre><code class="lang-go">    <span class="hljs-keyword">type</span> Controller <span class="hljs-keyword">struct</span> {
@@ -1638,7 +1576,7 @@ Model&#x548C;View&#x5BF9;&#x4E8E;&#x6709;&#x4E9B;&#x4E1A;&#x52A1;&#x9700;&#x6C42
     Render()    &#x53EF;&#x9009;&#xFF0C;&#x6839;&#x636E;&#x5168;&#x5C40;&#x53D8;&#x91CF;AutoRender&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x6267;&#x884C;
     Finish()    &#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6BCF;&#x4E2A;&#x7EE7;&#x627F;&#x7684;&#x5B50;&#x7C7B;&#x53EF;&#x4EE5;&#x6765;&#x5B9E;&#x73B0;&#x8BE5;&#x51FD;&#x6570;
 </code></pre>
-<h2 id="%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97">&#x5E94;&#x7528;&#x6307;&#x5357;</h2>
+<h2 id="&#x5E94;&#x7528;&#x6307;&#x5357;">&#x5E94;&#x7528;&#x6307;&#x5357;</h2>
 <p>&#x4E0A;&#x9762;beego&#x6846;&#x67B6;&#x4E2D;&#x5B8C;&#x6210;&#x4E86;controller&#x57FA;&#x7C7B;&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x6765;&#x8BBE;&#x8BA1;&#x6211;&#x4EEC;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
 <pre><code class="lang-go">    <span class="hljs-keyword">package</span> controllers
 
@@ -1691,9 +1629,25 @@ Model&#x548C;View&#x5BF9;&#x4E8E;&#x6709;&#x4E9B;&#x4E1A;&#x52A1;&#x9700;&#x6C42
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>
