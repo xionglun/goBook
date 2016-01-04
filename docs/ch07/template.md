@@ -27,9 +27,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 接下来让我们来更加详细的了解如何把数据渲染出来。
 
 ### 字段操作
-Go语言的模板通过`{{ book.blocks }}`来包含需要在渲染时被替换的字段，
-`{{ book.dot }}`表示当前的对象，这和Java或者C++中的**this**类似。
-如果要访问当前对象的字段通过`{{ book.field }}`, 
+Go语言的模板通过`{{ }}`来包含需要在渲染时被替换的字段，
+`{{.}}`表示当前的对象，这和Java或者C++中的**this**类似。
+如果要访问当前对象的字段通过`{{.FieldName}}`,
 但是需要注意一点：这个字段必须是导出的(字段首字母必须是大写的), 否则在渲染的时候就会报错。
 请看下面的这个例子：
 ```go
@@ -46,7 +46,7 @@ type Person struct {
 
 func main() {
 	t := template.New("fieldname example")
-	t, _ = t.Parse("hello {{ book.username }}!")
+	t, _ = t.Parse("hello {{.UserName}}!")
 	p := Person{UserName: "Astaxie"}
 	t.Execute(os.Stdout, p)
 }
@@ -60,20 +60,20 @@ type Person struct {
 	email	string  //未导出的字段，首字母是小写的
 }
 
-t, _ = t.Parse("hello {{ book.username }}! {{ book.email }}")
+t, _ = t.Parse("hello {{.Username}}! {{.email}}")
 ```
 上面的代码就会报错，因为我们调用了一个未导出的字段。
 
 > 如果我们调用了一个不存在的字段是不会报错的，而是输出为空。
 
-如果模板中输出`{{ book.dot }}`，这个一般应用于字符串对象，默认会调用fmt包输出字符串的内容。
+如果模板中输出`{{.}}`，这个一般应用于字符串对象，默认会调用fmt包输出字符串的内容。
 
 
 ### 输出嵌套字段内容
 上面我们例子展示了如何针对一个对象的字段输出，那么如果字段里面还有对象，如何来循环的输出这些内容呢？
-我们可以使用`{{ book._with }}...{{ book.end }}`和`{{ book._range }}...{{ book.end }}`来进行数据的输出。   
-- {{ book.range }} 这个和Go语法里面的`range`类似，循环操作数据
-- {{ book.with }} 操作是指当前对象的值，类似上下文的概念
+我们可以使用`{{with …}}...{{end}}`和`{{range}}...{{end}}`来进行数据的输出。   
+- `{{book.range}}` 这个和Go语法里面的`range`类似，循环操作数据
+- `{{book.with}}`操作是指当前对象的值，类似上下文的概念
 
 详细的使用请看下面的例子：
 ```go
@@ -98,20 +98,20 @@ func main() {
 	f1 := Friend{Fname: "minux.ma"}
 	f2 := Friend{Fname: "xushiwei"}
 	t := template.New("fieldname example")
-	t, _ = t.Parse(`hello {{ book.username }}!
-			{{ book._rangeEmails }}
-				an email {{ book.dot }}
-			{{ book.end }}
-			{{ book._withFriends }}
-			{{ book._rangeDot }}
-				my friend name is {{ book._Fname }}
-			{{ book.end }}
-			{{ book.end }}
-			`)
-	p := Person{UserName: "Astaxie",
-		Emails:  []string{"astaxie@beego.me", "astaxie@gmail.com"},
-		Friends: []*Friend{&f1, &f2}}
-	t.Execute(os.Stdout, p)
+	t, _ = t.Parse(`hello {{.UserName}}!
+			{{range .Emails}}
+				an email {{.}}
+			{{end}}
+			{{with .Friends}}
+				{{range .}}
+					my friend name is {{.Fname}}
+				{{end}}
+			{{end}}
+            `)
+    p := Person{UserName: "Astaxie",
+        Emails:  []string{"astaxie@beego.me", "astaxie@gmail.com"},
+        Friends: []*Friend{&f1, &f2}}
+    t.Execute(os.Stdout, p)
 }
 ```
 
@@ -128,15 +128,15 @@ import (
 
 func main() {
 	tEmpty := template.New("template test")
-	tEmpty = template.Must(tEmpty.Parse("空 pipeline if demo: {{ book._if }} 不输出. {{ book.end }}\n"))
+	tEmpty = template.Must(tEmpty.Parse("空 pipeline if demo: {{if ``}} 不会输出. {{end}}\n"))
 	tEmpty.Execute(os.Stdout, nil)
 
 	tWithValue := template.New("template test")
-	tWithValue = template.Must(tWithValue.Parse("不为空的 pipeline if demo: {{ book._ifAnyThing }} 我有内容，我会输出. {{ book.end }}\n"))
+	tWithValue = template.Must(tWithValue.Parse("不为空的 pipeline if demo: {{if `anything`}} 我有内容，我会输出. {{end}}\n"))
 	tWithValue.Execute(os.Stdout, nil)
 
 	tIfElse := template.New("template test")
-	tIfElse = template.Must(tIfElse.Parse("if-else demo: {{ book._ifAnyThing }} if部分 {{ book.else }} else部分.{{ book.end}}\n"))
+	tIfElse = template.Must(tIfElse.Parse("if-else demo: {{if `anything`}} if部分 {{else}} else部分.{{end}}\n"))
 	tIfElse.Execute(os.Stdout, nil)
 }
 ```
@@ -149,10 +149,10 @@ func main() {
 Unix用户已经很熟悉什么是`pipe`了，`ls | grep "beego"`类似这样的语法你是不是经常使用，
 过滤当前目录下面的文件，显示含有"beego"的数据，
 表达的意思就是前面的输出可以当做后面的输入，最后显示我们想要的数据。
-而Go语言模板最强大的一点就是支持pipe数据，在Go语言里面任何`{{ book.empty }}`里面的都是pipelines数据。
+而Go语言模板最强大的一点就是支持pipe数据，在Go语言里面任何`{{}}`里面的都是pipelines数据。
 例如我们上面输出的email里面如果还有一些可能引起XSS注入的，那么我们如何来进行转化呢？
 ```
-{{ book._html }}
+{{. | html}}
 ```
 
 在email输出的地方我们可以采用如上方式可以把输出全部转化html的实体，
@@ -160,18 +160,17 @@ Unix用户已经很熟悉什么是`pipe`了，`ls | grep "beego"`类似这样的
 
 ### 模板变量
 有时候，我们在模板使用过程中需要定义一些局部变量，我们可以在一些操作中申明局部变量。
-例如`with`、`range`、`if`过程中申明局部变量，这个变量的作用域是`{{ book.end }}`之前，Go语言通过申明的局部变量格式如下所示：
+例如`with`、`range`、`if`过程中申明局部变量，这个变量的作用域是`{{end}}`之前，
+Go语言通过申明的局部变量格式如下所示：
 ```go
 $variable := pipeline
 ```
 
 详细的例子看下面的：
 ```go
-{{ book._output1 }}
-
-{{ book._output2 }}
-
-{{ book._output3 }}
+{{with $x := "output" | printf "%q"}}{{$x}}{{end}}
+{{with $x := "output"}}{{printf "%q" $x}}{{end}}
+{{with $x := "output"}}{{$x | printf "%q"}}{{end}}
 ```
 
 ### 模板函数
@@ -240,15 +239,15 @@ func main() {
 	f2 := Friend{Fname: "xushiwei"}
 	t := template.New("fieldname example")
 	t = t.Funcs(template.FuncMap{"emailDeal": EmailDealWith})
-	t, _ = t.Parse(`hello {{ book.username }}!
-				{{ book._rangeEmail }}
-					an emails {{ book._emailDeal }}
-				{{ book.end }}
-				{{ book._withFriends }}
-				{{ book._rangeDot }}
-					my friend name is {{ book._Fname }}
-				{{ book.end }}
-				{{ book.end }}
+	t, _ = t.Parse(`hello {{.UserName}}!
+				{{range .Emails}}
+					an emails {{.|emailDeal}}
+				{{end}}
+				{{with .Friends}}
+				{{range .}}
+					my friend name is {{.Fname}}
+				{{end}}
+				{{end}}
 				`)
 	p := Person{UserName: "Astaxie",
 		Emails:  []string{"astaxie@beego.me", "astaxie@gmail.com"},
@@ -278,6 +277,7 @@ var builtins = FuncMap{
 ## Must操作
 模板包里面有一个函数`Must`，它的作用是检测模板是否正确，例如大括号是否匹配，注释是否正确的关闭，变量是否正确的书写。
 接下来我们演示一个例子，用Must来判断模板是否正确：
+
 ```go
 package main
 
@@ -291,68 +291,73 @@ func main() {
 	template.Must(tOk.Parse(" some static text /* and a comment */"))
 	fmt.Println("The first one parsed OK.")
 
-	template.Must(template.New("second").Parse("some static text {{ book._Name }}"))
+	template.Must(template.New("second").Parse("some static text {{ .Name }}"))
 	fmt.Println("The second one parsed OK.")
 
 	fmt.Println("The next one ought to fail.")
 	tErr := template.New("check parse error with Must")
-	template.Must(tErr.Parse(" some static text {{ book._Name }}"))
+	template.Must(tErr.Parse(" some static text {{ .Name }"))
 }
 ```
 
-讲输出如下内容
-```
-The first one parsed OK.
-The second one parsed OK.
-The next one ought to fail.
-panic: template: check parse error with Must:1: unexpected "}" in command
-```
+将输出如下内容:
+> The first one parsed OK.   
+> The second one parsed OK.   
+> The next one ought to fail.   
+> panic: template: check parse error with Must:1: unexpected "}" in command
+
+
+------
 
 ## 嵌套模板
 我们平常开发Web应用的时候，经常会遇到一些模板有些部分是固定不变的，然后可以抽取出来作为一个独立的部分。
 例如一个博客的头部和尾部是不变的，而唯一改变的是中间的内容部分。
-所以我们可以定义成`header`、`content`、`footer`三个部分。Go语言中通过如下的语法来申明
+所以我们可以定义成 ***header***、***content***、***footer*** 三个部分。
+
+Go语言中通过如下的语法来声明模板:   
+
 ```go
-{{ book._childTemplate }}内容{{ book.end }}
+{{define "子模板名称"}}内容{{end}}
 ```
 
-通过如下方式来调用：
+通过如下方式来内嵌子模板：
 ```go
-{{ book._childTemplate }}
+{{template "子模板名称"}}
 ```
 
 接下来我们演示如何使用嵌套模板，我们定义三个文件，`header.tmpl`、`content.tmpl`、`footer.tmpl`文件，
-里面的内容如下
+里面的内容如下:
+
+__header.tmpl__   
 ```html
-//header.tmpl
-{{ book._Header }}
+{{define "header"}}
 <html>
-	<head>
-		<title>演示信息</title>
-	</head>
-	<body>
-{{ book.end }}
+<head>
+	<title>演示信息</title>
+</head>
+<body>
+{{end}}
 ```
 
+__content.tmpl__
 ```html
-//content.tmpl
-	{{ book._Content }}
-	{{ book._TemplateHeader }}
-	<h1>演示嵌套</h1>
-	<ul>
-		<li>嵌套使用define定义子模板</li>
-		<li>调用使用template</li>
-	</ul>
-	{{ book._TemplateFooter }}
-	{{ book.end }}
+{{define "content"}}
+{{template "header"}}
+<h1>演示嵌套</h1>
+<ul>
+	<li>嵌套使用define定义子模板</li>
+	<li>调用使用template</li>
+</ul>
+{{template "footer"}}
+{{end}}
 ```
 
+__footer.tmpl__
 ```html
-//footer.tmpl
-	{{ book._Footer }}
-	</body>
+{{define "footer"}}
+</body>
 </html>
-{{ book.end }}
+{{end}}
 ```
 
 演示代码如下：
@@ -367,25 +372,33 @@ import (
 
 func main() {
 	s1, _ := template.ParseFiles("header.tmpl", "content.tmpl", "footer.tmpl")
-	s1.ExecuteTemplate(os.Stdout, "header", nil)
-	fmt.Println()
-	s1.ExecuteTemplate(os.Stdout, "content", nil)
-	fmt.Println()
-	s1.ExecuteTemplate(os.Stdout, "footer", nil)
-	fmt.Println()
-	s1.Execute(os.Stdout, nil)
+	s1.ExecuteTemplate(os.Stdout, "content", nil) // 输出header, content, footer内容
+	s1.ExecuteTemplate(os.Stdout, "header", nil) // 输出header内容
+	s1.ExecuteTemplate(os.Stdout, "footer", nil) // 输出footer内容
+	s1.Execute(os.Stdout, nil) // 没有输出
 }
 ```
 
-通过上面的例子我们可以看到通过`template.ParseFiles`把所有的嵌套模板全部解析到模板里面。
-其实每一个定义的{{ book.define }}都是一个独立的模板，他们相互独立，是并行存在的关系。
-内部其实存储的是类似map的一种关系(key是模板的名称，value是模板的内容)，
-然后我们通过`ExecuteTemplate`来执行相应的子模板内容，
-我们可以看到header、footer都是相对独立的，都能输出内容，contenrt中因为嵌套了header和footer的内容，
-就会同时输出三个的内容。
-但是当我们执行`s1.Execute`，没有任何的输出，因为在默认的情况下没有默认的子模板，所以不会输出任何的东西。
+其实每一个定义的{{book.define}}都是一个独立的模板，他们相互独立，是并行存在的关系。
+`template.ParseFiles`把所有的嵌套模板全部解析到一个总模板变量里面。   
+内部存储类似map的一种关系(key是模板的名称，value是模板的内容)，然后通过`ExecuteTemplate`来执行相应的子模板内容。   
+其中header、footer都是相对独立的，都能输出内容，content中因为嵌套了header和footer的内容，就会同时输出三个的内容。
+但是当我们执行`s1.Execute`，没有任何的输出，因为在默认的情况下没有子模板，所以不会输出任何的东西。
 
 >同一个集合类的模板是互相知晓的，如果同一模板被多个集合使用，则它需要在多个集合中分别解析
+
+
+#### 多模板处理
+一般来说，所有模板文件会放在同一个目录下面，比如 ***templates*** 目录下，假设模板文件后缀名都为：`.tmpl`。   
+可以使用`template.ParseGlob("templates/*.tmpl")`这个方法来获取所有的模板文件，而不需要像`ParseFiles`一样列出来。   
+可以使用`template.Must`进行搭配，如：
+```go
+	templates := template.Must(template.ParseGlob("templates/*.tmpl"))
+	contentTmpl := templates.Lookup("content") // 获取到content模板
+```
+
+可以使用`Template.Lookup`这个方法来获取相应名称的模板。
+
 
 ## 总结
 通过上面对模板的详细介绍，我们了解了如何把动态数据与模板融合：如何输出循环数据、如何自定义函数、如何嵌套模板等等。
