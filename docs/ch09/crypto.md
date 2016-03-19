@@ -2,44 +2,6 @@
 前面小节介绍了如何存储密码，但是有的时候，我们想把一些敏感数据加密后存储起来，在将来的某个时候，随需将它们解密出来，
 此时我们应该在选用对称加密算法来满足我们的需求。
 
-## base64加解密
-如果Web应用足够简单，数据的安全性没有那么严格的要求，那么可以采用一种比较简单的加解密方法是`base64`。
-这种方式实现起来比较简单，Go语言的`base64`包已经很好的支持了这个，请看下面的例子：
-```go
-package main
-
-import (
-	"encoding/base64"
-	"fmt"
-)
-
-func base64Encode(src []byte) []byte {
-	return []byte(base64.StdEncoding.EncodeToString(src))
-}
-
-func base64Decode(src []byte) ([]byte, error) {
-	return base64.StdEncoding.DecodeString(string(src))
-}
-
-func main() {
-	// encode
-	hello := "你好，世界！ hello world"
-	debyte := base64Encode([]byte(hello))
-	fmt.Println(debyte)
-	// decode
-	enbyte, err := base64Decode(debyte)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-
-	if hello != string(enbyte) {
-		fmt.Println("hello is not equal to enbyte")
-	}
-
-	fmt.Println(string(enbyte))
-}
-```
-
 ## 高级加解密
 Go语言的`crypto`里面支持对称加密的高级加解密包有：
 - `crypto/aes`包：AES(Advanced Encryption Standard)，又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。
@@ -96,7 +58,7 @@ func main() {
 }
 ```
 
-上面通过调用函数`aes.NewCipher`(参数key必须是16、24或者32位的[]byte，分别对应AES-128, AES-192或AES-256算法), 
+上面通过调用函数`aes.NewCipher`(参数key必须是16、24或者32位的[]byte，分别对应AES-128, AES-192或AES-256算法),
 返回了一个`cipher.Block`接口，这个接口实现了三个功能：
 ```go
 	type Block interface {
@@ -118,4 +80,3 @@ func main() {
 ## 总结
 这小节介绍了几种加解密的算法，在开发Web应用的时候可以根据需求采用不同的方式进行加解密，
 一般的应用可以采用base64算法，更加高级的话可以采用aes或者des算法。
-
