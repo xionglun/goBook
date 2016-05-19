@@ -38,7 +38,7 @@ fmt.Printf("The person's name is %s", P.name)  // 访问P的name属性.
 	`P := person{age:24, name:"Tom"}`
 - 当然也可以通过`new`函数分配一个指针，此处P的类型为*person   
 	`P := new(person)`
-	
+
 下面我们看一个完整的使用struct的例子
 ```go
 package main
@@ -218,4 +218,29 @@ func main() {
 	// 如果我们要访问Human的phone字段
 	fmt.Println("Bob's personal phone is:", Bob.Human.phone)
 }
+```
+
+## 匿名结构体
+上面用到的结构体都是先定义后使用的。但是，还可以直接定义并使用结构体，在某些时候还是比较有用的。
+
+下面列出了几种常使用的方式:
+
+#### 方式一
+```go
+var user struct{Username, Password string}
+user.Username = "test"
+user.Password = "test"
+```
+
+#### 方式二
+```go
+user := struct{Username, Password string}{"test", "test"}
+//user := &struct{Username, Password string}{"test", "test"}
+```
+
+#### 方式三
+```go
+user := new(struct{Username, Password string})
+user.Username = "test"
+user.Password = "test"
 ```

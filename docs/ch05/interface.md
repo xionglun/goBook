@@ -35,10 +35,12 @@ func init() {
 
 > 在我们使用database/sql接口和第三方库的时候经常看到如下:
 
+> ```go
 >	import (
 >		"database/sql"
 >		_ "github.com/mattn/go-sqlite3"
 >	)
+> ```
 
 > 新手都会被这个`_`所迷惑，其实这个就是Go设计的巧妙之处，我们在变量赋值的时候经常看到这个符号，
 > 它是用来忽略变量赋值的占位符，那么包引入用到这个符号也是相似的作用，
@@ -51,17 +53,17 @@ func init() {
 ## driver.Driver
 Driver是一个数据库驱动的接口，他定义了一个method: `Open(name string)`，这个方法返回一个数据库的Conn接口。
 ```go
-	type Driver interface {
-		Open(name string) (Conn, error)
-	}
+type Driver interface {
+	Open(name string) (Conn, error)
+}
 ```
 
 返回的Conn只能用来进行一次goroutine的操作，也就是说不能把这个Conn应用于Go的多个goroutine里面。如下代码会出现错误
 ```go
-	//...
-	go goroutineA (Conn)  //执行查询操作
-	go goroutineB (Conn)  //执行插入操作
-	//...
+//...
+go goroutineA (Conn)  //执行查询操作
+go goroutineB (Conn)  //执行插入操作
+//...
 ```
 
 上面这样的代码可能会使Go不知道某个操作究竟是由哪个goroutine发起的，从而导致数据混乱。
@@ -154,33 +156,33 @@ type Rows interface {
 ## driver.RowsAffected
 RowsAffected其实就是一个int64的别名，但是他实现了Result接口，用来底层实现Result的表示方式
 ```go
-	type RowsAffected int64
-	func (RowsAffected) LastInsertId() (int64, error)
-	func (v RowsAffected) RowsAffected() (int64, error)
+type RowsAffected int64
+func (RowsAffected) LastInsertId() (int64, error)
+func (v RowsAffected) RowsAffected() (int64, error)
 ```
 
 ## driver.Value
 Value其实就是一个空接口，他可以容纳任何的数据
 ```
-	type Value interface{}
+type Value interface{}
 ```
 
 drive的**Value**是驱动必须能够操作的**Value**，**Value**要么是**nil**，要么是下面的任意一种
 ```
-	int64
-	float64
-	bool
-	[]byte
-	string   !除了Rows.Next返回的不能是string.
-	time.Time
+int64
+float64
+bool
+[]byte
+string   !除了Rows.Next返回的不能是string.
+time.Time
 ```
 
 ## driver.ValueConverter
 ValueConverter接口定义了如何把一个普通的值转化成`driver.Value`的接口
 ```go
-	type ValueConverter interface {
-		ConvertValue(v interface{}) (Value, error)
-	}
+type ValueConverter interface {
+	ConvertValue(v interface{}) (Value, error)
+}
 ```
 
 在开发的数据库驱动包里面实现这个接口的函数在很多地方会使用到，这个ValueConverter有很多好处：
@@ -192,9 +194,9 @@ ValueConverter接口定义了如何把一个普通的值转化成`driver.Value`�
 ## driver.Valuer
 Valuer接口定义了返回一个driver.Value的方式
 ```go
-	type Valuer interface {
-		Value() (Value, error)
-	}
+type Valuer interface {
+	Value() (Value, error)
+}
 ```
 
 很多类型都实现了这个**Value**方法，用来自身与`driver.Value`的转化。
@@ -206,17 +208,16 @@ Valuer接口定义了返回一个driver.Value的方式
 database/sql在database/sql/driver提供的接口基础上定义了一些更高阶的方法，用以简化数据库操作，
 同时内部还建议性地实现一个conn pool。
 ```go
-	type DB struct {
-		driver 	 driver.Driver
-		dsn    	 string
-		mu       sync.Mutex // protects freeConn and closed
-		freeConn []driver.Conn
-		closed   bool
-	}
+type DB struct {
+	driver   driver.Driver
+	dsn      string
+	mu       sync.Mutex // protects freeConn and closed
+	freeConn []driver.Conn
+	closed   bool
+}
 ```
 
 我们可以看到`Open`函数返回的是DB对象，里面有一个freeConn，它就是那个简易的连接池。
 它的实现相当简单或者说简陋，就是当执行Db.prepare的时候会`defer db.putConn(ci, err)`,也就是把这个连接放入连接池，
 每次调用conn的时候会先判断freeConn的长度是否大于0，大于0说明有可以复用的conn，直接拿出来用就是了，
 如果不大于0，则创建一个conn,然后再返回之。
-

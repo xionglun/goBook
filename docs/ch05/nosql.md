@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	
+
 	// connect redis database
 	conn, err := redis.Dial("tcp", ":6379")
 	if err != nil {
@@ -48,7 +48,7 @@ func main() {
 	} else {
 		fmt.Println("set name failed!")
 	}
-	
+
 }
 ```
 
@@ -64,7 +64,7 @@ client的命令和redis的命令基本保持一致。所以和原生态操作red
 
 下图展示了mysql和mongoDB之间的对应关系，我们可以看出来非常的方便，但是mongoDB的性能非常好。
 
-![](images/5.6.mongodb.png?raw=true)
+![](../images/5.6.mongodb.png?raw=true)
 
 图5.1 MongoDB和Mysql的操作对比图
 
@@ -111,4 +111,3 @@ func main() {
 ```
 
 我们可以看出来mgo的操作方式和beedb的操作方式几乎类似，都是基于struct的操作方式，这个就是Go Style。
-

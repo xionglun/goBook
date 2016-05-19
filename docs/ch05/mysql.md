@@ -20,20 +20,20 @@ Go中支持MySQL的驱动目前比较多，有些是支持database/sql标准，�
 数据库`test`，用户表`userinfo`，关联用户信息表`userdetail`。
 
 ```go
-	CREATE TABLE `userinfo` (
-		`uid` INT(10) NOT NULL AUTO_INCREMENT,
-		`username` VARCHAR(64) NULL DEFAULT NULL,
-		`departname` VARCHAR(64) NULL DEFAULT NULL,
-		`created` DATE NULL DEFAULT NULL,
-		PRIMARY KEY (`uid`)
-	)
+CREATE TABLE `userinfo` (
+	`uid` INT(10) NOT NULL AUTO_INCREMENT,
+	`username` VARCHAR(64) NULL DEFAULT NULL,
+	`departname` VARCHAR(64) NULL DEFAULT NULL,
+	`created` DATE NULL DEFAULT NULL,
+	PRIMARY KEY (`uid`)
+)
 
-	CREATE TABLE `userdetail` (
-		`uid` INT(10) NOT NULL DEFAULT '0',
-		`intro` TEXT NULL,
-		`profile` TEXT NULL,
-		PRIMARY KEY (`uid`)
-	)
+CREATE TABLE `userdetail` (
+	`uid` INT(10) NOT NULL DEFAULT '0',
+	`intro` TEXT NULL,
+	`profile` TEXT NULL,
+	PRIMARY KEY (`uid`)
+)
 ```
 
 如下示例将示范如何使用database/sql接口对数据库表进行增删改查操作
@@ -63,7 +63,7 @@ func main() {
 	checkErr(err)
 
 	fmt.Println(id)
-	
+
 	//更新数据
 	stmt, err = db.Prepare("update userinfo set username=? where uid=?")
 	checkErr(err)
@@ -134,4 +134,3 @@ user:password@tcp([de:ad:be:ef::ca:fe]:80)/dbname
 `stmt.Exec()`函数用来执行stmt准备好的SQL语句
 
 我们可以看到我们传入的参数都是 **=?** 对应的数据，这样做的方式可以一定程度上防止SQL注入。
-
