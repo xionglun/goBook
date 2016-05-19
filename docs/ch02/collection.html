@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="zh-cn" >
+<html lang="zh-hans" >
     
     <head>
         
@@ -8,7 +8,7 @@
         <title>数组、切片与字典 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.5.0">
+        <meta name="generator" content="GitBook 2.6.7">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -50,7 +50,13 @@
     <body>
         
         
-    <div class="book" data-level="2.3" data-chapter-title="数组、切片与字典" data-filepath="docs/ch02/collection.md" data-basepath="../.." data-revision="Mon Jan 04 2016 13:53:10 GMT+0800 (CST)">
+    <div class="book"
+        data-level="2.3"
+        data-chapter-title="数组、切片与字典"
+        data-filepath="docs/ch02/collection.md"
+        data-basepath="../.."
+        data-revision="Thu May 19 2016 16:08:06 GMT+0800 (CST)"
+        data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -967,14 +973,29 @@
             
         </li>
     
-        <li class="chapter " data-level="9.6" data-path="docs/ch09/crypto.html">
+        <li class="chapter " data-level="9.6" data-path="docs/ch09/hash.html">
+            
+                
+                    <a href="../../docs/ch09/hash.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        哈希数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="docs/ch09/crypto.html">
             
                 
                     <a href="../../docs/ch09/crypto.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>9.6.</b>
+                            <b>9.7.</b>
                         
                         加密和解密数据
                     </a>
@@ -1597,7 +1618,8 @@ slice := array[<span class="hljs-number">2</span>:<span class="hljs-number">4</s
 <p><strong>&#x6CE8;&#x610F;</strong> &#x8FD9;&#x91CC;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5373;&#x5BB9;&#x91CF;&#xFF0C;&#x5728;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x57FA;&#x4E8E;array&#x751F;&#x6210;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#x3002;
 &#x4E0D;&#x7BA1;&#x524D;&#x9762;&#x622A;&#x53D6;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x957F;&#x5EA6;&#xFF0C;&#x6700;&#x540E;&#x5BB9;&#x91CF;&#x59CB;&#x7EC8;&#x4E0D;&#x80FD;&#x5927;&#x4E8E;&#x539F;&#x6570;&#x7EC4;&#x5BB9;&#x91CF;&#x3002;</p>
 <p><strong>Tips</strong> &#x4E00;&#x65E6;slice&#x7684;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;slice&#x7684;&#x5BB9;&#x91CF;&#x8D85;&#x8FC7;&#x539F;&#x6570;&#x7EC4;&#x5BB9;&#x91CF;&#x65F6;&#x5019;&#xFF0C;&#x5BF9;slice&#x8FDB;&#x884C;&#x7684;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x90FD;&#x4E0D;&#x518D;&#x5F71;&#x54CD;&#x539F;&#x6570;&#x7EC4;&#x3002;
-&#x800C;&#x5728;&#x5BB9;&#x91CF;&#x672A;&#x8D85;&#x8FC7;&#x539F;&#x6570;&#x7EC4;&#x5BB9;&#x91CF;&#x65F6;&#xFF0C;&#x5BF9;slice&#x7684;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x90FD;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x539F;&#x6570;&#x7EC4;&#x3002;</p>
+&#x800C;&#x5728;&#x5BB9;&#x91CF;&#x672A;&#x8D85;&#x8FC7;&#x539F;&#x6570;&#x7EC4;&#x5BB9;&#x91CF;&#x65F6;&#xFF0C;&#x5BF9;slice&#x7684;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x90FD;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x539F;&#x6570;&#x7EC4;&#x3002;
+&#x5173;&#x4E8E;&#x6570;&#x7EC4;&#x4E0E;&#x5207;&#x7247;&#x7684;&#x76F8;&#x5173;&#x6027;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x591A;&#x4F7F;&#x7528;&#x7406;&#x89E3;&#x3002;</p>
 <h3 id="map">map</h3>
 <p><code>map</code>&#x4E5F;&#x5C31;&#x662F;Python&#x4E2D;&#x5B57;&#x5178;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x5B83;&#x7684;&#x683C;&#x5F0F;&#x4E3A;<code>map[keyType]valueType</code></p>
 <p>&#x6211;&#x4EEC;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;<code>map</code>&#x7684;&#x8BFB;&#x53D6;&#x548C;&#x8BBE;&#x7F6E;&#x4E5F;&#x7C7B;&#x4F3C;<code>slice</code>&#x4E00;&#x6837;&#xFF0C;&#x901A;&#x8FC7;<code>key</code>&#x6765;&#x64CD;&#x4F5C;&#xFF0C;
@@ -1617,11 +1639,11 @@ fmt.Println(<span class="hljs-string">&quot;&#x7B2C;&#x4E09;&#x4E2A;&#x6570;&#x5
 <p>&#x8FD9;&#x4E2A;<code>map</code>&#x5C31;&#x50CF;&#x6211;&#x4EEC;&#x5E73;&#x5E38;&#x770B;&#x5230;&#x7684;&#x8868;&#x683C;&#x4E00;&#x6837;&#xFF0C;&#x5DE6;&#x8FB9;&#x5217;&#x662F;<code>key</code>&#xFF0C;&#x53F3;&#x8FB9;&#x5217;&#x662F;&#x503C;</p>
 <p>&#x4F7F;&#x7528;map&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x51E0;&#x70B9;&#xFF1A;</p>
 <ul>
-<li><code>map</code>&#x662F;&#x65E0;&#x5E8F;&#x7684;&#xFF0C;&#x6BCF;&#x6B21;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;<code>map</code>&#x90FD;&#x4F1A;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5B83;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;<code>index</code>&#x83B7;&#x53D6;&#xFF0C;&#x800C;&#x5FC5;&#x987B;&#x901A;&#x8FC7;<code>key</code>&#x83B7;&#x53D6;</li>
+<li><code>map</code>&#x662F;&#x65E0;&#x5E8F;&#x7684;&#xFF0C;&#x6BCF;&#x6B21;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;<code>map</code>&#x53EF;&#x80FD;&#x4F1A;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5B83;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;<code>index</code>&#x83B7;&#x53D6;&#xFF0C;&#x800C;&#x5FC5;&#x987B;&#x901A;&#x8FC7;<code>key</code>&#x83B7;&#x53D6;</li>
 <li><code>map</code>&#x7684;&#x957F;&#x5EA6;&#x662F;&#x4E0D;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x548C;<code>slice</code>&#x4E00;&#x6837;&#xFF0C;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x5F15;&#x7528;&#x7C7B;&#x578B;</li>
 <li>&#x5185;&#x7F6E;&#x7684;<code>len</code>&#x51FD;&#x6570;&#x540C;&#x6837;&#x9002;&#x7528;&#x4E8E;<code>map</code>&#xFF0C;&#x8FD4;&#x56DE;<code>map</code>&#x62E5;&#x6709;&#x7684;<code>key</code>&#x7684;&#x6570;&#x91CF;</li>
 <li><code>map</code>&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x901A;&#x8FC7;<code>numbers[&quot;one&quot;]=11</code>&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x7684;&#x628A;key&#x4E3A;<code>one</code>&#x7684;&#x5B57;&#x5178;&#x503C;&#x6539;&#x4E3A;<code>11</code></li>
-<li><code>map</code>&#x548C;&#x5176;&#x4ED6;&#x57FA;&#x672C;&#x578B;&#x522B;&#x4E0D;&#x540C;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;thread-safe&#xFF0C;&#x5728;&#x591A;&#x4E2A;go-routine&#x5B58;&#x53D6;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;mutex lock&#x673A;&#x5236;</li>
+<li><code>map</code>&#x548C;&#x5176;&#x4ED6;&#x57FA;&#x672C;&#x578B;&#x522B;&#x4E0D;&#x540C;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#xFF08;&#x534F;&#x7A0B;&#xFF09;&#x5B89;&#x5168;&#xFF0C;&#x5728;&#x591A;&#x4E2A;go&#x7EBF;&#x7A0B;&#xFF08;&#x534F;&#x7A0B;&#xFF09;&#x8FDB;&#x884C;&#x5B58;&#x53D6;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x9501;&#x673A;&#x5236;</li>
 </ul>
 <p><code>map</code>&#x7684;&#x521D;&#x59CB;&#x5316;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>key:val</code>&#x7684;&#x65B9;&#x5F0F;&#x521D;&#x59CB;&#x5316;&#x503C;&#xFF0C;&#x540C;&#x65F6;<code>map</code>&#x5185;&#x7F6E;&#x6709;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;<code>key</code>&#x7684;&#x65B9;&#x5F0F;</p>
 <p>&#x901A;&#x8FC7;<code>delete</code>&#x5220;&#x9664;<code>map</code>&#x7684;&#x5143;&#x7D20;&#xFF1A;</p>
@@ -1727,7 +1749,7 @@ channel, func, interface, map, or slice type.</p>
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="zh-cn" >
+<html lang="zh-hans" >
     
     <head>
         
@@ -8,7 +8,7 @@
         <title>使用MySQL数据库 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.5.0">
+        <meta name="generator" content="GitBook 2.6.7">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -50,7 +50,13 @@
     <body>
         
         
-    <div class="book" data-level="5.2" data-chapter-title="使用MySQL数据库" data-filepath="docs/ch05/mysql.md" data-basepath="../.." data-revision="Mon Jan 04 2016 13:53:10 GMT+0800 (CST)">
+    <div class="book"
+        data-level="5.2"
+        data-chapter-title="使用MySQL数据库"
+        data-filepath="docs/ch05/mysql.md"
+        data-basepath="../.."
+        data-revision="Thu May 19 2016 16:08:06 GMT+0800 (CST)"
+        data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -967,14 +973,29 @@
             
         </li>
     
-        <li class="chapter " data-level="9.6" data-path="docs/ch09/crypto.html">
+        <li class="chapter " data-level="9.6" data-path="docs/ch09/hash.html">
+            
+                
+                    <a href="../../docs/ch09/hash.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        哈希数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="docs/ch09/crypto.html">
             
                 
                     <a href="../../docs/ch09/crypto.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>9.6.</b>
+                            <b>9.7.</b>
                         
                         加密和解密数据
                     </a>
@@ -1471,20 +1492,20 @@
 </ul>
 <h2 id="&#x793A;&#x4F8B;&#x4EE3;&#x7801;">&#x793A;&#x4F8B;&#x4EE3;&#x7801;</h2>
 <p>&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x51E0;&#x4E2A;&#x5C0F;&#x8282;&#x91CC;&#x9762;&#x6211;&#x4EEC;&#x90FD;&#x5C06;&#x91C7;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8868;&#x7ED3;&#x6784;&#xFF1A;<br>&#x6570;&#x636E;&#x5E93;<code>test</code>&#xFF0C;&#x7528;&#x6237;&#x8868;<code>userinfo</code>&#xFF0C;&#x5173;&#x8054;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x8868;<code>userdetail</code>&#x3002;</p>
-<pre><code class="lang-go">    CREATE TABLE <span class="hljs-string">`userinfo`</span> (
-        <span class="hljs-string">`uid`</span> INT(<span class="hljs-number">10</span>) NOT NULL AUTO_INCREMENT,
-        <span class="hljs-string">`username`</span> VARCHAR(<span class="hljs-number">64</span>) NULL DEFAULT NULL,
-        <span class="hljs-string">`departname`</span> VARCHAR(<span class="hljs-number">64</span>) NULL DEFAULT NULL,
-        <span class="hljs-string">`created`</span> DATE NULL DEFAULT NULL,
-        PRIMARY KEY (<span class="hljs-string">`uid`</span>)
-    )
+<pre><code class="lang-go">CREATE TABLE <span class="hljs-string">`userinfo`</span> (
+    <span class="hljs-string">`uid`</span> INT(<span class="hljs-number">10</span>) NOT NULL AUTO_INCREMENT,
+    <span class="hljs-string">`username`</span> VARCHAR(<span class="hljs-number">64</span>) NULL DEFAULT NULL,
+    <span class="hljs-string">`departname`</span> VARCHAR(<span class="hljs-number">64</span>) NULL DEFAULT NULL,
+    <span class="hljs-string">`created`</span> DATE NULL DEFAULT NULL,
+    PRIMARY KEY (<span class="hljs-string">`uid`</span>)
+)
 
-    CREATE TABLE <span class="hljs-string">`userdetail`</span> (
-        <span class="hljs-string">`uid`</span> INT(<span class="hljs-number">10</span>) NOT NULL DEFAULT <span class="hljs-string">&apos;0&apos;</span>,
-        <span class="hljs-string">`intro`</span> TEXT NULL,
-        <span class="hljs-string">`profile`</span> TEXT NULL,
-        PRIMARY KEY (<span class="hljs-string">`uid`</span>)
-    )
+CREATE TABLE <span class="hljs-string">`userdetail`</span> (
+    <span class="hljs-string">`uid`</span> INT(<span class="hljs-number">10</span>) NOT NULL DEFAULT <span class="hljs-string">&apos;0&apos;</span>,
+    <span class="hljs-string">`intro`</span> TEXT NULL,
+    <span class="hljs-string">`profile`</span> TEXT NULL,
+    PRIMARY KEY (<span class="hljs-string">`uid`</span>)
+)
 </code></pre>
 <p>&#x5982;&#x4E0B;&#x793A;&#x4F8B;&#x5C06;&#x793A;&#x8303;&#x5982;&#x4F55;&#x4F7F;&#x7528;database/sql&#x63A5;&#x53E3;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8868;&#x8FDB;&#x884C;&#x589E;&#x5220;&#x6539;&#x67E5;&#x64CD;&#x4F5C;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
@@ -1613,7 +1634,7 @@ user:password@tcp([de:ad:be:ef::ca:fe]:80)/dbname
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

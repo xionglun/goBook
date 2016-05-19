@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="zh-cn" >
+<html lang="zh-hans" >
     
     <head>
         
@@ -8,7 +8,7 @@
         <title>NoSQL数据库操作 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.5.0">
+        <meta name="generator" content="GitBook 2.6.7">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -50,7 +50,13 @@
     <body>
         
         
-    <div class="book" data-level="5.5" data-chapter-title="NoSQL数据库操作" data-filepath="docs/ch05/nosql.md" data-basepath="../.." data-revision="Mon Jan 04 2016 13:53:10 GMT+0800 (CST)">
+    <div class="book"
+        data-level="5.5"
+        data-chapter-title="NoSQL数据库操作"
+        data-filepath="docs/ch05/nosql.md"
+        data-basepath="../.."
+        data-revision="Thu May 19 2016 16:08:06 GMT+0800 (CST)"
+        data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -967,14 +973,29 @@
             
         </li>
     
-        <li class="chapter " data-level="9.6" data-path="docs/ch09/crypto.html">
+        <li class="chapter " data-level="9.6" data-path="docs/ch09/hash.html">
+            
+                
+                    <a href="../../docs/ch09/hash.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        哈希数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="docs/ch09/crypto.html">
             
                 
                     <a href="../../docs/ch09/crypto.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>9.6.</b>
+                            <b>9.7.</b>
                         
                         加密和解密数据
                     </a>
@@ -1513,7 +1534,7 @@ client&#x7684;&#x547D;&#x4EE4;&#x548C;redis&#x7684;&#x547D;&#x4EE4;&#x57FA;&#x67
 <strong>MongoDB</strong> &#x6700;&#x5927;&#x7684;&#x7279;&#x70B9;&#x662F;&#x4ED6;&#x652F;&#x6301;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#x975E;&#x5E38;&#x5F3A;&#x5927;&#xFF0C;&#x5176;&#x8BED;&#x6CD5;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;&#x4E8E;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#xFF0C;
 &#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x5355;&#x8868;&#x67E5;&#x8BE2;&#x7684;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x652F;&#x6301;&#x5BF9;&#x6570;&#x636E;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x3002;</p>
 <p>&#x4E0B;&#x56FE;&#x5C55;&#x793A;&#x4E86;mysql&#x548C;mongoDB&#x4E4B;&#x95F4;&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#x975E;&#x5E38;&#x7684;&#x65B9;&#x4FBF;&#xFF0C;&#x4F46;&#x662F;mongoDB&#x7684;&#x6027;&#x80FD;&#x975E;&#x5E38;&#x597D;&#x3002;</p>
-<p><img src="images/5.6.mongodb.png?raw=true" alt=""></p>
+<p><img src="../images/5.6.mongodb.png?raw=true" alt=""></p>
 <p>&#x56FE;5.1 MongoDB&#x548C;Mysql&#x7684;&#x64CD;&#x4F5C;&#x5BF9;&#x6BD4;&#x56FE;</p>
 <p>&#x76EE;&#x524D;Go&#x652F;&#x6301;mongoDB&#x6700;&#x597D;&#x7684;&#x9A71;&#x52A8;&#x5C31;&#x662F;<a href="http://labix.org/mgo" target="_blank">mgo</a>&#xFF0C;&#x8FD9;&#x4E2A;&#x9A71;&#x52A8;&#x76EE;&#x524D;&#x6700;&#x6709;&#x53EF;&#x80FD;&#x6210;&#x4E3A;&#x5B98;&#x65B9;&#x7684;pkg&#x3002;<br>&#x4E0B;&#x9762;&#x6211;&#x5C06;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x901A;&#x8FC7;Go&#x6765;&#x64CD;&#x4F5C;mongoDB&#xFF1A;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
@@ -1594,7 +1615,7 @@ client&#x7684;&#x547D;&#x4EE4;&#x548C;redis&#x7684;&#x547D;&#x4EE4;&#x57FA;&#x67
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>
