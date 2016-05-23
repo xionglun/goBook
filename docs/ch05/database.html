@@ -39,7 +39,7 @@
         
     
     
-    <link rel="next" href="../../docs/ch05/interface.html" />
+    <link rel="next" href="../../docs/ch05/overview.html" />
     
     
     <link rel="prev" href="../../docs/ch04/fileUpload.html" />
@@ -55,7 +55,7 @@
         data-chapter-title="访问数据库"
         data-filepath="docs/ch05/database.md"
         data-basepath="../.."
-        data-revision="Thu May 19 2016 16:08:06 GMT+0800 (CST)"
+        data-revision="Mon May 23 2016 17:53:02 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -529,14 +529,29 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1" data-path="docs/ch05/interface.html">
+        <li class="chapter " data-level="5.1" data-path="docs/ch05/overview.html">
+            
+                
+                    <a href="../../docs/ch05/overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        基础知识
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="docs/ch05/interface.html">
             
                 
                     <a href="../../docs/ch05/interface.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.1.</b>
+                            <b>5.2.</b>
                         
                         database/sql接口
                     </a>
@@ -544,14 +559,14 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="docs/ch05/mysql.html">
+        <li class="chapter " data-level="5.3" data-path="docs/ch05/mysql.html">
             
                 
                     <a href="../../docs/ch05/mysql.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.2.</b>
+                            <b>5.3.</b>
                         
                         使用MySQL数据库
                     </a>
@@ -559,14 +574,14 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="docs/ch05/sqlite.html">
+        <li class="chapter " data-level="5.4" data-path="docs/ch05/sqlite.html">
             
                 
                     <a href="../../docs/ch05/sqlite.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.3.</b>
+                            <b>5.4.</b>
                         
                         使用SQLite数据库
                     </a>
@@ -574,14 +589,14 @@
             
         </li>
     
-        <li class="chapter " data-level="5.4" data-path="docs/ch05/postgresql.html">
+        <li class="chapter " data-level="5.5" data-path="docs/ch05/postgresql.html">
             
                 
                     <a href="../../docs/ch05/postgresql.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.4.</b>
+                            <b>5.5.</b>
                         
                         使用PostgreSQL数据库
                     </a>
@@ -589,14 +604,14 @@
             
         </li>
     
-        <li class="chapter " data-level="5.5" data-path="docs/ch05/nosql.html">
+        <li class="chapter " data-level="5.6" data-path="docs/ch05/nosql.html">
             
                 
                     <a href="../../docs/ch05/nosql.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.5.</b>
+                            <b>5.6.</b>
                         
                         NoSQL数据库操作
                     </a>
@@ -1479,13 +1494,15 @@
                         <h1 id="&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;">&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;</h1>
 <p>&#x5BF9;&#x8BB8;&#x591A;Web&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x800C;&#x8A00;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x90FD;&#x662F;&#x5176;&#x6838;&#x5FC3;&#x6240;&#x5728;&#x3002;
 &#x6570;&#x636E;&#x5E93;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x4F60;&#x60F3;&#x67E5;&#x8BE2;&#x548C;&#x4FEE;&#x6539;&#x7684;&#x4EFB;&#x4F55;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x3001;&#x4EA7;&#x54C1;&#x76EE;&#x5F55;&#x6216;&#x8005;&#x65B0;&#x95FB;&#x5217;&#x8868;&#x7B49;&#x3002;</p>
-<p>Go&#x6CA1;&#x6709;&#x5185;&#x7F6E;&#x7684;&#x9A71;&#x52A8;&#x652F;&#x6301;&#x4EFB;&#x4F55;&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x4F46;&#x662F;Go&#x5B9A;&#x4E49;&#x4E86;database/sql&#x63A5;&#x53E3;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x9A71;&#x52A8;&#x63A5;&#x53E3;&#x5F00;&#x53D1;&#x76F8;&#x5E94;&#x6570;&#x636E;&#x5E93;&#x7684;&#x9A71;&#x52A8;&#xFF0C;
-5.1&#x5C0F;&#x8282;&#x91CC;&#x9762;&#x4ECB;&#x7ECD;Go&#x8BBE;&#x8BA1;&#x7684;&#x4E00;&#x4E9B;&#x9A71;&#x52A8;&#xFF0C;&#x4ECB;&#x7ECD;Go&#x662F;&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;&#x63A5;&#x53E3;&#x7684;&#x3002;
-5.2&#x81F3;5.4&#x5C0F;&#x8282;&#x4ECB;&#x7ECD;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x4E00;&#x4E9B;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x9A71;&#x52A8;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#xFF0C;
-5.5&#x5C0F;&#x8282;&#x4ECB;&#x7ECD;&#x6211;&#x81EA;&#x5DF1;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;ORM&#x5E93;&#xFF0C;&#x57FA;&#x4E8E;database/sql&#x6807;&#x51C6;&#x63A5;&#x53E3;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x517C;&#x5BB9;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x652F;&#x6301;database/sql&#x7684;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;&#xFF0C;
-&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;Go style&#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x3002;</p>
-<p>&#x76EE;&#x524D;NOSQL&#x5DF2;&#x7ECF;&#x6210;&#x4E3A;Web&#x5F00;&#x53D1;&#x7684;&#x4E00;&#x4E2A;&#x6F6E;&#x6D41;&#xFF0C;&#x5F88;&#x591A;&#x5E94;&#x7528;&#x91C7;&#x7528;&#x4E86;NoSQL&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4EE5;&#x524D;&#x7684;&#x7F13;&#x5B58;&#x3002;
-5.6&#x5C0F;&#x8282;&#x5C06;&#x4ECB;&#x7ECD;MongoDB&#x548C;Redis&#x4E24;&#x79CD;NoSQL&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<p>Go&#x6CA1;&#x6709;&#x5185;&#x7F6E;&#x7684;&#x9A71;&#x52A8;&#x652F;&#x6301;&#x4EFB;&#x4F55;&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x4F46;&#x662F;Go&#x5B9A;&#x4E49;&#x4E86;database/sql&#x63A5;&#x53E3;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x9A71;&#x52A8;&#x63A5;&#x53E3;&#x5F00;&#x53D1;&#x76F8;&#x5E94;&#x6570;&#x636E;&#x5E93;&#x7684;&#x9A71;&#x52A8;&#x3002;   </p>
+<ul>
+<li>5.1 &#x57FA;&#x7840;&#x77E5;&#x8BC6;</li>
+<li>5.2 Go&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;&#x63A5;&#x53E3;</li>
+<li>5.3 MySQL&#x4F7F;&#x7528;&#x7B80;&#x4ECB;</li>
+<li>5.4 SQLite&#x4F7F;&#x7528;&#x7B80;&#x4ECB;</li>
+<li>5.5 PostgreSQL&#x4F7F;&#x7528;&#x7B80;&#x4ECB;</li>
+<li>5.6 NoSQL&#x4F7F;&#x7528;&#x7B80;&#x4ECB;</li>
+</ul>
 <blockquote>
 <p><a href="http://go-database-sql.org/" target="_blank">Go database/sql tutorial</a> &#x91CC;&#x63D0;&#x4F9B;&#x4E86;&#x60EF;&#x7528;&#x7684;&#x8303;&#x4F8B;&#x53CA;&#x8BE6;&#x7EC6;&#x7684;&#x8BF4;&#x660E;&#x3002;</p>
 </blockquote>
@@ -1502,7 +1519,7 @@
         <a href="../../docs/ch04/fileUpload.html" class="navigation navigation-prev " aria-label="Previous page: 处理文件上传"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/ch05/interface.html" class="navigation navigation-next " aria-label="Next page: database/sql接口"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/ch05/overview.html" class="navigation navigation-next " aria-label="Next page: 基础知识"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

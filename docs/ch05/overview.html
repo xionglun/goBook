@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>存储密码 | Golang Web</title>
+        <title>基础知识 | Golang Web</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="../../docs/ch09/hash.html" />
+    <link rel="next" href="../../docs/ch05/interface.html" />
     
     
-    <link rel="prev" href="../../docs/ch09/sql.html" />
+    <link rel="prev" href="../../docs/ch05/database.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="9.5"
-        data-chapter-title="存储密码"
-        data-filepath="docs/ch09/password.md"
+        data-level="5.1"
+        data-chapter-title="基础知识"
+        data-filepath="docs/ch05/overview.md"
         data-basepath="../.."
         data-revision="Mon May 23 2016 17:53:02 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -529,7 +529,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1" data-path="docs/ch05/overview.html">
+        <li class="chapter active" data-level="5.1" data-path="docs/ch05/overview.html">
             
                 
                     <a href="../../docs/ch05/overview.html">
@@ -973,7 +973,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="9.5" data-path="docs/ch09/password.html">
+        <li class="chapter " data-level="9.5" data-path="docs/ch09/password.html">
             
                 
                     <a href="../../docs/ch09/password.html">
@@ -1491,92 +1491,269 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x5B58;&#x50A8;&#x5BC6;&#x7801;">&#x5B58;&#x50A8;&#x5BC6;&#x7801;</h1>
-<p>&#x8FC7;&#x53BB;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4EE5;&#x6765;, &#x8BB8;&#x591A;&#x7684;&#x7F51;&#x7AD9;&#x906D;&#x9047;&#x7528;&#x6237;&#x5BC6;&#x7801;&#x6570;&#x636E;&#x6CC4;&#x9732;&#x4E8B;&#x4EF6;, &#x8FD9;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x9876;&#x7EA7;&#x7684;&#x4E92;&#x8054;&#x7F51;&#x4F01;&#x4E1A;&#x2013;Linkedin, 
-&#x56FD;&#x5185;&#x8BF8;&#x5982;CSDN&#xFF0C;&#x8BE5;&#x4E8B;&#x4EF6;&#x6A2A;&#x626B;&#x6574;&#x4E2A;&#x56FD;&#x5185;&#x4E92;&#x8054;&#x7F51;&#x3002;
-&#x968F;&#x540E;&#x53C8;&#x7206;&#x51FA;&#x591A;&#x73A9;&#x6E38;&#x620F;800&#x4E07;&#x7528;&#x6237;&#x8D44;&#x6599;&#x88AB;&#x6CC4;&#x9732;&#xFF0C;&#x53E6;&#x6709;&#x4F20;&#x8A00;&#x4EBA;&#x4EBA;&#x7F51;&#x3001;&#x5F00;&#x5FC3;&#x7F51;&#x3001;&#x5929;&#x6DAF;&#x793E;&#x533A;&#x3001;&#x4E16;&#x7EAA;&#x4F73;&#x7F18;&#x3001;&#x767E;&#x5408;&#x7F51;&#x7B49;&#x793E;&#x533A;&#x90FD;&#x6709;&#x53EF;&#x80FD;&#x6210;&#x4E3A;&#x9ED1;&#x5BA2;&#x4E0B;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x3002;
-&#x5C42;&#x51FA;&#x4E0D;&#x7A77;&#x7684;&#x7C7B;&#x4F3C;&#x4E8B;&#x4EF6;&#x7ED9;&#x7528;&#x6237;&#x7684;&#x7F51;&#x4E0A;&#x751F;&#x6D3B;&#x9020;&#x6210;&#x5DE8;&#x5927;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x4EBA;&#x4EBA;&#x81EA;&#x5371;&#xFF0C;&#x56E0;&#x4E3A;&#x4EBA;&#x4EEC;&#x5F80;&#x5F80;&#x4E60;&#x60EF;&#x5728;&#x4E0D;&#x540C;&#x7F51;&#x7AD9;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x5BC6;&#x7801;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x5BB6;&#x201C;&#x66B4;&#x5E93;&#x201D;&#xFF0C;&#x5168;&#x90E8;&#x906D;&#x6B83;&#x3002;</p>
-<p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;Web&#x5E94;&#x7528;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x5728;&#x9009;&#x62E9;&#x5BC6;&#x7801;&#x5B58;&#x50A8;&#x65B9;&#x6848;&#x65F6;, &#x5BB9;&#x6613;&#x6389;&#x5165;&#x54EA;&#x4E9B;&#x9677;&#x9631;, &#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x907F;&#x514D;&#x8FD9;&#x4E9B;&#x9677;&#x9631;?</p>
-<h2 id="&#x666E;&#x901A;&#x65B9;&#x6848;">&#x666E;&#x901A;&#x65B9;&#x6848;</h2>
-<p>&#x76EE;&#x524D;&#x7528;&#x7684;&#x6700;&#x591A;&#x7684;&#x5BC6;&#x7801;&#x5B58;&#x50A8;&#x65B9;&#x6848;&#x662F;&#x5C06;&#x660E;&#x6587;&#x5BC6;&#x7801;&#x505A;&#x5355;&#x5411;&#x54C8;&#x5E0C;&#x540E;&#x5B58;&#x50A8;&#xFF0C;&#x5355;&#x5411;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#xFF1A;
-&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x54C8;&#x5E0C;&#x540E;&#x7684;&#x6458;&#x8981;(digest)&#x6062;&#x590D;&#x539F;&#x59CB;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x201C;&#x5355;&#x5411;&#x201D;&#x4E8C;&#x5B57;&#x7684;&#x6765;&#x6E90;&#x3002;
-&#x5E38;&#x7528;&#x7684;&#x5355;&#x5411;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x5305;&#x62EC;SHA-256, SHA-1, MD5&#x7B49;&#x3002;</p>
-<p>Go&#x8BED;&#x8A00;&#x5BF9;&#x8FD9;&#x4E09;&#x79CD;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
-<pre><code class="lang-go">    <span class="hljs-comment">//import &quot;crypto/sha256&quot;</span>
-    h := sha256.New()
-    io.WriteString(h, <span class="hljs-string">&quot;His money is twice tainted: &apos;taint yours and &apos;taint mine.&quot;</span>)
-    fmt.Printf(<span class="hljs-string">&quot;% x&quot;</span>, h.Sum(<span class="hljs-constant">nil</span>))
-
-    <span class="hljs-comment">//import &quot;crypto/sha1&quot;</span>
-    h := sha1.New()
-    io.WriteString(h, <span class="hljs-string">&quot;His money is twice tainted: &apos;taint yours and &apos;taint mine.&quot;</span>)
-    fmt.Printf(<span class="hljs-string">&quot;% x&quot;</span>, h.Sum(<span class="hljs-constant">nil</span>))
-
-    <span class="hljs-comment">//import &quot;crypto/md5&quot;</span>
-    h := md5.New()
-    io.WriteString(h, <span class="hljs-string">&quot;&#x9700;&#x8981;&#x52A0;&#x5BC6;&#x7684;&#x5BC6;&#x7801;&quot;</span>)
-    fmt.Printf(<span class="hljs-string">&quot;%x&quot;</span>, h.Sum(<span class="hljs-constant">nil</span>))
-</code></pre>
-<p>&#x5355;&#x5411;&#x54C8;&#x5E0C;&#x6709;&#x4E24;&#x4E2A;&#x7279;&#x6027;&#xFF1A;   </p>
+                        <h2 id="sql-in-go">SQL in Go</h2>
+<p>&#x5728;Go&#x8BED;&#x8A00;&#x4E2D;&#x4F7F;&#x7528;SQL&#x7684;&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x3002;</p>
+<h3 id="&#x5173;&#x4E8E;sqldb">&#x5173;&#x4E8E;<code>sql.DB</code></h3>
+<p>&#x5728;Go&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#x662F;&#x901A;&#x8FC7;<code>sql</code>&#x5305;&#x4E2D;&#x7684;<code>DB</code>&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;<code>sql.DB</code>&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF01;&#x5B83;&#x4E5F;&#x4E0D;&#x5BF9;&#x5E94;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x7406;&#x8BBA;&#x4E2D;&#x7684;&#x4EFB;&#x4E00;&#x6982;&#x5FF5;&#xFF0C;&#x5176;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x62BD;&#x8C61;&#x4EE5;&#x53CA;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8868;&#x793A;&#x3002;
+&#x6570;&#x636E;&#x5E93;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x3001;&#x4E00;&#x4E2A;&#x7F51;&#x7EDC;&#x94FE;&#x63A5;&#x6216;&#x8005;&#x5185;&#x5B58;&#x3001;&#x8FDB;&#x7A0B;&#x6570;&#x636E;&#x7A0B;&#x3002;</p>
+<p><code>sql.DB</code>&#x9ED8;&#x9ED8;&#x5730;&#x5904;&#x7406;&#x4E86;&#x4E00;&#x4E9B;&#x91CD;&#x8981;&#x7684;&#x4E8B;&#x60C5;&#xFF1A;</p>
 <ul>
-<li>1&#xFF09;&#x540C;&#x4E00;&#x4E2A;&#x5BC6;&#x7801;&#x8FDB;&#x884C;&#x5355;&#x5411;&#x54C8;&#x5E0C;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x603B;&#x662F;&#x552F;&#x4E00;&#x786E;&#x5B9A;&#x7684;&#x6458;&#x8981;&#x3002;</li>
-<li>2&#xFF09;&#x8BA1;&#x7B97;&#x901F;&#x5EA6;&#x5FEB;&#x3002;&#x968F;&#x7740;&#x6280;&#x672F;&#x8FDB;&#x6B65;&#xFF0C;&#x4E00;&#x79D2;&#x949F;&#x80FD;&#x591F;&#x5B8C;&#x6210;&#x6570;&#x5341;&#x4EBF;&#x6B21;&#x5355;&#x5411;&#x54C8;&#x5E0C;&#x8BA1;&#x7B97;&#x3002;</li>
+<li>&#x901A;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;&#x6253;&#x5F00;&#x6216;&#x8005;&#x5173;&#x95ED;&#x4E0E;&#x5E95;&#x5C42;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8FDE;&#x63A5;</li>
+<li>&#x82E5;&#x6709;&#x9700;&#x8981;&#xFF0C;&#x5B83;&#x4F1A;&#x53BB;&#x7BA1;&#x7406;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;</li>
 </ul>
-<p>&#x7ED3;&#x5408;&#x4E0A;&#x9762;&#x4E24;&#x4E2A;&#x7279;&#x70B9;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x591A;&#x6570;&#x4EBA;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5BC6;&#x7801;&#x4E3A;&#x5E38;&#x89C1;&#x7684;&#x7EC4;&#x5408;&#xFF0C;&#x653B;&#x51FB;&#x8005;&#x53EF;&#x4EE5;&#x5C06;&#x6240;&#x6709;&#x5BC6;&#x7801;&#x7684;&#x5E38;&#x89C1;&#x7EC4;&#x5408;&#x8FDB;&#x884C;&#x5355;&#x5411;&#x54C8;&#x5E0C;&#xFF0C;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x6458;&#x8981;&#x7EC4;&#x5408;, 
-&#x7136;&#x540E;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x6458;&#x8981;&#x8FDB;&#x884C;&#x6BD4;&#x5BF9;&#x5373;&#x53EF;&#x83B7;&#x5F97;&#x5BF9;&#x5E94;&#x7684;&#x5BC6;&#x7801;&#x3002;&#x8FD9;&#x4E2A;&#x6458;&#x8981;&#x7EC4;&#x5408;&#x4E5F;&#x88AB;&#x79F0;&#x4E3A;<code>rainbow table</code>&#x3002;</p>
-<p>&#x6240;&#x4EE5;, &#x901A;&#x8FC7;&#x5355;&#x5411;&#x52A0;&#x5BC6;&#x4E4B;&#x540E;&#x5B58;&#x50A8;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x548C;&#x660E;&#x6587;&#x5B58;&#x50A8;&#x6CA1;&#x6709;&#x591A;&#x5927;&#x533A;&#x522B;&#x3002;
-&#x56E0;&#x6B64;, &#x4E00;&#x65E6;&#x7F51;&#x7AD9;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6CC4;&#x9732;, &#x6240;&#x6709;&#x7528;&#x6237;&#x7684;&#x5BC6;&#x7801;&#x672C;&#x8EAB;&#x5C31;&#x5927;&#x767D;&#x4E8E;&#x5929;&#x4E0B;&#x3002;</p>
-<h2 id="&#x8FDB;&#x9636;&#x65B9;&#x6848;">&#x8FDB;&#x9636;&#x65B9;&#x6848;</h2>
-<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x9ED1;&#x5BA2;&#x53EF;&#x4EE5;&#x7528;<code>rainbow table</code>&#x6765;&#x7834;&#x89E3;&#x54C8;&#x5E0C;&#x540E;&#x7684;&#x5BC6;&#x7801;&#xFF0C;&#x5F88;&#x5927;&#x7A0B;&#x5EA6;&#x4E0A;&#x662F;&#x56E0;&#x4E3A;&#x52A0;&#x5BC6;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x662F;&#x516C;&#x5F00;&#x7684;&#x3002;
-&#x5982;&#x679C;&#x9ED1;&#x5BA2;&#x4E0D;&#x77E5;&#x9053;&#x52A0;&#x5BC6;&#x7684;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x90A3;&#x4ED6;&#x4E5F;&#x5C31;&#x65E0;&#x4ECE;&#x4E0B;&#x624B;&#x4E86;&#x3002;</p>
-<p>&#x4E00;&#x4E2A;&#x76F4;&#x63A5;&#x7684;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F;&#xFF0C;&#x81EA;&#x5DF1;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x3002;
-&#x7136;&#x800C;&#xFF0C;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x662F;&#x5F88;&#x96BE;&#x8BBE;&#x8BA1;&#x7684;&#x2014;&#x2014;&#x65E2;&#x8981;&#x907F;&#x514D;&#x78B0;&#x649E;&#xFF0C;&#x53C8;&#x4E0D;&#x80FD;&#x6709;&#x660E;&#x663E;&#x7684;&#x89C4;&#x5F8B;&#xFF0C;&#x505A;&#x5230;&#x8FD9;&#x4E24;&#x70B9;&#x8981;&#x6BD4;&#x60F3;&#x8C61;&#x4E2D;&#x7684;&#x8981;&#x56F0;&#x96BE;&#x5F88;&#x591A;&#x3002;
-&#x56E0;&#x6B64;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x66F4;&#x591A;&#x7684;&#x662F;&#x5229;&#x7528;&#x5DF2;&#x6709;&#x7684;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#x54C8;&#x5E0C;&#x3002;</p>
-<p>&#x4F46;&#x662F;&#x5355;&#x7EAF;&#x7684;&#x591A;&#x6B21;&#x54C8;&#x5E0C;&#xFF0C;&#x4F9D;&#x7136;&#x963B;&#x6321;&#x4E0D;&#x4F4F;&#x9ED1;&#x5BA2;&#x3002;&#x4E24;&#x6B21; MD5&#x3001;&#x4E09;&#x6B21; MD5&#x4E4B;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x60F3;&#x5230;&#xFF0C;&#x9ED1;&#x5BA2;&#x81EA;&#x7136;&#x4E5F;&#x80FD;&#x60F3;&#x5230;&#x3002;
-&#x7279;&#x522B;&#x662F;&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x5F00;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x6837;&#x54C8;&#x5E0C;&#x66F4;&#x662F;&#x76F8;&#x5F53;&#x4E8E;&#x76F4;&#x63A5;&#x628A;&#x7B97;&#x6CD5;&#x544A;&#x8BC9;&#x4E86;&#x9ED1;&#x5BA2;&#x3002;</p>
-<p>&#x6CA1;&#x6709;&#x653B;&#x4E0D;&#x7834;&#x7684;&#x76FE;&#xFF0C;&#x4F46;&#x4E5F;&#x6CA1;&#x6709;&#x6298;&#x4E0D;&#x65AD;&#x7684;&#x77DB;&#x3002;&#x73B0;&#x5728;&#x5B89;&#x5168;&#x6027;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x7F51;&#x7AD9;&#xFF0C;&#x90FD;&#x4F1A;&#x7528;&#x4E00;&#x79CD;&#x53EB;&#x505A;&#x201C;&#x52A0;&#x76D0;&#x201D;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B58;&#x50A8;&#x5BC6;&#x7801;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5E38;&#x8BF4;&#x7684; &#x201C;salt&#x201D;&#x3002;
-&#x4ED6;&#x4EEC;&#x901A;&#x5E38;&#x7684;&#x505A;&#x6CD5;&#x662F;&#xFF0C;&#x5148;&#x5C06;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x5BC6;&#x7801;&#x8FDB;&#x884C;&#x4E00;&#x6B21;MD5&#xFF08;&#x6216;&#x5176;&#x5B83;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#xFF09;&#x52A0;&#x5BC6;&#xFF1B;
-&#x5C06;&#x5F97;&#x5230;&#x7684; MD5 &#x503C;&#x524D;&#x540E;&#x52A0;&#x4E0A;&#x4E00;&#x4E9B;&#x53EA;&#x6709;&#x7BA1;&#x7406;&#x5458;&#x81EA;&#x5DF1;&#x77E5;&#x9053;&#x7684;&#x968F;&#x673A;&#x4E32;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x4E00;&#x6B21;MD5&#x52A0;&#x5BC6;&#x3002;
-&#x8FD9;&#x4E2A;&#x968F;&#x673A;&#x4E32;&#x4E2D;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x67D0;&#x4E9B;&#x56FA;&#x5B9A;&#x7684;&#x4E32;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x7528;&#x6237;&#x540D;&#xFF08;&#x7528;&#x6765;&#x4FDD;&#x8BC1;&#x6BCF;&#x4E2A;&#x7528;&#x6237;&#x52A0;&#x5BC6;&#x4F7F;&#x7528;&#x7684;&#x5BC6;&#x94A5;&#x90FD;&#x4E0D;&#x4E00;&#x6837;&#xFF09;&#x3002;</p>
-<pre><code class="lang-go">    <span class="hljs-comment">//import &quot;crypto/md5&quot;</span>
-    <span class="hljs-comment">//&#x5047;&#x8BBE;&#x7528;&#x6237;&#x540D;abc&#xFF0C;&#x5BC6;&#x7801;123456</span>
-    h := md5.New()
-    io.WriteString(h, <span class="hljs-string">&quot;&#x9700;&#x8981;&#x52A0;&#x5BC6;&#x7684;&#x5BC6;&#x7801;&quot;</span>)
-
-    <span class="hljs-comment">//pwmd5&#x7B49;&#x4E8E;e10adc3949ba59abbe56e057f20f883e</span>
-    pwmd5 :=fmt.Sprintf(<span class="hljs-string">&quot;%x&quot;</span>, h.Sum(<span class="hljs-constant">nil</span>))
-
-    <span class="hljs-comment">//&#x6307;&#x5B9A;&#x4E24;&#x4E2A; salt&#xFF1A; salt1 = @#$%   salt2 = ^&amp;*()</span>
-    salt1 := <span class="hljs-string">&quot;@#$%&quot;</span>
-    salt2 := <span class="hljs-string">&quot;^&amp;*()&quot;</span>
-
-    <span class="hljs-comment">//salt1+&#x7528;&#x6237;&#x540D;+salt2+MD5&#x62FC;&#x63A5;</span>
-    io.WriteString(h, salt1)
-    io.WriteString(h, <span class="hljs-string">&quot;abc&quot;</span>)
-    io.WriteString(h, salt2)
-    io.WriteString(h, pwmd5)
-
-    last :=fmt.Sprintf(<span class="hljs-string">&quot;%x&quot;</span>, h.Sum(<span class="hljs-constant">nil</span>))
+<p><code>sql.DB</code>&#x8FD9;&#x4E00;&#x5C42;&#x62BD;&#x8C61;&#x8BA9;&#x4F60;&#x4E0D;&#x7528;&#x64CD;&#x5FC3;&#x4E0E;&#x5E95;&#x5C42;&#x6570;&#x636E;&#x5E93;&#x4E4B;&#x95F4;&#x7684;&#x5E76;&#x53D1;&#x64CD;&#x4F5C;&#x3002;&#x5F53;&#x4F60;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;
+&#x5B83;&#x4F1A;&#x6807;&#x8BB0;&#x8FDE;&#x63A5;&#x4E3A;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x4F7F;&#x7528;&#x5B8C;&#x6BD5;&#x65F6;&#x5C06;&#x5176;&#x56DE;&#x6536;&#x5230;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x3002;&#x800C;&#x5982;&#x679C;&#x4F60;&#x5FD8;&#x4E86;&#x91CA;&#x653E;&#x8FDE;&#x63A5;&#x56DE;&#x8FDE;&#x63A5;&#x6C60;&#xFF0C;
+&#x5C06;&#x6709;&#x53EF;&#x80FD;&#x6253;&#x5F00;&#x5927;&#x91CF;&#x672A;&#x91CA;&#x653E;&#x8FDE;&#x63A5;&#xFF0C;&#x7136;&#x540E;&#x8017;&#x5C3D;&#x8D44;&#x6E90;&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#x3002;</p>
+<h3 id="&#x5173;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;">&#x5173;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;</h3>
+<p>&#x5F53;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x5E93;&#x65F6;&#xFF0C;&#x4F60;&#x9664;&#x4E86;&#x7528;&#x5230;Go&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x7684;<code>sql</code>&#x5305;&#x5916;&#xFF0C;&#x8FD8;&#x5E94;&#x8BE5;&#x5F15;&#x7528;&#x4E00;&#x4E2A;&#x4E0E;&#x771F;&#x5B9E;&#x6570;&#x636E;&#x5E93;&#x76F8;&#x5173;&#x7684;&#x9A71;&#x52A8;&#x5305;&#x3002;
+&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;&#x4E0D;&#x540C;&#x7684;&#x9A71;&#x52A8;&#x3002;<br>&#x4F46;&#x662F;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x9A71;&#x52A8;&#x5305;&#xFF0C;&#x800C;&#x662F;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x5305;&#x3002;&#x8FD9;&#x6837;&#x4F1A;&#x8BA9;&#x4F60;&#x4E0D;&#x9650;&#x5B9A;&#x4E8E;&#x4F7F;&#x7528;&#x67D0;&#x4E00;&#x79CD;&#x6570;&#x636E;&#x5E93;&#xFF0C;
+&#x53EF;&#x4EE5;&#x8F7B;&#x6613;&#x5207;&#x6362;&#x5E95;&#x5C42;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x8BA9;&#x4F60;&#x7528;Go&#x6807;&#x51C6;&#x6A21;&#x5F0F;&#x800C;&#x4E0D;&#x662F;&#x9A71;&#x52A8;&#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<p>&#x5F15;&#x7528;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;database/sql&quot;</span>
+    _ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span>
+)
 </code></pre>
-<p>&#x5728;&#x4E24;&#x4E2A;salt&#x6CA1;&#x6709;&#x6CC4;&#x9732;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9ED1;&#x5BA2;&#x5982;&#x679C;&#x62FF;&#x5230;&#x7684;&#x662F;&#x6700;&#x540E;&#x8FD9;&#x4E2A;&#x52A0;&#x5BC6;&#x4E32;&#xFF0C;&#x5C31;&#x51E0;&#x4E4E;&#x4E0D;&#x53EF;&#x80FD;&#x63A8;&#x7B97;&#x51FA;&#x539F;&#x59CB;&#x7684;&#x5BC6;&#x7801;&#x662F;&#x4EC0;&#x4E48;&#x4E86;&#x3002;</p>
-<h2 id="&#x4E13;&#x5BB6;&#x65B9;&#x6848;">&#x4E13;&#x5BB6;&#x65B9;&#x6848;</h2>
-<p>&#x4E0A;&#x9762;&#x7684;&#x8FDB;&#x9636;&#x65B9;&#x6848;&#x5728;&#x51E0;&#x5E74;&#x524D;&#x4E5F;&#x8BB8;&#x662F;&#x8DB3;&#x591F;&#x5B89;&#x5168;&#x7684;&#x65B9;&#x6848;&#xFF0C;&#x56E0;&#x4E3A;&#x653B;&#x51FB;&#x8005;&#x6CA1;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x8D44;&#x6E90;&#x5EFA;&#x7ACB;&#x8FD9;&#x4E48;&#x591A;&#x7684;<code>rainbow table</code>&#x3002; 
-&#x4F46;&#x662F;&#xFF0C;&#x65F6;&#x81F3;&#x4ECA;&#x65E5;&#xFF0C;&#x56E0;&#x4E3A;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#x80FD;&#x529B;&#x7684;&#x63D0;&#x5347;&#xFF0C;&#x8FD9;&#x79CD;&#x653B;&#x51FB;&#x5DF2;&#x7ECF;&#x5B8C;&#x5168;&#x53EF;&#x884C;&#x3002;</p>
-<p>&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5462;&#xFF1F;&#x53EA;&#x8981;&#x65F6;&#x95F4;&#x4E0E;&#x8D44;&#x6E90;&#x5141;&#x8BB8;&#xFF0C;&#x6CA1;&#x6709;&#x7834;&#x8BD1;&#x4E0D;&#x4E86;&#x7684;&#x5BC6;&#x7801;&#x3002;
-&#x6240;&#x4EE5;&#x65B9;&#x6848;&#x662F;:&#x6545;&#x610F;&#x589E;&#x52A0;&#x5BC6;&#x7801;&#x8BA1;&#x7B97;&#x6240;&#x9700;&#x8017;&#x8D39;&#x7684;&#x8D44;&#x6E90;&#x548C;&#x65F6;&#x95F4;&#xFF0C;&#x4F7F;&#x5F97;&#x4EFB;&#x4F55;&#x4EBA;&#x90FD;&#x4E0D;&#x53EF;&#x83B7;&#x5F97;&#x8DB3;&#x591F;&#x7684;&#x8D44;&#x6E90;&#x5EFA;&#x7ACB;&#x6240;&#x9700;&#x7684;<code>rainbow table</code>&#x3002;</p>
-<p>&#x8FD9;&#x7C7B;&#x65B9;&#x6848;&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#xFF0C;&#x7B97;&#x6CD5;&#x4E2D;&#x90FD;&#x6709;&#x4E2A;&#x56E0;&#x5B50;&#xFF0C;&#x7528;&#x4E8E;&#x6307;&#x660E;&#x8BA1;&#x7B97;&#x5BC6;&#x7801;&#x6458;&#x8981;&#x6240;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;&#x548C;&#x65F6;&#x95F4;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BA1;&#x7B97;&#x5F3A;&#x5EA6;&#x3002;
-&#x8BA1;&#x7B97;&#x5F3A;&#x5EA6;&#x8D8A;&#x5927;&#xFF0C;&#x653B;&#x51FB;&#x8005;&#x5EFA;&#x7ACB;<code>rainbow table</code>&#x8D8A;&#x56F0;&#x96BE;&#xFF0C;&#x4EE5;&#x81F3;&#x4E8E;&#x4E0D;&#x53EF;&#x7EE7;&#x7EED;&#x3002;</p>
-<p>&#x8FD9;&#x91CC;&#x63A8;&#x8350;<code>scrypt</code>&#x65B9;&#x6848;&#xFF0C;scrypt&#x662F;&#x7531;&#x8457;&#x540D;&#x7684;FreeBSD&#x9ED1;&#x5BA2;Colin Percival&#x4E3A;&#x4ED6;&#x7684;&#x5907;&#x4EFD;&#x670D;&#x52A1;Tarsnap&#x5F00;&#x53D1;&#x7684;&#x3002;</p>
-<p>&#x76EE;&#x524D;Go&#x8BED;&#x8A00;&#x91CC;&#x9762;&#x652F;&#x6301;&#x7684;&#x5E93;<code>golang.org/x/crypto/scrypt</code></p>
-<pre><code class="lang-go">dk := scrypt.Key([]<span class="hljs-typename">byte</span>(<span class="hljs-string">&quot;some password&quot;</span>), []<span class="hljs-typename">byte</span>(salt), <span class="hljs-number">16384</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">32</span>)
+<p>&#x8FD9;&#x91CC;&#x4EE3;&#x7801;&#x4F7F;&#x7528;Go&#x6807;&#x51C6;&#x5E93;sql&#x5305;&#xFF0C;&#x540C;&#x65F6;&#x5F15;&#x5165;Go&#x8BED;&#x8A00;&#x7684;<strong>MySQL</strong>&#x9A71;&#x52A8;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;">&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;<code>sql.DB</code>&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-go">db, err := sql.Open(<span class="hljs-string">&quot;mysql&quot;</span>, <span class="hljs-string">&quot;user:password@tcp(127.0.0.1:3306)/hello&quot;</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-keyword">defer</span> db.Close()
 </code></pre>
-<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x552F;&#x4E00;&#x7684;&#x76F8;&#x5E94;&#x7684;&#x5BC6;&#x7801;&#x503C;&#xFF0C;&#x8FD9;&#x662F;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#x6700;&#x96BE;&#x7834;&#x89E3;&#x7684;&#x3002;</p>
-<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
-<p>&#x770B;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4EA7;&#x751F;&#x4E86;&#x5371;&#x673A;&#x611F;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x884C;&#x52A8;&#x8D77;&#x6765;&#xFF1A;   </p>
+<p>&#x8FD9;&#x91CC;&#x901A;&#x8FC7;<code>Open</code>&#x65B9;&#x6CD5;&#x6765;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x7528;&#x3002;&#x4F60;&#x5E94;&#x8BE5;&#x603B;&#x662F;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x9519;&#x8BEF;&#xFF0C;&#x6765;&#x9632;&#x6B62;&#x610F;&#x5916;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;<code>Open</code>&#x65B9;&#x6CD5;&#x5E76;&#x6CA1;&#x6709;&#x5EFA;&#x7ACB;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x7684;&#x94FE;&#x63A5;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x67E5;&#x68C0;&#x67E5;&#x9A71;&#x52A8;&#x7684;&#x8BED;&#x6CD5;&#x662F;&#x5426;&#x6B63;&#x786E;&#x3002;
+&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x53EF;&#x80FD;&#x8FDE;&#x63A5;&#x5230;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>Ping</code>&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-go">err = db.Ping()
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-comment">// do something here</span>
+}
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;</strong> &#x867D;&#x7136;&#x5173;&#x95ED;&#x4E00;&#x4E2A;&#x5DF2;&#x6253;&#x5F00;&#x7684;&#x6570;&#x636E;&#x5E93;&#x94FE;&#x63A5;&#x770B;&#x8D77;&#x6765;&#x662F;&#x5F88;&#x81EA;&#x7136;&#x7684;&#x4E00;&#x4EF6;&#x4E8B;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;<code>sql.DB</code>&#x5BF9;&#x8C61;&#x7684;&#x8BBE;&#x8BA1;&#x6210;&#x957F;&#x4E45;&#x5B58;&#x6D3B;&#x7684;&#xFF0C;
+&#x6240;&#x4EE5;&#x4E0D;&#x8981;&#x9891;&#x7E41;&#x5730;&#x4F7F;&#x7528;<code>Open</code>&#x548C;<code>Close</code>&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x4F60;&#x9891;&#x7E41;&#x7684;&#x5F00;&#x5173;&#x6570;&#x636E;&#x5E93;&#x94FE;&#x63A5;&#xFF0C;&#x5C06;&#x4F1A;&#x5F15;&#x53D1;&#x5F88;&#x591A;&#x7F51;&#x7EDC;&#x95EE;&#x9898;&#xFF0C;
+&#x6BD4;&#x5982;&#x5927;&#x91CF;TCP&#x94FE;&#x63A5;&#x5904;&#x4E8E;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x8D44;&#x6E90;&#x8017;&#x5C3D;&#x3002;</p>
+<h3 id="&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x67E5;&#x8BE2;&#x6570;&#x636E;">&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x67E5;&#x8BE2;&#x6570;&#x636E;</h3>
+<p>&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#x6709;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <ul>
-<li>1&#xFF09;&#x5982;&#x679C;&#x4F60;&#x662F;&#x666E;&#x901A;&#x7528;&#x6237;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;LastPass&#x8FDB;&#x884C;&#x5BC6;&#x7801;&#x5B58;&#x50A8;&#x548C;&#x751F;&#x6210;&#xFF0C;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7AD9;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x5BC6;&#x7801;&#xFF1B;</li>
-<li>2&#xFF09;&#x5982;&#x679C;&#x4F60;&#x662F;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#xFF0C; &#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F60;&#x91C7;&#x7528;&#x4E13;&#x5BB6;&#x65B9;&#x6848;&#x8FDB;&#x884C;&#x5BC6;&#x7801;&#x5B58;&#x50A8;&#x3002;</li>
+<li>&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;</li>
+<li>&#x4F7F;&#x7528;&#x9884;&#x58F0;&#x660E;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#x67E5;&#x8BE2;</li>
+<li>&#x4F7F;&#x7528;&#x9884;&#x58F0;&#x660E;&#x8FDB;&#x884C;&#x5355;&#x6B21;&#x67E5;&#x8BE2;</li>
+<li>&#x53EA;&#x83B7;&#x53D6;&#x5355;&#x884C;&#x6570;&#x636E;&#x7684;&#x67E5;&#x8BE2;</li>
 </ul>
+<h4 id="&#x76F4;&#x63A5;&#x67E5;&#x8BE2;">&#x76F4;&#x63A5;&#x67E5;&#x8BE2;</h4>
+<p>&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> (
+    id <span class="hljs-typename">int</span>
+    name <span class="hljs-typename">string</span>
+)
+rows, err := db.Query(<span class="hljs-string">&quot;select id, name from users where id = ?&quot;</span>, <span class="hljs-number">1</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-keyword">defer</span> rows.Close()
+<span class="hljs-keyword">for</span> rows.Next() {
+    err := rows.Scan(&amp;id, &amp;name)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatal(err)
+    }
+    log.Println(id, name)
+}
+err = rows.Err()
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x67E5;&#x8BE2;<code>id</code>&#x4E3A;1&#x7684;&#x7528;&#x6237;&#x7684;ID&#x4E0E;&#x540D;&#x5B57;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;<code>db.Query</code>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x76F4;&#x63A5;&#x67E5;&#x8BE2;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x5F88;&#x591A;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#xFF1A;</p>
+<ol>
+<li>&#x6CE8;&#x610F;&#x68C0;&#x67E5;&#x9519;&#x8BEF;&#xFF0C;&#x4E0D;&#x8981;&#x5FFD;&#x7565;&#x9519;&#x8BEF;</li>
+<li>&#x4F7F;&#x7528;&#x5B8C;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x540E;&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#x5173;&#x95ED;<code>rows.Close()</code></li>
+<li>&#x904D;&#x5386;<code>rows</code>&#x4F7F;&#x7528;&#x7684;&#x662F;<code>rows.Next</code>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;</li>
+<li>&#x8BFB;&#x53D6;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x662F;<code>Scan</code>&#x65B9;&#x6CD5;</li>
+<li>&#x4F7F;&#x7528;&#x5B8C;<code>rows</code>&#x4E4B;&#x540E;&#x8981;&#x6CE8;&#x610F;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x9519;&#x8BEF;<code>rows.Err()</code></li>
+</ol>
+<p>&#x5176;&#x4E2D;<code>rows.Close()</code>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x65E0;&#x5BB3;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x8C03;&#x7528;&#x3002;
+&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x524D;&#xFF0C;&#x5FC5;&#x987B;&#x5148;&#x68C0;&#x67E5;&#x524D;&#x9762;&#x64CD;&#x4F5C;&#x6709;&#x6CA1;&#x6709;&#x9519;&#x8BEF;&#x4EA7;&#x751F;&#x3002;</p>
+<h4 id="&#x4F7F;&#x7528;&#x58F0;&#x660E;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;">&#x4F7F;&#x7528;&#x58F0;&#x660E;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;</h4>
+<p>&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-go">stmt, err := db.Prepare(<span class="hljs-string">&quot;select id, name from users where id = ?&quot;</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-keyword">defer</span> stmt.Close()
+rows, err := stmt.Query(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-keyword">defer</span> rows.Close()
+<span class="hljs-keyword">for</span> rows.Next() {
+    <span class="hljs-comment">// ...</span>
+}
+<span class="hljs-keyword">if</span> err = rows.Err(); err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;<code>db.Prepare</code>&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x58F0;&#x660E;(Statement)stmt&#x6765;&#x8FDB;&#x884C;&#x540E;&#x7EED;&#x4F7F;&#x7528;&#x3002;
+&#x4F7F;&#x7528;&#x58F0;&#x660E;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x8981;&#x6BD4;&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x76F4;&#x63A5;&#x67E5;&#x8BE2;&#x597D;&#x5F97;&#x591A;&#x3002;</p>
+<h4 id="&#x5355;&#x884C;&#x6570;&#x636E;&#x67E5;&#x8BE2;">&#x5355;&#x884C;&#x6570;&#x636E;&#x67E5;&#x8BE2;</h4>
+<p>&#x5355;&#x884C;&#x6570;&#x636E;&#x67E5;&#x8BE2;&#x8868;&#x793A;&#x6BCF;&#x6B21;&#x67E5;&#x8BE2;&#x6700;&#x591A;&#x53EA;&#x4F1A;&#x53D6;&#x5F97;&#x4E00;&#x884C;&#x6570;&#x636E;&#xFF0C;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> name <span class="hljs-typename">string</span>
+err = db.QueryRow(<span class="hljs-string">&quot;select name from users where id = ?&quot;</span>, <span class="hljs-number">1</span>).Scan(&amp;name)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+fmt.Println(name)
+</code></pre>
+<p>&#x5728;&#x5355;&#x884C;&#x67E5;&#x8BE2;&#x65F6;&#xFF0C;&#x67E5;&#x8BE2;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x8BFB;&#x53D6;&#x7ED3;&#x679C;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x4F60;&#x540C;&#x6837;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x9884;&#x58F0;&#x660E;&#x4E2D;&#x4F7F;&#x7528;&#x5355;&#x884C;&#x67E5;&#x8BE2;</p>
+<pre><code class="lang-go">stmt, err := db.Prepare(<span class="hljs-string">&quot;select name from users where id = ?&quot;</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-keyword">var</span> name <span class="hljs-typename">string</span>
+err = stmt.QueryRow(<span class="hljs-number">1</span>).Scan(&amp;name)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+fmt.Println(name)
+</code></pre>
+<h3 id="&#x5173;&#x4E8E;&#x9884;&#x58F0;&#x660E;&#x7684;&#x7F3A;&#x70B9;">&#x5173;&#x4E8E;&#x9884;&#x58F0;&#x660E;&#x7684;&#x7F3A;&#x70B9;</h3>
+<p>&#x4F7F;&#x7528;&#x9884;&#x58F0;&#x660E;(Prepared Statement)&#x6709;&#x5F88;&#x591A;&#x597D;&#x5904;&#xFF08;&#x5B89;&#x5168;&#x3001;&#x6709;&#x6548;&#x3001;&#x65B9;&#x4FBF;&#x7B49;&#xFF09;&#x3002;
+&#x4F46;&#x662F;&#xFF0C;&#x7531;&#x4E8E;Go&#x5728;<code>database/sql</code>&#x8FD9;&#x4E00;&#x5C42;&#x7684;&#x62BD;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;&#x9884;&#x58F0;&#x660E;&#x8FD0;&#x4F5C;&#x53EF;&#x80FD;&#x4E0E;&#x4F60;&#x60F3;&#x8981;&#x7684;&#x6709;&#x5DEE;&#x5F02;&#x3002;</p>
+<p>&#x5728;&#x67D0;&#x4E9B;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x9884;&#x58F0;&#x660E;&#x662F;&#x4E0E;&#x5E95;&#x5C42;&#x771F;&#x5B9E;&#x94FE;&#x63A5;&#x7ED1;&#x5B9A;&#x7684;&#xFF0C;&#x7136;&#x540E;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x5728;&#x540C;&#x4E00;&#x6761;&#x94FE;&#x8DEF;&#x4E0A;&#x3002;&#x800C;Go&#x4E2D;&#x5219;&#x4E0D;&#x662F;&#xFF1A;</p>
+<ol>
+<li>&#x5F53;&#x4F60;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x9884;&#x58F0;&#x660E;&#xFF0C;&#x5B83;&#x4F1A;&#x51C6;&#x5907;&#x4E00;&#x4E2A;&#x5728;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x7684;&#x94FE;&#x63A5;&#x3002;</li>
+<li><code>stmt</code>&#x5BF9;&#x8C61;&#x4F1A;&#x8BB0;&#x4F4F;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x90A3;&#x4E2A;&#x94FE;&#x63A5;&#x3002;</li>
+<li>&#x5F53;&#x4F60;&#x4F7F;&#x7528;<code>stmt</code>&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B83;&#x4F1A;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x539F;&#x6765;&#x7684;&#x94FE;&#x63A5;&#x3002;&#x4F46;&#x5F53;&#x539F;&#x6765;&#x7684;&#x94FE;&#x63A5;&#x5173;&#x95ED;&#x6216;&#x8005;&#x88AB;&#x5360;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;
+&#x5B83;&#x5C31;&#x4F1A;&#x518D;&#x4ECE;&#x8FDE;&#x63A5;&#x6C60;&#x91CC;&#x53D6;&#x51FA;&#x4E00;&#x6761;&#x94FE;&#x63A5;&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x5927;&#x91CF;&#x7684;&#x9884;&#x58F0;&#x660E;&#x6CC4;&#x9732;&#x3002;</li>
+</ol>
+<h3 id="&#x64CD;&#x4F5C;&#x6570;&#x636E;">&#x64CD;&#x4F5C;&#x6570;&#x636E;</h3>
+<p>&#x5728;&#x4E00;&#x822C;&#x8BED;&#x8A00;&#x6216;&#x8005;&#x5E93;&#x4E2D;&#xFF0C;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E0E;&#x66F4;&#x65B0;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x540C;&#x6837;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x4F46;&#x662F;&#x5728;Go&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E24;&#x8005;&#x662F;&#x6709;&#x5F88;&#x5927;&#x5DEE;&#x522B;&#x7684;&#x3002;</p>
+<p>&#x5728;Go&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x4E00;&#x822C;&#x4F7F;&#x7528;<code>db.Query</code>&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x800C;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x4E00;&#x822C;&#x4F7F;&#x7528;<code>db.Exec</code>&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x3002;
+&#x56E0;&#x4E3A;&#x5728;Go&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;<code>Exec</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;&#x662F;<code>sql.Result</code>&#x5BF9;&#x8C61;&#xFF0C;&#x800C;<code>Query</code>&#x8FD4;&#x56DE;&#x7684;&#x662F;<code>Rows</code>&#x5BF9;&#x8C61;&#x3002;
+&#x800C;&#x5982;&#x679C;<code>Rows</code>&#x5BF9;&#x8C61;&#x91CC;&#x8FD8;&#x6709;&#x6570;&#x636E;&#x672A;&#x6D88;&#x606F;&#x7684;&#x8BDD;&#xFF0C;&#x5176;&#x5C06;&#x4FDD;&#x6301;&#x5E95;&#x5C42;&#x94FE;&#x63A5;&#x4E0D;&#x91CA;&#x653E;&#x76F4;&#x5230;&#x5173;&#x95ED;&#xFF0C;&#x5F88;&#x53EF;&#x80FD;&#x9020;&#x6210;&#x6CC4;&#x9732;&#x3002;</p>
+<h3 id="&#x4E8B;&#x52A1;&#x5904;&#x7406;">&#x4E8B;&#x52A1;&#x5904;&#x7406;</h3>
+<p>&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x4F1A;&#x4FDD;&#x8BC1;&#x4E8B;&#x52A1;&#x5185;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x5728;&#x4E00;&#x6761;&#x94FE;&#x63A5;&#x4E0A;&#x8FDB;&#x884C;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4E8B;&#x52A1;&#x5185;&#x7684;&#x9884;&#x58F0;&#x660E;&#x5C06;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4E0A;&#x9762;&#x6240;&#x8FF0;&#x7684;&#x7F3A;&#x70B9;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x4E8B;&#x52A1;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x8981;&#x5C06;&#x4E8B;&#x52A1;&#x65B9;&#x6CD5;<code>Begin()</code>&#x6216;&#x8005;<code>Commit()</code>&#x4E0E;SQL&#x8BED;&#x53E5;&#x91CC;&#x7684;<code>BEGIN</code>&#x6216;&#x8005;<code>COMMIT</code>&#x5173;&#x952E;&#x8BCD;&#x6DF7;&#x5408;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x5728;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x5185;&#xFF0C;&#x4E0D;&#x8981;&#x518D;&#x53BB;&#x4F7F;&#x7528;<code>db</code>&#x5BF9;&#x8C61;&#xFF0C;&#x7528;<code>tx</code>&#x5BF9;&#x8C61;&#x6267;&#x884C;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x3002;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-go">tx, err := db.Begin()
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-keyword">defer</span> tx.Rollback()
+stmt, err := tx.Prepare(<span class="hljs-string">&quot;INSERT INTO foo VALUES (?)&quot;</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-keyword">defer</span> stmt.Close() <span class="hljs-comment">// danger!</span>
+<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ {
+    _, err = stmt.Exec(i)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatal(err)
+    }
+}
+err = tx.Commit()
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-comment">// stmt.Close() runs here!</span>
+</code></pre>
+<h3 id="&#x5904;&#x7406;&#x9519;&#x8BEF;">&#x5904;&#x7406;&#x9519;&#x8BEF;</h3>
+<blockquote>
+<p>&#x5728;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x90FD;&#x4E0D;&#x5E94;&#x8BE5;&#x5FFD;&#x7565;!</p>
+</blockquote>
+<p>&#x5728;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6709;&#x51E0;&#x5904;&#x5730;&#x65B9;&#x7684;&#x9519;&#x8BEF;&#x9700;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#xFF1A;</p>
+<p>1&#xFF09;&#x904D;&#x5386;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x540E;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x7684;&#x9519;&#x8BEF;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">for</span> rows.Next(); {
+}
+<span class="hljs-keyword">if</span> err = rows.Err(); err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-comment">// handle error here</span>
+}
+</code></pre>
+<p>2&#xFF09;&#x5173;&#x95ED;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x65F6;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x7684;&#x9519;&#x8BEF;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">for</span> rows.Next() {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">break</span>; <span class="hljs-comment">// whoops, rows is not closed! memory leak...</span>
+}
+<span class="hljs-comment">// do the usual &quot;if err = rows.Err()&quot; [omitted here]...</span>
+<span class="hljs-comment">// it&apos;s always safe to [re?]close here:</span>
+<span class="hljs-keyword">if</span> err = rows.Close(); err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-comment">// but what should we do if there&apos;s an error?</span>
+    log.Println(err)
+}
+</code></pre>
+<p>3&#xFF09;&#x67E5;&#x8BE2;&#x5355;&#x884C;&#x6570;&#x636E;&#x65F6;&#x5019;&#x51FA;&#x9519;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> name <span class="hljs-typename">string</span>
+err = db.QueryRow(<span class="hljs-string">&quot;select name from users where id = ?&quot;</span>, <span class="hljs-number">1</span>).Scan(&amp;name)
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-keyword">if</span> err == sql.ErrNoRows {
+        <span class="hljs-comment">// there were no rows, but otherwise no error occurred</span>
+    } <span class="hljs-keyword">else</span> {
+        log.Fatal(err)
+    }
+}
+fmt.Println(name)
+</code></pre>
+<p>&#x5728;&#x67E5;&#x8BE2;&#x5355;&#x884C;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x6CA1;&#x6709;&#x67E5;&#x5230;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x51FA;&#x73B0;&#x5176;&#x5B83;&#x9519;&#x8BEF;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5355;&#x72EC;&#x5904;&#x7406;&#x3002;</p>
+<h3 id="&#x5904;&#x7406;null&#x8FD4;&#x56DE;">&#x5904;&#x7406;Null&#x8FD4;&#x56DE;</h3>
+<p>&#x7531;&#x4E8E;&#x67D0;&#x4E9B;&#x5217;&#x53EF;&#x4EE5;&#x9ED8;&#x8BA4;&#x4E3A;&#x7A7A;&#xFF0C;&#x6240;&#x4EE5;&#x8FD4;&#x56DE;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x4F1A;&#x8FD4;&#x56DE;Null&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x6765;&#x5904;&#x7406;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">for</span> rows.Next() {
+    <span class="hljs-keyword">var</span> s sql.NullString
+    err := rows.Scan(&amp;s)
+    <span class="hljs-comment">// check err</span>
+    <span class="hljs-keyword">if</span> s.Valid {
+       <span class="hljs-comment">// use s.String</span>
+    } <span class="hljs-keyword">else</span> {
+       <span class="hljs-comment">// NULL value</span>
+    }
+}
+</code></pre>
+<p>&#x9664;&#x4E86;&#x793A;&#x4F8B;&#x4E2D;&#x7684;<code>NullString</code>&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;<code>NullInt64</code>&#x3001;<code>NullBool</code>&#x3001;<code>NullFloat64</code>&#x8FD9;&#x51E0;&#x79CD;&#x5DF2;&#x5B9A;&#x4E49;&#x7684;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x89C9;&#x5F97;&#x4E0A;&#x9762;&#x8FD9;&#x51E0;&#x79CD;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x4EFF;&#x7167;Go&#x6807;&#x51C6;&#x5B9E;&#x73B0;&#x6765;&#x5904;&#x7406;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
+<h3 id="&#x5904;&#x7406;&#x67D0;&#x77E5;&#x7684;&#x5217;">&#x5904;&#x7406;&#x67D0;&#x77E5;&#x7684;&#x5217;</h3>
+<p>&#x4F7F;&#x7528;<code>Scan</code>&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x9884;&#x5148;&#x77E5;&#x9053;&#x6240;&#x53D6;&#x51FA;&#x6765;&#x7684;&#x6570;&#x636E;&#x6709;&#x591A;&#x5C11;&#x884C;&#x3002;&#x5047;&#x5982;&#x53D6;&#x51FA;&#x6765;&#x7684;&#x884C;&#x6570;&#x4E0D;&#x5B9A;&#x65F6;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x3002;
+&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>Columns</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-go">cols, err := rows.Columns()
+<span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+    <span class="hljs-comment">// handle the error</span>
+} <span class="hljs-keyword">else</span> {
+    dest := []<span class="hljs-keyword">interface</span>{}{ <span class="hljs-comment">// Standard MySQL columns</span>
+        <span class="hljs-built_in">new</span>(<span class="hljs-typename">uint64</span>), <span class="hljs-comment">// id</span>
+        <span class="hljs-built_in">new</span>(<span class="hljs-typename">string</span>), <span class="hljs-comment">// host</span>
+        <span class="hljs-built_in">new</span>(<span class="hljs-typename">string</span>), <span class="hljs-comment">// user</span>
+        <span class="hljs-built_in">new</span>(<span class="hljs-typename">string</span>), <span class="hljs-comment">// db</span>
+        <span class="hljs-built_in">new</span>(<span class="hljs-typename">string</span>), <span class="hljs-comment">// command</span>
+        <span class="hljs-built_in">new</span>(<span class="hljs-typename">uint32</span>), <span class="hljs-comment">// time</span>
+        <span class="hljs-built_in">new</span>(<span class="hljs-typename">string</span>), <span class="hljs-comment">// state</span>
+        <span class="hljs-built_in">new</span>(<span class="hljs-typename">string</span>), <span class="hljs-comment">// info</span>
+    }
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(cols) == <span class="hljs-number">11</span> {
+        <span class="hljs-comment">// Percona Server</span>
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(cols) &gt; <span class="hljs-number">8</span> {
+        <span class="hljs-comment">// Handle this case</span>
+    }
+    err = rows.Scan(dest...)
+    <span class="hljs-comment">// Work with the values in dest</span>
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F60;&#x65E2;&#x4E0D;&#x77E5;&#x9053;&#x5217;&#x6570;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x5217;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x505A;&#xFF1A;</p>
+<pre><code class="lang-go">cols, err := rows.Columns() <span class="hljs-comment">// Remember to check err afterwards</span>
+vals := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">interface</span>{}, <span class="hljs-built_in">len</span>(cols))
+<span class="hljs-keyword">for</span> i, _ := <span class="hljs-keyword">range</span> cols {
+    vals[i] = <span class="hljs-built_in">new</span>(sql.RawBytes)
+}
+<span class="hljs-keyword">for</span> rows.Next() {
+    err = rows.Scan(vals...)
+    <span class="hljs-comment">// Now you can check each element of vals for nil-ness,</span>
+    <span class="hljs-comment">// and you can use type introspection and type assertions</span>
+    <span class="hljs-comment">// to fetch the column into a typed variable.</span>
+}
+</code></pre>
+<hr>
+<p>&#x5173;&#x4E8E;Go&#x4E2D;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x67D0;&#x4E9B;&#x7279;&#x6B8A;&#x95EE;&#x9898;&#x53C2;&#x89C1;&#xFF1A;<a href="http://go-database-sql.org/surprises.html" target="_blank">http://go-database-sql.org/surprises.html</a></p>
 
                     
                     </section>
@@ -1587,10 +1764,10 @@
         </div>
 
         
-        <a href="../../docs/ch09/sql.html" class="navigation navigation-prev " aria-label="Previous page: 避免SQL注入"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/ch05/database.html" class="navigation navigation-prev " aria-label="Previous page: 访问数据库"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/ch09/hash.html" class="navigation navigation-next " aria-label="Next page: 哈希数据"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/ch05/interface.html" class="navigation navigation-next " aria-label="Next page: database/sql接口"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
