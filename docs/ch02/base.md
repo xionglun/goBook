@@ -3,6 +3,24 @@
 这小节我们将要介绍如何定义变量、常量、Go内置类型以及Go程序设计中的一些技巧。   
 Go语言中语句结束不需要使用(可以使用也可以不使用，默认gofmt会去掉)分号`;`来作为结束符。
 
+Go语言内置：
+```
+类型:
+	bool byte complex64 complex128 error float32 float64
+	int int8 int16 int32 int64 rune string
+	uint uint8 uint16 uint32 uint64 uintptr
+
+常量:
+	true false iota
+
+空值:
+	nil
+
+函数:
+	append cap close complex copy delete imag len
+	make new panic print println real recover
+```
+
 
 ## Go程序基本规则
 1. Go语言命名规则：
@@ -17,14 +35,14 @@ Go语言中语句结束不需要使用(可以使用也可以不使用，默认go
 // 注意，这里如果GOPATH设置多个路径时会出错
 $ tree -L 2 $GOPATH/src
 |-- github.com
-		|-- astaxie
-				|-- beego
+      |-- astaxie
+          |-- beego
 |-- hello
-    |-- world
+      |-- world
 ```
 这样，我们在导入`beego`包的时候，就需要这样写`import "github.com/astaxie/beego"`。   
 当我们需要导入`world`包的时候，就应该这样写`import "hello/world"`。
-在Go 1.6版本中，可以在项目下新建`vendor`文件夹，将需要用到的库和依赖放入其中。
+在Go 1.6版本及后续版本中，可以在项目下新建`vendor`文件夹，将需要用到的库和依赖放入其中。
 引用的时候，直接引用包名即可。
 
 详细导包规则参见：[import](./function.md#import)
@@ -177,6 +195,33 @@ func main() {
 }
 ```
 
+#### 变量初始化
+在Go语言中，变量在定义而没有初始化的情况下，会自动进行初始化。  
+如下面所示：
+```go
+var a int           // a的值为: 0      类型为: int
+var b string        // b的值为: ""     类型为: string
+var c interface{}   // c的值为: nil    类型为: interface{}
+var d sync.Pool     // d的值为: Pool{} 类型为: sync.Pool
+var e *sync.Pool    // e的值为: nil    类型为: *sync.Pool
+```
+另外，Go函数的命名返回值也会自动进行初始化，如下：
+```go
+func hello(name string) (age int, err error) {
+  // age的值为0, 类型为int
+  // err的值为nil, 类型为error
+}
+
+// !!!请注意此处
+func do(body string) (p *People) {
+  // 此处p的值为nil,未进行内存分配
+  json.Unmarshal([]byte(body), p)
+  // 像上面这样直接对p进行操作，会引会内存错误，必须显式初始化
+  // 如：p = new(People)
+}
+```
+
+
 ## 常量
 
 所谓常量，也就是在程序编译阶段就确定下来的值，而程序在运行时则无法改变该值。   
@@ -310,6 +355,22 @@ m := `hello
 hello
 	world
 ```
+
+##### 获取字符串长度
+由于Go语言使用UTF8编码的，所以，直接使用`len`函数来获取字符串长度，在某些情况下返回的结果可能不是你想要的。  
+例如：  
+```go
+var str = "Hello世界"
+fmt.Println(len(str))    // 11
+```
+可以看到，打印出来的长度11很可能不是你想要的，你可能想要的是**7**。在这种情况下，你就需要使用`"unicode/utf8"`这个包中的函数来计算。如：
+```go
+var str = "Hello世界"
+fmt.Println(utf8.RuneCountInString(str))   // 7
+```
+
+
+
 
 ### 错误处理
 Go内置有一个`error`接口，专门用来处理错误信息，Go的`package`里面还专门有一个包`errors`来处理错误：
