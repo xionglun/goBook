@@ -8,7 +8,7 @@ Go语言中，也和C或者其他语言一样，我们可以声明新的类型�
 ```go
 type person struct {
 	name string
-	age int
+	age  int
 }
 ```
 
@@ -20,7 +20,7 @@ type person struct {
 ```go
 type person struct {
 	name string
-	age int
+	age  int
 }
 
 var P person  // P现在就是person类型的变量了
@@ -47,7 +47,7 @@ import "fmt"
 // 声明一个新的类型
 type person struct {
 	name string
-	age int
+	age  int
 }
 
 // 比较两个人的年龄，返回年龄大的那个人，并且返回年龄差
@@ -95,11 +95,12 @@ func main() {
 让我们来看一个例子，让上面说的这些更具体化
 ```go
 package main
+
 import "fmt"
 
 type Human struct {
-	name string
-	age int
+	name   string
+	age    int
 	weight int
 }
 
@@ -149,13 +150,14 @@ mark.Human.age -= 1
 请看下面的例子：
 ```go
 package main
+
 import "fmt"
 
 type Skills []string
 
 type Human struct {
-	name string
-	age int
+	name   string
+	age    int
 	weight int
 }
 
@@ -201,15 +203,15 @@ package main
 import "fmt"
 
 type Human struct {
-	name string
-	age int
+	name  string
+	age   int
 	phone string  // Human类型拥有的字段
 }
 
 type Employee struct {
-	Human  // 匿名字段Human
+	Human              // 匿名字段Human
 	speciality string
-	phone string  // 雇员的phone字段
+	phone      string  // 雇员的phone字段
 }
 
 func main() {
