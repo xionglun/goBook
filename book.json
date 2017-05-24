@@ -2,7 +2,6 @@
   "title": "Golang Web",
   "description": "一本Go语言Web开发教程书籍!",
   "language": "zh-hans",
-  "gitbook": "2.x.x",
   "styles": {
     "website": "style.css"
   },
