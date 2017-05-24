@@ -1,17 +1,19 @@
 # GOPATH与工作空间
 
 ### GOPATH设置
-go 命令依赖一个重要的环境变量：$GOPATH<sup>1</sup>   
-*（注：这个不是Go安装目录。下面以笔者的工作目录为说明，请替换自己机器上的工作目录。）*
+go 命令依赖一个重要的环境变量：$GOPATH
 
-在 Unix/Linux/MacOSX 环境大概这样设置：
+在go 1.8以前，需要用户必须进行设置。但是在go 1.8版本以后，在没有设置情况下，会有一个默认值。
+其在Unix/Linux/macOS下是：`$HOME/go`这个目录，在Windows下是：`%USERPROFILE%/go`这个目录。
+
+在 Unix/Linux/macOSX GOPATH 环境可以这样设置：
 ```sh
 export GOPATH=/home/apple/mygo
 ```
-为了方便，应该把以上一行加入到`.bashrc`或者`.zshrc`或者自己的`sh`的配置文件中。
+为了方便，应该把以上一行加入到`.bashrc`或者`.zshrc`或者自己的`shell`的配置文件中。
 
 Windows 设置如下，新建一个环境变量名称叫做GOPATH：
-```
+```sh
 GOPATH=c:\mygo
 ```
 GOPATH允许多个目录，当有多个目录时，请注意分隔符。 Windows是分号`;`、而Linux/Unix/MacOSX系统是冒号`:`。   
@@ -36,14 +38,15 @@ GOPATH允许多个目录，当有多个目录时，请注意分隔符。 Windows
 这个会在后续详细介绍package。
 
 以后自己新建应用或者一个代码包都是在src目录下新建一个文件夹，文件夹名称一般是代码包名称，当然也允许多级目录。   
-例如在src下面新建了目录$GOPATH/src/github.com/astaxie/beedb 
-那么这个 *包路径* 就是"github.com/astaxie/beedb"，*包名称* 是最后一个目录beedb
+例如在src下面新建了目录$GOPATH/src/github.com/astaxie/beedb，
+那么这个 *包路径* 就是`github.com/astaxie/beedb`，*包名称* 是最后一个目录`beedb`。
 
 执行如下代码
 ```sh
 cd $GOPATH/src
 mkdir mymath
 ```
+
 新建文件sqrt.go，内容如下
 ```go
 // $GOPATH/src/mymath/sqrt.go源码如下：
@@ -121,7 +124,11 @@ go语言有一个获取远程包的工具就是`go get`，
 ```sh
 $ go get github.com/astaxie/beedb
 ```
->go get -u 参数可以自动更新包，而且当go get的时候会自动获取该包依赖的其他第三方包
+> go get -u 参数可以自动更新包，而且当go get的时候会自动获取该包依赖的其他第三方包。
+
+#### tips
+> 当前使用`go get`时，很大概率会拉到依赖google某些源代码的库，由于众所周知的原因，中国大陆
+> 直接访问会受阻，所以很有可能需要借助梯子才能拉下来。
 
 通过这个命令可以获取相应的源码，对应的开源平台采用不同的源码控制工具，
 例如github采用git、googlecode采用hg，所以要想获取这些源码，必须先安装相应的源码控制工具
@@ -151,30 +158,27 @@ import "github.com/astaxie/beedb"
 ## 程序的整体结构
 通过上面建立的我本地的mygo的目录结构如下所示
 ```
-	bin/
-		mathapp
-	pkg/
-		平台名/ 如：darwin_amd64、linux_amd64
-			 mymath.a
-			 github.com/
-				  astaxie/
-					   beedb.a
-	src/
-		mathapp
-			  main.go
-		mymath/
-			  sqrt.go
-		github.com/
-		    astaxie/
-					beedb/
-						beedb.go
-						util.go
+bin/
+	mathapp
+pkg/
+	平台名/ 如：darwin_amd64、linux_amd64
+		 mymath.a
+		 github.com/
+			  astaxie/
+				   beedb.a
+src/
+	mathapp
+		  main.go
+	mymath/
+		  sqrt.go
+	github.com/
+	    astaxie/
+				beedb/
+					beedb.go
+					util.go
 ```
 
 从上面的结构我们可以很清晰的看到: 
  * bin目录下面存的是编译之后可执行的文件
  * pkg下面存放的是函数包
  * src下面保存的是应用源代码
-
- - - -
-[1] Windows系统中环境变量的形式为`%GOPATH%`，本书主要使用Unix形式，Windows用户请自行替换。
