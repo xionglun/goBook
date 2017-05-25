@@ -8,12 +8,12 @@ Golang 安装有多种方式，详见[官网](https://golang.org/doc/install)
 1. 下载go安装包(需翻墙，墙内地址见下方引用)    
   ```sh
   # 按照系统版本和Go版本更改链接
-  $ wget https://storage.googleapis.com/golang/go1.8.2.linux-amd64.tar.gz
+  $ wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
   ```
 
 2. 解压到/usr/local
   ```sh
-  $ sudo tar -C /usr/local -xzf go1.8.2.linux-amd64.tar.gz
+  $ sudo tar -C /usr/local -xzf go1.8.3.linux-amd64.tar.gz
   ```
 
 3. 修改PATH环境变量
@@ -42,7 +42,7 @@ Golang 安装有多种方式，详见[官网](https://golang.org/doc/install)
 ### macOS 安装包安装
 访问[下载地址][downlink](需翻墙)。
 
-下载(需翻墙): [go1.8.2.darwin-amd64.pkg](https://storage.googleapis.com/golang/go1.8.2.darwin-amd64.pkg)
+下载(需翻墙): [go1.8.3.darwin-amd64.pkg](https://storage.googleapis.com/golang/go1.8.3.darwin-amd64.pkg)
 
 双击下载文件，一路默认安装点击下一步即可。   
 
@@ -62,8 +62,8 @@ Golang 安装有多种方式，详见[官网](https://golang.org/doc/install)
 
 ### Windows 安装
 按照系统对应下面下载地址下载：   
- * 32位系统下载 go1.8.2.windows-386.msi
- * 64位系统下载 go1.8.2.windows-amd64.msi
+ * 32位系统下载 go1.8.3.windows-386.msi
+ * 64位系统下载 go1.8.3.windows-amd64.msi
 
 双击打开下载的文件，一路按照默认点击下一步即可。
 
