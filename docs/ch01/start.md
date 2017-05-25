@@ -15,6 +15,5 @@ Go是一种编译型语言，它结合了解释型语言的游刃有余，动态
 在本章中，我们将讲述Go的安装方法，以及如何配置项目信息。
 
 ## 目录
-  
-![](images/navi1.png?raw=true)
 
+![](../images/navi1.png?raw=true)
