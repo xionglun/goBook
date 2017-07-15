@@ -244,7 +244,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="../ch02/struct.html">
+        <li class="chapter " data-level="1.3.5" data-path="../ch02/defer.html">
+            
+                <a href="../ch02/defer.html">
+            
+                    
+                    Defer、Panic及Recover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../ch02/struct.html">
             
                 <a href="../ch02/struct.html">
             
@@ -257,7 +270,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="../ch02/object.html">
+        <li class="chapter " data-level="1.3.7" data-path="../ch02/object.html">
             
                 <a href="../ch02/object.html">
             
@@ -270,7 +283,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7" data-path="../ch02/interface.html">
+        <li class="chapter " data-level="1.3.8" data-path="../ch02/interface.html">
             
                 <a href="../ch02/interface.html">
             
@@ -283,7 +296,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.8" data-path="../ch02/concurrency.html">
+        <li class="chapter " data-level="1.3.9" data-path="../ch02/concurrency.html">
             
                 <a href="../ch02/concurrency.html">
             
@@ -739,7 +752,7 @@
                 <a href="../ch08/intro.html">
             
                     
-                    Web服务
+                    网络通信
             
                 </a>
             
@@ -1019,6 +1032,19 @@
             
                     
                     Go 测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../ch11/opentracing.html">
+            
+                <a href="../ch11/opentracing.html">
+            
+                    
+                    Opentracing
             
                 </a>
             
@@ -1343,18 +1369,18 @@
                                 
                                 <h1 id="pprof&#x652F;&#x6301;">pprof&#x652F;&#x6301;</h1>
 <p>Go&#x8BED;&#x8A00;&#x6709;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x68D2;&#x7684;&#x8BBE;&#x8BA1;&#x5C31;&#x662F;&#x6807;&#x51C6;&#x5E93;&#x91CC;&#x9762;&#x5E26;&#x6709;&#x4EE3;&#x7801;&#x7684;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x5DE5;&#x5177;&#xFF0C;&#x5728;&#x4E24;&#x4E2A;&#x5730;&#x65B9;&#x6709;&#x5305;&#xFF1A;</p>
-<pre><code>    net/http/pprof
-    runtime/pprof
+<pre><code>net/http/pprof
+runtime/pprof
 </code></pre><p>&#x5176;&#x5B9E;<code>net/http/pprof</code>&#x4E2D;&#x53EA;&#x662F;&#x4F7F;&#x7528;<code>runtime/pprof</code>&#x5305;&#x6765;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x5E76;&#x5728;http&#x7AEF;&#x53E3;&#x4E0A;&#x66B4;&#x9732;&#x51FA;&#x6765;</p>
 <h2 id="beego&#x652F;&#x6301;pprof">beego&#x652F;&#x6301;pprof</h2>
 <p>&#x76EE;&#x524D;beego&#x6846;&#x67B6;&#x65B0;&#x589E;&#x4E86;pprof&#xFF0C;&#x8BE5;&#x7279;&#x6027;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x5F00;&#x542F;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x6D4B;&#x8BD5;&#x6027;&#x80FD;&#xFF0C;&#x67E5;&#x770B;&#x76F8;&#x5E94;&#x7684;&#x6267;&#x884C;goroutine&#x4E4B;&#x7C7B;&#x7684;&#x4FE1;&#x606F;&#xFF0C;
 &#x5176;&#x5B9E;Go&#x7684;&#x9ED8;&#x8BA4;&#x5305;&quot;net/http/pprof&quot;&#x5DF2;&#x7ECF;&#x5177;&#x6709;&#x8BE5;&#x529F;&#x80FD;&#xFF0C;&#x5982;&#x679C;&#x6309;&#x7167;Go&#x9ED8;&#x8BA4;&#x7684;&#x65B9;&#x5F0F;&#x6267;&#x884C;Web&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF0C;
 &#x4F46;&#x662F;&#x7531;&#x4E8E;beego&#x91CD;&#x65B0;&#x5C01;&#x88C5;&#x4E86;ServeHTTP&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x9ED8;&#x8BA4;&#x7684;&#x5305;&#x542B;&#x662F;&#x65E0;&#x6CD5;&#x5F00;&#x542F;&#x8BE5;&#x529F;&#x80FD;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5BF9;beego&#x7684;&#x5185;&#x90E8;&#x6539;&#x9020;&#x652F;&#x6301;pprof&#x3002;</p>
 <ul>
-<li>&#x9996;&#x5148;&#x5728;beego.Run&#x51FD;&#x6570;&#x4E2D;&#x6839;&#x636E;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6027;&#x80FD;&#x5305;<pre><code class="lang-go">  <span class="hljs-keyword">if</span> PprofOn {
-      BeeApp.RegisterController(<span class="hljs-string">`/debug/pprof`</span>, &amp;ProfController{})
-      BeeApp.RegisterController(<span class="hljs-string">`/debug/pprof/:pp([\w]+)`</span>, &amp;ProfController{})
-  }
+<li>&#x9996;&#x5148;&#x5728;beego.Run&#x51FD;&#x6570;&#x4E2D;&#x6839;&#x636E;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6027;&#x80FD;&#x5305;<pre><code class="lang-go"><span class="hljs-keyword">if</span> PprofOn {
+  BeeApp.RegisterController(<span class="hljs-string">`/debug/pprof`</span>, &amp;ProfController{})
+  BeeApp.RegisterController(<span class="hljs-string">`/debug/pprof/:pp([\w]+)`</span>, &amp;ProfController{})
+}
 </code></pre>
 </li>
 <li><p>&#x8BBE;&#x8BA1;ProfConterller</p>
@@ -1420,11 +1446,15 @@ Total: 3 samples
 
      0 0.0% 100.0% 2 66.7% net/http.(*ServeMux).ServeHTTP
 
-     0 0.0% 100.0% 2 66.7% net/http.(*conn).serve    
+     0 0.0% 100.0% 2 66.7% net/http.(*conn).serve
 
     (pprof)web
 </code></pre><p><img src="../images/14.6.pprof3.png?raw=true" alt=""></p>
 <p>&#x56FE;14.9 &#x5C55;&#x793A;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;</p>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<ol>
+<li><a href="http://gpdb.rocks/golang/profiling/2016/07/31/golang-profiling.html" target="_blank">golang profiling</a></li>
+</ol>
 
                                 
                                 </section>
@@ -1468,7 +1498,7 @@ Total: 3 samples
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"pprof支持","level":"1.15.6","depth":2,"next":{"title":"附录A 参考资料","level":"1.16","depth":1,"path":"ref.md","ref":"./ref.md","articles":[]},"previous":{"title":"多语言支持","level":"1.15.5","depth":2,"path":"docs/ch14/i18n.md","ref":"./docs/ch14/i18n.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"style.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_with":"{{with …}}","with":"{{with}}","blocks":"{{}}","_TemplateHeader":"{{template \"header\"}}","_moneyTrans":"{{.money | TransMoney}}","_postCreated":"{{.Post.Created}}","_emailDeal":"{{.|emailDeal}}","dot":"{{.}}","_created":"{{.Created}}","_vMoney":"{{.V.Money | M}}","_html":"{{. | html}}","_Name":"{{.Name}}","_rangeDot":"{{range .}}","_Header":"{{define \"header\"}}","empty":"{{}}","_createTrans":"{{.create | Trans}}","_vvlang":"{{.VV.Lang}}","_vNowTD":"{{.V.Now | TD}}","_vSubmit":"{{.V.Submit | T}}","_withFriends":"{{with .Friends}}","_layoutContent":"{{.LayoutContent}}","_output1":"{{with $x := \"output\" | printf \"%q\"}}\n\t{{$x}}\n{{end}}","_output2":"{{with $x := \"output\"}}\n\t{{printf \"%q\" $x}}\n{{end}}","_Fname":"{{.Fname}}","_output3":"{{with $x := \"output\"}}\n\t{{$x | printf \"%q\"}}\n{{end}}","_rangeBlogs":"{{range .blogs}}","_TemplateFooter":"{{template \"footer\"}}","_rangeEmails":"{{range .Emails}}","username":"{{.UserName}}","_errorInfo":"{{.ErrorInfo}}","_childTemplate":"{{define \"子模板名称\"}}","_postTitle":"{{.Post.Title}}","_formRender":"{{.form.render()}}","else":"{{else}}","_title":"{{.Title}}","field":"{{.FieldName}}","_postContent":"{{.Post.Content}}","_Footer":"{{define \"footer\"}}","_postId":"{{.Post.Id}}","_Content":"{{define \"content\"}}","end":"{{end}}","define":"{{define}}","_if":"{{if ``}}","_timeTrans":"{{.time | TransDate}}","email":"{{.email}}","range":"{{range}}","_range":"{{range …}}","_ifAnyThing":"{{if `anything`}}","_rangeEmail":"{{range .Emails}}"},"title":"Golang Web","language":"zh-hans","gitbook":"*","description":"一本Go语言Web开发教程书籍!"},"file":{"path":"docs/ch14/pprof.md","mtime":"2017-05-25T01:39:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-25T01:58:58.900Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"pprof支持","level":"1.15.6","depth":2,"next":{"title":"附录A 参考资料","level":"1.16","depth":1,"path":"ref.md","ref":"./ref.md","articles":[]},"previous":{"title":"多语言支持","level":"1.15.5","depth":2,"path":"docs/ch14/i18n.md","ref":"./docs/ch14/i18n.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"style.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_with":"{{with …}}","with":"{{with}}","blocks":"{{}}","_TemplateHeader":"{{template \"header\"}}","_moneyTrans":"{{.money | TransMoney}}","_postCreated":"{{.Post.Created}}","_emailDeal":"{{.|emailDeal}}","dot":"{{.}}","_created":"{{.Created}}","_vMoney":"{{.V.Money | M}}","_html":"{{. | html}}","_Name":"{{.Name}}","_rangeDot":"{{range .}}","_Header":"{{define \"header\"}}","empty":"{{}}","_createTrans":"{{.create | Trans}}","_vvlang":"{{.VV.Lang}}","_vNowTD":"{{.V.Now | TD}}","_vSubmit":"{{.V.Submit | T}}","_withFriends":"{{with .Friends}}","_layoutContent":"{{.LayoutContent}}","_output1":"{{with $x := \"output\" | printf \"%q\"}}\n\t{{$x}}\n{{end}}","_output2":"{{with $x := \"output\"}}\n\t{{printf \"%q\" $x}}\n{{end}}","_Fname":"{{.Fname}}","_output3":"{{with $x := \"output\"}}\n\t{{$x | printf \"%q\"}}\n{{end}}","_rangeBlogs":"{{range .blogs}}","_TemplateFooter":"{{template \"footer\"}}","_rangeEmails":"{{range .Emails}}","username":"{{.UserName}}","_errorInfo":"{{.ErrorInfo}}","_childTemplate":"{{define \"子模板名称\"}}","_postTitle":"{{.Post.Title}}","_formRender":"{{.form.render()}}","else":"{{else}}","_title":"{{.Title}}","field":"{{.FieldName}}","_postContent":"{{.Post.Content}}","_Footer":"{{define \"footer\"}}","_postId":"{{.Post.Id}}","_Content":"{{define \"content\"}}","end":"{{end}}","define":"{{define}}","_if":"{{if ``}}","_timeTrans":"{{.time | TransDate}}","email":"{{.email}}","range":"{{range}}","_range":"{{range …}}","_ifAnyThing":"{{if `anything`}}","_rangeEmail":"{{range .Emails}}"},"title":"Golang Web","language":"zh-hans","gitbook":"*","description":"一本Go语言Web开发教程书籍!"},"file":{"path":"docs/ch14/pprof.md","mtime":"2017-05-31T03:17:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-15T17:03:41.016Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
