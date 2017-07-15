@@ -312,7 +312,7 @@ func NewStudent(name string, age int) (student Student, err error) {
 	if age < 0 {
 		return student, errors.New("Age is invalid")
 	}
-	
+
 	student.Name = name
 	student.Age = Age
 	// 这里可以不写返回值，因为默认使用了命名返回值
@@ -403,55 +403,6 @@ func main() {
 - Go语言中`string`，`slice`，`map`这三种类型的实现机制类似指针，所以可以直接传递，而不用取地址后传递指针。
 	（注：若函数需改变`slice`的长度，则仍需要取地址传递指针）
 
-### defer
-Go语言中有种不错的设计，即延迟（defer）语句，你可以在函数中添加多个defer语句。
-当函数执行到最后时，这些defer语句会按照逆序执行，最后该函数返回。
-特别是当你在进行一些打开资源的操作时，遇到错误需要提前返回，在返回前你需要关闭相应的资源，不然很容易造成资源泄露等问题。
-如下代码所示，我们一般写打开一个资源是这样操作的：
-```go
-func ReadWrite() bool {
-	file.Open("file")
-	// 做一些工作
-	if failureX {
-		file.Close()
-		return false
-	}
-
-	if failureY {
-		file.Close()
-		return false
-	}
-
-	file.Close()
-	return true
-}
-```
-
-我们看到上面有很多重复的代码，Go的`defer`有效解决了这个问题。使用它后，不但代码量减少了很多，而且程序变得更优雅。
-在`defer`后指定的函数会在函数退出前调用。
-```go
-func ReadWrite() bool {
-	file.Open("file")
-	defer file.Close()
-	
-	if failureX {
-		return false
-	}
-	
-	if failureY {
-		return false
-	}
-	
-	return true
-}
-```
-
-如果有很多调用`defer`，那么`defer`是采用后进先出模式，所以如下代码会输出`4 3 2 1 0`
-```go
-for i := 0; i < 5; i++ {
-	defer fmt.Printf("%d ", i)
-}
-```
 
 ### 函数作为值、类型
 在Go中函数也是一种变量，我们可以通过`type`来定义它，它的类型就是所有拥有相同的参数，相同的返回值的一种类型
@@ -506,49 +457,6 @@ func main(){
 然后两个`filter`函数的参数和返回值与`testInt`类型是一样的，但是我们可以实现很多种的逻辑，
 这样使得我们的程序变得非常的灵活。
 
-### Panic和Recover
-Go没有像Java那样的异常机制，它不能抛出异常，而是使用了`panic`和`recover`机制。
-一定要记住，你应当把它作为最后的手段来使用，也就是说，你的代码中应当没有，或者很少有`panic`的东西。
-这是个强大的工具，请明智地使用它。那么，我们应该如何使用它呢？
-
-Panic
-> 是一个内建函数，可以中断原有的控制流程，进入一个令人恐慌的流程中。
-> 当函数`F`调用`panic`，函数F的执行被中断，但是`F`中的延迟函数会正常执行，然后F返回到调用它的地方。
-> 在调用的地方，`F`的行为就像调用了`panic`。
-> 这一过程继续向上，直到发生`panic`的`goroutine`中所有调用的函数返回，此时程序退出。
-> 恐慌可以直接调用`panic`产生。也可以由运行时错误产生，例如访问越界的数组。
-
-Recover
-> 是一个内建的函数，可以让进入令人恐慌的流程中的`goroutine`恢复过来。
-> `recover`仅在延迟函数中有效。在正常的执行过程中，调用`recover`会返回`nil`，并且没有其它任何效果。
-> 如果当前的`goroutine`陷入恐慌，调用`recover`可以捕获到`panic`的输入值，并且恢复正常的执行。
-
-下面这个函数演示了如何在过程中使用`panic`
-```go
-var user = os.Getenv("USER")
-
-func init() {
-	if user == "" {
-		panic("no value for $USER")
-	}
-}
-```
-
-下面这个函数检查作为其参数的函数在执行时是否会产生`panic`：
-```go
-func throwsPanic(f func()) (b bool) {
-	
-	defer func() {
-		if x := recover(); x != nil {
-			b = true
-		}
-	}()
-	
-	f() //执行函数f，如果f中出现了panic，那么就可以恢复回来
-	
-	return
-}
-```
 
 ### `main`函数和`init`函数
 
@@ -595,19 +503,19 @@ fmt.Println("hello world")
 	```go
 	import "shorturl/model" //加载gopath/src/shorturl/model模块
 	```
-	
+
 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面我们来一一讲解一下到底是怎么一回事
-	
-	
+
+
 1. 点 `.` 操作
-	
+
 	我们有时候会看到如下的方式导入包
-	```go	
+	```go
 	import (
 		. "fmt"
 	)
 	```
-	
+
 	这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，
 	也就是前面你调用的fmt.Println("hello world")可以省略的写成Println("hello world")
 
@@ -619,7 +527,7 @@ fmt.Println("hello world")
 	  f "fmt"
 	)
 	```
-		
+
 	别名操作的话调用包函数时前缀变成了我们的前缀，即f.Println("hello world")
 
 3. `_` 操作
@@ -631,6 +539,5 @@ fmt.Println("hello world")
 	    _ "github.com/ziutek/mymysql/godrv"
 	)
 	```
-		
-	`_` 操作其实是引入该包，而不直接使用包里面的函数，而是调用了该包里面的init函数。
 
+	`_` 操作其实是引入该包，而不直接使用包里面的函数，而是调用了该包里面的init函数。

@@ -1,8 +1,8 @@
 #pprof支持
 Go语言有一个非常棒的设计就是标准库里面带有代码的性能监控工具，在两个地方有包：
 ```
-	net/http/pprof
-	runtime/pprof
+net/http/pprof
+runtime/pprof
 ```
 
 其实`net/http/pprof`中只是使用`runtime/pprof`包来进行封装了一下，并在http端口上暴露出来
@@ -14,10 +14,10 @@ Go语言有一个非常棒的设计就是标准库里面带有代码的性能监
 
 - 首先在beego.Run函数中根据变量是否自动加载性能包
   ```go
-	if PprofOn {
-		BeeApp.RegisterController(`/debug/pprof`, &ProfController{})
-		BeeApp.RegisterController(`/debug/pprof/:pp([\w]+)`, &ProfController{})
-	}
+if PprofOn {
+	BeeApp.RegisterController(`/debug/pprof`, &ProfController{})
+	BeeApp.RegisterController(`/debug/pprof/:pp([\w]+)`, &ProfController{})
+}
 	```
 - 设计ProfConterller
   ```go
@@ -26,11 +26,11 @@ Go语言有一个非常棒的设计就是标准库里面带有代码的性能监
 	import (
 		"net/http/pprof"
 	)
-	
+
 	type ProfController struct {
 		Controller
 	}
-		
+
 	func (this *ProfController) Get() {
 		switch this.Ctx.Params[":pp"] {
 		default:
@@ -93,11 +93,14 @@ Total: 3 samples
 
      0 0.0% 100.0% 2 66.7% net/http.(*ServeMux).ServeHTTP
 
-     0 0.0% 100.0% 2 66.7% net/http.(*conn).serve	
+     0 0.0% 100.0% 2 66.7% net/http.(*conn).serve
 
 	(pprof)web
-```	
+```
 ![](../images/14.6.pprof3.png?raw=true)
 
 图14.9 展示的执行流程信息
 
+
+### 参考资料
+1. [golang profiling](http://gpdb.rocks/golang/profiling/2016/07/31/golang-profiling.html)
