@@ -10,7 +10,7 @@ Go目前标准包只是包含了简单的功能，如果我们想把我们的应
 ## zap 介绍
 zap 是用Go语言实现的一个日志系统，它的简介如下：
 
->> Blazing fast, structured, leveled logging in Go.
+> Blazing fast, structured, leveled logging in Go.
 
 从这短短的一句话，可以看出，它主要是关注速度，结构化日志，多级别化日志。所以，从它关注点出发，它提供了两种使用方式：
 `zap.Logger`和`zap.SugaredLogger`。
@@ -63,7 +63,7 @@ func main() {
 logger := zap.NewExample()
 defer logger.Sync()
 logger.Info("Hello world!", zap.String("lang", "golang"), zap.Int("age", 21))
-// {"level":"info","msg":"Hello world!","lang":"golang","age":21}```
+// {"level":"info","msg":"Hello world!","lang":"golang","age":21}
 ```
 
 同时，还有一些方法，比如`Named`和`With`等，可以让你输出日志时更清晰明了。如下：
@@ -109,8 +109,8 @@ func NewLogger() (*zap.Logger, error) {
 	cfg := zap.NewProductionConfig()
 	cfg.OutputPaths = []string{   // 标准输出，一般只需要配置这个即可
 		"stdout",  // 同时输出到终端，若不需要，删除此行即可
-    "/var/log/example/example.log",  // 输出到文件
-  }
+		"/var/log/example/example.log",  // 输出到文件
+	}
 	cfg.ErrorOutputPaths = []string{   // 应用出错时输出，比如程序 panic 了
 		"stderr",
 		"/var/log/example/example.error.log",
